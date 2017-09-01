@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Repositories\Repository\{namespace};
+
+use App\Repositories\Instantiators\{namespace}Abstract;
+
+class {name}Repository extends {namespace}Abstract
+{
+    public $bindModel = '{name}Model';//绑定模型
+
+}
