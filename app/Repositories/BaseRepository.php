@@ -24,4 +24,10 @@ abstract class BaseRepository
         }
         return $this->model = $model;
     }
+
+
+
+
+
+
 }
