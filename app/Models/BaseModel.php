@@ -30,4 +30,17 @@ abstract class BaseModel extends Model
         $data=$query->offset($offset)->limit($limit)->get();
         return compact('total','data');
     }
+
+    /**
+     * @desc:   添加方法
+     * @auth:   hyb
+     * @date:   2017/9/4
+     * @time:   17:51
+     * @param:
+     * @return:
+     */
+    public function create(array $attributes)
+    {
+        return $this->fill($attributes)->save();
+    }
 }
