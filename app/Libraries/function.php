@@ -24,3 +24,20 @@ if(!function_exists('make_components')){
         return 'file path:'.$makeFilePath.PHP_EOL;
     }
 }
+
+/**
+ * @desc:   存在且不是空 isset && !empty
+ * @auth:   hyb
+ * @date:   2017/9/4
+ * @time:   15:06
+ * @param:  $key    判断key
+ * @param:  $params 判断数组
+ * @return:
+ */
+if(!function_exists('existence')){
+    function existence(array $params,string $key)
+    {
+        return (isset($params[$key]) && !empty($params[$key])) ? true : false;
+    }
+
+}

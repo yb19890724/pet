@@ -10,7 +10,7 @@ class CouponTypeService
 
     public function test()
     {
-        CouponType::test();
+        CouponType::test(['id'=>'1']);
     }
 
 }
