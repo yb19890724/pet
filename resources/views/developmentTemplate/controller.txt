@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\{namespace}\{name}Service;
 
+/* {annotation}控制器 */
 class {name}Controller extends Controller
 {
     private ${include};

@@ -2,15 +2,11 @@
 
 namespace App\Services\{namespace};
 
-use App\Repositories\{namespace}\{name}Repository;
+use Facades\App\Repositories\{namespace}\{name}Repository as {name};
 
+/* {annotation}服务层 */
 class {name}Service
 {
-    private ${name};
 
-    public function __construct({name}Repository ${name})
-    {
-        $this->{include}=${name};
-    }
 
 }

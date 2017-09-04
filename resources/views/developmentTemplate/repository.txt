@@ -2,9 +2,10 @@
 
 namespace App\Repositories\{namespace};
 
-use App\Repositories\{namespace}Abstract;
+use App\Repositories\{namespace}\BaseRepository;
 
-class {name}Repository extends {namespace}Abstract
+/* {annotation}仓库层 */
+class {name}Repository extends BaseRepository
 {
     public $bindModel = '{name}Model';//绑定模型
 
