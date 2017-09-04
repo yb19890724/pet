@@ -12,6 +12,6 @@ class CouponTypeRepository extends BaseRepository
 
     public function test()
     {
-
+        dd($this->model->paginate(10));
     }
 }
