@@ -4,48 +4,14 @@ namespace App\Http\Controllers\{namespace};
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Repository\TenantBackend\{name}Repository;
+use App\Services\{namespace}\{name}Service;
 
 class {name}Controller extends Controller
 {
     private ${include};
 
-    public  function __construct({name}Repository ${name})
+    public function __construct({name}Service ${name})
     {
         $this->{include}=${name};
-    }
-
-    public  function index()
-    {
-
-    }
-
-    public  function lists(Request $getParams)
-    {
-
-    }
-
-    public  function create(Request $getParams)
-    {
-
-    }
-
-    public  function store(Request $postParams)
-    {
-
-    }
-
-    public  function edit(${include}Id){
-
-    }
-
-    public  function update(Request $putParams)
-    {
-
-    }
-
-    public  function destroy(${include}Id)
-    {
-
     }
 }

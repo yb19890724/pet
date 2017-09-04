@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Repository\{namespace};
+namespace App\Repositories\{namespace};
 
-use App\Repositories\Instantiators\{namespace}Abstract;
+use App\Repositories\{namespace}Abstract;
 
 class {name}Repository extends {namespace}Abstract
 {

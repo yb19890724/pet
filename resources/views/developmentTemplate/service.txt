@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\{namespace};
+namespace App\Services\{namespace};
 
-use Illuminate\Http\Request;
-use App\Service\{namespace}\{name}Service;
-use App\Http\Controllers\Controller;
+use App\Repositories\{namespace}\{name}Repository;
 
-class {name}Controller extends Controller
+class {name}Service
 {
-    private ${include};
+    private ${name};
 
-    public  function __construct({name}Service ${name})
+    public function __construct({name}Repository ${name})
     {
         $this->{include}=${name};
     }
+
 }
