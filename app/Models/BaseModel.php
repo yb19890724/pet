@@ -32,15 +32,41 @@ abstract class BaseModel extends Model
     }
 
     /**
-     * @desc:   添加方法
+     * @desc:   添加公用方法
      * @auth:   hyb
      * @date:   2017/9/4
      * @time:   17:51
      * @param:
+     * @return: 返回添加id
+     */
+    public function insertGetId(array $attributes)
+    {
+        return parent::insertGetId(array_only($attributes,$this->fillable));
+    }
+
+    /**
+     * @desc:   删除公用方法
+     * @auth:   hyb
+     * @date:   2017/9/4
+     * @time:   18:02
+     * @param:
      * @return:
      */
-    public function create(array $attributes)
+    public function conditionsDelete(array $where)
     {
-        return $this->fill($attributes)->save();
+        return $this->applyConditions($where)->delete();
+    }
+
+    /**
+     * @desc:   修改公用方法
+     * @auth:   hyb
+     * @date:   2017/9/4
+     * @time:   18:03
+     * @param:
+     * @return:
+     */
+    public function conditionsUpdate($where,$attributes)
+    {
+        return $this->applyConditions($where)->update($attributes);
     }
 }

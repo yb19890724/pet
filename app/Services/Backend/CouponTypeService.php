@@ -8,9 +8,55 @@ use Facades\App\Repositories\Backend\CouponTypeRepository as CouponType;
 class CouponTypeService
 {
 
-    public function test()
+    /**
+     * @desc:   查询卡券列表
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   10:05
+     * @param:
+     * @return: array
+     */
+    public function couponTypes($params)
     {
-        CouponType::test(['id'=>'1']);
+        return CouponType::couponTypes($params);
     }
 
+    /**
+     * @desc:   添加卡券
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   10:05
+     * @param:
+     * @return: array
+     */
+    public function couponTypeCreate($params)
+    {
+        return CouponType::couponTypeCreate($params);
+    }
+
+    /**
+     * @desc:   删除卡券
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   17:30
+     * @param:
+     * @return:
+     */
+    public function couponTypeDestroy($params)
+    {
+        return CouponType::couponTypeDestroy($params);
+    }
+
+    /**
+     * @desc:   修改卡券
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   17:30
+     * @param:
+     * @return:
+     */
+    public function couponTypeUpdate($params)
+    {
+        return CouponType::couponTypeUpdate($params);
+    }
 }
