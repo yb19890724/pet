@@ -23,4 +23,3 @@ Route::post('/coupon/type','Backend\CouponTypeController@couponTypeStore');
 Route::delete('/coupon/type/{id}','Backend\CouponTypeController@couponTypeDestroy');
 Route::put('/coupon/type/{id}','Backend\CouponTypeController@couponTypeUpdate');
 
-Route::resource('test','Backend\ArticleController');

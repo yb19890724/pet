@@ -67,6 +67,6 @@ class CouponTypeController extends Controller
      */
     public function couponTypeUpdate(Request $request, $id)
     {
-       echo $this->couponType->couponTypeUpdate($request->all());
+       echo $this->couponType->couponTypeUpdate(array_merge($request->all(),$id));
     }
 }

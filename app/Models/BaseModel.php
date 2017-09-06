@@ -22,13 +22,13 @@ abstract class BaseModel extends Model
      */
     public function scopePaginates($query, array $params)
     {
-        $model=clone $query;
+        $model = clone $query;
         $limit = existence($params, 'size') ? $params['size'] : $this->perPage;
         $params['page'] = isset($params['page']) ? $params['page'] - 1 : 0;
         $offset = $params['page'] * $limit < 0 ? 0 : $params['page'] * $limit;
-        $total=$model->selectRaw('count(*) as total')->first();
-        $data=$query->offset($offset)->limit($limit)->get();
-        return compact('total','data');
+        $total = $model->selectRaw('count(*) as total')->first();
+        $data = $query->offset($offset)->limit($limit)->get();
+        return compact('total', 'data');
     }
 
     /**
@@ -41,7 +41,7 @@ abstract class BaseModel extends Model
      */
     public function insertGetId(array $attributes)
     {
-        return parent::insertGetId(array_only($attributes,$this->fillable));
+        return parent::insertGetId(array_only($attributes, $this->fillable));
     }
 
     /**
@@ -65,7 +65,7 @@ abstract class BaseModel extends Model
      * @param:
      * @return:
      */
-    public function conditionsUpdate($where,$attributes)
+    public function conditionsUpdate($where, $attributes)
     {
         return $this->applyConditions($where)->update($attributes);
     }

@@ -2,8 +2,9 @@
 
 namespace App\Repositories\Backend;
 
-use App\Models\Backend\CouponTypeModel;
 use App\Repositories\BaseRepository;
+use App\Models\Backend\CouponTypeModel;
+use Facades\App\Repositories\Backend\CouponTypeTransform as CouponType;
 
 /* 卡券类型仓库层 */
 class CouponTypeRepository extends BaseRepository
@@ -60,6 +61,7 @@ class CouponTypeRepository extends BaseRepository
      */
     public function couponTypeUpdate($params)
     {
-        return $this->model->conditionsUpdate(['id'=>5],['title'=>'twt','body'=>'ete']);
+        list($where,$attributes)=CouponType::parameterCondition($params);
+        return $this->model->conditionsUpdate($where,$attributes);
     }
 }
