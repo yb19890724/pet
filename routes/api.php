@@ -18,8 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/coupon/types/{page}/{size}','Backend\CouponTypeController@couponTypes');
-Route::post('/coupon/type','Backend\CouponTypeController@couponTypeStore');
-Route::delete('/coupon/type/{id}','Backend\CouponTypeController@couponTypeDestroy');
-Route::put('/coupon/type/{id}','Backend\CouponTypeController@couponTypeUpdate');
 

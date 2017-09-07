@@ -26,9 +26,9 @@ abstract class BaseModel extends Model
         $limit = existence($params, 'size') ? $params['size'] : $this->perPage;
         $params['page'] = isset($params['page']) ? $params['page'] - 1 : 0;
         $offset = $params['page'] * $limit < 0 ? 0 : $params['page'] * $limit;
-        $total = $model->selectRaw('count(*) as total')->first();
+        $total = $model->selectRaw('count(*) as total')->first()['total'];
         $data = $query->offset($offset)->limit($limit)->get();
-        return compact('total', 'data');
+        return !empty($total) && !empty($data)?collect(compact('total', 'data')):[];
     }
 
     /**

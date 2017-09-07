@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Services\Backend\CouponTypeService;
 
 /* 卡券类型控制器 */
-class CouponTypeController extends Controller
+class CouponTypeController extends BackendController
 {
     private $couponType;
 
@@ -28,7 +27,10 @@ class CouponTypeController extends Controller
     public function couponTypes($page,$size)
     {
         $result=$this->couponType->couponTypes(compact('page','size'));
-        dd($result);
+        if(existence($result,'data')){
+            return  $this->successResponse($result);
+        }
+        return $this->errorResponse();
     }
 
     /**
@@ -41,7 +43,7 @@ class CouponTypeController extends Controller
      */
     public function couponTypeCreate(Request $request)
     {
-        $this->couponType->couponTypeCreate($request->all());
+        return $this->couponType->couponTypeCreate($request->all());
     }
 
     /**
