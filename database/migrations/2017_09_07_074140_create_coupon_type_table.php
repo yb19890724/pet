@@ -13,6 +13,7 @@ class CreateCouponTypeTable extends Migration
      */
     public function up()
     {
+        //卡券类型表
         Schema::create('card_coupon_type', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('shop_id')->comment('店铺id');
@@ -31,7 +32,6 @@ class CreateCouponTypeTable extends Migration
             $table->dateTime('use_date')->comment('卡券使用时间');
             $table->text('description')->comment('描述');
             $table->timestamps();
-            $table->comments('卡券类型表');
         });
     }
 
