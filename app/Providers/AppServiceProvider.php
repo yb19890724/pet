@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Log;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191); //手动配置迁移命令migrate生成的默认字符串长度
+
         //
         \DB::listen(function ($sql) {
             // var_dump($sql->bindings);

@@ -39,5 +39,4 @@ if (!function_exists('existence')) {
     {
         return (isset($params[$key]) && !empty($params[$key])) ? true : false;
     }
-
 }
