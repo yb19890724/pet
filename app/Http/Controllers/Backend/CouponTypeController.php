@@ -59,7 +59,7 @@ class CouponTypeController extends BackendController
      * @param:
      * @return: array
      */
-    public function couponTypeDestroy(string $id)
+    public function couponTypeDestroy(int $id)
     {
         $result=$this->couponType->couponTypeDestroy(compact('id'));
         if (!empty($result)) {
@@ -76,7 +76,7 @@ class CouponTypeController extends BackendController
      * @param:
      * @return:
      */
-    public function couponTypeUpdate(Request $request, string $id)
+    public function couponTypeUpdate(Request $request, int $id)
     {
         $result = $this->couponType->couponTypeUpdate(array_merge($request->all(), compact('id')));
         if (!empty($result)) {
