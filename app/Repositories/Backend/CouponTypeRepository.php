@@ -4,7 +4,7 @@ namespace App\Repositories\Backend;
 
 use App\Repositories\BaseRepository;
 use App\Models\Backend\CouponTypeModel;
-use Facades\App\Repositories\Backend\CouponTypeTransform as CouponType;
+use Facades\App\Transformer\Backend\CouponTypeTransform as CouponType;
 
 /* 卡券类型仓库层 */
 class CouponTypeRepository extends BaseRepository
@@ -20,7 +20,7 @@ class CouponTypeRepository extends BaseRepository
      * @param:
      * @return: array
      */
-    public function couponTypes($params)
+    public function couponTypes(array $params)
     {
         return $this->model->couponTypes($params);
     }
@@ -33,7 +33,7 @@ class CouponTypeRepository extends BaseRepository
      * @param:
      * @return: boolean
      */
-    public function couponTypeCreate($params)
+    public function couponTypeCreate(array $params)
     {
         return $result=$this->model->insertGetId($params);
     }
@@ -46,7 +46,7 @@ class CouponTypeRepository extends BaseRepository
      * @param:
      * @return:
      */
-    public function couponTypeDestroy($params)
+    public function couponTypeDestroy(array $params)
     {
         return $this->model->ConditionsDelete($params);
     }
@@ -57,9 +57,9 @@ class CouponTypeRepository extends BaseRepository
      * @date:   2017/9/5
      * @time:   17:30
      * @param:
-     * @return:
+     * @return: bool
      */
-    public function couponTypeUpdate($params)
+    public function couponTypeUpdate(array $params)
     {
         list($where,$attributes)=CouponType::parameterCondition($params);
         return $this->model->conditionsUpdate($where,$attributes);

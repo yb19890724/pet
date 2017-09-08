@@ -16,7 +16,7 @@ class CouponTypeService
      * @param:
      * @return: array
      */
-    public function couponTypes($params)
+    public function couponTypes(array $params)
     {
         return CouponType::couponTypes($params);
     }
@@ -29,7 +29,7 @@ class CouponTypeService
      * @param:
      * @return: array
      */
-    public function couponTypeCreate($params)
+    public function couponTypeCreate(array $params)
     {
         return CouponType::couponTypeCreate($params);
     }
@@ -42,7 +42,7 @@ class CouponTypeService
      * @param:
      * @return:
      */
-    public function couponTypeDestroy($params)
+    public function couponTypeDestroy(array $params)
     {
         return CouponType::couponTypeDestroy($params);
     }
@@ -55,7 +55,7 @@ class CouponTypeService
      * @param:
      * @return:
      */
-    public function couponTypeUpdate($params)
+    public function couponTypeUpdate(array $params)
     {
         return CouponType::couponTypeUpdate($params);
     }

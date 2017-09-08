@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Services\Backend\CouponTypeService;
 
 /* 卡券类型控制器 */
+
 class CouponTypeController extends BackendController
 {
     private $couponType;
 
     public function __construct(CouponTypeService $CouponType)
     {
-        $this->couponType=$CouponType;
+        $this->couponType = $CouponType;
     }
 
     /**
@@ -24,11 +25,11 @@ class CouponTypeController extends BackendController
      * @param:  $size  返回记录
      * @return: json
      */
-    public function couponTypes($page,$size)
+    public function couponTypes(int $page, int $size)
     {
-        $result=$this->couponType->couponTypes(compact('page','size'));
-        if(existence($result,'data')){
-            return  $this->successResponse($result);
+        $result = $this->couponType->couponTypes(compact('page', 'size'));
+        if (existence($result, 'data')) {
+            return $this->successResponse($result);
         }
         return $this->errorResponse();
     }
@@ -43,7 +44,11 @@ class CouponTypeController extends BackendController
      */
     public function couponTypeCreate(Request $request)
     {
-        return $this->couponType->couponTypeCreate($request->all());
+        $result = $this->couponType->couponTypeCreate($request->all());
+        if (!empty($result)) {
+            return $this->successResponse([], trans('global.create_success'));
+        }
+        return $this->errorResponse('抱歉,创建失败!');
     }
 
     /**
@@ -54,9 +59,13 @@ class CouponTypeController extends BackendController
      * @param:
      * @return: array
      */
-    public function couponTypeDestroy($id)
+    public function couponTypeDestroy(string $id)
     {
-        echo $this->couponType->couponTypeDestroy(compact('id'));
+        $result=$this->couponType->couponTypeDestroy(compact('id'));
+        if (!empty($result)) {
+            return $this->successResponse([], trans('global.delete_success'));
+        }
+        return $this->errorResponse('global.delete_fail');
     }
 
     /**
@@ -67,8 +76,12 @@ class CouponTypeController extends BackendController
      * @param:
      * @return:
      */
-    public function couponTypeUpdate(Request $request, $id)
+    public function couponTypeUpdate(Request $request, string $id)
     {
-       echo $this->couponType->couponTypeUpdate(array_merge($request->all(),$id));
+        $result = $this->couponType->couponTypeUpdate(array_merge($request->all(), compact('id')));
+        if (!empty($result)) {
+            return $this->successResponse([], trans('global.update_success'));
+        }
+        return $this->errorResponse('global.update_fail');
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Transforms\Backend;
+namespace App\Transformer\Backend;
 
-use App\Transforms\Transform;
+use App\Transformer\Transform;
 
 /* 优惠券映射类 */
 
@@ -10,7 +10,7 @@ class CouponTypeTransform extends Transform
 {
     protected $where = ['id'];//参数条件
 
-    protected $attributes = ['title','body'];//属性
+    protected $attributes = ['name','buy_price'];//属性
 
 
 }

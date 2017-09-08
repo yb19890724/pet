@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Transforms;
+namespace App\Transformer;
 
 /* 映射基础类 */
 class Transform
@@ -19,11 +19,11 @@ class Transform
      * @param:  $attributes  属性字段
      * @return: array
      */
-    protected function parameterCondition(array $params,array $where,array $attributes)
+    public function parameterCondition(array $params,array $where=[],array $attributes=[])
     {
         return [
-            'where'=>$this->matchWhere($params,$where),
-            'attributes'=>$this->matchAttributes($params,$attributes)
+            $this->matchWhere($params,$where),
+            $this->matchAttributes($params,$attributes)
         ];
     }
 

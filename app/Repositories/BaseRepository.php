@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use DB;
-
 /* 后台仓库基础类 */
 abstract class BaseRepository
 {
