@@ -18,7 +18,7 @@ class CouponTypeModel extends BaseModel
         'discount',
         'coupon_code',
         'limit_number',
-        'number',
+        'coupon_number',
         'expiration_date',
         'publish',
         'use_date',

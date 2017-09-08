@@ -23,7 +23,7 @@ class CreateCouponTypeTable extends Migration
             $table->double('price',10,2)->comment('卡券优惠金额');
             $table->string('coupon_code','15')->comment('卡券券码');
             $table->integer('limit_number')->comment('领用限制');
-            $table->integer('number')->comment('发布数量');
+            $table->integer('coupon_number')->comment('发布数量');
             $table->date('expiration_date')->comment('到期日期');
             $table->enum('publish',array('published','unpublished'))
                   ->comment('是否发布:1.published->发布,2.unpublished->不发布');
