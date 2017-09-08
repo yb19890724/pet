@@ -46,9 +46,9 @@ class CouponTypeController extends BackendController
     {
         $result = $this->couponType->couponTypeCreate($request->all());
         if (!empty($result)) {
-            return $this->successResponse([], trans('global.create_success'));
+            return $this->successResponse([], trans('global.create.success'));
         }
-        return $this->errorResponse('抱歉,创建失败!');
+        return $this->errorResponse( trans('global.create.fail'));
     }
 
     /**
@@ -63,9 +63,9 @@ class CouponTypeController extends BackendController
     {
         $result=$this->couponType->couponTypeDestroy(compact('id'));
         if (!empty($result)) {
-            return $this->successResponse([], trans('global.delete_success'));
+            return $this->successResponse([], trans('global.delete.success'));
         }
-        return $this->errorResponse('global.delete_fail');
+        return $this->errorResponse(trans('global.delete.fail'));
     }
 
     /**
@@ -80,8 +80,8 @@ class CouponTypeController extends BackendController
     {
         $result = $this->couponType->couponTypeUpdate(array_merge($request->all(), compact('id')));
         if (!empty($result)) {
-            return $this->successResponse([], trans('global.update_success'));
+            return $this->successResponse([], trans('global.update.success'));
         }
-        return $this->errorResponse('global.update_fail');
+        return $this->errorResponse(trans('global.update.fail'));
     }
 }

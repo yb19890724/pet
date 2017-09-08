@@ -40,3 +40,55 @@ if (!function_exists('existence')) {
         return (isset($params[$key]) && !empty($params[$key])) ? true : false;
     }
 }
+
+/**
+ * @desc:   获取访问控制器和控制器内部方法
+ * @date:   2016/12/21 0021
+ * @Time:   14:51
+ * @author: hyb
+ * @param:  $response 响应对象
+ * @return: array
+ */
+if(!function_exists('getCurrentAction')){
+    function getCurrentAction()
+    {
+        $action = Route::current()->getActionName();
+        list($class, $method) = explode('@', $action);
+        return ['controller' => $class, 'method' => $method];
+    }
+}
+
+
+/**
+ * @desc:   过滤数组空保留0
+ * @auth:   hyb
+ * @date:   2017/8/15
+ * @time:   9:44
+ * @param:
+ * @return: array
+ */
+if(!function_exists('filter_retention'))
+{
+    function filter_retention($params)
+    {
+        $result=array_filter($params,function($item){
+            return $item==='0' || !empty($item)?true:false;
+        });
+        return $result;
+    }
+
+}
+
+/**
+ * @desc:   生成卡券券码
+ * @auth:   hyb
+ * @date:   2017/8/7
+ * @time:   16:36
+ * @param:
+ * @return: string
+ */
+function coupon_number()
+{
+    list($second,$millisecond)=explode('.',microtime(true));
+    return substr($second,6).rand($millisecond,9999).rand(1000,9999);
+}

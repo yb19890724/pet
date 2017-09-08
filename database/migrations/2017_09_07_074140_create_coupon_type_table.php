@@ -21,11 +21,10 @@ class CreateCouponTypeTable extends Migration
             $table->string('logo','50')->comment('卡券logo');
             $table->double('buy_price',10,2)->comment('卡券使用金额');
             $table->double('price',10,2)->comment('卡券优惠金额');
-            $table->string('coupon_code','15')->comment('卡券券码');
             $table->integer('limit_number')->comment('领用限制');
             $table->integer('coupon_number')->comment('发布数量');
             $table->date('expiration_date')->comment('到期日期');
-            $table->enum('publish',array('published','unpublished'))
+            $table->enum('publish',array('published','unpublished'))->default('published')
                   ->comment('是否发布:1.published->发布,2.unpublished->不发布');
             $table->dateTime('use_date')->nullable()->comment('卡券使用时间');
             $table->text('description')->nullable()->comment('描述');

@@ -41,7 +41,7 @@ abstract class BaseModel extends Model
      */
     public function insertGetId(array $attributes)
     {
-        return parent::insertGetId(array_only($attributes, $this->fillable));
+        return parent::insertGetId($this->fill($attributes)->toArray());
     }
 
     /**
