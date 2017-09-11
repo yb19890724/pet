@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/* 卡券类型迁移文件 */
+
 class CreateCouponTypeTable extends Migration
 {
     /**
@@ -28,7 +30,9 @@ class CreateCouponTypeTable extends Migration
                   ->comment('是否发布:1.published->发布,2.unpublished->不发布');
             $table->dateTime('use_date')->nullable()->comment('卡券使用时间');
             $table->text('description')->nullable()->comment('描述');
+            //基础字段
             $table->integer('version')->comment('版本标识');
+            $table->integer('sort')->comment('排序');
             $table->enum('status',array('0','1'))
                   ->default('1')
                   ->comment('状态标识: 1:0->删除,2:1->正常');
