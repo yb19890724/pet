@@ -2,11 +2,13 @@
 
 namespace App\Repositories\{namespace};
 
-use App\Repositories\{namespace}\BaseRepository;
+use App\Repositories\BaseRepository;
+use App\Models\Backend\{name}Model;
+use Facades\App\Transformer\{namespace}\{name}Transform as CouponType;
 
 /* {annotation}仓库层 */
 class {name}Repository extends BaseRepository
 {
-    public $bindModel = '{name}Model';//绑定模型
+    public $bindModel = {name}Model::class;//绑定模型
 
 }

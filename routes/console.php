@@ -46,4 +46,18 @@ Artisan::command('make:components {namespace} {name} {annotation}', function () 
         "app/Repositories/{$namespace}/{$name}Repository.php"
     );
 
+    //模型层模板
+    echo make_components(
+        compact('namespace','name','include','annotation'),
+        'resources/views/developmentTemplate/model.txt',
+        "app/Models/{$namespace}/{$name}Model.php"
+    );
+
+    //映射层模板
+    echo make_components(
+        compact('namespace','name','include','annotation'),
+        'resources/views/developmentTemplate/transform.txt',
+        "app/Transformer/{$namespace}/{$name}Transform.php"
+    );
+
 })->describe('对应命名空间创建控制器,服务,仓库');
