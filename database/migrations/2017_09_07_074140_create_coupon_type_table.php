@@ -29,13 +29,13 @@ class CreateCouponTypeTable extends Migration
             $table->enum('publish',array('published','unpublished'))->default('published')
                   ->comment('是否发布:1.published->发布,2.unpublished->不发布');
             $table->dateTime('use_date')->nullable()->comment('卡券使用时间');
-            $table->text('description')->nullable()->comment('描述');
+            $table->text('descriptions')->nullable()->comment('描述');
             //基础字段
             $table->integer('version')->comment('版本标识');
             $table->integer('sort')->comment('排序');
-            $table->enum('status',array('0','1'))
-                  ->default('1')
-                  ->comment('状态标识: 1:0->删除,2:1->正常');
+            $table->enum('status',array('yes','no'))
+                  ->default('yes')
+                  ->comment('状态标识: 1.yes:正常,2:no:删除');
             $table->integer('create_user_id')->comment('创建用户id');
             $table->integer('update_user_id')->comment('修改用户id');
             $table->timestamps();
