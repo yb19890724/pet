@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\Backend\GoodsService;
 
 /* 商品控制器 */
+
 class GoodsController extends BackendController
 {
     private $goods;

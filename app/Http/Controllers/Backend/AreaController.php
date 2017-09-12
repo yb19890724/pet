@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\Backend\AreaService;
 
 /* 地区控制器 */
+
 class AreaController extends BackendController
 {
     private $area;
