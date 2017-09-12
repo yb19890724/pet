@@ -8,7 +8,7 @@ use App\Models\BaseModel;
 class DictionaryModel extends BaseModel
 {
     protected $primaryKey='id';
-    protected $table=''; //表名
+    protected $table='dictionary'; //表名
     protected $fillable = [];//入库字段
 
 

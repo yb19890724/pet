@@ -23,9 +23,13 @@ class DictionaryController extends BackendController
      * @param:
      * @return: json
      */
-    public function dictionaryCreate()
+    public function dictionaryCreate(Request $request)
     {
-
+        $result = $this->dictionary->dictionaryCreate($request->all());
+        if (!empty($result)) {
+            return $this->successResponse([], trans('global.create.success'));
+        }
+        return $this->errorResponse( trans('global.create.fail'));
     }
 
     /**
@@ -38,6 +42,27 @@ class DictionaryController extends BackendController
      */
     public function dictionaryDestroy($id)
     {
+        $result=$this->dictionary->dictionaryDestroy(compact('id'));
+        if (!empty($result)) {
+            return $this->successResponse([], trans('global.delete.success'));
+        }
+        return $this->errorResponse(trans('global.delete.fail'));
+    }
 
+    /**
+     * @desc:   修改字典配置
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   18:02
+     * @param:
+     * @return: json
+     */
+    public function dictionaryUpdate(Request $request, int $id)
+    {
+        $result = $this->dictionary->dictionaryUpdate(array_merge($request->all(), compact('id')));
+        if (!empty($result)) {
+            return $this->successResponse([], trans('global.update.success'));
+        }
+        return $this->errorResponse(trans('global.update.fail'));
     }
 }
