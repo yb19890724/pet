@@ -29,7 +29,7 @@ class DictionariesModel extends BaseModel
     public function scopeApplyConditions($query, array $where)
     {
         if (isset($where['id'])) { //根据父类筛选
-            $query->where('parent_id', '=', $where['id']);
+            $query->where('id', '=', $where['id']);
         }
         return $query;
     }
@@ -42,14 +42,18 @@ class DictionariesModel extends BaseModel
      * @param:
      * @return:
      */
-    public function scopeFields($query)
+    public function scopeFields($query,string $methods="")
     {
-        $methods = get_current_action()['method'];
+        $methods = !empty($methods)?$methods:get_current_action()['method'];
         if ($methods == "dictionaries") {
-            $query->select(['name']);
+            $query->select(['id','name']);
+        }
+        if ($methods == "dictionaryTree") {//生成字典数据
+            $query->select(['id','parent_id','code','name']);
         }
         return $query;
     }
+
 
     /**
      * @desc:   字典列表
@@ -59,10 +63,22 @@ class DictionariesModel extends BaseModel
      * @param:
      * @return: collection
      */
-    public function dictionaries(array $params)
+    public function dictionaries(array $params,$fields)
     {
-        return $this->applyConditions($params)->paginates($params);
+        return $this->paginates($params,$fields);
     }
 
+    /**
+     * @desc:   字典所有数据
+     * @auth:   hyb
+     * @date:   2017/9/14
+     * @time:   13:17
+     * @param:  $fields 指定查询字段
+     * @return: collection
+     */
+    public function dictionariesAll(string $fields)
+    {
+        return $this->fields($fields)->orderby('id','asc')->orderby('parent_id','asc')->get();
+    }
 
 }

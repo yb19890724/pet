@@ -21,7 +21,19 @@ class DictionariesRepository extends BaseRepository
      */
     public function dictionaries(array $params)
     {
-        return $result=$this->model->dictionaries($params);
+        return $result=$this->model->dictionaries($params,'dictionaries');
+    }
+
+    /**
+     * @desc:   返回全部字典
+     * @auth:   hyb
+     * @date:   2017/9/14
+     * @time:   12:59
+     * @param:
+     * @return: collection
+     */
+    public function dictionaryAll($params){
+        return $result=$this->model->dictionariesAll($params);
     }
 
     /**

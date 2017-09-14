@@ -31,7 +31,15 @@ class DictionariesService
      */
     public function dictionaryCreate($params)
     {
-        return Dictionaries::dictionaryCreate($params);
+        $create=Dictionaries::dictionaryCreate($params);
+        $dictionary=Dictionaries::dictionaryAll('dictionaryTree')->toArray();
+        $fileStringNumber=create_config('dictionary.php',generateTree($dictionary));
+        return $this->isCreateDictionaryFile($create,$fileStringNumber);
+    }
+
+    //判断是否添加成功和重新生成字典文件
+    private function isCreateDictionaryFile($create,$dictionary){
+        return array_filter([$create,$dictionary]);
     }
 
     /**

@@ -2,17 +2,17 @@
 
 //自定义函数库扩展
 
+/**
+ * @desc:
+ * @auth:   hyb
+ * @date:   2017/9/4
+ * @time:   8:35
+ * @param:  $namespace 命令空间
+ * @param:  $name      文件名称
+ * @param:  $filePath  文件路径
+ * @return: crea file
+ */
 if (!function_exists('make_components')) {
-    /**
-     * @desc:
-     * @auth:   hyb
-     * @date:   2017/9/4
-     * @time:   8:35
-     * @param:  $namespace 命令空间
-     * @param:  $name      文件名称
-     * @param:  $filePath  文件路径
-     * @return: crea file
-     */
     function make_components(array $params, string $filePath, string $makeFilePath)
     {
         $fileContents = File::get($filePath);//获取控制器模板
@@ -49,7 +49,7 @@ if (!function_exists('existence')) {
  * @param:  $response 响应对象
  * @return: array
  */
-if(!function_exists('get_current_action')){
+if (!function_exists('get_current_action')) {
     function get_current_action()
     {
         $action = Route::current()->getActionName();
@@ -67,12 +67,11 @@ if(!function_exists('get_current_action')){
  * @param:
  * @return: array
  */
-if(!function_exists('filter_retention'))
-{
+if (!function_exists('filter_retention')) {
     function filter_retention($params)
     {
-        $result=array_filter($params,function($item){
-            return $item==='0' || !empty($item)?true:false;
+        $result = array_filter($params, function ($item) {
+            return $item === '0' || !empty($item) ? true : false;
         });
         return $result;
     }
@@ -87,8 +86,52 @@ if(!function_exists('filter_retention'))
  * @param:
  * @return: string
  */
-function coupon_number()
-{
-    list($second,$millisecond)=explode('.',microtime(true));
-    return substr($second,6).rand($millisecond,9999).rand(1000,9999);
+if (!function_exists('coupon_code')) {
+    function coupon_code()
+    {
+        list($second, $millisecond) = explode('.', microtime(true));
+        return substr($second, 6) . rand($millisecond, 9999) . rand(1000, 9999);
+    }
+}
+
+/**
+ * @desc:
+ * @auth:   hyb
+ * @date:   2017/9/14
+ * @time:   12:53
+ * @param:
+ * @return:
+ */
+if (!function_exists('create_config')) {
+    function create_config(string $filePath, array $fileContent)
+    {
+        $filePath = base_path() . '/config/' . $filePath;
+        $fileContent = "<?php \n\n return ".var_export(array_values($fileContent), true).";";
+        return File::put($filePath, $fileContent);
+    }
+}
+
+/**
+ * @desc:   无限级分类方法
+ * @auth:   hyb
+ * @date:   2017/9/14
+ * @time:   14:00
+ * @param:  $items 多维数据数组
+ * @return: array
+ */
+if (!function_exists('generate_tree')) {
+    function generateTree(array $items)
+    {
+        $tree = [];
+        array_unshift($items,['id' => 0, 'parent_id' => 0, 'name' => '']);
+        foreach($items as $key=>$item){
+            if(!empty($item['parent_id'])){
+                $items[$item['parent_id']]['son'][] = &$items[$key];
+            }else if(!empty($item['id'])){
+                $tree[$item['id']] = &$items[$key];
+            }
+        }
+        return $tree;
+    }
+
 }

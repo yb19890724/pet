@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseModel extends Model
 {
+    private $pageNow;//当前页
+    private $pageSize;//返回记录数
 
     //条件拼接抽象方法
     public abstract function scopeApplyConditions($query, array $where);
@@ -23,17 +25,26 @@ abstract class BaseModel extends Model
      * @param:  $params
      * @return: object
      */
-    public function scopePaginates($query, array $params)
+    public function scopePaginates($query, array $params,string $fields)
     {
         $model = clone $query;
-        $limit = existence($params, 'size') ? $params['size'] : $this->perPage;//返回记录数
-        $params['page'] = isset($params['page']) ? $params['page'] - 1 : 0;
-        $offset = $params['page'] * $limit < 0 ? 0 : $params['page'] * $limit;//当前页码
-        $total = $model->selectRaw('count(*) as total')->first()['total'];//总记录数
-        $data = $query->fields()->offset($offset)->limit($limit)->get();//查询
+        $this->pageSize($params)->pageNow($params);
+        $total = $model->selectRaw("count(`{$this->table}`.`{$this->primaryKey}`) as total")->first()['total'];//总记录数
+        $data = $query->fields($fields)->offset($this->pageNow)->limit($this->pageSize)->get();//查询
         return !empty($total) && !empty($data)?collect(compact('total', 'data')):[];
     }
 
+    //计算返回记录数
+    protected function pageSize(array $params){
+        $this->pageSize = existence($params, 'size') ? $params['size'] : $this->perPage;//返回记录数
+        return $this;
+    }
+
+    //计算当前前页码
+    protected function pageNow(array $params){
+        $page = isset($params['page']) ? $params['page'] - 1 : 0;
+        $this->pageNow = $page * $this->pageSize < 0 ? 0 : $page * $this->pageSize;//当前页码
+    }
     /**
      * @desc:   添加公用方法
      * @auth:   hyb
@@ -44,8 +55,6 @@ abstract class BaseModel extends Model
      */
     public function insertGetId(array $attributes)
     {
-
-        //dd($this->fill($attributes));
         return parent::insertGetId($this->fill($attributes)->toArray());
     }
 
