@@ -16,6 +16,19 @@ class DictionaryController extends BackendController
     }
 
     /**
+     * @desc:   字典类型列表
+     * @auth:   hyb
+     * @date:   2017/9/14
+     * @time:   9:28
+     * @param:
+     * @return:
+     */
+    public function dictionaries(Request $request,int $page, int $size){
+        $result = $this->dictionary->dictionarys($request->all());
+        dd($request->all(),$page,$size);
+    }
+
+    /**
      * @desc:   添加字典配置
      * @auth:   hyb
      * @date:   2017/9/12
