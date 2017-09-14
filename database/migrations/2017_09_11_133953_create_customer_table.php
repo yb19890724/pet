@@ -29,13 +29,13 @@ class CreateCustomerTable extends Migration
             $table->string('avatar','20')->comment('头像');
 
             //基础字段
-            $table->integer('version')->comment('版本标识');
-            $table->integer('sort')->comment('排序');
+            $table->integer('version')->nullable()->comment('版本标识');
+            $table->integer('sort')->nullable()->comment('排序');
             $table->enum('status',array('yes','no'))
                 ->default('yes')
                 ->comment('状态标识: 1.yes:正常,2:no:删除');
-            $table->integer('create_user_id')->comment('创建用户id');
-            $table->integer('update_user_id')->comment('修改用户id');
+            $table->integer('create_user_id')->nullable()->comment('创建用户id');
+            $table->integer('update_user_id')->nullable()->comment('修改用户id');
             $table->timestamps();
         });
     }

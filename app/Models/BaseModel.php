@@ -12,6 +12,9 @@ abstract class BaseModel extends Model
     //条件拼接抽象方法
     public abstract function scopeApplyConditions($query, array $where);
 
+    //查询字段抽象方法
+    public abstract function scopeFields($query);
+
     /**
      * @desc:   分页公用方法
      * @auth:   hyb
@@ -41,6 +44,8 @@ abstract class BaseModel extends Model
      */
     public function insertGetId(array $attributes)
     {
+
+        //dd($this->fill($attributes));
         return parent::insertGetId($this->fill($attributes)->toArray());
     }
 

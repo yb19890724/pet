@@ -5,17 +5,31 @@ namespace App\Models\Backend;
 use App\Models\BaseModel;
 
 /* 字典模型 */
+
 class DictionariesModel extends BaseModel
 {
-    protected $primaryKey='id';
-    protected $table='dictionary'; //表名
-    protected $fillable = [];//入库字段
+    protected $primaryKey = 'id';
+    protected $table = 'dictionary'; //表名
+    protected $fillable = [
+        'id',
+        'parent_id',
+        'code',
+        'name',
+        'remark',
+        'version',
+        'sort',
+        'status',
+        'create_user_id',
+        'update_user_id',
+        'created_at',
+        'updated_at',
+    ];//入库字段
 
     //匹配查询条件
-    public function scopeApplyConditions($query,array $where)
+    public function scopeApplyConditions($query, array $where)
     {
-        if(isset($where['id'])){ //根据父类筛选
-            $query->where('parent_id','=',$where['id']);
+        if (isset($where['id'])) { //根据父类筛选
+            $query->where('parent_id', '=', $where['id']);
         }
         return $query;
     }
@@ -30,8 +44,8 @@ class DictionariesModel extends BaseModel
      */
     public function scopeFields($query)
     {
-        $methods=get_current_action()['method'];
-        if($methods=="dictionaries"){
+        $methods = get_current_action()['method'];
+        if ($methods == "dictionaries") {
             $query->select(['name']);
         }
         return $query;
