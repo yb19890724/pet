@@ -6,7 +6,7 @@ use App\Transformer\Transform;
 
 /* 字典映射类 */
 
-class DictionaryTransform extends Transform
+class DictionariesTransform extends Transform
 {
     protected $where = [];//参数条件
 

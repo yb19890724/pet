@@ -49,8 +49,8 @@ if (!function_exists('existence')) {
  * @param:  $response 响应对象
  * @return: array
  */
-if(!function_exists('getCurrentAction')){
-    function getCurrentAction()
+if(!function_exists('get_current_action')){
+    function get_current_action()
     {
         $action = Route::current()->getActionName();
         list($class, $method) = explode('@', $action);

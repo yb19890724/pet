@@ -2,11 +2,25 @@
 
 namespace App\Services\Backend;
 
-use Facades\App\Repositories\Backend\DictionaryRepository as Dictionary;
+use Facades\App\Repositories\Backend\DictionariesRepository as Dictionaries;
 
 /* 字典服务层 */
-class DictionaryService
+class DictionariesService
 {
+
+    /**
+     * @desc:   字典类型列表
+     * @auth:   hyb
+     * @date:   2017/9/14
+     * @time:   9:28
+     * @param:
+     * @return: json
+     */
+    public function dictionaries(array $params)
+    {
+        return Dictionaries::dictionaries($params);
+    }
+
     /**
      * @desc:   添加字典配置
      * @auth:   hyb
@@ -17,7 +31,7 @@ class DictionaryService
      */
     public function dictionaryCreate($params)
     {
-        return Dictionary::dictionaryCreate($params);
+        return Dictionaries::dictionaryCreate($params);
     }
 
     /**
@@ -30,7 +44,7 @@ class DictionaryService
      */
     public function dictionaryDestroy($params)
     {
-        return Dictionary::dictionaryDestroy($params);
+        return Dictionaries::dictionaryDestroy($params);
     }
 
     /**
@@ -43,6 +57,6 @@ class DictionaryService
      */
     public function dictionaryUpdate(array $params)
     {
-        return Dictionary::dictionaryUpdate($params);
+        return Dictionaries::dictionaryUpdate($params);
     }
 }

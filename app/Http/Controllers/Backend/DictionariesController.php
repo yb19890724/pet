@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Services\Backend\DictionaryService;
+use App\Services\Backend\DictionariesService;
 
 /* 字典控制器 */
-class DictionaryController extends BackendController
-{
-    private $dictionary;
 
-    public function __construct(DictionaryService $Dictionary)
+class DictionariesController extends BackendController
+{
+    private $dictionaries;
+
+    public function __construct(DictionariesService $Dictionaries)
     {
-        $this->dictionary=$Dictionary;
+        $this->dictionaries = $Dictionaries;
     }
 
     /**
@@ -21,11 +22,15 @@ class DictionaryController extends BackendController
      * @date:   2017/9/14
      * @time:   9:28
      * @param:
-     * @return:
+     * @return: json
      */
-    public function dictionaries(Request $request,int $page, int $size){
-        $result = $this->dictionary->dictionarys($request->all());
-        dd($request->all(),$page,$size);
+    public function dictionaries(Request $request, int $page, int $size)
+    {
+        $result = $this->dictionaries->dictionaries(array_merge($request->all(), compact('page', 'size')));
+        if (existence($result, 'data')) {
+            return $this->successResponse($result);
+        }
+        return $this->errorResponse();
     }
 
     /**
@@ -38,11 +43,11 @@ class DictionaryController extends BackendController
      */
     public function dictionaryCreate(Request $request)
     {
-        $result = $this->dictionary->dictionaryCreate($request->all());
+        $result = $this->dictionaries->dictionaryCreate($request->all());
         if (!empty($result)) {
             return $this->successResponse([], trans('global.create.success'));
         }
-        return $this->errorResponse( trans('global.create.fail'));
+        return $this->errorResponse(trans('global.create.fail'));
     }
 
     /**
@@ -55,7 +60,7 @@ class DictionaryController extends BackendController
      */
     public function dictionaryDestroy($id)
     {
-        $result=$this->dictionary->dictionaryDestroy(compact('id'));
+        $result = $this->dictionaries->dictionaryDestroy(compact('id'));
         if (!empty($result)) {
             return $this->successResponse([], trans('global.delete.success'));
         }
@@ -72,7 +77,7 @@ class DictionaryController extends BackendController
      */
     public function dictionaryUpdate(Request $request, int $id)
     {
-        $result = $this->dictionary->dictionaryUpdate(array_merge($request->all(), compact('id')));
+        $result = $this->dictionaries->dictionaryUpdate(array_merge($request->all(), compact('id')));
         if (!empty($result)) {
             return $this->successResponse([], trans('global.update.success'));
         }

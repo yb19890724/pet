@@ -23,11 +23,11 @@ abstract class BaseModel extends Model
     public function scopePaginates($query, array $params)
     {
         $model = clone $query;
-        $limit = existence($params, 'size') ? $params['size'] : $this->perPage;
+        $limit = existence($params, 'size') ? $params['size'] : $this->perPage;//返回记录数
         $params['page'] = isset($params['page']) ? $params['page'] - 1 : 0;
-        $offset = $params['page'] * $limit < 0 ? 0 : $params['page'] * $limit;
-        $total = $model->selectRaw('count(*) as total')->first()['total'];
-        $data = $query->offset($offset)->limit($limit)->get();
+        $offset = $params['page'] * $limit < 0 ? 0 : $params['page'] * $limit;//当前页码
+        $total = $model->selectRaw('count(*) as total')->first()['total'];//总记录数
+        $data = $query->fields()->offset($offset)->limit($limit)->get();//查询
         return !empty($total) && !empty($data)?collect(compact('total', 'data')):[];
     }
 

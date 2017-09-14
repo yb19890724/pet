@@ -3,14 +3,26 @@
 namespace App\Repositories\Backend;
 
 use App\Repositories\BaseRepository;
-use App\Models\Backend\DictionaryModel;
-use Facades\App\Transformer\Backend\DictionaryTransform as Dictionary;
+use App\Models\Backend\DictionariesModel;
+use Facades\App\Transformer\Backend\DictionariesTransform as Dictionaries;
 
 /* 字典仓库层 */
-class DictionaryRepository extends BaseRepository
+class DictionariesRepository extends BaseRepository
 {
-    public $bindModel = DictionaryModel::class;//绑定模型
+    public $bindModel = DictionariesModel::class;//绑定模型
 
+    /**
+     * @desc:   字典类型列表
+     * @auth:   hyb
+     * @date:   2017/9/14
+     * @time:   9:28
+     * @param:
+     * @return: json
+     */
+    public function dictionaries(array $params)
+    {
+        return $result=$this->model->dictionaries($params);
+    }
 
     /**
      * @desc:   添加字典

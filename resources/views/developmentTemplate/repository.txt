@@ -4,7 +4,7 @@ namespace App\Repositories\{namespace};
 
 use App\Repositories\BaseRepository;
 use App\Models\Backend\{name}Model;
-use Facades\App\Transformer\{namespace}\{name}Transform as CouponType;
+use Facades\App\Transformer\{namespace}\{name}Transform as {name};
 
 /* {annotation}仓库层 */
 class {name}Repository extends BaseRepository

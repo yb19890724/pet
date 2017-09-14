@@ -48,7 +48,7 @@ class CouponTypeRepository extends BaseRepository
      */
     public function couponTypeDestroy(array $params)
     {
-        return $this->model->ConditionsDelete($params);
+        return $this->model->conditionsDelete($params);
     }
 
     /**

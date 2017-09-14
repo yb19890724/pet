@@ -8,10 +8,10 @@ class DictionariesRoute
 {
     public function map(Registrar $router)
     {
-        $router->get('/dictionary/{page}/{size}','Backend\DictionaryController@dictionaries');
-        $router->post('/dictionary/type','Backend\DictionaryController@dictionaryTypeCreate');
-        $router->delete('/dictionary/type/{id}','Backend\DictionaryController@dictionaryTypeDestroy');
-        $router->put('/dictionary/type/{id}','Backend\DictionaryController@dictionaryTypeUpdate');
+        $router->get('/dictionaries/{page}/{size}','DictionariesController@dictionaries');
+        $router->post('/dictionary/type','DictionariesController@dictionaryTypeCreate');
+        $router->delete('/dictionary/type/{id}','DictionariesController@dictionaryTypeDestroy');
+        $router->put('/dictionary/type/{id}','DictionariesController@dictionaryTypeUpdate');
     }
 }
 
