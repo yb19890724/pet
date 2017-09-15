@@ -32,9 +32,6 @@ class DictionariesService
     public function dictionaryCreate($params)
     {
         return Dictionaries::dictionaryCreate($params);
-       /* $dictionary=Dictionaries::dictionaryAll('dictionaryTree')->toArray();
-        $fileStringNumber=create_config('dictionary.php',generateTree($dictionary));
-        return $this->isCreateDictionaryFile($create,$fileStringNumber);*/
     }
 
     /**

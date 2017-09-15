@@ -27,6 +27,34 @@ class DictionariesModelEventListener
     public function handle(DictionariesModelEvent $event)
     {
         $dictionariesAll=$event->dictionaries->fetchALL('dictionaries_all')->toArray();
-        $fileStringNumber=create_config('dictionary.php',generateTree($dictionariesAll));
+        $fileStringNumber=create_config('dictionary.php',$this->createDictionariesContent($dictionariesAll));
     }
+
+    //生成字典字符串
+    private function createDictionariesContent($dictionariesAll)
+    {
+        $result="[]";
+        $dictionariesContent=generateTree($dictionariesAll);
+        if(!empty($dictionariesContent)){
+            $result="[";
+            foreach($dictionariesContent as $key=>$value){
+                $result.="\n\t'{$value['code']}'=>[";
+                $subArray="";
+                if(!empty($value['sub'])){//如果有下一级
+                    foreach($value['sub'] as $k=>$v){
+                        $subArray.="\n\t\t'{$v['code']}'=>'{$v['name']}',";
+                    }
+                }
+                $result.=$subArray."\n\t],";
+            }
+            $result.="\n]";
+        }
+        return $result;
+    }
+
+    //是否,号拼接
+    /*private function isComma()
+    {
+        return
+    }*/
 }

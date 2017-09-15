@@ -28,7 +28,9 @@ class DictionariesModel extends BaseModel
 
 
     protected  $dispatchesEvents=[
-        'created'=>DictionariesModelEvent::class
+        'created'=>DictionariesModelEvent::class,
+        'updated'=>DictionariesModelEvent::class,
+        'deleted'=>DictionariesModelEvent::class,
     ];
 
     //匹配查询条件

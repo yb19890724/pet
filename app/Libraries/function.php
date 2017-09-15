@@ -103,10 +103,10 @@ if (!function_exists('coupon_code')) {
  * @return:
  */
 if (!function_exists('create_config')) {
-    function create_config(string $filePath, array $fileContent)
+    function create_config(string $filePath, string $fileContent)
     {
         $filePath = base_path() . '/config/' . $filePath;
-        $fileContent = "<?php \n\n return ".var_export(array_values($fileContent), true).";";
+        $fileContent = "<?php\n\nreturn ".$fileContent.";";
         return File::put($filePath, $fileContent);
     }
 }
@@ -126,7 +126,7 @@ if (!function_exists('generate_tree')) {
         array_unshift($items,['id' => 0, 'parent_id' => 0, 'name' => '']);
         foreach($items as $key=>$item){
             if(!empty($item['parent_id'])){
-                $items[$item['parent_id']]['son'][] = &$items[$key];
+                $items[$item['parent_id']]['sub'][] = &$items[$key];
             }else if(!empty($item['id'])){
                 $tree[$item['id']] = &$items[$key];
             }
