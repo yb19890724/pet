@@ -31,6 +31,7 @@ class DictionariesModel extends BaseModel
         'created'=>DictionariesModelEvent::class,
         'updated'=>DictionariesModelEvent::class,
         'deleted'=>DictionariesModelEvent::class,
+        'restored'=>DictionariesModelEvent::class,
     ];
 
     //匹配查询条件
