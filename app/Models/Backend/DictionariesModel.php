@@ -3,6 +3,7 @@
 namespace App\Models\Backend;
 
 use App\Models\BaseModel;
+use App\Events\DictionariesModelEvent;
 
 /* 字典模型 */
 
@@ -24,6 +25,11 @@ class DictionariesModel extends BaseModel
         'created_at',
         'updated_at',
     ];//入库字段
+
+
+    protected  $dispatchesEvents=[
+        'created'=>DictionariesModelEvent::class
+    ];
 
     //匹配查询条件
     public function scopeApplyConditions($query, array $where)
@@ -48,7 +54,7 @@ class DictionariesModel extends BaseModel
         if ($methods == "dictionaries") {
             $query->select(['id','name']);
         }
-        if ($methods == "dictionaryTree") {//生成字典数据
+        if ($methods == "dictionaries_all") {//生成字典数据
             $query->select(['id','parent_id','code','name']);
         }
         return $query;
