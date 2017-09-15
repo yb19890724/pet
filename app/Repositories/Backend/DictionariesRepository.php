@@ -21,7 +21,7 @@ class DictionariesRepository extends BaseRepository
      */
     public function dictionaries(array $params)
     {
-        return $result=$this->model->dictionaries($params,'dictionaries');
+        return $this->model->dictionaries($params,'dictionaries');
     }
 
     /**
@@ -33,7 +33,7 @@ class DictionariesRepository extends BaseRepository
      * @return: collection
      */
     public function dictionaryAll($params){
-        return $result=$this->model->dictionariesAll($params);
+        return $this->model->dictionariesAll($params);
     }
 
     /**
@@ -46,7 +46,8 @@ class DictionariesRepository extends BaseRepository
      */
     public function dictionaryCreate(array $params)
     {
-        return $result=$this->model->insertGetId($params);
+
+        return $this->model->create($params);
     }
 
     /**

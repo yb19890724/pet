@@ -53,9 +53,9 @@ abstract class BaseModel extends Model
      * @param:
      * @return: 返回添加id
      */
-    public function insertGetId(array $attributes)
+    public function create(array $attributes)
     {
-        return parent::insertGetId($this->fill($attributes)->toArray());
+        return parent::create($this->fill($attributes)->toArray());
     }
 
     /**
