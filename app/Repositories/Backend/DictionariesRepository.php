@@ -58,9 +58,9 @@ class DictionariesRepository extends BaseRepository
      * @param:
      * @return:
      */
-    public function dictionaryDestroy(array $params)
+    public function dictionaryDestroy(int $params)
     {
-        return $this->model->conditionsDelete($params);
+        return $this->model->destroy($params);
     }
 
     /**

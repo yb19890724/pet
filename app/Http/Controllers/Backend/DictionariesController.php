@@ -60,7 +60,7 @@ class DictionariesController extends BackendController
      */
     public function dictionaryDestroy($id)
     {
-        $result = $this->dictionaries->dictionaryDestroy(compact('id'));
+        $result = $this->dictionaries->dictionaryDestroy($id);
         if (!empty($result)) {
             return $this->successResponse([], trans('global.delete.success'));
         }

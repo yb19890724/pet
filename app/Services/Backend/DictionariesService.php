@@ -42,7 +42,7 @@ class DictionariesService
      * @param:
      * @return:
      */
-    public function dictionaryDestroy($params)
+    public function dictionaryDestroy(int $params)
     {
         return Dictionaries::dictionaryDestroy($params);
     }

@@ -80,8 +80,8 @@ abstract class BaseModel extends Model
      * @auth:   hyb
      * @date:   2017/9/4
      * @time:   18:02
-     * @param:
-     * @return:
+     * @param:  $where 删除条件
+     * @return: boolean
      */
     public function conditionsDelete(array $where)
     {
