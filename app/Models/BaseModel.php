@@ -17,7 +17,7 @@ abstract class BaseModel extends Model
     //匹配查询条件
     public function scopeApplyConditions($query, array $where)
     {
-        if (existence($where,'id')) { //根据父类筛选
+        if (existence($where,'id')) { //根据id筛选
             $query->where('id', '=', $where['id']);
         }
 
