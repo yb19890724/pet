@@ -24,15 +24,6 @@ class CouponTypeModel extends BaseModel
         'description'
     ];
 
-    //匹配查询条件
-    public function scopeApplyConditions($query,array $where)
-    {
-        if(existence($where,'id')){
-            $query->where('id','=',$where['id']);
-        }
-        return $query;
-    }
-
     /**
      * @desc:   卡券列表
      * @auth:   hyb

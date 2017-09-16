@@ -31,17 +31,8 @@ class DictionariesModel extends BaseModel
         'created'=>DictionariesModelEvent::class,
         'updated'=>DictionariesModelEvent::class,
         'deleted'=>DictionariesModelEvent::class,
-        'restored'=>DictionariesModelEvent::class,
     ];
 
-    //匹配查询条件
-    public function scopeApplyConditions($query, array $where)
-    {
-        if (isset($where['id'])) { //根据父类筛选
-            $query->where('id', '=', $where['id']);
-        }
-        return $query;
-    }
 
     /**
      * @desc:   查询字段

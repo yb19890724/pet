@@ -35,7 +35,7 @@ if (!function_exists('make_components')) {
  * @return: bool
  */
 if (!function_exists('existence')) {
-    function existence($params, string $key)
+    function existence(array $params, string $key)
     {
         return (isset($params[$key]) && !empty($params[$key])) ? true : false;
     }
@@ -68,7 +68,7 @@ if (!function_exists('get_current_action')) {
  * @return: array
  */
 if (!function_exists('filter_retention')) {
-    function filter_retention($params)
+    function filter_retention(array $params)
     {
         $result = array_filter($params, function ($item) {
             return $item === '0' || !empty($item) ? true : false;

@@ -11,11 +11,22 @@ abstract class BaseModel extends Model
     private $pageNow;//当前页
     private $pageSize;//返回记录数
 
-    //条件拼接抽象方法
-    public abstract function scopeApplyConditions($query, array $where);
-
     //查询字段抽象方法
     public abstract function scopeFields($query);
+
+    //匹配查询条件
+    public function scopeApplyConditions($query, array $where)
+    {
+        if (existence($where,'id')) { //根据父类筛选
+            $query->where('id', '=', $where['id']);
+        }
+
+        if (existence($where,'parent_id')) { //根据父类筛选
+            $query->where('parent_id', '=', $where['parent_id']);
+        }
+
+        return $query;
+    }
 
     /**
      * @desc:   分页公用方法
@@ -70,7 +81,7 @@ abstract class BaseModel extends Model
      * @param:  $fields 查询字段
      * @return:
      */
-    public function fetchALL(string $fields, array $where=[])
+    public function fetchALL(string $fields, array $where = [])
     {
         return $this->fields($fields)->applyConditions($where)->get();
     }
