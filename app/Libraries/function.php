@@ -35,7 +35,7 @@ if (!function_exists('make_components')) {
  * @return: bool
  */
 if (!function_exists('existence')) {
-    function existence(array $params, string $key)
+    function existence($params, string $key)
     {
         return (isset($params[$key]) && !empty($params[$key])) ? true : false;
     }

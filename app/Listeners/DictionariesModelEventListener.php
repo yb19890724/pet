@@ -26,7 +26,7 @@ class DictionariesModelEventListener
      */
     public function handle(DictionariesModelEvent $event)
     {
-        $dictionariesAll=$event->dictionaries->fetchALL('dictionaries_all')->toArray();
+        $dictionariesAll=$event->dictionaries->dictionariesAll('dictionaries_all')->toArray();
         $fileStringNumber=create_config('dictionary.php',$this->createDictionariesContent($dictionariesAll));
     }
 

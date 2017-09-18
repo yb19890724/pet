@@ -20,10 +20,10 @@ class AreasTransform extends Transform
      * @param:  $treeData
      * @return: array
      */
-    public function areaTrees($treeData)
+    public function areaTrees(array $treeData)
     {
         if(!empty($treeData)){
-
+            return generateTree($treeData);
         }
         return [];
     }

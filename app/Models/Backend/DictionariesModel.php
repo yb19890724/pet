@@ -78,7 +78,7 @@ class DictionariesModel extends BaseModel
      */
     public function dictionariesAll(string $fields)
     {
-        return $this->fields($fields)->orderby('id','asc')->orderby('parent_id','asc')->get();
+        return $this->fields($fields)->orderby('parent_id','asc')->get();
     }
 
 }

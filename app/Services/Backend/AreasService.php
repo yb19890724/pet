@@ -2,7 +2,7 @@
 
 namespace App\Services\Backend;
 
-use Facades\App\Repositories\Backend\AreasRepository as Area;
+use Facades\App\Repositories\Backend\AreasRepository as Areas;
 
 /* 地区服务层 */
 class AreasService
@@ -14,9 +14,9 @@ class AreasService
      * @time:   18:16
      * @return: data
      */
-    public function areaTrees(array $params)
+    public function areasTrees(array $params)
     {
-        return Area::areaTrees($params);
+        return Areas::areasTrees($params);
     }
 
 }

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Services\Backend\AreaService;
+use App\Services\Backend\AreasService;
 
 /* 地区控制器 */
 
-class AreaController extends BackendController
+class AreasController extends BackendController
 {
     private $area;
 
-    public function __construct(AreaService $Area)
+    public function __construct(AreasService $Area)
     {
         $this->area=$Area;
     }
@@ -23,10 +23,10 @@ class AreaController extends BackendController
      * @time:   18:16
      * @return: json
      */
-    public function areaTrees()
+    public function areasTrees()
     {
-        $result = $this->area->areaTrees([]);
-        if (existence($result, 'data')) {
+        $result = $this->area->areasTrees([]);
+        if (!empty($result)) {
             return $this->successResponse($result);
         }
         return $this->errorResponse();
