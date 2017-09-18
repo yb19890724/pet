@@ -29,7 +29,7 @@ class DictionariesModel extends BaseModel
 
     protected  $dispatchesEvents=[
         'created'=>DictionariesModelEvent::class,
-        'updated'=>DictionariesModelEvent::class,
+        'booting'=>DictionariesModelEvent::class,
         'deleted'=>DictionariesModelEvent::class,
     ];
 
