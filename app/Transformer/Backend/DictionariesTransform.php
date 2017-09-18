@@ -8,9 +8,9 @@ use App\Transformer\Transform;
 
 class DictionariesTransform extends Transform
 {
-    protected $where = [];//参数条件
+    protected $where = ['id'];//参数条件
 
-    protected $attributes = [];//属性
+    protected $attributes = ['name'];//属性
 
 
 }

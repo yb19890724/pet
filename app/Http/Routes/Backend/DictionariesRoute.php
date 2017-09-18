@@ -11,7 +11,7 @@ class DictionariesRoute
         $router->get('/dictionaries/{page}/{size}','DictionariesController@dictionaries');
         $router->post('/dictionary','DictionariesController@dictionaryCreate');
         $router->delete('/dictionary/{id}','DictionariesController@dictionaryDestroy');
-        $router->put('/dictionary{id}','DictionariesController@dictionaryUpdate');
+        $router->put('/dictionary/{id}','DictionariesController@dictionaryUpdate');
     }
 }
 

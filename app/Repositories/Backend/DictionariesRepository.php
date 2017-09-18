@@ -73,6 +73,7 @@ class DictionariesRepository extends BaseRepository
      */
     public function dictionaryUpdate(array $params)
     {
-        return $this->model->conditionsUpdate($params);
+        list($where,$attributes)=Dictionaries::parameterCondition($params);
+        return $this->model->conditionsUpdate($where,$attributes);
     }
 }
