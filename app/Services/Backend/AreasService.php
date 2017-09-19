@@ -19,4 +19,42 @@ class AreasService
         return Areas::areasTrees($params);
     }
 
+    /**
+     * @desc:   添加地区
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   10:05
+     * @param:
+     * @return: array
+     */
+    public function areaCreate(array $params)
+    {
+        return Areas::areaCreate($params);
+    }
+
+    /**
+     * @desc:   删除地区
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   17:30
+     * @param:
+     * @return: boolean
+     */
+    public function areaDestroy(array $params)
+    {
+        return Areas::areaDestroy($params);
+    }
+
+    /**
+     * @desc:   修改地区
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   17:30
+     * @param:
+     * @return: boolean
+     */
+    public function areaUpdate(array $params)
+    {
+        return Areas::areaUpdate($params);
+    }
 }

@@ -18,8 +18,48 @@ class AreasRepository extends BaseRepository
      * @time:   18:16
      * @return: array
      */
-    public function areasTrees($params)
+    public function areasTrees(array $params)
     {
         return Areas::areaTrees($this->model->areasAll('areasTrees')->toArray());
+    }
+
+    /**
+     * @desc:   添加地区类型
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   10:07
+     * @param:
+     * @return: boolean
+     */
+    public function areaCreate(array $params)
+    {
+        return $result=$this->model->create($params);
+    }
+
+    /**
+     * @desc:   删除地区类型
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   17:43
+     * @param:
+     * @return:
+     */
+    public function areaDestroy(array $params)
+    {
+        return $this->model->conditionsDelete($params);
+    }
+
+    /**
+     * @desc:   修改地区
+     * @auth:   hyb
+     * @date:   2017/9/5
+     * @time:   17:30
+     * @param:
+     * @return: bool
+     */
+    public function areaUpdate(array $params)
+    {
+        list($where,$attributes)=Areas::parameterCondition($params);
+        return $this->model->conditionsUpdate($where,$attributes);
     }
 }
