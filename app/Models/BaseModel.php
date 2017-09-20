@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use DB;
+use Log;
 use Illuminate\Database\Eloquent\Model;
 
 /* 基础模型 */
@@ -111,5 +113,33 @@ abstract class BaseModel extends Model
     public function conditionsUpdate($where, $attributes)
     {
         return $this->applyConditions($where)->update($attributes);
+    }
+
+    /**
+     * @desc:   事务处理方法
+     * @auth:   hyb
+     * @date:   2017/9/20
+     * @time:   15:36
+     * @param:  $transaction 事务回调函数
+     * @return: array
+     */
+    public function transaction(callable $transaction)
+    {
+        DB::beginTransaction();
+        try {
+            $result = $transaction();
+            if (!isset($result['error'])) {
+                DB::rollback();//事务回滚
+                $action=get_current_action();
+                Log::error('class '.$action['class'].' method '.print_r($result,true));
+            }else{
+                DB::commit();
+            }
+            return $result;
+        } catch (\Exception $e) {
+            DB::rollback();//事务回滚
+            echo $e->getMessage();
+            echo $e->getCode();
+        }
     }
 }
