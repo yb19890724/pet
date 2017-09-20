@@ -30,24 +30,12 @@ class CouponTypeModel extends BaseModel
      * @date:   2017/9/4
      * @time:   16:42
      * @param:
-     * @return: collection
+     * @return: collect
      */
     public function couponTypes(array $params)
     {
         return $this->applyConditions($params)->paginates($params);
     }
 
-    /**
-     * @desc:   删除卡券
-     * @auth:   hyb
-     * @date:   2017/9/5
-     * @time:   17:35
-     * @param:
-     * @return: bool
-     */
-    public function couponTypeDestroy(array $params)
-    {
-        return $this->destroy($params);
-    }
 
 }

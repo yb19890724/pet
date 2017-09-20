@@ -43,12 +43,12 @@ class CouponTypeRepository extends BaseRepository
      * @auth:   hyb
      * @date:   2017/9/5
      * @time:   17:43
-     * @param:
-     * @return:
+     * @param:  $params['id']  数据id
+     * @return: boolean
      */
     public function couponTypeDestroy(array $params)
     {
-        return $this->model->conditionsDelete($params);
+        return $this->model->destroy($params);
     }
 
     /**
