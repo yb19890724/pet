@@ -8,5 +8,25 @@ use Facades\App\Repositories\{namespace}\{name}Repository as {name};
 class {name}Service
 {
 
+    public function {include}s(array $params)
+    {
+        return {name}::{include}s($params);
+    }
+
+
+    public function {include}Create(array $params)
+    {
+        return {name}::{include}Create($params);
+    }
+
+    public function {include}Destroy(array $params)
+    {
+        return {name}::{include}Destroy($params);
+    }
+
+    public function {include}Update(array $params)
+    {
+        return {name}::{include}Update($params);
+    }
 
 }

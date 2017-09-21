@@ -46,7 +46,6 @@ class DictionariesRepository extends BaseRepository
      */
     public function dictionaryCreate(array $params)
     {
-
         return $this->model->create($params);
     }
 

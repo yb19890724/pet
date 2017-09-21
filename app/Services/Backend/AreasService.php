@@ -2,7 +2,7 @@
 
 namespace App\Services\Backend;
 
-use Facades\App\Repositories\Backend\AreasRepository as Areas;
+use Facades\App\Repositories\Backend\AreasRepository as Area;
 
 /* 地区服务层 */
 class AreasService
@@ -16,7 +16,7 @@ class AreasService
      */
     public function areasTrees(array $params)
     {
-        return Areas::areasTrees($params);
+        return Area::areasTrees($params);
     }
 
     /**
@@ -29,7 +29,7 @@ class AreasService
      */
     public function areaCreate(array $params)
     {
-        return Areas::areaCreate($params);
+        return Area::areaCreate($params);
     }
 
     /**
@@ -42,7 +42,7 @@ class AreasService
      */
     public function areaDestroy(array $params)
     {
-        return Areas::areaDestroy($params);
+        return Area::areaDestroy($params);
     }
 
     /**
@@ -55,6 +55,6 @@ class AreasService
      */
     public function areaUpdate(array $params)
     {
-        return Areas::areaUpdate($params);
+        return Area::areaUpdate($params);
     }
 }

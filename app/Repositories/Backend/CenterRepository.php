@@ -3,14 +3,14 @@
 namespace App\Repositories\Backend;
 
 use App\Repositories\BaseRepository;
-use App\Models\Backend\CouponTypeModel;
-use Facades\App\Transformer\Backend\CouponTypeTransform as CouponType;
+use App\Models\Backend\CenterModel;
+use Facades\App\Transformer\Backend\CenterTransform as Center;
 
-/* 卡券类型仓库层 */
-class CouponTypeRepository extends BaseRepository
+/* 配送中心仓库层 */
+class CenterRepository extends BaseRepository
 {
+    public $bindModel = CenterModel::class;//绑定模型
 
-    public $bindModel = CouponTypeModel::class;//绑定模型
 
     /**
      * @desc:   查询卡券列表
@@ -20,9 +20,9 @@ class CouponTypeRepository extends BaseRepository
      * @param:
      * @return: array
      */
-    public function couponTypes(array $params)
+    public function centers(array $params)
     {
-        return $this->model->couponTypes($params);
+        return $this->model->centers($params);
     }
 
     /**
@@ -33,7 +33,7 @@ class CouponTypeRepository extends BaseRepository
      * @param:
      * @return: boolean
      */
-    public function couponTypeCreate(array $params)
+    public function centerCreate(array $params)
     {
         return $result=$this->model->create($params);
     }
@@ -46,7 +46,7 @@ class CouponTypeRepository extends BaseRepository
      * @param:  $params['id']  数据id
      * @return: boolean
      */
-    public function couponTypeDestroy(array $params)
+    public function centerDestroy(array $params)
     {
         return $this->model->destroy($params);
     }
@@ -59,9 +59,9 @@ class CouponTypeRepository extends BaseRepository
      * @param:
      * @return: bool
      */
-    public function couponTypeUpdate(array $params)
+    public function centerUpdate(array $params)
     {
-        list($where,$attributes)=CouponType::parameterCondition($params);
+        list($where,$attributes)=Center::parameterCondition($params);
         return $this->model->conditionsUpdate($where,$attributes);
     }
 }
