@@ -30,25 +30,6 @@
                         <!-- Authentication Links -->
                         <li><a href="">Login</a></li>
                         <li><a href="">Register</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">
-                                <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="" method="POST" style="display: none;">
-
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>
