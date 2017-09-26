@@ -11,7 +11,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
+        window.Laravel = {
+            csrfToken: "{{ csrf_token() }}"
+        };
         window.Language = '{{ config('app.locale') }}';
+        window.User = {!! Auth::user() !!}
     </script>
 </head>
 <body>

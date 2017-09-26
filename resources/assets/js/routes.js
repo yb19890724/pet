@@ -3,6 +3,7 @@ export default [
     {
         path: '/backend',
         component: require('./views/backend/Dashboard.vue'),
+        beforeEnter:requireAuth,
         children: [
             {
                 path: '/',
@@ -22,5 +23,6 @@ export default [
 
 //是否登陆
 function requireAuth (to, from, next) {
+
     return next();
 }

@@ -44884,6 +44884,7 @@ if (inBrowser && window.Vue) {
 /* harmony default export */ __webpack_exports__["a"] = ([{
     path: '/backend',
     component: __webpack_require__(9),
+    beforeEnter: requireAuth,
     children: [{
         path: '/',
         redirect: '/backend/home'
@@ -44898,6 +44899,7 @@ if (inBrowser && window.Vue) {
 
 //是否登陆
 function requireAuth(to, from, next) {
+
     return next();
 }
 
