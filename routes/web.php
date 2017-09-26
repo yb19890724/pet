@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/backend/{path?}','Backend\LoginController@showLoginForm')->where('path', '[\/\w\.-]*');
