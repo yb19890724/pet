@@ -15,7 +15,6 @@
             csrfToken: "{{ csrf_token() }}"
         };
         window.Language = '{{ config('app.locale') }}';
-        window.User = {!! Auth::user() !!}
     </script>
 </head>
 <body>

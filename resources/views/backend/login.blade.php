@@ -10,9 +10,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
-    <script>
-        window.Language = '{{ config('app.locale') }}';
-    </script>
 </head>
 <body>
 <div id="app"></div>
