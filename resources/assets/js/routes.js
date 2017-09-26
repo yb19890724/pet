@@ -2,7 +2,7 @@
 export default [
     {
         path: '/backend',
-        component: require('./views/backend/Dashboard.vue'),
+        component: require('./views/backend/Home.vue'),
         beforeEnter:requireAuth,
         children: [
             {
@@ -11,11 +11,7 @@ export default [
             },
             {
                 path: 'home',
-                component: require('./views/backend/Home.vue')
-            },
-            {
-                path: 'test',
-                component: require('./views/backend/test.vue')
+                component: require('./views/backend/Main.vue')
             },
             {
                 path: '*',
