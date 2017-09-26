@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/backend/{path?}','Backend\LoginController@showLoginForm')->where('path', '[\/\w\.-]*');
+//后台管理员登录接口
+Route::get('/backend/login','Backend\LoginController@showLoginForm');
+
+Route::get('/backend/{path?}','Backend\HomeController@index')->where('path', '[\/\w\.-]*');

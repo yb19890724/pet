@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Services\Backend\AreasService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 /* 后台登录控制器 */

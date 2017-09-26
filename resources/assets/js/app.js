@@ -9,13 +9,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-
 //vue 路由
 import VueRouter  from 'vue-router'
 import routes from './routes.js';
 
 import App from './App.vue';
-
 
 Vue.use(VueRouter);
 /**
