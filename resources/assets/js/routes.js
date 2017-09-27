@@ -2,7 +2,7 @@
 export default [
     {
         path: '/backend',
-        component: require('./views/backend/Home.vue'),
+        component: require('./views/backend/Layouts/Home.vue'),
         beforeEnter:requireAuth,
         children: [
             {
@@ -11,7 +11,17 @@ export default [
             },
             {
                 path: 'home',
-                component: require('./views/backend/Main.vue')
+                component: require('./views/backend/Layouts/Main.vue')
+            },
+            {
+                path: 'dictionary',
+                component: require('./views/backend/Layouts/ModuleView.vue'),
+                children: [
+                    {
+                        path: '/',
+                        component: require('./views/backend/Dictionary/Home.vue')
+                    }
+                ]
             },
             {
                 path: '*',

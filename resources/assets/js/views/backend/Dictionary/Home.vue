@@ -1,6 +1,6 @@
 <template>
     <div>
-        后台主模板
+        这是字典管理
     </div>
 </template>
 <script type="text/ecmascript-6">
