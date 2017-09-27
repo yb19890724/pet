@@ -18,5 +18,8 @@
     "lodash": "^4.17.4",
     "vue": "^2.1.10",
     "vue-router": "^2.7.0"
+  },
+  "dependencies": {
+    "element-ui": "^1.4.5"
   }
 }

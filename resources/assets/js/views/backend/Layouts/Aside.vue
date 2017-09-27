@@ -1,6 +1,5 @@
 <template>
     <div>
-        eawdawdwadwad
         <div id="sidebar" class="sidebar">
             <!-- begin sidebar scrollbar -->
             <div data-scrollbar="true" data-height="100%">
@@ -27,7 +26,12 @@
                             <span>Dashboard</span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="active"><a href="index.html">Dashboard v1</a></li>
+                            <li class="active">
+                                <router-link to="/backend/dictionary">字典管理</router-link>
+                                <!--<router-link  :to="/backend/dictionary">
+                                    字典管理
+                                </router-link>-->
+                            </li>
                             <li><a href="index_v2.html">Dashboard v2</a></li>
                         </ul>
                     </li>

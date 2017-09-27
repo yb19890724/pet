@@ -19,11 +19,14 @@
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/animate.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/style.min.css')}}" rel="stylesheet" />
+{{--
     <link href="{{asset('css/default.css')}}" rel="stylesheet" />
+--}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
+
     <script>
         window.Laravel = {
             csrfToken: "{{ csrf_token() }}"
@@ -33,13 +36,11 @@
 </head>
 <body>
 <div id="app"></div>
-<script src="{{ asset('js/app.js') }}"></script>
-
 <!-- extends Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('js/jquery.slimscroll.min.js')}}"></script>
-<script src="{{asset('js/apps.min.js')}}"></script>
-
+<script src="{{ asset('js/apps.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         App.init();
