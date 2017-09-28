@@ -14421,7 +14421,8 @@ var i18n = new __WEBPACK_IMPORTED_MODULE_4_vue_i18n__["a" /* default */]({
 //Vue.component('example', require('./components/Example.vue'));
 
 //公用组件
-Vue.component('v-searchtable', __webpack_require__(158));
+Vue.component('v-searchTable', __webpack_require__(158));
+Vue.component('v-tableButtonDialog', __webpack_require__(170));
 
 //路由
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -50506,7 +50507,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50531,6 +50532,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -50538,6 +50552,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         SearchView: __WEBPACK_IMPORTED_MODULE_0__Search___default.a
+    },
+    data: function data() {
+        return {
+            fields: [{
+                label: '日期',
+                text: 'date'
+            }, {
+                label: '姓名',
+                text: 'name'
+            }, {
+                label: '地址',
+                text: 'address'
+            }],
+            multipleSelection: [],
+            tableData: [{
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-04',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1517 弄'
+            }, {
+                date: '2016-05-01',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1519 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }]
+        };
     }
 });
 
@@ -50731,9 +50777,20 @@ var render = function() {
     { staticClass: "animated fadeIn" },
     [
       _c(
-        "v-searchtable",
+        "v-searchTable",
         { attrs: { moduleTitle: _vm.$t("module.centerTitle") } },
-        [_c("SearchView", { attrs: { slot: "search" }, slot: "search" })],
+        [
+          _c("SearchView", { attrs: { slot: "search" }, slot: "search" }),
+          _vm._v(" "),
+          _c("v-tableButtonDialog", {
+            attrs: { slot: "titleButton" },
+            slot: "titleButton"
+          }),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "table" }, slot: "table" }, [
+            _vm._v("\n            表格内容\n        ")
+          ])
+        ],
         1
       )
     ],
@@ -89170,6 +89227,232 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(171)
+}
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(173)
+/* template */
+var __vue_template__ = __webpack_require__(174)
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-09835b94"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\common\\TableButtonDialog.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] TableButtonDialog.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-09835b94", Component.options)
+  } else {
+    hotAPI.reload("data-v-09835b94", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(172);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("2db999aa", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../node_modules/_vue-loader@13.0.5@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-09835b94\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@13.0.5@vue-loader/lib/selector.js?type=styles&index=0!./TableButtonDialog.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../node_modules/_vue-loader@13.0.5@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-09835b94\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@13.0.5@vue-loader/lib/selector.js?type=styles&index=0!./TableButtonDialog.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 173 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            dialogView: "",
+            dialogTitle: ''
+        };
+    },
+
+    methods: {
+        showDialog: function showDialog(event, view) {
+            //显示弹层
+            //this.$store.state.showDialog=true;
+            this.dialogView = view;
+        },
+        deleteData: function deleteData() {//删除记录
+            /*if(this.$store.state.tableChecked==''){
+                alert('您未选择任何对象，请选择一行数据！');
+            }*/
+        },
+        storeData: function storeData() {//添加纪录
+
+        },
+        updateData: function updateData() {//修改记录
+
+        }
+    }
+});
+
+/***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "table-button-dialog" }, [
+    _c(
+      "div",
+      { staticClass: "table-button" },
+      [
+        _c(
+          "el-button-group",
+          [
+            _c(
+              "el-button",
+              {
+                attrs: { type: "primary", size: "small" },
+                on: {
+                  click: function($event) {
+                    _vm.showDialog($event, "create")
+                  }
+                }
+              },
+              [_c("i", { staticClass: "el-icon-plus" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "el-button",
+              {
+                attrs: { type: "primary", size: "small" },
+                on: {
+                  click: function($event) {
+                    _vm.showDialog($event, "edit")
+                  }
+                }
+              },
+              [_c("i", { staticClass: "el-icon-edit" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "el-button",
+              {
+                attrs: { type: "primary", size: "small" },
+                on: { click: _vm.deleteData }
+              },
+              [_c("i", { staticClass: "el-icon-delete" })]
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-09835b94", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
