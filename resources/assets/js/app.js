@@ -15,12 +15,25 @@ import routes from './routes.js';
 
 //element组件
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-default/index.css';
+
+//语言包
+import VueI18n from 'vue-i18n';
+import locales from './language';
 
 import App from './App.vue';
 
 Vue.use(ElementUI);
+Vue.use(VueI18n);
 Vue.use(VueRouter);
+
+//语言包配置
+Vue.config.language=window.Language;
+const i18n = new VueI18n({
+    locale: Vue.config.language,
+    messages: locales
+});
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,6 +42,9 @@ Vue.use(VueRouter);
  */
 
 //Vue.component('example', require('./components/Example.vue'));
+
+//公用组件
+Vue.component('v-searchtable', require('./components/common/SearchTable.vue'));
 
 //路由
 const router = new VueRouter({
@@ -40,5 +56,6 @@ const router = new VueRouter({
 
 new Vue({
     router,
+    i18n,
     render: h => h(App)
 }).$mount('#app');

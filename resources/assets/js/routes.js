@@ -24,6 +24,16 @@ export default [
                 ]
             },
             {
+                path: 'center',
+                component: require('./views/backend/Layouts/ModuleView.vue'),
+                children: [
+                    {
+                        path: '/',
+                        component: require('./views/backend/Center/Home.vue')
+                    }
+                ]
+            },
+            {
                 path: '*',
                 redirect: '/backend'
             }

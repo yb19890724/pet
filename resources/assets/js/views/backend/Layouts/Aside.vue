@@ -28,11 +28,10 @@
                         <ul class="sub-menu">
                             <li class="active">
                                 <router-link to="/backend/dictionary">字典管理</router-link>
-                                <!--<router-link  :to="/backend/dictionary">
-                                    字典管理
-                                </router-link>-->
                             </li>
-                            <li><a href="index_v2.html">Dashboard v2</a></li>
+                            <li>
+                                <router-link to="/backend/center">配送中心管理</router-link>
+                            </li>
                         </ul>
                     </li>
                     <li class="has-sub">
