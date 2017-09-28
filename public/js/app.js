@@ -50101,7 +50101,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -89067,7 +89067,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 布局公用样式 */\n.contents[data-v-f6d716dc] {\n    margin: 0 auto;\n    padding: 16px 14px 1px;\n    max-width: 100%;\n    overflow-x: visible;\n}\n.block[data-v-f6d716dc] {\n    background-color: #fff;\n    -webkit-box-shadow: 0 2px rgba(0, 0, 0, 0.01);\n    box-shadow: 0 2px rgba(0, 0, 0, 0.01);\n}\n.block-header[data-v-f6d716dc] {\n    padding: 15px 15px;\n    -webkit-transition: opacity 0.2s ease-out;\n    transition: opacity 0.2s ease-out;\n    border-bottom: 1px solid #eee;\n}\n.block-title[data-v-f6d716dc] {\n    font-size: 15px;\n    font-weight: 600;\n    text-transform: uppercase;\n    line-height: 1.2;\n    margin:0;\n}\n.block-content[data-v-f6d716dc] {\n    margin: 0 auto;\n    padding: 20px 20px 20px;\n    max-width: 100%;\n    overflow-x: visible;\n    -webkit-transition: opacity 0.2s ease-out;\n    transition: opacity 0.2s ease-out;\n}\n.block-options[data-v-f6d716dc] {\n    float: right;\n    margin: -3px 0 -3px 15px;\n    padding: 0;\n    height: 24px;\n    list-style: none;\n}\n.block-options.block-options-left + .block-title[data-v-f6d716dc] {\n    float: right;\n}\n.block-options > li[data-v-f6d716dc] {\n    display: inline-block;\n    margin: 0 2px;\n    padding: 0;\n}\n", ""]);
 
 // exports
 
@@ -89078,6 +89078,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -89115,30 +89119,39 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "animated fadeIn" }, [
-    _c("div", { staticClass: "block" }, [
-      _c(
-        "div",
-        { staticClass: "block-content block-content-full" },
-        [_vm._t("search")],
-        2
-      )
+    _c("div", { staticClass: "contents" }, [
+      _c("div", { staticClass: "block" }, [
+        _c(
+          "div",
+          { staticClass: "block-content block-content-full" },
+          [_vm._t("search")],
+          2
+        )
+      ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "block" }, [
-      _c("div", { staticClass: "block-header" }, [
-        _c("ul", { staticClass: "block-options" }, [_vm._t("titleButton")], 2),
+    _c("div", { staticClass: "contents" }, [
+      _c("div", { staticClass: "block" }, [
+        _c("div", { staticClass: "block-header" }, [
+          _c(
+            "ul",
+            { staticClass: "block-options" },
+            [_vm._t("titleButton")],
+            2
+          ),
+          _vm._v(" "),
+          _c("h3", { staticClass: "block-title" }, [
+            _vm._v(_vm._s(_vm.moduleTitle))
+          ])
+        ]),
         _vm._v(" "),
-        _c("h3", { staticClass: "block-title" }, [
-          _vm._v(_vm._s(_vm.moduleTitle))
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "block-content block-content-full" },
-        [_vm._t("table")],
-        2
-      )
+        _c(
+          "div",
+          { staticClass: "block-content block-content-full" },
+          [_vm._t("table")],
+          2
+        )
+      ])
     ])
   ])
 }
