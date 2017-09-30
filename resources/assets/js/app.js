@@ -21,6 +21,9 @@ import 'element-ui/lib/theme-default/index.css';
 import VueI18n from 'vue-i18n';
 import locales from './language';
 
+//vuex
+import store from './vuex/store.js';
+
 import App from './App.vue';
 
 Vue.use(ElementUI);
@@ -59,5 +62,6 @@ const router = new VueRouter({
 new Vue({
     router,
     i18n,
+    store,
     render: h => h(App)
 }).$mount('#app');
