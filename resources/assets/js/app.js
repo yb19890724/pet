@@ -15,7 +15,7 @@ import routes from './routes.js';
 
 //element组件
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-default/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
 
 //语言包
 import VueI18n from 'vue-i18n';
@@ -57,8 +57,8 @@ const router = new VueRouter({
     base: __dirname,
     linkActiveClass: 'active',
     routes: routes
-});
-
+}); 
+ 
 new Vue({
     router,
     i18n,
