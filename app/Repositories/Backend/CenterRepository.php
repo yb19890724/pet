@@ -22,7 +22,7 @@ class CenterRepository extends BaseRepository
      */
     public function centers(array $params)
     {
-        return $this->model->centers($params);
+        return $this->model->centers($params,'centers');
     }
 
     /**

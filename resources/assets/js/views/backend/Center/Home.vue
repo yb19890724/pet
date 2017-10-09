@@ -15,9 +15,10 @@
 
             </v-tableButtonDialog>
 
-            <div slot="table">
-                表格内容
-            </div>
+            <!-- table 展示位置 -->
+            <v-table slot="table" :types="types" :fields="fields">
+
+            </v-table>
 
         </v-searchTable>
 
@@ -35,11 +36,7 @@
             return {
                 fields:[
                     {
-                        label:'日期',
-                        text:'date'
-                    },
-                    {
-                        label:'姓名',
+                        label:'中心名称',
                         text:'name'
                     },
                     {
@@ -47,24 +44,7 @@
                         text:'address'
                     }
                 ],
-                multipleSelection: [],
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
-                }]
+                multipleSelection: []
             }
         }
     }

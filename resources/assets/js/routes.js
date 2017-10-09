@@ -1,13 +1,13 @@
 
 export default [
     {
-        path: '/backend',
+        path: '/dashboard',
         component: require('./views/backend/Layouts/Home.vue'),
         beforeEnter:requireAuth,
         children: [
             {
                 path: '/',
-                redirect: '/backend/home'
+                redirect: '/dashboard/home'
             },
             {
                 path: 'home',
@@ -35,7 +35,7 @@ export default [
             },
             {
                 path: '*',
-                redirect: '/backend'
+                redirect: '/dashboard'
             }
         ]
     }
