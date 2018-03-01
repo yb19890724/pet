@@ -10,7 +10,7 @@
                 :empty-text="$t('table.contextEmpty')">
 
             <!-- CheckBox 勾选框 -->
-            <el-table-column v-if="checkbox" type="selection" label="selection">
+            <el-table-column  v-if="checkbox" type="selection"  label="selection">
             </el-table-column>
 
             <!--  显示数据序号 -->
@@ -32,10 +32,6 @@
         props:{
             fields:{//列表展示列
                 type: Array,
-                required: true
-            },
-            types:{
-                type: Object,
                 required: true
             },
             checkbox:{
@@ -80,6 +76,9 @@
             },
             handleSelectionChange(val) {
                 this.multipleSelection = val;
+            },
+            editRow(){
+                alert(1);
             }
         }
 

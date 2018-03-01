@@ -2,7 +2,7 @@
 export default [
     {
         path: '/dashboard',
-        component: require('./views/backend/Layouts/Home.vue'),
+        component: require('./views/backend/layouts/Home.vue'),
         beforeEnter:requireAuth,
         children: [
             {
@@ -11,25 +11,33 @@ export default [
             },
             {
                 path: 'home',
-                component: require('./views/backend/Layouts/Main.vue')
+                component: require('./views/backend/layouts/Main.vue')
             },
             {
-                path: 'dictionary',
-                component: require('./views/backend/Layouts/ModuleView.vue'),
+                path: 'zoo',
+                component: require('./views/backend/layouts/ModuleView.vue'),
                 children: [
                     {
                         path: '/',
-                        component: require('./views/backend/Dictionary/Home.vue')
+                        component: require('./views/backend/zoo/Home.vue')
+                    },
+                    {
+                        path: 'create',
+                        component: require('./views/backend/zoo/Create.vue')
+                    },
+                    {
+                        path: 'edit',
+                        component: require('./views/backend/zoo/Edit.vue')
                     }
                 ]
             },
             {
-                path: 'center',
-                component: require('./views/backend/Layouts/ModuleView.vue'),
+                path: 'food',
+                component: require('./views/backend/layouts/ModuleView.vue'),
                 children: [
                     {
                         path: '/',
-                        component: require('./views/backend/Center/Home.vue')
+                        component: require('./views/backend/food/Home.vue')
                     }
                 ]
             },

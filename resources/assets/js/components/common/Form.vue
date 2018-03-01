@@ -1,39 +1,23 @@
 <template>
-    <div class='animated fadeIn'>
-        <div class="contents">
-            <div class="block" >
-                <div class="block-content block-content-full">
-                    <slot name="search"></slot>
-                </div>
+    <div class='contents'>
+        <div class="block">
+            <div class="block-header" >
+                <h3 class="block-title">{{ moduleTitle }}</h3>
             </div>
-        </div>
-        <div class='contents'>
-            <div class="block">
-                <div class="block-header" >
-                    <ul class="block-options">
-                        <slot name="titleButton"></slot>
-                    </ul>
-                    <h3 class="block-title">{{ moduleTitle }}</h3>
-                </div>
-                <div style="clear:both;"></div>
-                <div class="block-content block-content-full">
-                    <slot name="table"></slot>
-                </div>
+            <div class="block-content block-content-full">
+                <slot name="form"></slot>
             </div>
         </div>
     </div>
 </template>
-
 <script type="text/ecmascript-6">
 
-    export  default{
+    export default{
         props:['moduleTitle']
-
     }
 </script>
 
-<style scoped>
-    /* 布局公用样式 */
+<style type="text/css" scoped>
     .contents {
         margin: 0 auto;
         padding: 16px 14px 1px;

@@ -27,10 +27,10 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="active">
-                                <router-link to="/dashboard/dictionary">字典管理</router-link>
+                                <router-link to="/dashboard/zoo">宠物管理</router-link>
                             </li>
                             <li>
-                                <router-link to="/dashboard/center">配送中心管理</router-link>
+                                <router-link to="/dashboard/food">食物管理</router-link>
                             </li>
                         </ul>
                     </li>

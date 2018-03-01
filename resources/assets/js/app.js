@@ -48,8 +48,9 @@ const i18n = new VueI18n({
 
 //公用组件
 Vue.component('v-searchTable', require('./components/common/SearchTable.vue'));
-Vue.component('v-tableButtonDialog', require('./components/common/TableButtonDialog.vue'));
 Vue.component('v-table', require('./components/common/Table.vue'));
+Vue.component('v-form', require('./components/common/Form.vue'));
+
 
 //路由
 const router = new VueRouter({
