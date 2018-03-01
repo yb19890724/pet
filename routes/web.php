@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 //后台管理员登录接口
-Route::get('/dashboard/login','Backend\LoginController@showLoginForm');
 
 Route::get('/dashboard/{path?}','Backend\HomeController@index')->where('path', '[\/\w\.-]*');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
