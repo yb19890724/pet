@@ -38,6 +38,20 @@ export default [
                     {
                         path: '/',
                         component: require('./views/backend/food/Home.vue')
+                    },
+                    {
+                        path: 'category',
+                        component: require('./views/backend/layouts/ModuleView.vue'),
+                        children: [
+                            {
+                                path: '/',
+                                component: require('./views/backend/category/Home.vue')
+                            },
+                            {
+                                path: 'create',
+                                component: require('./views/backend/category/Create.vue')
+                            }
+                        ]
                     }
                 ]
             },

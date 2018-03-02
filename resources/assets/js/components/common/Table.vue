@@ -27,7 +27,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-
+    import { mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default{
         props:{
             fields:{//列表展示列
@@ -45,26 +45,21 @@
         },
         data() {
             return {
-                tableData: [{
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1517 弄'
-            }, {
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
-            }, {
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1516 弄'
-            }],
                 multipleSelection: []
             }
         },
+        computed:{
+            ...mapState([
+                "tableData"
+            ])
+        },
         mounted(){
-
+            this.dataList('fetchFoodCategory',{});
         },
         methods: {
+            ...mapActions ({
+                dataList:'dataList'
+            }),
             toggleSelection(rows) {
                 if (rows) {
                     rows.forEach(row => {

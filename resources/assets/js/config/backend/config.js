@@ -1,1 +1,1 @@
-export const backendApi = 'http://community.com/manage/';
+export const backendApi = 'http://test.com/backend/';

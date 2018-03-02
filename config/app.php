@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //三方扩展
+        App\Providers\RepositoryServiceProvider::class
     ],
 
     /*

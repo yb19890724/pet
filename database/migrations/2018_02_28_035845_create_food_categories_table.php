@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFoodCatagoriesTable extends Migration
+class CreateFoodCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateFoodCatagoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('food_catagories', function (Blueprint $table) {
+        Schema::create('food_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('食物类型名称');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE `food_catagories` comment '食物分类表'");
+        DB::statement("ALTER TABLE `food_categories` comment '食物分类表'");
 
     }
 
@@ -29,6 +29,6 @@ class CreateFoodCatagoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('food_catagories');
+        Schema::dropIfExists('food_categories');
     }
 }

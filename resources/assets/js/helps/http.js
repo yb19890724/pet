@@ -12,7 +12,9 @@ axios.defaults.headers.common = {
 export function fetchData(url, params) {
     return new Promise((resolve, reject) => {
         axios.get(url,params).then(response => {
-            resolve(response.data);
+            if(response.status==200){
+                resolve(response.data);
+            }
         }).catch(error => {
             var message = error.message;
             if (error.response.status == 422) {
@@ -28,14 +30,14 @@ export function fetchData(url, params) {
     })
 }
 
-export function saveData(url, params, method) {
+export function postData(url, params, method) {
     return new Promise((resolve, reject) => {
         axios({
             method: method,
             url: url,
             data: params
         }).then(response => {
-            resolve(response.data);
+            resolve(response);
         }).catch(error => {
             var message = error.message;
             if (error.response.status == 422) {

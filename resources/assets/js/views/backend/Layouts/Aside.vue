@@ -32,6 +32,9 @@
                             <li>
                                 <router-link to="/dashboard/food">食物管理</router-link>
                             </li>
+                            <li>
+                                <router-link to="/dashboard/food/category">食物分类管理</router-link>
+                            </li>
                         </ul>
                     </li>
                     <li class="has-sub">

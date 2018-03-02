@@ -2,7 +2,7 @@
     <div>
         <form class="form-horizontal">
             <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                <input type="text" name="searchParam" class="form-control search-text" placeholder="请输入配送中心名称">
+                <input type="text" name="searchParam" class="form-control search-text" placeholder="请输入宠物名称">
                 <div class="input-group-btn">
                     <button class="btn btn-success" type="button">搜索</button>
                     <button class="btn btn-default" type="button">重置</button>
