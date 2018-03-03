@@ -6,7 +6,7 @@
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" :fields="fields">
+            <v-table slot="table" :fields="fields" :views="views" :types="types">
 
             </v-table>
 
@@ -16,16 +16,24 @@
 <script type="text/ecmascript-6">
     import SearchView from './Search';
     import TitleView from './TitleButton';
+    import { foodCategoryView } from '../../../config/backend/views';
+    import { foodCategoryMethods } from '../../../vuex/types';
     export default{
         components:{
             SearchView,TitleView
         },
         data() {
             return {
+                types:foodCategoryMethods,
+                views:foodCategoryView,
                 fields:[
                     {
                         label:'宠物名称',
                         text:'name'
+                    },
+                    {
+                        label:'排序',
+                        text:'sort'
                     },
                     {
                         label:'添加时间',
@@ -39,7 +47,6 @@
                 multipleSelection: []
             }
         },
-
         methods: {
             toggleSelection(rows) {
                 if (rows) {
@@ -52,9 +59,6 @@
             },
             handleSelectionChange(val) {
                 this.multipleSelection = val;
-            },
-            editRow(){
-                alert(1);
             }
         }
 

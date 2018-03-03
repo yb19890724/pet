@@ -6,6 +6,9 @@
                     <el-form-item label="分类名称">
                         <el-input v-model="form.name"></el-input>
                     </el-form-item>
+                    <el-form-item label="排序">
+                        <el-input v-model="form.sort"></el-input>
+                    </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="onSubmit">立即创建</el-button>
                         <el-button>取消</el-button>
@@ -22,7 +25,8 @@
         data() {
             return {
                 form: {
-                    name: ''
+                    name: '',
+                    sort: 0
                 }
             }
         },

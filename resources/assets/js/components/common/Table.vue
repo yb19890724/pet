@@ -1,13 +1,15 @@
 <template>
     <div class="table-components">
+
+
         <el-table
-                ref="multipleTable"
-                :data="tableData"
-                border
-                @selection-change="handleSelectionChange"
-                @row-dblclick="editRow"
-                highlight-current-row
-                :empty-text="$t('table.contextEmpty')">
+            ref="multipleTable"
+            :data="tableData"
+            border
+            @selection-change="handleSelectionChange"
+            @row-dblclick="editRow"
+            highlight-current-row
+            :empty-text="$t('table.contextEmpty')">
 
             <!-- CheckBox 勾选框 -->
             <el-table-column  v-if="checkbox" type="selection"  label="selection">
@@ -17,17 +19,26 @@
             <el-table-column v-if="index" type="index" label="序号" width="65" >
             </el-table-column>
 
-            <!-- 显示展示列数据 -->
-            <template v-for="field in fields" >
-                <el-table-column  :prop="field.text"  :label="field.label">
-                </el-table-column>
+            <template v-for="(field,index) in fields">
+                <el-table-column :prop="field.text"  :label="field.label"  ></el-table-column>
             </template>
 
+            <el-table-column label="操作">
+                <template slot-scope="scope">
+                    <el-button
+                            size="mini"
+                            @click="handleEdit(this,scope.row.id)">编辑</el-button>
+                    <el-button
+                            size="mini"
+                            type="danger"
+                            @click="handleDelete(this,scope.row.id)">删除</el-button>
+                </template>
+            </el-table-column>
         </el-table>
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { mapState,mapMutations,mapGetters,mapActions} from 'vuex';
+    import { mapState,mapActions} from 'vuex';
     export default{
         props:{
             fields:{//列表展示列
@@ -41,7 +52,18 @@
             index:{
                 type: Boolean,
                 default:true
+            },
+            views:{
+                type: Object,
+                required:false
+            },
+            types:{
+                type: Object,
+                required:false
             }
+        },
+        mounted(){
+            this.getListData(this.types.list,{});
         },
         data() {
             return {
@@ -53,12 +75,9 @@
                 "tableData"
             ])
         },
-        mounted(){
-            this.dataList('fetchFoodCategory',{});
-        },
         methods: {
             ...mapActions ({
-                dataList:'dataList'
+                getListData:'getListData'
             }),
             toggleSelection(rows) {
                 if (rows) {
@@ -71,6 +90,12 @@
             },
             handleSelectionChange(val) {
                 this.multipleSelection = val;
+            },
+            handleEdit(event,index){
+               this.$router.push({ name: 'foodCategoryEdit', params: { id: index }});
+            },
+            handleDelete(event,index){
+                alert(index);
             },
             editRow(){
                 alert(1);

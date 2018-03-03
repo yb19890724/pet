@@ -10,6 +10,7 @@ class FoodCatergoryRoute
     public function map(Registrar $router)
     {
         $router->post('/food/category','FoodCategoryController@store');
+        $router->get('/food/category/{id}','FoodCategoryController@show');
         $router->get('/food/category','FoodCategoryController@index');
     }
 }

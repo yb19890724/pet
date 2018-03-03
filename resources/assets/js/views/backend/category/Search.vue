@@ -14,7 +14,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-    //import { mapActions } from 'vuex';
     export  default{
         methods:{
             dataList(){

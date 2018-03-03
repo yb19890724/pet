@@ -1,5 +1,6 @@
 import * as types from './types';
 
 export  default {
-    dataList: ({commit}, method, params)=>commit(method,params)
+    getListData: ({commit},methed)=>commit(methed),
+    getFindData: ({commit},methed)=>commit(methed)
 }

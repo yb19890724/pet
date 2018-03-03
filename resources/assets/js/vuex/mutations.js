@@ -4,11 +4,21 @@ import * as types from './types';
 
 
 export default {
-    fetchFoodCategory(state, url,params){//角色列表
+    getFoodCategoryList(state, params){//食物分类列表
         fetchData('/food/category', params)
             .then(response=> {
                 if (response.data != '') {
                     state.tableData = response.data;
+                }
+            }).catch(function (error) {
+            console.log(error);
+        });
+    },
+    getFoodCategoryDetail(state,params){//食物分类详情
+        fetchData('/food/category/' + state.pathParams.id, params)
+            .then(response=> {
+                if (response.data != '') {
+                    state.findData = response.data;
                 }
             }).catch(function (error) {
             console.log(error);

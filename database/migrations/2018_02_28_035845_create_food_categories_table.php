@@ -16,6 +16,7 @@ class CreateFoodCategoriesTable extends Migration
         Schema::create('food_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('食物类型名称');
+            $table->integer('sort')->comment('排序');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE `food_categories` comment '食物分类表'");

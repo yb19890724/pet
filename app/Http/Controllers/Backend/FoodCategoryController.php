@@ -62,7 +62,8 @@ class FoodCategoryController extends BackendController
      */
     public function show($id)
     {
-        //
+        $result=$this->foodCategory->getFoodCategoryDetail($id);
+        return $this->response->responseJson(['data'=>$result]);
     }
 
     /**

@@ -8,15 +8,15 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { zooView } from '../../../config/backend/views';
+    import { foodCategoryView } from '../../../config/backend/views';
 
     export default{
         methods:{
             createView(){
-                this.$router.push('/dashboard/food/category/create');
+                this.$router.push(foodCategoryView.create);
             },
             editView(){
-                this.$router.push('/dashboard/food/category/edit');
+                this.$router.push(foodCategoryView.edit);
             },
             deleteRow(){
                 alert('删除');

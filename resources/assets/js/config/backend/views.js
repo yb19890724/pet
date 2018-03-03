@@ -5,3 +5,9 @@ export const zooView ={
     edit: '/dashboard/zoo/edit'
 };
 
+export const foodCategoryView ={
+    create: '/dashboard/food/category/create',
+    edit: '/dashboard/food/category/edit'
+};
+
+
