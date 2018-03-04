@@ -12342,7 +12342,7 @@ var foodCategoryMethods = {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = fetchData;
-/* harmony export (immutable) */ __webpack_exports__["b"] = postData;
+/* harmony export (immutable) */ __webpack_exports__["b"] = handleData;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_backend_config__ = __webpack_require__(185);
@@ -12377,7 +12377,9 @@ function fetchData(url, params) {
     });
 }
 
-function postData(url, params, method) {
+function handleData(url, method) {
+    var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
     return new Promise(function (resolve, reject) {
         __WEBPACK_IMPORTED_MODULE_0_axios___default()({
             method: method,
@@ -12660,7 +12662,7 @@ var zooView = {
 };
 
 var foodCategoryView = {
-    create: '/dashboard/food/category/create',
+    create: 'foodCategoryCreate',
     edit: 'foodCategoryEdit'
 };
 
@@ -51087,6 +51089,7 @@ if (inBrowser && window.Vue) {
                 component: __webpack_require__(166)
             }, {
                 path: 'create',
+                name: 'foodCategoryCreate',
                 component: __webpack_require__(181)
             }, {
                 path: 'edit/:id',
@@ -55568,7 +55571,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
         createView: function createView() {
-            this.$router.push(__WEBPACK_IMPORTED_MODULE_0__config_backend_views__["a" /* foodCategoryView */].create);
+            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["a" /* foodCategoryView */].create });
         },
         editView: function editView() {
             this.$router.push(__WEBPACK_IMPORTED_MODULE_0__config_backend_views__["a" /* foodCategoryView */].edit);
@@ -55605,24 +55608,6 @@ var render = function() {
               on: { click: _vm.createView }
             },
             [_c("i", { staticClass: "el-icon-plus" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "el-button",
-            {
-              attrs: { type: "primary", size: "small" },
-              on: { click: _vm.editView }
-            },
-            [_c("i", { staticClass: "el-icon-edit" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "el-button",
-            {
-              attrs: { type: "primary", size: "small" },
-              on: { click: _vm.deleteRow }
-            },
-            [_c("i", { staticClass: "el-icon-delete" })]
           )
         ],
         1
@@ -55825,7 +55810,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit() {
             var _this = this;
 
-            Object(__WEBPACK_IMPORTED_MODULE_0__helps_http__["b" /* postData */])('/food/category', this.form, 'POST').then(function (response) {
+            Object(__WEBPACK_IMPORTED_MODULE_0__helps_http__["b" /* handleData */])('/food/category', 'POST', this.form).then(function (response) {
                 if (response.status == 201) {
                     _this.$refs.types.successNotification("成功添加食物分类", '/dashboard/food/category');
                 }
@@ -56094,7 +56079,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         onSubmit: function onSubmit() {
             var _this = this;
 
-            Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["b" /* postData */])('/food/category/' + this.form.id, this.form, 'PUT').then(function (response) {
+            Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["b" /* handleData */])('/food/category/' + this.form.id, 'PUT', this.form).then(function (response) {
                 if (response.status == 205) {
                     _this.$refs.types.successNotification("修改食物分类", '/dashboard/food/category');
                 }
@@ -99924,7 +99909,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -99936,6 +99921,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_http__ = __webpack_require__(21);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -99979,6 +99965,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         fields: { //列表展示列
@@ -100013,14 +100000,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])(["tableData"])),
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])({
-        getListData: 'getListData'
+        getListData: 'getListData',
+        handleData: 'handleData'
     }), {
         toggleSelection: function toggleSelection(rows) {
-            var _this = this;
+            var _this2 = this;
 
             if (rows) {
                 rows.forEach(function (row) {
-                    _this.$refs.multipleTable.toggleRowSelection(row);
+                    _this2.$refs.multipleTable.toggleRowSelection(row);
                 });
             } else {
                 this.$refs.multipleTable.clearSelection();
@@ -100033,7 +100021,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.$router.push({ name: this.views.edit, params: { id: index } });
         },
         handleDelete: function handleDelete(event, index) {
-            alert(index);
+            var _this3 = this;
+
+            Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["b" /* handleData */])('/food/category/' + index, 'DELETE').then(function (response) {
+                if (response.status == 204) {
+                    _this3.$notify({
+                        title: "成功删除食物分类",
+                        message: "",
+                        type: 'success'
+                    });
+                    var _this = _this3;
+                    setTimeout(function () {
+                        _this.$router.push('/dashboard/food/category');
+                    }, 1000);
+                }
+            });
         },
         editRow: function editRow() {
             alert(1);

@@ -39,6 +39,7 @@
 </template>
 <script type="text/ecmascript-6">
     import { mapState,mapActions} from 'vuex';
+    import { handleData } from '../../helps/http';
     export default{
         props:{
             fields:{//列表展示列
@@ -77,7 +78,8 @@
         },
         methods: {
             ...mapActions ({
-                getListData:'getListData'
+                getListData:'getListData',
+                handleData:'handleData'
             }),
             toggleSelection(rows) {
                 if (rows) {
@@ -95,7 +97,19 @@
                this.$router.push({ name: this.views.edit, params: { id: index }});
             },
             handleDelete(event,index){
-                alert(index);
+                handleData('/food/category/'+index,'DELETE').then(response => {
+                    if(response.status == 204){
+                        this.$notify({
+                            title: "成功删除食物分类",
+                            message: "",
+                            type: 'success'
+                        });
+                        var _this=this;
+                        setTimeout(function(){
+                            _this.$router.push('/dashboard/food/category');
+                        },1000);
+                    }
+                })
             },
             editRow(){
                 alert(1);

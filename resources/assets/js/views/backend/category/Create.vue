@@ -20,7 +20,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import {postData} from '../../../helps/http';
+    import { handleData } from '../../../helps/http';
     export default {
         data() {
             return {
@@ -32,7 +32,7 @@
         },
         methods: {
             onSubmit() {
-                postData('/food/category',this.form,'POST').then(response => {
+                handleData('/food/category','POST',this.form).then(response => {
                     if(response.status == 201){
                         this.$refs.types.successNotification("成功添加食物分类",'/dashboard/food/category');
                     }

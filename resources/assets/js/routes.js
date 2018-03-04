@@ -49,6 +49,7 @@ export default [
                             },
                             {
                                 path: 'create',
+                                name:'foodCategoryCreate',
                                 component: require('./views/backend/category/Create.vue')
                             },
                             {

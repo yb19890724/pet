@@ -88,7 +88,7 @@ class FoodCategoryController extends BackendController
     {
         $result = $this->foodCategory->updateFoodCategory($id, $request->all());
         if (!empty($result)) {
-            return $this->response->withNotContent('修改成功');
+            return $this->response->withNotContent();
         }
         return $this->response->withNotImplemented('修改失败');
     }
@@ -101,6 +101,10 @@ class FoodCategoryController extends BackendController
      */
     public function destroy($id)
     {
-        //
+        $result = $this->foodCategory->deleteFoodCategory($id);
+        if (!empty($result)) {
+            return $this->response->withGone('删除成功');
+        }
+        return $this->response->withNotImplemented('删除失败');
     }
 }

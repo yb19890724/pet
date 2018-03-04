@@ -30,7 +30,7 @@ export function fetchData(url, params) {
     })
 }
 
-export function postData(url, params, method) {
+export function handleData(url, method , params={}) {
     return new Promise((resolve, reject) => {
         axios({
             method: method,
