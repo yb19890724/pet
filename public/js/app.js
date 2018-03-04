@@ -12661,7 +12661,7 @@ var zooView = {
 
 var foodCategoryView = {
     create: '/dashboard/food/category/create',
-    edit: '/dashboard/food/category/edit'
+    edit: 'foodCategoryEdit'
 };
 
 /***/ }),
@@ -100030,7 +100030,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.multipleSelection = val;
         },
         handleEdit: function handleEdit(event, index) {
-            this.$router.push({ name: 'foodCategoryEdit', params: { id: index } });
+            this.$router.push({ name: this.views.edit, params: { id: index } });
         },
         handleDelete: function handleDelete(event, index) {
             alert(index);

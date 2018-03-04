@@ -92,7 +92,7 @@
                 this.multipleSelection = val;
             },
             handleEdit(event,index){
-               this.$router.push({ name: 'foodCategoryEdit', params: { id: index }});
+               this.$router.push({ name: this.views.edit, params: { id: index }});
             },
             handleDelete(event,index){
                 alert(index);
