@@ -89,11 +89,11 @@ class Response
      * return 205 with reset resource no content response.
      * @return    \Illuminate\Http\JsonResponse
      */
-    public function withResetContent()
+    public function withResetContent($message)
     {
         return $this->setStatusCode(
             HttpResponse::HTTP_RESET_CONTENT
-        )->responseJson([]);
+        )->responseJson(['message'=>$message]);
     }
 
 

@@ -14,7 +14,7 @@
                         <el-input v-model="form.sort"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                        <el-button type="primary" @click="onSubmit">提交</el-button>
                         <el-button>取消</el-button>
                     </el-form-item>
                 </el-form>
@@ -47,7 +47,11 @@
                 getFindData:'getFindData'
             }),
             onSubmit() {
-
+                postData('/food/category/'+this.form.id,this.form,'PUT').then(response => {
+                    if(response.status == 205){
+                        this.$refs.types.successNotification("修改食物分类",'/dashboard/food/category');
+                    }
+                })
             }
         }
     }

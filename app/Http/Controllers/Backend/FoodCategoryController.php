@@ -86,7 +86,11 @@ class FoodCategoryController extends BackendController
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->foodCategory->updateFoodCategory($id, $request->all());
+        if (!empty($result)) {
+            return $this->response->withNotContent('修改成功');
+        }
+        return $this->response->withNotImplemented('修改失败');
     }
 
     /**
