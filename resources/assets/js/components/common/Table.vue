@@ -97,22 +97,10 @@
                this.$router.push({ name: this.views.edit, params: { id: index }});
             },
             handleDelete(event,index){
-                handleData('/food/category/'+index,'DELETE').then(response => {
-                    if(response.status == 204){
-                        this.$notify({
-                            title: "成功删除食物分类",
-                            message: "",
-                            type: 'success'
-                        });
-                        var _this=this;
-                        setTimeout(function(){
-                            _this.$router.push('/dashboard/food/category');
-                        },1000);
-                    }
-                })
+                this.$emit('handleDelete',index);
             },
             editRow(){
-                alert(1);
+
             }
         }
 
