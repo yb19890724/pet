@@ -26,6 +26,7 @@
 <script type="text/ecmascript-6">
     import { mapState,mapActions } from 'vuex';
     import { handleData } from '../../../helps/http';
+    import { notificationRedirect } from '../../../helps/function';
     import { foodCategoryMethods } from '../../../vuex/types';
     export default {
         data() {
@@ -49,7 +50,7 @@
             onSubmit() {
                 handleData('/food/category/'+this.form.id,'PUT',this.form).then(response => {
                     if(response.status == 205){
-                        this.$refs.types.successNotification("修改食物分类",'/dashboard/food/category');
+                        notificationRedirect("修改食物分类",'/dashboard/food/category');
                     }
                 })
             }

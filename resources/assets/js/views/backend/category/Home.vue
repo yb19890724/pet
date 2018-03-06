@@ -19,6 +19,7 @@
     import { handleData } from '../../../helps/http';
     import { foodCategoryView } from '../../../config/backend/views';
     import { foodCategoryMethods } from '../../../vuex/types';
+    import { notificationReload } from '../../../helps/function';
     export default{
         components:{
             SearchView,TitleView
@@ -63,13 +64,7 @@
             },
             handleDelete(index){
                 handleData('/food/category/'+index,'DELETE').then(response => {
-
-                    this.$notify({
-                        title: "成功删除食物分类",
-                        message: '',
-                        type: 'success'
-                    });
-                    location.reload();
+                    notificationReload('成功删除食物分类');
                 })
             }
         }

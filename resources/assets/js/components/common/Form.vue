@@ -16,7 +16,7 @@
         props:['moduleTitle','types'],
         methods:{
 
-            successNotification(title,url,message) {
+            /*successNotification(title,url,message) {
                 this.$notify({
                     title: title,
                     message: message,
@@ -48,7 +48,7 @@
                     title: '错误',
                     message: '这是一条错误的提示消息'
                 });
-            }
+            }*/
         }
     }
 </script>

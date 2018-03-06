@@ -1,6 +1,6 @@
 <template>
     <div class='animated fadeIn'>
-        <v-form :moduleTitle="$t('module.foodCategoryTitle')" ref="types">
+        <v-form :moduleTitle="$t('module.foodCategoryTitle')" >
             <div slot="form" >
                 <el-form ref="form" :model="form" label-width="80px">
                     <el-form-item label="分类名称">
@@ -21,6 +21,7 @@
 
 <script type="text/ecmascript-6">
     import { handleData } from '../../../helps/http';
+    import { notificationRedirect } from '../../../helps/function';
     export default {
         data() {
             return {
@@ -34,7 +35,7 @@
             onSubmit() {
                 handleData('/food/category','POST',this.form).then(response => {
                     if(response.status == 201){
-                        this.$refs.types.successNotification("成功添加食物分类",'/dashboard/food/category');
+                        notificationRedirect("成功添加食物分类",'/dashboard/food/category');
                     }
                 })
             }
