@@ -99294,13 +99294,15 @@ VueI18n.version = '7.4.2';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__module__ = __webpack_require__(285);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fields__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__message__ = __webpack_require__(322);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__form__ = __webpack_require__(314);
+
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    table: __WEBPACK_IMPORTED_MODULE_0__table__["a" /* default */], module: __WEBPACK_IMPORTED_MODULE_1__module__["a" /* default */], fields: __WEBPACK_IMPORTED_MODULE_2__fields__["a" /* default */], message: __WEBPACK_IMPORTED_MODULE_3__message__["a" /* default */]
+    table: __WEBPACK_IMPORTED_MODULE_0__table__["a" /* default */], module: __WEBPACK_IMPORTED_MODULE_1__module__["a" /* default */], fields: __WEBPACK_IMPORTED_MODULE_2__fields__["a" /* default */], message: __WEBPACK_IMPORTED_MODULE_3__message__["a" /* default */], form: __WEBPACK_IMPORTED_MODULE_4__form__["a" /* default */]
 });
 
 /***/ }),
@@ -100153,7 +100155,16 @@ if (false) {
 /* 311 */,
 /* 312 */,
 /* 313 */,
-/* 314 */,
+/* 314 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    submit: '提交',
+    cancel: '取消'
+});
+
+/***/ }),
 /* 315 */,
 /* 316 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -100250,7 +100261,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100297,7 +100308,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             url: '',
             method: '',
-            message: ''
+            message: '',
+            submit: false
         };
     },
     mounted: function mounted() {
@@ -100308,14 +100320,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         onSubmit: function onSubmit() {
-            var self = this;
-            Object(__WEBPACK_IMPORTED_MODULE_0__helps_http__["b" /* handleData */])(this.url, this.method, this.form).then(function (response) {
-                if (response.status == 201 || response.status == 204) {
-                    Object(__WEBPACK_IMPORTED_MODULE_2__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
-                        self.goBack();
-                    });
-                }
-            });
+            var _this = this;
+
+            if (this.submit == false) {
+                this.submit = true;
+                var self = this;
+                Object(__WEBPACK_IMPORTED_MODULE_0__helps_http__["b" /* handleData */])(this.url, this.method, this.form).then(function (response) {
+                    if (response.status == 201 || response.status == 204) {
+                        Object(__WEBPACK_IMPORTED_MODULE_2__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
+                            self.goBack();
+                        });
+                    }
+                }).then(function (response) {
+                    _this.isSubmit();
+                });
+            }
+        },
+        isSubmit: function isSubmit() {
+            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -100379,10 +100401,12 @@ var render = function() {
               _c(
                 "el-button",
                 { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
-                [_vm._v("提交")]
+                [_vm._v(_vm._s(_vm.$t("form.submit")))]
               ),
               _vm._v(" "),
-              _c("el-button", { on: { click: _vm.goBack } }, [_vm._v("取消")])
+              _c("el-button", { on: { click: _vm.goBack } }, [
+                _vm._v(_vm._s(_vm.$t("form.cancel")))
+              ])
             ],
             1
           )
