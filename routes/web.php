@@ -21,4 +21,3 @@ Route::get('/dashboard/{path?}','Backend\HomeController@index')->where('path', '
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

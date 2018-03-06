@@ -30,11 +30,9 @@
     <script>
         window.Laravel = {
             csrfToken: "{{ csrf_token() }}"
-        };
-
-        window.User = {!! Auth::user() !!}
-
-        window.Language = '{{ config('app.locale') }}';
+        }
+        window.Language = "{{ config('app.locale') }}";
+        window.User = "{{Auth::user()}}"
 
     </script>
 </head>

@@ -73,10 +73,10 @@ export default [
 //是否登陆
 function requireAuth (to, from, next) {
     //这里验证是否登录
-    return next();
-    /*if (window.User) {
-
+    console.log(window.User);
+    if (window.User) {
+        return next();return false;
+    }else{
+        return next('/')
     }
-
-    return next('/');*/
 }

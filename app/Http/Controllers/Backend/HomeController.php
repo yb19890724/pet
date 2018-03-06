@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends BackendController
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * @desc:   后台登录面板
