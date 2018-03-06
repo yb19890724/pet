@@ -23,12 +23,12 @@ import locales from './language';
 
 //vuex
 import store from './vuex/store.js';
-
 import App from './App.vue';
 
 Vue.use(ElementUI);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
+
 
 //语言包配置
 Vue.config.language=window.Language;

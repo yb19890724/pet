@@ -45,6 +45,7 @@ export default [
                         children: [
                             {
                                 path: '/',
+                                name:'foodCategoryHome',
                                 component: require('./views/backend/category/Home.vue')
                             },
                             {

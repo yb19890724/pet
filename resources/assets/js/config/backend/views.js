@@ -6,6 +6,7 @@ export const zooView ={
 };
 
 export const foodCategoryView ={
+    index:'foodCategoryHome',
     create: 'foodCategoryCreate',
     edit: 'foodCategoryEdit'
 };

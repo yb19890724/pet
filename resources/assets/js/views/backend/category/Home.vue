@@ -6,7 +6,7 @@
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" :fields="fields" :views="views" :types="types" @handleDelete="handleDelete">
+            <v-table slot="table" :fields="fields" :views="views" :types="types" ref="table" @handleDelete="handleDelete">
 
             </v-table>
 
@@ -19,7 +19,7 @@
     import { handleData } from '../../../helps/http';
     import { foodCategoryView } from '../../../config/backend/views';
     import { foodCategoryMethods } from '../../../vuex/types';
-    import { notificationReload } from '../../../helps/function';
+    import { notificationReload } from '../../../helps/helps';
     export default{
         components:{
             SearchView,TitleView
@@ -63,8 +63,13 @@
                 this.multipleSelection = val;
             },
             handleDelete(index){
+                let self=this;
                 handleData('/food/category/'+index,'DELETE').then(response => {
-                    notificationReload('成功删除食物分类');
+                    if(response.status==204){
+                        notificationReload(self.$t('message.delete'),function(){
+                            self.$refs.table.reloadListData();
+                        });
+                    }
                 })
             }
         }

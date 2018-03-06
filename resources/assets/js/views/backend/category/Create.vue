@@ -2,42 +2,22 @@
     <div class='animated fadeIn'>
         <v-form :moduleTitle="$t('module.foodCategoryTitle')" >
             <div slot="form" >
-                <el-form ref="form" :model="form" label-width="80px">
-                    <el-form-item label="分类名称">
-                        <el-input v-model="form.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="排序">
-                        <el-input v-model="form.sort"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="onSubmit">提交</el-button>
-                        <el-button>取消</el-button>
-                    </el-form-item>
-                </el-form>
+                <category-form :form="form"></category-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import { handleData } from '../../../helps/http';
-    import { notificationRedirect } from '../../../helps/function';
+    import CategoryForm from './Form'
     export default {
+        components: { CategoryForm },
         data() {
             return {
                 form: {
                     name: '',
                     sort: 0
                 }
-            }
-        },
-        methods: {
-            onSubmit() {
-                handleData('/food/category','POST',this.form).then(response => {
-                    if(response.status == 201){
-                        notificationRedirect("成功添加食物分类",'/dashboard/food/category');
-                    }
-                })
             }
         }
     }

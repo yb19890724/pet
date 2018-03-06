@@ -1,10 +1,9 @@
 
 import { Notification } from 'element-ui';
-import routes from '../routes'
 
 
 //提示重定向
-export function notificationRedirect(title,url)
+export function notificationRedirect(title,callback)
 {
     let options={
         title: title,
@@ -12,13 +11,13 @@ export function notificationRedirect(title,url)
     };
     Notification(options);
     setTimeout(function(){
-       location.href=url;
+        callback();
     },1000);
     return false;
 }
 
 //提示刷新当前页面
-export function notificationReload(title)
+export function notificationReload(title,callback)
 {
     let options={
         title: title,
@@ -26,7 +25,7 @@ export function notificationReload(title)
     };
     Notification(options);
     setTimeout(function(){
-        location.reload();
+        callback();
     },1000);
     return false;
 }

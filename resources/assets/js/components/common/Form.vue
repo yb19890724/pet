@@ -13,42 +13,9 @@
 <script type="text/ecmascript-6">
     import { redirect } from '../../helps/http'
     export default{
-        props:['moduleTitle','types'],
+        props:['moduleTitle'],
         methods:{
 
-            /*successNotification(title,url,message) {
-                this.$notify({
-                    title: title,
-                    message: message,
-                    type: 'success'
-                });
-                var _this=this;
-                setTimeout(function(){
-                    _this.$router.push(url);
-                },1000);
-            },
-
-            warningNotification() {
-                this.$notify({
-                    title: '警告',
-                    message: '这是一条警告的提示消息',
-                    type: 'warning'
-                });
-            },
-
-            infoNotification() {
-                this.$notify.info({
-                    title: '消息',
-                    message: '这是一条消息的提示消息'
-                });
-            },
-
-            errorNotification() {
-                this.$notify.error({
-                    title: '错误',
-                    message: '这是一条错误的提示消息'
-                });
-            }*/
         }
     }
 </script>
