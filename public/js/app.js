@@ -82297,6 +82297,9 @@ if (inBrowser && window.Vue) {
 function requireAuth(to, from, next) {
     //这里验证是否登录
     return next();
+    /*if (window.User) {
+      }
+      return next('/');*/
 }
 
 /***/ }),

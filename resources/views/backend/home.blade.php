@@ -31,11 +31,19 @@
         window.Laravel = {
             csrfToken: "{{ csrf_token() }}"
         };
+
+        window.User = {!! Auth::user() !!}
+
         window.Language = '{{ config('app.locale') }}';
+
     </script>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+
+
+
+</div>
 <!-- extends Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('js/jquery-ui.min.js')}}"></script>
