@@ -12291,7 +12291,9 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest'
 };
 
-function fetchData(url, params) {
+function fetchData(url) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
     return new Promise(function (resolve, reject) {
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url, params).then(function (response) {
             if (response.status == 200) {
@@ -12405,19 +12407,14 @@ var foodCategoryView = {
 
 /***/ }),
 /* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, __webpack_exports__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return foodCategoryMethods; });
 
-//角色模块
-var foodCategoryMethods = {
-    list: 'getFoodCategoryList',
-    find: 'getFoodCategoryDetail',
-    create: 'foodCategoryStore',
-    edit: 'foodCategoryEdit',
-    delete: 'foodCategoryDelete'
-};
+/*
+ export const {
+
+ };*/
 
 /***/ }),
 /* 23 */
@@ -14171,10 +14168,10 @@ module.exports = function (name) {
 "use strict";
 /* unused harmony export Store */
 /* unused harmony export install */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapState; });
+/* unused harmony export mapState */
 /* unused harmony export mapMutations */
 /* unused harmony export mapGetters */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapActions; });
+/* unused harmony export mapActions */
 /* unused harmony export createNamespacedHelpers */
 /**
  * vuex v2.5.0
@@ -86495,6 +86492,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helps_http__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_backend_views__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vuex_types__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vuex_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vuex_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helps_helps__ = __webpack_require__(61);
 //
 //
@@ -86524,7 +86522,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            types: __WEBPACK_IMPORTED_MODULE_4__vuex_types__["a" /* foodCategoryMethods */],
+            types: __WEBPACK_IMPORTED_MODULE_4__vuex_types__["foodCategoryMethods"],
             views: __WEBPACK_IMPORTED_MODULE_3__config_backend_views__["a" /* foodCategoryView */],
             fields: [{
                 label: '宠物名称',
@@ -97407,10 +97405,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Form__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Form__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vuex_types__ = __webpack_require__(22);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_http__ = __webpack_require__(17);
 //
 //
 //
@@ -97421,27 +97416,33 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { CategoryForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
     data: function data() {
-        return {};
+        return {
+            form: {}
+        };
     },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapState */])({
-        form: "findData"
-    })),
     mounted: function mounted() {
-        this.$store.state.pathParams = this.$route.params;
-        this.getFindData(__WEBPACK_IMPORTED_MODULE_2__vuex_types__["a" /* foodCategoryMethods */].find);
+        this.getFindData();
     },
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])({
-        getFindData: 'getFindData'
-    }))
+    methods: {
+        getFindData: function getFindData() {
+            var _this = this;
+
+            Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["a" /* fetchData */])('/food/category/' + this.$route.params.id).then(function (response) {
+                if (response.data != '') {
+                    _this.form = response.data;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -99699,6 +99700,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__types__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__types__);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -99721,23 +99723,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_http__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__types__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__types__);
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    getFoodCategoryList: function getFoodCategoryList(state, params) {
-        //食物分类列表
-        Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["a" /* fetchData */])('/food/category?page=2', params).then(function (response) {
-            if (response.data != '') {
-
-                console.log(response.data);
-                state.tableData = response.data.data;
-            }
-        }).catch(function (error) {
-            console.log(error);
-        });
-    },
     getFoodCategoryDetail: function getFoodCategoryDetail(state, params) {
         //食物分类详情
         Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["a" /* fetchData */])('/food/category/' + state.pathParams.id, params).then(function (response) {

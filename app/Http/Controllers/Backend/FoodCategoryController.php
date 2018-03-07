@@ -6,10 +6,11 @@ use App\Http\Responses\FoodCategoryIndexResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\FoodCategoryService;
+use App\Traits\ResponseTrait;
 
 class FoodCategoryController extends Controller
 {
-
+    use ResponseTrait;
     private $foodCategory;
 
     public function __construct(FoodCategoryService $foodCategoryService)
@@ -48,9 +49,9 @@ class FoodCategoryController extends Controller
     {
         $result=$this->foodCategory->storeFoodCategory($request->all());
         if(!empty($result)){
-            return $this->response->withCreated(['message'=>'添加成功']);
+            return $this->withCreated(['message'=>'添加成功']);
         }
-        return $this->response->withCreated($result);
+        return $this->withCreated($result);
     }
 
     /**
@@ -62,7 +63,7 @@ class FoodCategoryController extends Controller
     public function show($id)
     {
         $result=$this->foodCategory->getFoodCategoryDetail($id);
-        return $this->response->responseJson(['data'=>$result]);
+        return $this->responseJson(['data'=>$result]);
     }
 
     /**

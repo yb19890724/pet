@@ -9,29 +9,29 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import CategoryForm from './Form'
-    import { mapState,mapActions } from 'vuex';
-    import { foodCategoryMethods } from '../../../vuex/types';
+    import CategoryForm from './Form';
+    import { fetchData } from '../../../helps/http';
     export default {
         components: { CategoryForm },
         data() {
             return {
-
+                form:{}
             }
         },
-        computed:{
-            ...mapState({
-                form:"findData"
-            })
-        },
         mounted(){
-            this.$store.state.pathParams=this.$route.params;
-            this.getFindData(foodCategoryMethods.find);
+            this.getFindData();
         },
         methods: {
-            ...mapActions ({
-                getFindData:'getFindData'
-            })
+            getFindData(){
+                fetchData('/food/category/' + this.$route.params.id).then(response=> {
+                    if (response.data != '') {
+                        this.form = response.data;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+            }
         }
     }
 </script>
