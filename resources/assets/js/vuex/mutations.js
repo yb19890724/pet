@@ -5,10 +5,12 @@ import * as types from './types';
 
 export default {
     getFoodCategoryList(state, params){//食物分类列表
-        fetchData('/food/category', params)
+        fetchData('/food/category?page=2', params)
             .then(response=> {
                 if (response.data != '') {
-                    state.tableData = response.data;
+
+                    console.log(response.data);
+                    state.tableData = response.data.data;
                 }
             }).catch(function (error) {
             console.log(error);

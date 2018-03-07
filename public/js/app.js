@@ -82377,12 +82377,13 @@ if (inBrowser && window.Vue) {
 //是否登陆
 function requireAuth(to, from, next) {
     //这里验证是否登录
-    console.log(window.User);
-    if (window.User) {
-        return next();return false;
-    } else {
-        return next('/');
-    }
+    return next();
+
+    /*if (window.User) {
+        return next();
+    }else{
+        return next('/')
+    }*/
 }
 
 /***/ }),
@@ -96920,6 +96921,7 @@ var render = function() {
             ref: "table",
             attrs: {
               slot: "table",
+              apiUrl: "/food/category",
               fields: _vm.fields,
               views: _vm.views,
               types: _vm.types
@@ -99683,6 +99685,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+    prev_page_url: "", //上一页连接
+    next_page_url: "", //下一页连接
     tableData: [], //列表数据
     findData: {}, //列表数据
     tableChecked: {}, //列表checkbox选中值
@@ -99724,9 +99728,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
     getFoodCategoryList: function getFoodCategoryList(state, params) {
         //食物分类列表
-        Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["a" /* fetchData */])('/food/category', params).then(function (response) {
+        Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["a" /* fetchData */])('/food/category?page=2', params).then(function (response) {
             if (response.data != '') {
-                state.tableData = response.data;
+
+                console.log(response.data);
+                state.tableData = response.data.data;
             }
         }).catch(function (error) {
             console.log(error);
@@ -100084,7 +100090,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100097,8 +100103,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_http__ = __webpack_require__(17);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -100158,34 +100173,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         views: {
             type: Object,
             default: function _default() {
-                return false;
+                return {};
             }
         },
         types: {
             type: Object,
             default: function _default() {
-                return false;
+                return {};
             }
+        },
+        apiUrl: {
+            type: String,
+            required: true
         }
     },
     mounted: function mounted() {
-        this.getListData(this.types.list, {});
+        this.getTableData();
     },
     data: function data() {
         return {
+            current_page: 1, //当前页
+            prev_page_url: "", //上一页连接
+            next_page_url: "", //下一页连接
+            total: 0, //总记录
+            tableData: [],
             multipleSelection: []
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])(["tableData"])),
-    watch: {
-        // 如果路由有变化，会再次执行该方法
-        $route: 'fetchData'
-    },
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])({
-        getListData: 'getListData',
-        handleData: 'handleData'
-    }), {
+    methods: {
         toggleSelection: function toggleSelection(rows) {
             var _this = this;
 
@@ -100201,16 +100217,50 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.multipleSelection = val;
         },
         handleEdit: function handleEdit(event, index) {
+            //加载修改页面
             this.$router.push({ name: this.views.edit, params: { id: index } });
         },
         handleDelete: function handleDelete(event, index) {
             this.$emit('handleDelete', index);
         },
         reloadListData: function reloadListData() {
-            this.getListData(this.types.list, {});
+            //重新加载数据
+            this.getTableData();
         },
-        editRow: function editRow() {}
-    })
+        getTableData: function getTableData() {
+            var _this2 = this;
+
+            var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+            //获取table数据
+            url = url != '' ? url : this.apiUrl;
+            Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["a" /* fetchData */])(url).then(function (response) {
+                if (response.data != '') {
+                    _this2.tableData = response.data.data;
+                    _this2.current_page = response.data.current_page;
+                    _this2.total = response.data.total;
+                    _this2.prev_page_url = response.data.prev_page_url;
+                    _this2.next_page_url = response.data.next_page_url;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        editRow: function editRow() {},
+        handleCurrentChange: function handleCurrentChange(val) {
+            var url = void 0;
+            if (val - this.current_page == 1) {
+                //下一页
+                url = this.next_page_url;
+            }
+
+            if (val - this.current_page == -1) {
+                //上一页
+                url = this.prev_page_url;
+            }
+
+            this.getTableData(url);return false;
+        }
+    }
 });
 
 /***/ }),
@@ -100241,12 +100291,6 @@ var render = function() {
           }
         },
         [
-          _vm.checkbox
-            ? _c("el-table-column", {
-                attrs: { type: "selection", label: "selection" }
-              })
-            : _vm._e(),
-          _vm._v(" "),
           _vm.index
             ? _c("el-table-column", {
                 attrs: { type: "index", label: "序号", width: "65" }
@@ -100300,6 +100344,24 @@ var render = function() {
           })
         ],
         2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "block", staticStyle: { "margin-top": "20px" } },
+        [
+          _c("el-pagination", {
+            attrs: {
+              background: "",
+              "current-page": _vm.current_page,
+              "page-size": 20,
+              layout: "total, prev, pager, next",
+              total: _vm.total
+            },
+            on: { "current-change": _vm.handleCurrentChange }
+          })
+        ],
+        1
       )
     ],
     1
