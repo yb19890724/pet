@@ -12410,11 +12410,10 @@ var foodCategoryView = {
 /***/ (function(module, __webpack_exports__) {
 
 "use strict";
-
 /*
- export const {
+export default {
 
- };*/
+}*/
 
 /***/ }),
 /* 23 */
@@ -99685,14 +99684,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    prev_page_url: "", //上一页连接
-    next_page_url: "", //下一页连接
-    tableData: [], //列表数据
-    findData: {}, //列表数据
-    tableChecked: {}, //列表checkbox选中值
-    pathParams: {}
-});
+/* harmony default export */ __webpack_exports__["a"] = ({});
 
 /***/ }),
 /* 296 */
@@ -99703,16 +99695,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__types__);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ({
-    getListData: function getListData(_ref, methed) {
-        var commit = _ref.commit;
-        return commit(methed);
-    },
-    getFindData: function getFindData(_ref2, methed) {
-        var commit = _ref2.commit;
-        return commit(methed);
-    }
-});
+/* harmony default export */ __webpack_exports__["a"] = ({});
 
 /***/ }),
 /* 297 */
@@ -99728,18 +99711,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = ({
-    getFoodCategoryDetail: function getFoodCategoryDetail(state, params) {
-        //食物分类详情
-        Object(__WEBPACK_IMPORTED_MODULE_1__helps_http__["a" /* fetchData */])('/food/category/' + state.pathParams.id, params).then(function (response) {
-            if (response.data != '') {
-                state.findData = response.data;
-            }
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
-});
+/* harmony default export */ __webpack_exports__["a"] = ({});
 
 /***/ }),
 /* 298 */
@@ -100081,7 +100053,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100094,8 +100066,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_http__ = __webpack_require__(17);
-//
-//
 //
 //
 //

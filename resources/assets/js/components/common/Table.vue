@@ -34,9 +34,7 @@
             </el-table-column>
         </el-table>
         <div class="block" style="margin-top: 20px">
-<!--
-            <span class="demonstration">完整功能</span>
--->
+
             <el-pagination
                 background
                 @current-change="handleCurrentChange"
