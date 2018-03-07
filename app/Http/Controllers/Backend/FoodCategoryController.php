@@ -22,14 +22,8 @@ class FoodCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        dd($data=$request->all());
-
-        $params=$request->o(['aa']);
-        dd($params);
-
-        //
         $result=$this->foodCategory->getFoodCategoryList();
         return new FoodCategoryIndexResponse($result);
     }

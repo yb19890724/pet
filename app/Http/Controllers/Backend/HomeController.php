@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 /* 后台登录控制器 */
 
-class HomeController extends BackendController
+class HomeController extends Controller
 {
     public function __construct()
     {
