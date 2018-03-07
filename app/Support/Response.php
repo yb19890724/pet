@@ -2,8 +2,8 @@
 
 namespace App\Support;
 
-use Illuminate\Contracts\Routing\ResponseFactory;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
+use Illuminate\Contracts\Routing\ResponseFactory;
 
 class Response
 {

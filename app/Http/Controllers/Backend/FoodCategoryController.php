@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Responses\FoodCategoryIndexResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\FoodCategoryService;
-use App\Support\Response;
 
-class FoodCategoryController extends BackendController
+class FoodCategoryController extends Controller
 {
-    private $foodCategory;
-    private $response;
 
-    public function __construct(FoodCategoryService $foodCategoryService,Response $response)
+    private $foodCategory;
+
+    public function __construct(FoodCategoryService $foodCategoryService)
     {
         $this->foodCategory=$foodCategoryService;
-        $this->response=$response;
     }
 
     /**
@@ -23,10 +22,16 @@ class FoodCategoryController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        dd($data=$request->all());
+
+        $params=$request->o(['aa']);
+        dd($params);
+
         //
-        return $this->foodCategory->getFoodCategoryList();
+        $result=$this->foodCategory->getFoodCategoryList();
+        return new FoodCategoryIndexResponse($result);
     }
 
     /**
