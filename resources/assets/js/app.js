@@ -9,9 +9,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import httpPlugin from './helps/http';
+
 //vue 路由
 import VueRouter  from 'vue-router';
 import routes from './routes.js';
+
+//http请求
 
 //element组件
 import ElementUI from 'element-ui';
@@ -28,7 +32,7 @@ import App from './App.vue';
 Vue.use(ElementUI);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
-
+Vue.use(httpPlugin);
 
 //语言包配置
 Vue.config.language=window.Language;

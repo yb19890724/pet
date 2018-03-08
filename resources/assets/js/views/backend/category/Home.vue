@@ -16,7 +16,9 @@
 <script type="text/ecmascript-6">
     import SearchView from './Search';
     import TitleView from './TitleButton';
+/*
     import { handleData } from '../../../helps/http';
+*/
     import { notificationReload } from '../../../helps/helps';
     import { foodCategoryView } from '../../../config/backend/views';
     export default{
@@ -62,13 +64,16 @@
             },
             handleDelete(index){
                 let self=this;
-                handleData('/food/category/'+index,'DELETE').then(response => {
+
+                this.$http.delete('/food/category/'+index).then(response => {
                     if(response.status==204){
                         notificationReload(self.$t('message.delete'),function(){
                             self.$refs.table.reloadListData();
                         });
                     }
-                })
+                }).catch(function (error) {
+                    console.log(error);
+                });
             },
             searchListData(params){
                 this.$refs.table.getTableData('',params);

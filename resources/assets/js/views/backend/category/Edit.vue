@@ -10,12 +10,12 @@
 
 <script type="text/ecmascript-6">
     import CategoryForm from './Form';
-    import { fetchData } from '../../../helps/http';
     export default {
         components: { CategoryForm },
         data() {
             return {
-                form:{}
+                form:{
+                }
             }
         },
         mounted(){
@@ -23,14 +23,13 @@
         },
         methods: {
             getFindData(){
-                fetchData('/food/category/' + this.$route.params.id).then(response=> {
+                this.$http.get('/food/category/'+ this.$route.params.id).then(response => {
                     if (response.data != '') {
-                        this.form = response.data;
+                        this.form =response.data
                     }
                 }).catch(function (error) {
                     console.log(error);
                 });
-
             }
         }
     }

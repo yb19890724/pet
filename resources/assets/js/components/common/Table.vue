@@ -48,7 +48,6 @@
 </template>
 <script type="text/ecmascript-6">
     import { mapState,mapActions} from 'vuex';
-    import { fetchData } from '../../helps/http';
     export default{
         props:{
             fields:{//列表展示列
@@ -111,9 +110,8 @@
             },
             getTableData(url="",params={}){//获取table数据
                 url=url!=''?url:this.apiUrl;
-                console.log(url);
-                console.log(params);
-                fetchData(url,params).then(response=> {
+
+                this.$http.get(url,params).then(response => {
                     if (response.data != '') {
                         this.tableData=response.data.data;
                         this.current_page=response.data.current_page;
@@ -121,8 +119,6 @@
                         this.prev_page_url=response.data.prev_page_url;
                         this.next_page_url=response.data.next_page_url;
                     }
-                }).catch(function (error) {
-                    console.log(error);
                 });
             },
             editRow(){

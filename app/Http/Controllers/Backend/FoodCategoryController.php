@@ -63,7 +63,7 @@ class FoodCategoryController extends Controller
     public function show($id)
     {
         $result=$this->foodCategory->getFoodCategoryDetail($id);
-        return $this->responseJson(['data'=>$result]);
+        return $this->responseJson($result);
     }
 
     /**
@@ -88,9 +88,9 @@ class FoodCategoryController extends Controller
     {
         $result = $this->foodCategory->updateFoodCategory($id, $request->all());
         if (!empty($result)) {
-            return $this->response->withNotContent();
+            return $this->withNotContent();
         }
-        return $this->response->withNotImplemented('修改失败');
+        return $this->withNotImplemented('修改失败');
     }
 
     /**
@@ -103,8 +103,8 @@ class FoodCategoryController extends Controller
     {
         $result = $this->foodCategory->deleteFoodCategory($id);
         if (!empty($result)) {
-            return $this->response->withGone('删除成功');
+            return $this->withGone('删除成功');
         }
-        return $this->response->withNotImplemented('删除失败');
+        return $this->withNotImplemented('删除失败');
     }
 }

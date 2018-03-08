@@ -1,51 +1,45 @@
-import axios from 'axios'
+import axios from 'axios';
 import { backendApi } from '../config/backend/config';
 
-axios.defaults.baseURL=backendApi;
-axios.defaults.timeout = 5000;
-axios.defaults.headers.common = {
+/**
+ * Create Axios
+ */
+export const http = axios.create({
+    baseURL: backendApi
+});
+
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+http.defaults.headers.common = {
     'X-CSRF-TOKEN': window.Laravel.csrfToken,
     'X-Requested-With': 'XMLHttpRequest'
 };
 
+/**
+ * Handle all error messages.
+ */
+http.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    const { response } = error;
 
-export function fetchData(url, params={}) {
-    return new Promise((resolve, reject) => {
-        axios.get(url,{params:params}).then(response => {
-            if(response.status==200){
-                resolve(response.data);
-            }
-        }).catch(error => {
-            var message = error.message;
-            if (error.response.status == 422) {
-                for(var i in error.response.data){
-                    message = error.response.data[i][0];
-                }
-            }
-            if (error.response.status == 401) {
-                window.location = '/login';
-            }
-            reject(message)
-        });
-    })
-}
+    if ([401].indexOf(response.status) >= 0) {
+        if (response.status == 401 && response.data.error.message != 'Unauthorized') {
+            return Promise.reject(response);
+        }
+        window.location = '/login';
+    }
 
-export function handleData(url, method , params={}) {
-    return new Promise((resolve, reject) => {
-        axios({
-            method: method,
-            url: url,
-            data: params
-        }).then(response => {
-            resolve(response);
-        }).catch(error => {
-            var message = error.message;
-            if (error.response.status == 422) {
-                for(var i in error.response.data){
-                    message = error.response.data[i][0];
-                }
-            }
-            reject(message)
-        });
+    return Promise.reject(error);
+});
+
+export default function install(Vue) {
+    Object.defineProperty(Vue.prototype, '$http', {
+        get() {
+            return http
+        }
     })
 }

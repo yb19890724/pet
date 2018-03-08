@@ -33,6 +33,6 @@ class FoodCategoryIndexResponse implements Responsable
             ];
         });
 
-        return $this->responseJson(['data'=>$this->result]);
+        return $this->responseJson($this->result);
     }
 }

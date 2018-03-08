@@ -15,7 +15,6 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { handleData } from '../../../helps/http';
     import { foodCategoryView } from '../../../config/backend/views';
     import { notificationRedirect,redirect } from '../../../helps/helps';
     export default{
@@ -35,23 +34,21 @@
                 submit:false
             }
         },
-        mounted(){
-            this.method = this.form.id ? 'put' : 'post';
-            this.url = '/food/category'+(this.form.id ? '/' + this.form.id : '');
-            this.message=this.$t('message.'+this.method);
-        },
         methods: {
             onSubmit() {
+                this.url = '/food/category'+(this.form.id ? '/' + this.form.id : '');
+                this.method = this.form.id ? 'put' : 'post';
+                this.message=this.$t('message.'+this.method);
                 if(this.submit==false){
                     this.submit=true;
                     let self=this;
-                    handleData(this.url,this.method,this.form).then(response => {
-                        if(response.status == 201 || response.status == 204){
-                            notificationRedirect(self.message,function(){
+                    this.$http[this.method](this.url, this.form).then((response) => {
+                        if (response.status == 201 || response.status == 204) {
+                            notificationRedirect(self.message, function () {
                                 self.goBack();
                             });
                         }
-                    }).then(response => {
+                    }).catch(({response}) => {
                         this.isSubmit();
                     });
                 }
