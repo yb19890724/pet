@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div class='contents'>
+        <div class='contents contents-top'>
             <div class="block">
                 <div class="block-header" >
                     <ul class="block-options">
@@ -15,13 +15,17 @@
                     </ul>
                     <h3 class="block-title">{{ moduleTitle }}</h3>
                 </div>
-                <div style="clear:both;"></div>
                 <div class="block-content block-content-full">
-                    <slot name="table"></slot>
+                        <slot name="table"></slot>
                 </div>
             </div>
         </div>
+
+
     </div>
+
+
+
 </template>
 
 <script type="text/ecmascript-6">
@@ -36,9 +40,12 @@
     /* 布局公用样式 */
     .contents {
         margin: 0 auto;
-        padding: 16px 14px 1px;
         max-width: 100%;
         overflow-x: visible;
+    }
+
+    .contents-top{
+        margin-top:20px;
     }
 
     .block {
@@ -86,4 +93,6 @@
         margin: 0 2px;
         padding: 0;
     }
+
+
 </style>

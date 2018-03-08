@@ -26,6 +26,16 @@ class FoodCategoryService
         return $this->foodCategoryRepository->paginate();
     }
 
+    /**
+     * Get Search FoodCategory list and paginate.
+     *
+     */
+    public function getSearchFoodCategoryList(int $perPage = 0)
+    {
+        return $this->foodCategoryRepository->getSearchFoodCategoryList($perPage);
+    }
+
+
    /**
     * Get one FoodCategory Detail by primary key.
     *

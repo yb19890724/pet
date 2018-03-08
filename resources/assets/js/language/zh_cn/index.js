@@ -3,7 +3,8 @@ import module from './module';
 import fields from './fields';
 import message from './message';
 import form from './form';
+import search from './search';
 
 export default {
-    table,module,fields,message,form
+    table,module,fields,message,form,search
 }

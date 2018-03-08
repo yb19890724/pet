@@ -1,5 +1,5 @@
 <template>
-    <div class="table-components">
+    <div class="block">
         <el-table
             ref="multipleTable"
             :data="tableData"
@@ -69,12 +69,6 @@
                     return {};
                 }
             },
-            types:{
-                type: Object,
-                default(){
-                    return {};
-                }
-            },
             apiUrl:{
                 type: String,
                 required: true
@@ -115,9 +109,11 @@
             reloadListData(){//重新加载数据
                 this.getTableData();
             },
-            getTableData(url=""){//获取table数据
+            getTableData(url="",params={}){//获取table数据
                 url=url!=''?url:this.apiUrl;
-                fetchData(url).then(response=> {
+                console.log(url);
+                console.log(params);
+                fetchData(url,params).then(response=> {
                     if (response.data != '') {
                         this.tableData=response.data.data;
                         this.current_page=response.data.current_page;

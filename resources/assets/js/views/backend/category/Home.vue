@@ -1,12 +1,12 @@
 <template>
     <div class='animated fadeIn'>
-        <v-searchTable :moduleTitle="$t('module.zooTitle')" >
+        <v-searchTable :moduleTitle="$t('module.foodCategoryTitle')" >
             <!-- 搜索视图 -->
-            <SearchView slot="search" ></SearchView>
+            <SearchView slot="search" @searchListData="searchListData"></SearchView>
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" apiUrl="/food/category" :fields="fields" :views="views" :types="types" ref="table" @handleDelete="handleDelete">
+            <v-table slot="table" apiUrl="/food/category" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
 
             </v-table>
 
@@ -17,20 +17,18 @@
     import SearchView from './Search';
     import TitleView from './TitleButton';
     import { handleData } from '../../../helps/http';
-    import { foodCategoryView } from '../../../config/backend/views';
-    import { foodCategoryMethods } from '../../../vuex/types';
     import { notificationReload } from '../../../helps/helps';
+    import { foodCategoryView } from '../../../config/backend/views';
     export default{
         components:{
             SearchView,TitleView
         },
         data() {
             return {
-                types:foodCategoryMethods,
                 views:foodCategoryView,
                 fields:[
                     {
-                        label:'宠物名称',
+                        label:'食物分类名称',
                         text:'name'
                     },
                     {
@@ -71,6 +69,9 @@
                         });
                     }
                 })
+            },
+            searchListData(params){
+                this.$refs.table.getTableData('',params);
             }
         }
 

@@ -11,7 +11,7 @@ axios.defaults.headers.common = {
 
 export function fetchData(url, params={}) {
     return new Promise((resolve, reject) => {
-        axios.get(url,params).then(response => {
+        axios.get(url,{params:params}).then(response => {
             if(response.status==200){
                 resolve(response.data);
             }
