@@ -110,8 +110,7 @@
             },
             getTableData(url="",params={}){//获取table数据
                 url=url!=''?url:this.apiUrl;
-
-                this.$http.get(url,params).then(response => {
+                this.$http.get(url,{params:params}).then(response => {
                     if (response.data != '') {
                         this.tableData=response.data.data;
                         this.current_page=response.data.current_page;

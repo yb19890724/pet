@@ -28,6 +28,7 @@ class FoodCategoryIndexResponse implements Responsable
             return [
                 'id'           => $foodCategory->id,
                 'name'         => $foodCategory->name,
+                'sort'         => $foodCategory->sort,
                 'created_at'   => $foodCategory->createTime(),
                 'updated_at'   => $foodCategory->updateTime(),
             ];
