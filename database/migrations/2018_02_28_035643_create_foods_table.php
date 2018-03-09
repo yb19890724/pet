@@ -17,6 +17,7 @@ class CreateFoodsTable extends Migration
             $table->increments('id');
             $table->integer('food_category_id')->comment('食物类型');
             $table->string('name',50)->comment('食物名称');
+            $table->integer('sort')->comment('排序');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE `foods` comment '食物表'");

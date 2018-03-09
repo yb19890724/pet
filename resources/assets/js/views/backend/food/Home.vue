@@ -1,74 +1,51 @@
 <template>
     <div class='animated fadeIn'>
-        <el-table
-                ref="multipleTable"
-                :data="tableData3"
-                tooltip-effect="dark"
-                style="width: 100%"
-                @selection-change="handleSelectionChange">
-            <el-table-column
-                    type="selection"
-                    width="55">
-            </el-table-column>
-            <el-table-column
-                    label="日期"
-                    width="120">
-                <template slot-scope="scope">{{ scope.row.date }}</template>
-            </el-table-column>
-            <el-table-column
-                    prop="name"
-                    label="姓名"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="address"
-                    label="地址"
-                    show-overflow-tooltip>
-            </el-table-column>
-        </el-table>
-        <div style="margin-top: 20px">
-            <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">切换第二、第三行的选中状态</el-button>
-            <el-button @click="toggleSelection()">取消选择</el-button>
-        </div>
+        <v-searchTable :moduleTitle="$t('module.foodCategoryTitle')" >
+            <!-- 搜索视图 -->
+            <SearchView slot="search" @searchListData="searchListData"></SearchView>
+            <!-- 按钮视图-->
+            <TitleView slot="titleButton"></TitleView>
+            <!-- table 展示位置 -->
+            <v-table slot="table" apiUrl="/food" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
+
+            </v-table>
+
+        </v-searchTable>
     </div>
 </template>
 <script type="text/ecmascript-6">
-    export default {
+    import SearchView from './Search';
+    import TitleView from './TitleButton';
+    import { notificationReload } from '../../../helps/helps';
+    import { foodCategoryView } from '../../../config/backend/views';
+    export default{
+        components:{
+            SearchView,TitleView
+        },
         data() {
             return {
-                tableData3: [{
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-07',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }],
+                views:foodCategoryView,
+                fields:[
+                    {
+                        label:'食物名称',
+                        text:'name'
+                    },
+                    {
+                        label:'排序',
+                        text:'sort'
+                    },
+                    {
+                        label:'添加时间',
+                        text:'created_at'
+                    },
+                    {
+                        label:'修改时间',
+                        text:'updated_at'
+                    }
+                ],
                 multipleSelection: []
             }
         },
-
         methods: {
             toggleSelection(rows) {
                 if (rows) {
@@ -81,8 +58,25 @@
             },
             handleSelectionChange(val) {
                 this.multipleSelection = val;
+            },
+            handleDelete(index){
+                let self=this;
+
+                this.$http.delete('/food/'+index).then(response => {
+                    if(response.status==204){
+                        notificationReload(self.$t('message.delete'),function(){
+                            self.$refs.table.reloadListData();
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            searchListData(params){
+                this.$refs.table.getTableData('',params);
             }
         }
+
     }
 </script>
 

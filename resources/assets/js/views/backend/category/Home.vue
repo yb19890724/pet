@@ -16,9 +16,6 @@
 <script type="text/ecmascript-6">
     import SearchView from './Search';
     import TitleView from './TitleButton';
-/*
-    import { handleData } from '../../../helps/http';
-*/
     import { notificationReload } from '../../../helps/helps';
     import { foodCategoryView } from '../../../config/backend/views';
     export default{

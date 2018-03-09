@@ -2,14 +2,14 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\FoodCategory;
-use App\Repository\Contracts\FoodCategoryRepository;
+use App\Models\Food;
+use App\Repository\Contracts\FoodRepository;
 use Phpno1\Repository\Eloquent\AbstractRepository;
+use Phpno1\Repository\Criterias\FilterRequest;
 use App\Repository\Filters\SearchNameFilter;
 use App\Repository\Filters\SortFilter;
-use Phpno1\Repository\Criterias\FilterRequest;
 
-class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodCategoryRepository
+class FoodRepositoryEloquent extends AbstractRepository implements FoodRepository
 {
     protected $filters = [
         'search_name'=>SearchNameFilter::class,
@@ -18,16 +18,16 @@ class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodC
 
     public function entity()
     {
-        return FoodCategory::class;
+        return Food::class;
     }
 
     /**
-     * Get Search FoodCategory list and paginate.
+     * Get Search Food list and paginate.
      *
      * @param int $perPage
      * @return mixed
      */
-    public function getSearchFoodCategoryList(int $perPage = 0)
+    public function getSearchFoodList(int $perPage = 0)
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)

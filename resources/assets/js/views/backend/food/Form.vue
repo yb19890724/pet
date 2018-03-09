@@ -1,10 +1,10 @@
 <template>
     <div class='contents'>
         <el-form ref="form" :model="form"  label-width="80px">
-            <el-form-item :label="$t('fields.name')">
+            <el-form-item label="名称">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
-            <el-form-item :label="$t('fields.sort')">
+            <el-form-item label="排序">
                 <el-input v-model="form.sort"></el-input>
             </el-form-item>
             <el-form-item>

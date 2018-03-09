@@ -5,7 +5,7 @@ namespace App\Http\Responses;
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class FoodCategoryIndexResponse implements Responsable
+class FoodIndexResponse implements Responsable
 {
     use ResponseTrait;
 
