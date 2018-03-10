@@ -4,8 +4,8 @@ namespace App\Repository\Eloquent;
 
 use App\Models\Zoo;
 use App\Repository\Contracts\ZooRepository;
-use Phpno1\Repository\Eloquent\AbstractRepository;
-use Phpno1\Repository\Criterias\FilterRequest;
+use Phpno1\Architecture\Eloquent\AbstractRepository;
+use Phpno1\Architecture\Criterias\FilterRequest;
 use App\Repository\Filters\SearchNameFilter;
 use App\Repository\Filters\SortFilter;
 

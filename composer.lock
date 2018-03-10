@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe89f6979b018cd2e9485608a0acafb0",
+    "content-hash": "0e4650f35e9a0ae29a258c0611a6937a",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -964,16 +964,16 @@
         },
         {
             "name": "phpno1/architecture",
-            "version": "1.0.4",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yb19890724/phpno1-architecture.git",
-                "reference": "09a3da64d06b26e9e86347b19fc8c4a8b54bc2c3"
+                "reference": "6ab6c301e2a149b59018dddac130e08d52db74ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/yb19890724/phpno1-architecture/09a3da64d06b26e9e86347b19fc8c4a8b54bc2c3.zip",
-                "reference": "09a3da64d06b26e9e86347b19fc8c4a8b54bc2c3",
+                "url": "https://files.phpcomposer.com/files/yb19890724/phpno1-architecture/6ab6c301e2a149b59018dddac130e08d52db74ad.zip",
+                "reference": "6ab6c301e2a149b59018dddac130e08d52db74ad",
                 "shasum": ""
             },
             "require": {
@@ -986,14 +986,14 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Phpno1\\Repository\\Providers\\RepositoryServiceProvider"
+                        "Phpno1\\Architecture\\Providers\\ArchitectureServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
                     "App\\": "app/",
-                    "Phpno1\\Repository\\": "src/"
+                    "Phpno1\\Architecture\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1019,7 +1019,7 @@
                 "model",
                 "repository"
             ],
-            "time": "2018-03-10T13:39:01+00:00"
+            "time": "2018-03-10T14:53:00+00:00"
         },
         {
             "name": "psr/container",
