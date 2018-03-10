@@ -19,14 +19,17 @@ export default [
                 children: [
                     {
                         path: '/',
+                        name:'zooHome',
                         component: require('./views/backend/zoo/Home.vue')
                     },
                     {
                         path: 'create',
+                        name:'zooCreate',
                         component: require('./views/backend/zoo/Create.vue')
                     },
                     {
                         path: 'edit',
+                        name:'zooEdit',
                         component: require('./views/backend/zoo/Edit.vue')
                     }
                 ]
@@ -37,6 +40,7 @@ export default [
                 children: [
                     {
                         path: '/',
+                        name:'foodHome',
                         component: require('./views/backend/food/Home.vue')
                     },
                     {

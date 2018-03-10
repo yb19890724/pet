@@ -1,8 +1,9 @@
 //模块路径
 
 export const zooView ={
-    create: '/dashboard/zoo/create',
-    edit: '/dashboard/zoo/edit'
+    index:'zooHome',
+    create: 'zooCreate',
+    edit: 'zooEdit'
 };
 
 export const foodCategoryView ={
