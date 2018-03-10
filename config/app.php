@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //三方扩展
-        App\Providers\RepositoryServiceProvider::class
+        App\Providers\ArchitectureServiceProvider::class
     ],
 
     /*

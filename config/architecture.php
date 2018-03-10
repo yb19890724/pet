@@ -24,7 +24,7 @@ return [
      * 排序设置
      */
     'order' => [
-         'o',
+        'o',
     ],
     /**
      * 文件自动生成器
@@ -35,8 +35,8 @@ return [
             'controller'          => 'Backend',
             'repository_eloquent' => 'Repository\\Eloquent',
             'repository'          => 'Repository\\Contracts',
-            'criteria'            => 'Repository\\Criterias',
-            'provider'            => 'Providers\\RepositoryServiceProvider',
+            'criteria'            => 'Architecture\\Criterias',
+            'provider'            => 'Providers\\ArchitectureServiceProvider',
             'service'             => 'Services',
             'model'               => 'Models',
             'response'            => 'Http\\Responses',
