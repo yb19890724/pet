@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Food;
 
 use Illuminate\Contracts\Support\Responsable;
 

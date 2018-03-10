@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Zoo;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;

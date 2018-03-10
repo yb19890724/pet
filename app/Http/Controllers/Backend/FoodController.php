@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Responses\FoodIndexResponse;
+use App\Http\Responses\Food\FoodIndexResponse;
 use App\Services\FoodService;
 use App\Traits\ResponseTrait;
 

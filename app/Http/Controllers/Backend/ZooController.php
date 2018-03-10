@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\ZooService;
-use App\Http\Responses\ZooIndexResponse;
+use App\Http\Responses\Zoo\ZooIndexResponse;
 use App\Traits\ResponseTrait;
 
 

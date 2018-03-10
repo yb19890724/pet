@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\FoodCategoryIndexResponse;
+use App\Http\Responses\FoodCategory\FoodCategoryIndexResponse;
 use App\Http\Responses\FoodCategory\FoodCategoryAllResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
