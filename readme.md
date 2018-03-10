@@ -1,3 +1,4 @@
+<!--
 <h2>laravel框架开发项目架构扩展包</h2>
 
 
@@ -10,10 +11,11 @@
 
 </p>
 
+
 ## 官方qq群
     qq:680531281
 
-<!--
+
 ## 目录结构
 
 + Contracts  : 仓储业务抽象接口。
@@ -22,7 +24,7 @@
 + Exceptions : 仓储异常处理。
 + Filters    : 根据参数自动过滤和排序。
 + Traits     : Trait封装
- -->
+
 
 
 - <a href="#installation">Installation</a>
@@ -79,10 +81,12 @@
 
 ## 基本使用
 
-- 创建组合配置
-    ```terminal
-    php artisan phpno1:entity {name} {--resource}
-    ```
+#### 创建组合配置
+
+    ```php
+           php artisan phpno1:entity {name} {--resource}
+       ```
+
         生成以下文件:
             1.控制器       controller
             2.校验文件     request
@@ -236,5 +240,5 @@ class UserRepositoryEloquent extends AbstractRepository implements UserRepositor
 ### 创建种子文件 继承 laravel Seeder
 #### php artisan phpno1:seeder {name}
 
-
+ -->
 
