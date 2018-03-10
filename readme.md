@@ -79,52 +79,60 @@
 
 ## 基本使用
 
-### 创建组合配置
-#### php artisan phpno1:entity {name} {--resource}
-    执行后会生成以下文件
-        1.
-        2.校验文件     request
-        3.数据处理文件 response
-        4.业务处理文件 service
-        5.数据映射文件 repository
-        6.模型文件     model
-        7.种子文件     seeder
-        8.服务提供者   provider
-        9.服务提供者   filter
+- 创建组合配置
+    ```terminal
+    php artisan phpno1:entity {name} {--resource}
+    ```
+        生成以下文件:
+            1.控制器       controller
+            2.校验文件     request
+            3.数据处理文件 response
+            4.业务处理文件 service
+            5.数据映射文件 repository
+            6.模型文件     model
+            7.种子文件     seeder
+            8.服务提供者   provider
+            9.过滤条件     filter
 
-### 创建校验 继承 laravel request
-#### php artisan phpno1:request {name} {--dir=}
+- 创建校验 继承laravel request
+    ```terminal
+    php artisan phpno1:request {name} {--dir=}
+    ```
 
-### 创建控制器
-#### php artisan phpno1:controller {name} {--resource}
-```php
-namespace App\Http\Controllers\Backend;
+- 创建控制器
+    ```terminal
+        php artisan phpno1:controller {name} {--resource}
+    ```
+    ```php
+    <?php
 
-use App\Http\Responses\UserIndexResponse;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Services\UserService;
+    namespace App\Http\Controllers\Backend;
 
-class FoodCategoryController extends Controller
-{
-    private $userService;
+    use App\Http\Responses\UserIndexResponse;
+    use Illuminate\Http\Request;
+    use App\Http\Controllers\Controller;
+    use App\Services\UserService;
 
-    public function __construct(UserService $userService)
+    class FoodCategoryController extends Controller
     {
-        $this->userService=$userService;
-    }
+        private $userService;
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $result=$this->userService->getUserList();
-        return new UserIndexResponse($result);
-    }
-```
+        public function __construct(UserService $userService)
+        {
+            $this->userService=$userService;
+        }
+
+        /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function index()
+        {
+            $result=$this->userService->getUserList();
+            return new UserIndexResponse($result);
+        }
+    ```
 
 ### 创建数据处理层
 ####  php artisan phpno1:response {name} {--dir=}
