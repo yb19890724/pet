@@ -82455,7 +82455,7 @@ if (inBrowser && window.Vue) {
             name: 'zooCreate',
             component: __webpack_require__(237)
         }, {
-            path: 'edit',
+            path: ':id/edit',
             name: 'zooEdit',
             component: __webpack_require__(246)
         }]
@@ -84954,7 +84954,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleDelete: function handleDelete(index) {
             var self = this;
 
-            this.$http.delete('/zoo' + index).then(function (response) {
+            this.$http.delete('/zoo/' + index).then(function (response) {
                 if (response.status == 204) {
                     Object(__WEBPACK_IMPORTED_MODULE_2__helps_helps__["b" /* notificationReload */])(self.$t('message.delete'), function () {
                         self.$refs.table.reloadListData();
@@ -85288,10 +85288,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
         createView: function createView() {
-            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["a" /* foodCategoryView */].create });
+            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["c" /* zooView */].create });
         },
         editView: function editView() {
-            this.$router.push(__WEBPACK_IMPORTED_MODULE_0__config_backend_views__["a" /* foodCategoryView */].edit);
+            this.$router.push(__WEBPACK_IMPORTED_MODULE_0__config_backend_views__["c" /* zooView */].edit);
         },
         deleteRow: function deleteRow() {
             alert('删除');
@@ -95453,7 +95453,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95479,12 +95479,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { CategoryForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
+    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
     data: function data() {
         return {
             form: {
                 name: '',
-                sort: 0
+                sex: 'male',
+                birthday: '',
+                sort: 0,
+                state: 'good',
+                descriptions: ''
             }
         };
     }
@@ -95525,7 +95529,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95538,6 +95542,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_backend_views__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_helps__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__ = __webpack_require__(353);
 //
 //
 //
@@ -95557,6 +95562,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -95574,7 +95614,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: '',
             method: '',
             message: '',
-            submit: false
+            submit: false,
+            sex: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["b" /* sex */],
+            color: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["a" /* color */],
+            state: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["c" /* state */]
         };
     },
 
@@ -95582,7 +95625,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit() {
             var _this = this;
 
-            this.url = '/food/category' + (this.form.id ? '/' + this.form.id : '');
+            this.url = '/zoo' + (this.form.id ? '/' + this.form.id : '');
             this.method = this.form.id ? 'put' : 'post';
             this.message = this.$t('message.' + this.method);
             if (this.submit == false) {
@@ -95645,15 +95688,103 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.name") } },
+            { attrs: { label: _vm.$t("fields.sex") } },
             [
-              _c("el-input", {
+              _vm._l(_vm.sex, function(val, index) {
+                return [
+                  _c(
+                    "el-radio",
+                    {
+                      attrs: { label: index },
+                      model: {
+                        value: _vm.form.sex,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "sex", $$v)
+                        },
+                        expression: "form.sex"
+                      }
+                    },
+                    [_vm._v(_vm._s(val))]
+                  )
+                ]
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.state") } },
+            [
+              _vm._l(_vm.state, function(val, index) {
+                return [
+                  _c(
+                    "el-radio",
+                    {
+                      attrs: { label: index },
+                      model: {
+                        value: _vm.form.state,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "state", $$v)
+                        },
+                        expression: "form.state"
+                      }
+                    },
+                    [_vm._v(_vm._s(val))]
+                  )
+                ]
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.color") } },
+            [
+              _c(
+                "el-select",
+                {
+                  staticStyle: { width: "100%" },
+                  attrs: { placeholder: _vm.$t("placeholder.colorSelect") },
+                  model: {
+                    value: _vm.form.color,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "color", $$v)
+                    },
+                    expression: "form.color"
+                  }
+                },
+                [
+                  _vm._l(_vm.color, function(val, index) {
+                    return [
+                      _c("el-option", { attrs: { label: val, value: index } })
+                    ]
+                  })
+                ],
+                2
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.birthday") } },
+            [
+              _c("el-date-picker", {
+                staticStyle: { width: "100%" },
+                attrs: {
+                  type: "datetime",
+                  "value-format": "yyyy-MM-dd HH:mm:ss",
+                  placeholder: "选择日期时间"
+                },
                 model: {
-                  value: _vm.form.name,
+                  value: _vm.form.birthday,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "name", $$v)
+                    _vm.$set(_vm.form, "birthday", $$v)
                   },
-                  expression: "form.name"
+                  expression: "form.birthday"
                 }
               })
             ],
@@ -95671,6 +95802,24 @@ var render = function() {
                     _vm.$set(_vm.form, "sort", $$v)
                   },
                   expression: "form.sort"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.descriptions") } },
+            [
+              _c("el-input", {
+                attrs: { type: "textarea" },
+                model: {
+                  value: _vm.form.descriptions,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "descriptions", $$v)
+                  },
+                  expression: "form.descriptions"
                 }
               })
             ],
@@ -95725,7 +95874,7 @@ var render = function() {
         _c(
           "div",
           { attrs: { slot: "form" }, slot: "form" },
-          [_c("category-form", { attrs: { form: _vm.form } })],
+          [_c("zoo-form", { attrs: { form: _vm.form } })],
           1
         )
       ])
@@ -95855,7 +96004,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { CategoryForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
+    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
     data: function data() {
         return {
             form: {}
@@ -95869,7 +96018,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getFindData: function getFindData() {
             var _this = this;
 
-            this.$http.get('/food/category/' + this.$route.params.id).then(function (response) {
+            this.$http.get('/zoo/' + this.$route.params.id).then(function (response) {
                 if (response.data != '') {
                     _this.form = response.data;
                 }
@@ -95896,7 +96045,7 @@ var render = function() {
         _c(
           "div",
           { attrs: { slot: "form" }, slot: "form" },
-          [_c("category-form", { attrs: { form: _vm.form } })],
+          [_c("zoo-form", { attrs: { form: _vm.form } })],
           1
         )
       ])
@@ -96635,7 +96784,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { CategoryForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
+    components: { foodForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
     data: function data() {
         return {
             form: {
@@ -96918,7 +97067,7 @@ var render = function() {
         _c(
           "div",
           { attrs: { slot: "form" }, slot: "form" },
-          [_c("category-form", { attrs: { form: _vm.form } })],
+          [_c("food-form", { attrs: { form: _vm.form } })],
           1
         )
       ])
@@ -97048,7 +97197,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { CategoryForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
+    components: { foodForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
     data: function data() {
         return {
             form: {}
@@ -97089,7 +97238,7 @@ var render = function() {
         _c(
           "div",
           { attrs: { slot: "form" }, slot: "form" },
-          [_c("category-form", { attrs: { form: _vm.form } })],
+          [_c("food-form", { attrs: { form: _vm.form } })],
           1
         )
       ])
@@ -100389,6 +100538,8 @@ VueI18n.version = '7.4.2';
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     zooTitle: '宠物管理',
+    zooCreate: '添加宠物',
+    zooEdit: '修改宠物',
     foodTitle: '食物管理',
     foodCategoryCreate: "添加食物分类",
     foodCategoryEdit: "修改食物分类",
@@ -100405,7 +100556,12 @@ VueI18n.version = '7.4.2';
 /* harmony default export */ __webpack_exports__["a"] = ({
     name: '名称',
     sort: '排序',
-    food_category: '食物分类'
+    sex: '性别',
+    color: '颜色',
+    food_category: '食物分类',
+    birthday: '出生日期',
+    state: '状态',
+    descriptions: '简介'
 });
 
 /***/ }),
@@ -100436,7 +100592,10 @@ VueI18n.version = '7.4.2';
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     categoryName: '请输入分类名称',
-    categorySelect: '请选择食物分类'
+    categorySelect: '请选择食物分类',
+    sexSelect: '请选择性别',
+    colorSelect: '请选择性颜色',
+    stateSelect: '请选择性宠物状态'
 });
 
 /***/ }),
@@ -101274,6 +101433,39 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return sex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return state; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return color; });
+
+var sex = {
+    male: '公',
+    female: '母'
+};
+
+var state = {
+    good: '优秀',
+    normal: '正常',
+    sick: '病态'
+};
+
+var color = {
+    1: '黑色',
+    2: '红色',
+    3: '蓝色',
+    4: '黄色'
+};
 
 /***/ })
 /******/ ]);

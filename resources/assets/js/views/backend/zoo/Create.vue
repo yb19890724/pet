@@ -2,21 +2,25 @@
     <div class='animated fadeIn'>
         <v-form :moduleTitle="$t('module.zooCreate')" >
             <div slot="form" >
-                <category-form :form="form"></category-form>
+                <zoo-form :form="form"></zoo-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import CategoryForm from './Form'
+    import zooForm from './Form'
     export default {
-        components: { CategoryForm },
+        components: { zooForm },
         data() {
             return {
                 form: {
                     name: '',
-                    sort: 0
+                    sex: 'male',
+                    birthday: '',
+                    sort: 0,
+                    state: 'good',
+                    descriptions: ''
                 }
             }
         }

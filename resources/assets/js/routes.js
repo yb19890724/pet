@@ -28,7 +28,7 @@ export default [
                         component: require('./views/backend/zoo/Create.vue')
                     },
                     {
-                        path: 'edit',
+                        path: ':id/edit',
                         name:'zooEdit',
                         component: require('./views/backend/zoo/Edit.vue')
                     }

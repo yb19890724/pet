@@ -64,7 +64,8 @@ class ZooController extends Controller
      */
     public function show($id)
     {
-        //
+        $result=$this->zoo->getZooDetail($id);
+        return $this->responseJson($result);
     }
 
     /**
@@ -87,7 +88,11 @@ class ZooController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->zoo->updateZoo($id, $request->all());
+        if (!empty($result)) {
+            return $this->withNotContent();
+        }
+        return $this->withNotImplemented(trans('message.update.error'));
     }
 
     /**
@@ -98,6 +103,10 @@ class ZooController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->zoo->deleteZoo($id);
+        if (!empty($result)) {
+            return $this->withGone(trans('message.delete.success'));
+        }
+        return $this->withNotImplemented(trans('message.delete.error'));
     }
 }

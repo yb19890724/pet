@@ -8,13 +8,14 @@ class Zoo extends Model
 {
     protected $fillable = [
         'name',
-        'boxes_id',
         'sex',
         'state',
         'descriptions',
         'color',
+        /*
+        'boxes_id',
         'dominant_gene',
-        'hide_gene',
+        'hide_gene',*/
         'sort',
         'birthday'
     ];

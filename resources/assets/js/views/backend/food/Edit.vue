@@ -2,16 +2,16 @@
     <div class='animated fadeIn'>
         <v-form :moduleTitle="$t('module.foodEdit')">
             <div slot="form" >
-                <category-form :form="form"></category-form>
+                <food-form :form="form"></food-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import CategoryForm from './Form';
+    import foodForm from './Form';
     export default {
-        components: { CategoryForm },
+        components: { foodForm },
         data() {
             return {
                 form:{

@@ -62,7 +62,7 @@
             handleDelete(index){
                 let self=this;
 
-                this.$http.delete('/zoo'+index).then(response => {
+                this.$http.delete('/zoo/'+index).then(response => {
                     if(response.status==204){
                         notificationReload(self.$t('message.delete'),function(){
                             self.$refs.table.reloadListData();
