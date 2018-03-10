@@ -49,7 +49,11 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result=$this->food->storeFood($request->all());
+        if(!empty($result)){
+            return $this->withCreated(['message'=>trans('message.create.success')]);
+        }
+        return $this->withCreated($result);
     }
 
     /**
@@ -61,6 +65,8 @@ class FoodController extends Controller
     public function show($id)
     {
         //
+        $result=$this->food->getFoodDetail($id);
+        return $this->responseJson($result);
     }
 
     /**
@@ -83,7 +89,11 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->food->updateFood($id, $request->all());
+        if (!empty($result)) {
+            return $this->withNotContent();
+        }
+        return $this->withNotImplemented(trans('message.update.error'));
     }
 
     /**
@@ -94,6 +104,10 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->food->deleteFood($id);
+        if (!empty($result)) {
+            return $this->withGone(trans('message.delete.success'));
+        }
+        return $this->withNotImplemented(trans('message.delete.error'));
     }
 }

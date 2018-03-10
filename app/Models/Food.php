@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Food extends Model
 {
     //
-    protected $fillable=['category','name','sort'];
+    protected $fillable=['food_category_id','name','sort'];
 
     protected $dates=['created_at', 'updated_at'];
 

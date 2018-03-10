@@ -38,6 +38,10 @@ class FoodCategoryService
         return $this->foodCategoryRepository->getSearchFoodCategoryList($perPage);
     }
 
+    public function getFoodCategoryAll()
+    {
+        return $this->foodCategoryRepository->getFoodCategoryAll();
+    }
 
     /**
      * Get one FoodCategory Detail by primary key.

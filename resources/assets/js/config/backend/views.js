@@ -11,4 +11,9 @@ export const foodCategoryView ={
     edit: 'foodCategoryEdit'
 };
 
+export const foodView ={
+    index:'foodHome',
+    create: 'foodCreate',
+    edit: 'foodEdit'
+};
 

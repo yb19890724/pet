@@ -12,8 +12,8 @@ use Phpno1\Repository\Criterias\FilterRequest;
 class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodCategoryRepository
 {
     protected $filters = [
-        'search_name'=>SearchNameFilter::class,
-        'o'=>SortFilter::class,
+        'search_name' => SearchNameFilter::class,
+        'o' => SortFilter::class,
     ];
 
     public function entity()
@@ -32,5 +32,12 @@ class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodC
         return $this->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
+    }
+
+    public function getFoodCategoryAll()
+    {
+        return $this->withCriteria(
+            new FilterRequest($this->filters)
+        )->all();
     }
 }

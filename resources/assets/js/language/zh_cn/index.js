@@ -3,8 +3,8 @@ import module from './module';
 import fields from './fields';
 import message from './message';
 import form from './form';
-import search from './search';
+import placeholder from './placeholder';
 
 export default {
-    table,module,fields,message,form,search
+    table,module,fields,message,form,placeholder
 }

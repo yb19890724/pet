@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Responses\FoodCategoryIndexResponse;
+use App\Http\Responses\FoodCategory\FoodCategoryAllResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\FoodCategoryService;
@@ -30,6 +31,17 @@ class FoodCategoryController extends Controller
     }
 
     /**
+     * get foodCategory select data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getFoodCategoryAll()
+    {
+        $result=$this->foodCategory->getFoodCategoryAll();
+        return new FoodCategoryAllResponse($result);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -49,7 +61,7 @@ class FoodCategoryController extends Controller
     {
         $result=$this->foodCategory->storeFoodCategory($request->all());
         if(!empty($result)){
-            return $this->withCreated(['message'=>'添加成功']);
+            return $this->withCreated(['message'=>trans('message.create.success')]);
         }
         return $this->withCreated($result);
     }
@@ -90,7 +102,7 @@ class FoodCategoryController extends Controller
         if (!empty($result)) {
             return $this->withNotContent();
         }
-        return $this->withNotImplemented('修改失败');
+        return $this->withNotImplemented(trans('message.update.error'));
     }
 
     /**
@@ -103,8 +115,8 @@ class FoodCategoryController extends Controller
     {
         $result = $this->foodCategory->deleteFoodCategory($id);
         if (!empty($result)) {
-            return $this->withGone('删除成功');
+            return $this->withGone(trans('message.delete.success'));
         }
-        return $this->withNotImplemented('删除失败');
+        return $this->withNotImplemented(trans('message.delete.error'));
     }
 }

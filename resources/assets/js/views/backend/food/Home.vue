@@ -1,6 +1,6 @@
 <template>
     <div class='animated fadeIn'>
-        <v-searchTable :moduleTitle="$t('module.foodCategoryTitle')" >
+        <v-searchTable :moduleTitle="$t('module.foodTitle')" >
             <!-- 搜索视图 -->
             <SearchView slot="search" @searchListData="searchListData"></SearchView>
             <!-- 按钮视图-->
@@ -17,14 +17,14 @@
     import SearchView from './Search';
     import TitleView from './TitleButton';
     import { notificationReload } from '../../../helps/helps';
-    import { foodCategoryView } from '../../../config/backend/views';
+    import { foodView } from '../../../config/backend/views';
     export default{
         components:{
             SearchView,TitleView
         },
         data() {
             return {
-                views:foodCategoryView,
+                views:foodView,
                 fields:[
                     {
                         label:'食物名称',

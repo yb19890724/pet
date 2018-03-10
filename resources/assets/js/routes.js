@@ -40,6 +40,16 @@ export default [
                         component: require('./views/backend/food/Home.vue')
                     },
                     {
+                        path: 'create',
+                        name:'foodCreate',
+                        component: require('./views/backend/food/Create.vue')
+                    },
+                    {
+                        path: 'edit/:id',
+                        name:'foodEdit',
+                        component: require('./views/backend/food/Edit.vue')
+                    },
+                    {
                         path: 'category',
                         component: require('./views/backend/layouts/ModuleView.vue'),
                         children: [
