@@ -6,7 +6,7 @@
             </el-form-item>
 
             <el-form-item :label="$t('fields.food_category')">
-                <el-select v-model="form.food_category_id" :placeholder="$t('placeholder.categorySelect')">
+                <el-select v-model="form.food_category_id" :placeholder="$t('placeholder.categorySelect')" style="width: 100%;">
                     <template v-for="foodCategory in foodCategorySelect">
                         <el-option :label="foodCategory.name" :value="foodCategory.id"></el-option>
                     </template>

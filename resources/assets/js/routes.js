@@ -45,7 +45,7 @@ export default [
                         component: require('./views/backend/food/Create.vue')
                     },
                     {
-                        path: 'edit/:id',
+                        path: ':id/edit',
                         name:'foodEdit',
                         component: require('./views/backend/food/Edit.vue')
                     },
@@ -64,7 +64,7 @@ export default [
                                 component: require('./views/backend/category/Create.vue')
                             },
                             {
-                                path: 'edit/:id',
+                                path: ':id/edit',
                                 name:'foodCategoryEdit',
                                 component: require('./views/backend/category/Edit.vue')
                             }

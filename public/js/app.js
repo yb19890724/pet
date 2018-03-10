@@ -82364,7 +82364,7 @@ if (inBrowser && window.Vue) {
             name: 'foodCreate',
             component: __webpack_require__(334)
         }, {
-            path: 'edit/:id',
+            path: ':id/edit',
             name: 'foodEdit',
             component: __webpack_require__(343)
         }, {
@@ -82379,7 +82379,7 @@ if (inBrowser && window.Vue) {
                 name: 'foodCategoryCreate',
                 component: __webpack_require__(275)
             }, {
-                path: 'edit/:id',
+                path: ':id/edit',
                 name: 'foodCategoryEdit',
                 component: __webpack_require__(284)
             }]
@@ -97042,7 +97042,7 @@ var render = function() {
           attrs: {
             type: "text",
             name: "name",
-            placeholder: _vm.$t("search.categoryName")
+            placeholder: _vm.$t("placeholder.categoryName")
           },
           domProps: { value: _vm.form.search_name },
           on: {
@@ -101222,6 +101222,7 @@ var render = function() {
               _c(
                 "el-select",
                 {
+                  staticStyle: { width: "100%" },
                   attrs: { placeholder: _vm.$t("placeholder.categorySelect") },
                   model: {
                     value: _vm.form.food_category_id,
