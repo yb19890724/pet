@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Responses\Gene\GeneIndexResponse;
+use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\GeneService;
 
 class GeneController extends Controller
 {
-    protected $geneService;
+    use ResponseTrait;
+    protected $gene;
 
     public function __construct(GeneService $geneService)
     {
-        $this->geneService=$geneService;
+        $this->gene=$geneService;
     }
 
     /**
@@ -22,7 +25,8 @@ class GeneController extends Controller
      */
     public function index()
     {
-        //
+        $result=$this->gene->getGeneList();
+        return new GeneIndexResponse($result);
     }
 
     /**
@@ -43,7 +47,11 @@ class GeneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result=$this->gene->storeGene($request->all());
+        if(!empty($result)){
+            return $this->withCreated(['message'=>trans('message.create.success')]);
+        }
+        return $this->withCreated($result);
     }
 
     /**
@@ -54,7 +62,8 @@ class GeneController extends Controller
      */
     public function show($id)
     {
-        //
+        $result=$this->gene->getGeneDetail($id);
+        return $this->responseJson($result);
     }
 
     /**
@@ -77,7 +86,11 @@ class GeneController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->gene->updateGene($id, $request->all());
+        if (!empty($result)) {
+            return $this->withNotContent();
+        }
+        return $this->withNotImplemented(trans('message.update.error'));
     }
 
     /**
@@ -88,6 +101,10 @@ class GeneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->gene->deleteGene($id);
+        if (!empty($result)) {
+            return $this->withGone(trans('message.delete.success'));
+        }
+        return $this->withNotImplemented(trans('message.delete.error'));
     }
 }
