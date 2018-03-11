@@ -21,8 +21,8 @@ class CreateZoosTable extends Migration
             $table->enum('state',['good','normal','sick'])->comment('状态:1优秀,2正常,3病态');
             $table->string('descriptions',100)->comment('描述');
             $table->integer('color')->comment('色系');
-            $table->string('dominant_gene',100)->comment('显性基因');//checkbox
-            $table->string('hide_gene',100)->comment('隐性基因');//checkbox
+            $table->string('dominant_gene',50)->comment('显性基因');//checkbox
+            $table->string('hide_gene',50)->comment('隐性基因');//checkbox
             $table->integer('sort')->comment('排序');
             $table->dateTime('birthday')->comment('出生日期');
             $table->timestamps();

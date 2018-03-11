@@ -31,6 +31,27 @@ export default [
                         path: ':id/edit',
                         name:'zooEdit',
                         component: require('./views/backend/zoo/Edit.vue')
+                    },
+                    {
+                        path: 'boxes',
+                        component: require('./views/backend/layouts/ModuleView.vue'),
+                        children: [
+                            {
+                                path: '/',
+                                name:'boxesHome',
+                                component: require('./views/backend/boxes/Home.vue')
+                            },
+                            {
+                                path: 'create',
+                                name:'boxesCreate',
+                                component: require('./views/backend/boxes/Create.vue')
+                            },
+                            {
+                                path: ':id/edit',
+                                name:'boxesEdit',
+                                component: require('./views/backend/boxes/Edit.vue')
+                            }
+                        ]
                     }
                 ]
             },

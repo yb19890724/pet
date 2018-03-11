@@ -6,6 +6,11 @@ export const zooView ={
     edit: 'zooEdit'
 };
 
+export const boxesView ={
+    index:'boxesHome',
+    create: 'boxesCreate',
+    edit: 'boxesEdit'
+};
 export const foodCategoryView ={
     index:'foodCategoryHome',
     create: 'foodCategoryCreate',
