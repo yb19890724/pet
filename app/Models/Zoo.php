@@ -12,7 +12,7 @@ class Zoo extends Model
         'state',
         'descriptions',
         'color',
-        'parent_id',
+        'father_id',
         'mother_id',
         /*
         'boxes_id',
@@ -22,6 +22,11 @@ class Zoo extends Model
         'birthday'
     ];
 
+   /* public function ()
+    {
+        
+    }*/
+    
     /**
      * @return \Illuminate\Config\Repository|mixed|string
      */

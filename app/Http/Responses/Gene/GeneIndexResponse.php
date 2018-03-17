@@ -3,9 +3,12 @@
 namespace App\Http\Responses\Gene;
 
 use Illuminate\Contracts\Support\Responsable;
+use App\Traits\ResponseTrait;
 
 class GeneIndexResponse implements Responsable
 {
+    use ResponseTrait;
+
     protected $result;
 
     public function __construct($result)
@@ -22,8 +25,14 @@ class GeneIndexResponse implements Responsable
 
     protected function transform()
     {
-        return [
+        $this->result->getCollection()->transform(function ($food) {
+            return [
+                'id'           => $food->id,
+                'name'         => $food->name,
+                'gene_type'         => $food->name,
+            ];
+        });
 
-        ];
+        return $this->responseJson($this->result);
     }
 }

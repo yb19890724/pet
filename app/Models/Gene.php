@@ -3,20 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\DateTimeTrait;
 
 class Gene extends Model
 {
+    use DateTimeTrait;
+
     protected $fillable=['box_number','sort'];
 
     protected $dates=['created_at', 'updated_at'];
 
-    public function createTime()
+    /**
+     * @return \Illuminate\Config\Repository|mixed|string
+     */
+    public function geneTypeTransform()
     {
-        return $this->created_at->toDateTimeString();
+        $geneType=config("dictionaries.gene_type.{$this->gene_type}");
+        return $geneType ?? '';
     }
 
-    public function updateTime()
-    {
-        return $this->updated_at->toDateTimeString();
-    }
+
 }

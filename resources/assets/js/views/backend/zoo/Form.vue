@@ -43,9 +43,9 @@
             </el-form-item>
 
             <el-form-item :label="$t('fields.parent')">
-                <el-select v-model="form.parent_id" :placeholder="$t('placeholder.parentSelect')" style="width: 100%;">
-                    <template v-for="parent in parent">
-                        <el-option :label="parent.name" :value="parent.id"></el-option>
+                <el-select v-model="form.father_id" :placeholder="$t('placeholder.parentSelect')" style="width: 100%;">
+                    <template v-for="father in father">
+                        <el-option :label="father.label" :value="father.value"></el-option>
                     </template>
                 </el-select>
             </el-form-item>
@@ -53,7 +53,7 @@
             <el-form-item :label="$t('fields.mother')">
                 <el-select v-model="form.mother_id" :placeholder="$t('placeholder.motherSelect')" style="width: 100%;">
                     <template v-for="mother in mother">
-                        <el-option :label="mother.name" :value="mother.id"></el-option>
+                        <el-option :label="mother.label" :value="mother.value"></el-option>
                     </template>
                 </el-select>
             </el-form-item>
@@ -93,11 +93,11 @@
                 color:color,
                 state:state,
                 mother:{},
-                parent:{}
+                father:{}
             }
         },
         mounted(){
-            this.parentSelect();
+            this.fatherSelect();
             this.motherSelect();
         },
         methods: {
@@ -132,10 +132,10 @@
                     }
                 });
             },
-            parentSelect(){
+            fatherSelect(){
                 this.$http.get('/zoos', {params:{sex:'male'}}).then((response) => {
                     if (response.status ==200) {
-                        this.parent=response.data;
+                        this.father=response.data;
                     }
                 });
             }

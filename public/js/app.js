@@ -95729,11 +95729,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             color: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["a" /* color */],
             state: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["c" /* state */],
             mother: {},
-            parent: {}
+            father: {}
         };
     },
     mounted: function mounted() {
-        this.parentSelect();
+        this.fatherSelect();
         this.motherSelect();
     },
 
@@ -95775,12 +95775,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        parentSelect: function parentSelect() {
+        fatherSelect: function fatherSelect() {
             var _this3 = this;
 
             this.$http.get('/zoos', { params: { sex: 'male' } }).then(function (response) {
                 if (response.status == 200) {
-                    _this3.parent = response.data;
+                    _this3.father = response.data;
                 }
             });
         }
@@ -95979,18 +95979,18 @@ var render = function() {
                   staticStyle: { width: "100%" },
                   attrs: { placeholder: _vm.$t("placeholder.parentSelect") },
                   model: {
-                    value: _vm.form.parent_id,
+                    value: _vm.form.father_id,
                     callback: function($$v) {
-                      _vm.$set(_vm.form, "parent_id", $$v)
+                      _vm.$set(_vm.form, "father_id", $$v)
                     },
-                    expression: "form.parent_id"
+                    expression: "form.father_id"
                   }
                 },
                 [
-                  _vm._l(_vm.parent, function(parent) {
+                  _vm._l(_vm.father, function(father) {
                     return [
                       _c("el-option", {
-                        attrs: { label: parent.name, value: parent.id }
+                        attrs: { label: father.label, value: father.value }
                       })
                     ]
                   })
@@ -96022,7 +96022,7 @@ var render = function() {
                   _vm._l(_vm.mother, function(mother) {
                     return [
                       _c("el-option", {
-                        attrs: { label: mother.name, value: mother.id }
+                        attrs: { label: mother.label, value: mother.value }
                       })
                     ]
                   })
