@@ -12,6 +12,8 @@ class Zoo extends Model
         'state',
         'descriptions',
         'color',
+        'parent_id',
+        'mother_id',
         /*
         'boxes_id',
         'dominant_gene',

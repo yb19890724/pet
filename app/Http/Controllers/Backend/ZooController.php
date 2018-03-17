@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Responses\Zoo\ZooShowResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\ZooService;
 use App\Http\Responses\Zoo\ZooIndexResponse;
+use App\Http\Responses\Zoo\ZooAllResponse;
 use App\Traits\ResponseTrait;
 
 
@@ -17,7 +19,18 @@ class ZooController extends Controller
 
     public function __construct(ZooService $zooService)
     {
-        $this->zoo=$zooService;
+        $this->zoo = $zooService;
+    }
+
+    /**
+     * get zoo all .
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getZooAll()
+    {
+        $result = $this->zoo->getZooAll();
+        return new ZooAllResponse($result);
     }
 
     /**
@@ -27,7 +40,7 @@ class ZooController extends Controller
      */
     public function index()
     {
-        $result=$this->zoo->getSearchZooList();
+        $result = $this->zoo->getSearchZooList();
         return new ZooIndexResponse($result);
     }
 
@@ -44,14 +57,14 @@ class ZooController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $result=$this->zoo->storeZoo($request->all());
-        if(!empty($result)){
-            return $this->withCreated(['message'=>trans('message.create.success')]);
+        $result = $this->zoo->storeZoo($request->all());
+        if (!empty($result)) {
+            return $this->withCreated(['message' => trans('message.create.success')]);
         }
         return $this->withCreated($result);
     }
@@ -59,19 +72,19 @@ class ZooController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $result=$this->zoo->getZooDetail($id);
-        return $this->responseJson($result);
+        $result = $this->zoo->getZooDetail($id);
+        return new ZooShowResponse($result);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -82,8 +95,8 @@ class ZooController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,7 +111,7 @@ class ZooController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

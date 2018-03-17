@@ -3,5 +3,7 @@ export default {
     categorySelect:'请选择食物分类',
     sexSelect:'请选择性别',
     colorSelect:'请选择性颜色',
-    stateSelect:'请选择性宠物状态'
+    stateSelect:'请选择性宠物状态',
+    parentSelect:'请选择父类',
+    motherSelect:'请选择母类'
 }

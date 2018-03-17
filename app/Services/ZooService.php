@@ -16,6 +16,17 @@ class ZooService
         $this->zooRepository = $zooRepository;
     }
 
+
+    /**
+     * get zoo all.
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getZooAll()
+    {
+        return $this->zooRepository->getZooAll();
+    }
+    
    /**
     * Get Zoo list and paginate.
     *

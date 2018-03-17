@@ -7,5 +7,7 @@ export default {
     food_category:'食物分类',
     birthday:'出生日期',
     state:'状态',
+    parent:'父类',
+    mother:'母类',
     descriptions:'简介'
 }

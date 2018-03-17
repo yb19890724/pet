@@ -16,11 +16,15 @@
             return {
                 form: {
                     name: '',
+                    color:'',
                     sex: 'male',
                     birthday: '',
                     sort: 0,
                     state: 'good',
-                    descriptions: ''
+                    descriptions: '',
+                    parent_id:'',
+                    mother_id:''
+
                 }
             }
         }

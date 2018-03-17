@@ -5,7 +5,7 @@ namespace App\Http\Responses\Zoo;
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class ZooIndexResponse implements Responsable
+class ZooAllResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,16 +25,12 @@ class ZooIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($zoo) {
+        $this->result->transform(function ($zoo) {
             return [
-                'id'           => $zoo->id,
-                'name'         => $zoo->name,
-                'sex_title'    => $zoo->sexTransform(),
-                'color_title'  => $zoo->colorTransform(),
-                'state_title'  => $zoo->stateTransform(),
+                'value'           => $zoo->value,
+                'label'         => $zoo->label
             ];
         });
-
         return $this->responseJson($this->result);
     }
 }

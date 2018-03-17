@@ -25,13 +25,13 @@ class FoodIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($foodCategory) {
+        $this->result->getCollection()->transform(function ($food) {
             return [
-                'id'           => $foodCategory->id,
-                'name'         => $foodCategory->name,
-                'sort'         => $foodCategory->sort,
-                'created_at'   => $foodCategory->createTime(),
-                'updated_at'   => $foodCategory->updateTime(),
+                'id'           => $food->id,
+                'name'         => $food->name,
+                'sort'         => $food->sort,
+                'created_at'   => $food->createTime(),
+                'updated_at'   => $food->updateTime(),
             ];
         });
 

@@ -10,6 +10,7 @@ class zooRoute
     public function map(Registrar $router)
     {
         $router->resource('/zoo','ZooController');
+        $router->get('/zoos','ZooController@getZooAll');
     }
 }
 

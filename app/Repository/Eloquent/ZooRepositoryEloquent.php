@@ -8,12 +8,14 @@ use Phpno1\Architecture\Eloquent\AbstractRepository;
 use Phpno1\Architecture\Criterias\FilterRequest;
 use App\Repository\Filters\SearchNameFilter;
 use App\Repository\Filters\SortFilter;
+use App\Repository\Filters\SexFilter;
 
 class ZooRepositoryEloquent extends AbstractRepository implements ZooRepository
 {
     protected $filters = [
-        'search_name'=>SearchNameFilter::class,
-        'o'=>SortFilter::class,
+        'search_name' => SearchNameFilter::class,
+        'sex' => SexFilter::class,
+        'o' => SortFilter::class,
     ];
 
     public function entity()
@@ -32,5 +34,17 @@ class ZooRepositoryEloquent extends AbstractRepository implements ZooRepository
         return $this->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
+    }
+
+    /**
+     * Get zoo all .
+     *
+     * @return mixed
+     */
+    public function getZooAll()
+    {
+        return $this->withCriteria(
+            new FilterRequest($this->filters)
+        )->select(['id as value','name as label'])->get();
     }
 }

@@ -20,8 +20,10 @@
 
             <el-form-item :label="$t('fields.color')">
                 <el-select v-model="form.color" :placeholder="$t('placeholder.colorSelect')" style="width: 100%;">
-                    <template v-for="(val,index) in color">
-                        <el-option :label="val" :value="index"></el-option>
+                    <template v-for="(label,value) in color">
+                        <el-option
+                                    :label="label"
+                                    :value="value"></el-option>
                     </template>
                 </el-select>
             </el-form-item>
@@ -38,6 +40,22 @@
 
             <el-form-item :label="$t('fields.sort')">
                 <el-input v-model="form.sort"></el-input>
+            </el-form-item>
+
+            <el-form-item :label="$t('fields.parent')">
+                <el-select v-model="form.parent_id" :placeholder="$t('placeholder.parentSelect')" style="width: 100%;">
+                    <template v-for="parent in parent">
+                        <el-option :label="parent.name" :value="parent.id"></el-option>
+                    </template>
+                </el-select>
+            </el-form-item>
+
+            <el-form-item :label="$t('fields.mother')">
+                <el-select v-model="form.mother_id" :placeholder="$t('placeholder.motherSelect')" style="width: 100%;">
+                    <template v-for="mother in mother">
+                        <el-option :label="mother.name" :value="mother.id"></el-option>
+                    </template>
+                </el-select>
             </el-form-item>
 
             <el-form-item :label="$t('fields.descriptions')">
@@ -73,8 +91,14 @@
                 submit:false,
                 sex:sex,
                 color:color,
-                state:state
+                state:state,
+                mother:{},
+                parent:{}
             }
+        },
+        mounted(){
+            this.parentSelect();
+            this.motherSelect();
         },
         methods: {
             onSubmit() {
@@ -100,8 +124,21 @@
             },
             goBack(){
                 this.$router.go(-1);
+            },
+            motherSelect(){
+                this.$http.get('/zoos', {params:{sex:'female'}}).then((response) => {
+                    if (response.status ==200) {
+                        this.mother=response.data;
+                    }
+                });
+            },
+            parentSelect(){
+                this.$http.get('/zoos', {params:{sex:'male'}}).then((response) => {
+                    if (response.status ==200) {
+                        this.parent=response.data;
+                    }
+                });
             }
-
         }
     }
 </script>
