@@ -15,7 +15,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { boxesView } from '../../../config/backend/views';
+    import { boxView } from '../../../config/backend/views';
     import { notificationRedirect,redirect } from '../../../helps/helps';
     export default{
         props:{
@@ -36,7 +36,7 @@
         },
         methods: {
             onSubmit() {
-                this.url = '/boxes'+(this.form.id ? '/' + this.form.id : '');
+                this.url = '/box'+(this.form.id ? '/' + this.form.id : '');
                 this.method = this.form.id ? 'put' : 'post';
                 this.message=this.$t('message.'+this.method);
                 if(this.submit==false){

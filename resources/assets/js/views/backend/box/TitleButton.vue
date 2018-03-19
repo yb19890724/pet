@@ -8,15 +8,15 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { boxesView } from '../../../config/backend/views';
+    import { boxView } from '../../../config/backend/views';
 
     export default{
         methods: {
             createView(){
-                this.$router.push({name: boxesView.create});
+                this.$router.push({name: boxView.create});
             },
             editView(){
-                this.$router.push(boxesView.edit);
+                this.$router.push(boxView.edit);
             },
             deleteRow(){
                 alert('删除');

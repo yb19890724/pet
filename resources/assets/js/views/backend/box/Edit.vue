@@ -1,17 +1,17 @@
 <template>
     <div class='animated fadeIn'>
-        <v-form :moduleTitle="$t('module.boxesEdit')">
+        <v-form :moduleTitle="$t('module.boxEdit')">
             <div slot="form" >
-                <boxes-form :form="form"></boxes-form>
+                <box-form :form="form"></box-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import BoxesForm from './Form'
+    import BoxForm from './Form'
     export default {
-        components: { BoxesForm },
+        components: { BoxForm },
         data() {
             return {
                 form:{
@@ -23,7 +23,7 @@
         },
         methods: {
             getFindData(){
-                this.$http.get('/boxes/'+ this.$route.params.id).then(response => {
+                this.$http.get('/box/'+ this.$route.params.id).then(response => {
                     if (response.data != '') {
                         this.form =response.data
                     }

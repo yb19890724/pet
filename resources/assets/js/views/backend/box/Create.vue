@@ -1,17 +1,17 @@
 <template>
     <div class='animated fadeIn'>
-        <v-form :moduleTitle="$t('module.boxesCreate')" >
+        <v-form :moduleTitle="$t('module.boxCreate')" >
             <div slot="form" >
-                <boxes-form :form="form"></boxes-form>
+                <box-form :form="form"></box-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import BoxesForm from './Form'
+    import BoxForm from './Form'
     export default {
-        components: { BoxesForm },
+        components: { BoxForm },
         data() {
             return {
                 form: {

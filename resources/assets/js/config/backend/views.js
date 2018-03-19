@@ -6,10 +6,10 @@ export const zooView ={
     edit: 'zooEdit'
 };
 
-export const boxesView ={
-    index:'boxesHome',
-    create: 'boxesCreate',
-    edit: 'boxesEdit'
+export const boxView ={
+    index:'boxHome',
+    create: 'boxCreate',
+    edit: 'boxEdit'
 };
 export const foodCategoryView ={
     index:'foodCategoryHome',
