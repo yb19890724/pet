@@ -26,7 +26,7 @@ class FoodCategoryController extends Controller
      */
     public function index()
     {
-        $result=$this->foodCategory->getSearchFoodCategoryList();
+        $result=$this->foodCategory->searchFoodCategories();
         return new FoodCategoryIndexResponse($result);
     }
 

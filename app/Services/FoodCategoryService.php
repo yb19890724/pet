@@ -21,7 +21,7 @@ class FoodCategoryService
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getFoodCategoryList()
+    public function getFoodCategories()
     {
         return $this->foodCategoryRepository->paginate();
     }
@@ -33,11 +33,17 @@ class FoodCategoryService
      * @param int $perPage
      * @return mixed
      */
-    public function getSearchFoodCategoryList(int $perPage = 0)
+    public function searchFoodCategories(int $perPage = 0)
     {
-        return $this->foodCategoryRepository->getSearchFoodCategoryList($perPage);
+        return $this->foodCategoryRepository->searchFoodCategories($perPage);
     }
 
+    /**
+     * Get FoodCategory all .
+     *
+     * @param int $perPage
+     * @return mixed
+     */
     public function getFoodCategoryAll()
     {
         return $this->foodCategoryRepository->getFoodCategoryAll();

@@ -27,13 +27,19 @@ class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodC
      * @param int $perPage
      * @return mixed
      */
-    public function getSearchFoodCategoryList(int $perPage = 0)
+    public function searchFoodCategories(int $perPage = 0)
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
     }
 
+    /**
+     * Get FoodCategory all .
+     *
+     * @param int $perPage
+     * @return mixed
+     */
     public function getFoodCategoryAll()
     {
         return $this->withCriteria(
