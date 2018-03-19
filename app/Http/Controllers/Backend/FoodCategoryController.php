@@ -74,7 +74,7 @@ class FoodCategoryController extends Controller
      */
     public function show($id)
     {
-        $result=$this->foodCategory->getFoodCategoryDetail($id);
+        $result=$this->foodCategory->getFoodCategory($id);
         return $this->responseJson($result);
     }
 

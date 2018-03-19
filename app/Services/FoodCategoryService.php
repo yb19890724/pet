@@ -55,7 +55,7 @@ class FoodCategoryService
      * @param $id
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
      */
-    public function getFoodCategoryDetail($id)
+    public function getFoodCategory($id)
     {
         return $this->foodCategoryRepository->find($id);
     }
