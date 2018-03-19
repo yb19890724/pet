@@ -27,7 +27,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="active">
-                                <router-link to="/dashboard/zoo/boxes">宠物饲养箱管理</router-link>
+                                <router-link to="/dashboard/zoo/box">宠物饲养箱管理</router-link>
                             </li>
                             <li>
                                 <router-link to="/dashboard/zoo">宠物管理</router-link>

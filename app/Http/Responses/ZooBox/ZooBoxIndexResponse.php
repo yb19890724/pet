@@ -3,9 +3,12 @@
 namespace App\Http\Responses\ZooBox;
 
 use Illuminate\Contracts\Support\Responsable;
+use App\Traits\ResponseTrait;
 
 class ZooBoxIndexResponse implements Responsable
 {
+    use ResponseTrait;
+
     protected $result;
 
     public function __construct($result)
