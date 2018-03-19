@@ -2,11 +2,11 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\ZooBoxes;
-use App\Repository\Contracts\ZooBoxesRepository;
+use App\Models\ZooBox;
+use App\Repository\Contracts\ZooBoxRepository;
 use Phpno1\Architecture\Eloquent\AbstractRepository;
 
-class ZooBoxesRepositoryEloquent extends AbstractRepository implements ZooBoxesRepository
+class ZooBoxRepositoryEloquent extends AbstractRepository implements ZooBoxRepository
 {
     protected $filters = [
         // filter and sort settings
@@ -14,6 +14,6 @@ class ZooBoxesRepositoryEloquent extends AbstractRepository implements ZooBoxesR
 
     public function entity()
     {
-        return ZooBoxes::class;
+        return ZooBox::class;
     }
 }

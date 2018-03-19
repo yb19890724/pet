@@ -5,11 +5,11 @@ namespace App\Http\Routes\Backend;
 use Illuminate\Contracts\Routing\Registrar;
 
 /* 饲养箱 */
-class BoxesRoute
+class BoxRoute
 {
     public function map(Registrar $router)
     {
-        $router->resource('/boxes','ZooBoxesController');
+        $router->resource('/box','ZooBoxController');
     }
 }
 

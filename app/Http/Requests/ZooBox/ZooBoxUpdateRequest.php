@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\ZooBoxes;
+namespace App\Http\Requests\ZooBox;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ZooBoxesStoreRequest extends FormRequest
+class ZooBoxUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
