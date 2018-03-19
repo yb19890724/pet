@@ -23,3 +23,8 @@ export const foodView ={
     edit: 'foodEdit'
 };
 
+export const geneView ={
+    index:'geneHome',
+    create: 'geneCreate',
+    edit: 'geneEdit'
+};

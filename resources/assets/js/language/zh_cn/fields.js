@@ -9,5 +9,6 @@ export default {
     state:'状态',
     parent:'父类',
     mother:'母类',
-    descriptions:'简介'
+    descriptions:'简介',
+    gene_type:'基因类型'
 }

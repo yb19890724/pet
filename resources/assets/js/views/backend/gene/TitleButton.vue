@@ -13,10 +13,10 @@
     export default{
         methods: {
             createView(){
-                this.$router.push({name: zooView.create});
+                this.$router.push({name: geneView.create});
             },
             editView(){
-                this.$router.push(zooView.edit);
+                this.$router.push(geneView.edit);
             },
             deleteRow(){
                 alert('删除');

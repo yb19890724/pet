@@ -4,19 +4,11 @@
             <el-form-item :label="$t('fields.name')">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
-
-            <el-form-item :label="$t('fields.food_category')">
-                <el-select v-model="form.food_category_id" :placeholder="$t('placeholder.categorySelect')" style="width: 100%;">
-                    <template v-for="foodCategory in foodCategorySelect">
-                        <el-option :label="foodCategory.name" :value="foodCategory.id"></el-option>
-                    </template>
-                </el-select>
+            <el-form-item :label="$t('fields.gene_type')">
+                <template v-for="(val,index) in geneType">
+                    <el-radio v-model="form.gene_type" :label="index">{{ val }}</el-radio>
+                </template>
             </el-form-item>
-
-            <el-form-item :label="$t('fields.sort')">
-                <el-input v-model="form.sort"></el-input>
-            </el-form-item>
-
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">{{ $t('form.submit') }}</el-button>
                 <el-button @click="goBack">{{ $t('form.cancel')}}</el-button>
@@ -26,14 +18,13 @@
 </template>
 <script type="text/ecmascript-6">
     import { notificationRedirect,redirect } from '../../../helps/helps';
+    import { geneType } from '../../../config/backend/dictionaries';
     export default{
         props:{
             form:{
                 type: Object,
                 default(){
-                    return {
-                        food_category_id:""
-                    };
+                    return {};
                 }
             }
         },
@@ -43,19 +34,12 @@
                 method:'',
                 message:'',
                 submit:false,
-                foodCategorySelect:[]
+                geneType:geneType
             }
-        },
-        mounted(){
-            this.$http.get('/food/categories', this.form).then((response) => {
-                if (response.status ==200) {
-                    this.foodCategorySelect=response.data;
-                }
-            });
         },
         methods: {
             onSubmit() {
-                this.url = '/food'+(this.form.id ? '/' + this.form.id : '');
+                this.url = '/gene'+(this.form.id ? '/' + this.form.id : '');
                 this.method = this.form.id ? 'put' : 'post';
                 this.message=this.$t('message.'+this.method);
                 if(this.submit==false){

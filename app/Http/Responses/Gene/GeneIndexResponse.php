@@ -25,11 +25,11 @@ class GeneIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($food) {
+        $this->result->getCollection()->transform(function ($gene) {
             return [
-                'id'           => $food->id,
-                'name'         => $food->name,
-                'gene_type'         => $food->name,
+                'id'           => $gene->id,
+                'name'         => $gene->name,
+                'gene_type'    => $gene->geneTypeTransform(),
             ];
         });
 

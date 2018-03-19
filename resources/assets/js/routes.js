@@ -98,6 +98,27 @@ export default [
                 ]
             },
             {
+                path: 'gene',
+                component: require('./views/backend/layouts/ModuleView.vue'),
+                children: [
+                    {
+                        path: '/',
+                        name:'geneHome',
+                        component: require('./views/backend/gene/Home.vue')
+                    },
+                    {
+                        path: 'create',
+                        name:'geneCreate',
+                        component: require('./views/backend/gene/Create.vue')
+                    },
+                    {
+                        path: ':id/edit',
+                        name:'geneEdit',
+                        component: require('./views/backend/gene/Edit.vue')
+                    }
+                ]
+            },
+            {
                 path: '*',
                 redirect: '/dashboard'
             }

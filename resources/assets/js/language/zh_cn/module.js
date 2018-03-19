@@ -10,5 +10,8 @@ export default {
     foodCategoryEdit:"修改食物分类",
     foodCreate:"添加食物分类",
     foodEdit:"修改食物分类",
-    foodCategoryTitle:'食物分类管理'
+    foodCategoryTitle:'食物分类管理',
+    geneTitle:'基因管理',
+    geneCreate:'添加基因',
+    geneEdit:'修改基因'
 }

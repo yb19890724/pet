@@ -10,6 +10,11 @@ export const state={
     sick:'病态'
 };
 
+export const geneType={
+    dominant:'显性',
+    hide:'隐性'
+};
+
 export const color={
     1:'黑色',
     2:'红色',
