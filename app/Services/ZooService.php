@@ -43,9 +43,9 @@ class ZooService
      * @param int $perPage
      * @return mixed
      */
-    public function getSearchZooList(int $perPage = 0)
+    public function searchZoos(int $perPage = 0)
     {
-        return $this->zooRepository->getSearchZooList($perPage);
+        return $this->zooRepository->searchZoos($perPage);
     }
 
    /**
@@ -54,7 +54,7 @@ class ZooService
     * @param $id
     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
     */
-    public function getZooDetail($id)
+    public function getZoo($id)
     {
         return $this->zooRepository->find($id);
     }

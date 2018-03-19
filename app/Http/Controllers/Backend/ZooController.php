@@ -40,7 +40,7 @@ class ZooController extends Controller
      */
     public function index()
     {
-        $result = $this->zoo->getSearchZooList();
+        $result = $this->zoo->searchZoos();
         return new ZooIndexResponse($result);
     }
 
@@ -77,7 +77,7 @@ class ZooController extends Controller
      */
     public function show($id)
     {
-        $result = $this->zoo->getZooDetail($id);
+        $result = $this->zoo->getZoo($id);
         return new ZooShowResponse($result);
     }
 

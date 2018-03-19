@@ -29,7 +29,7 @@ class ZooRepositoryEloquent extends AbstractRepository implements ZooRepository
      * @param int $perPage
      * @return mixed
      */
-    public function getSearchZooList(int $perPage = 0)
+    public function getSearchZoos(int $perPage = 0)
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)
