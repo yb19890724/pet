@@ -27,7 +27,7 @@ class FoodController extends Controller
     public function index()
     {
         //
-        $result=$this->food->getSearchFoodList();
+        $result=$this->food->searchFoods();
         return new FoodIndexResponse($result);
     }
 
@@ -65,7 +65,7 @@ class FoodController extends Controller
     public function show($id)
     {
         //
-        $result=$this->food->getFoodDetail($id);
+        $result=$this->food->getFood($id);
         return $this->responseJson($result);
     }
 

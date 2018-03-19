@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47721bc17ad4f9e32d8dddfc4e3cc276",
+    "content-hash": "043513f91d408a8245639b5e64276e17",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -964,16 +964,16 @@
         },
         {
             "name": "phpno1/architecture",
-            "version": "1.0.7",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yb19890724/phpno1-architecture.git",
-                "reference": "fdbb6729c42db0ca32a6de2feeebc097204d73c1"
+                "reference": "6452d79f5087d9eecc2f15df8f434e76a8b20621"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/yb19890724/phpno1-architecture/fdbb6729c42db0ca32a6de2feeebc097204d73c1.zip",
-                "reference": "fdbb6729c42db0ca32a6de2feeebc097204d73c1",
+                "url": "https://files.phpcomposer.com/files/yb19890724/phpno1-architecture/6452d79f5087d9eecc2f15df8f434e76a8b20621.zip",
+                "reference": "6452d79f5087d9eecc2f15df8f434e76a8b20621",
                 "shasum": ""
             },
             "require": {
@@ -1019,7 +1019,7 @@
                 "model",
                 "repository"
             ],
-            "time": "2018-03-10T16:06:51+00:00"
+            "time": "2018-03-17T16:08:21+00:00"
         },
         {
             "name": "psr/container",

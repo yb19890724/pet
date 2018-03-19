@@ -21,7 +21,7 @@ class GeneService
     *
     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
     */
-    public function getGeneList()
+    public function getGenes()
     {
         return $this->geneRepository->paginate();
     }
@@ -32,7 +32,7 @@ class GeneService
     * @param $id
     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
     */
-    public function getGeneDetail($id)
+    public function getGene($id)
     {
         return $this->geneRepository->find($id);
     }

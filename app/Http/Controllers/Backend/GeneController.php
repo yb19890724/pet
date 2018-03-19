@@ -25,7 +25,7 @@ class GeneController extends Controller
      */
     public function index()
     {
-        $result=$this->gene->getGeneList();
+        $result=$this->gene->getGenes();
         return new GeneIndexResponse($result);
     }
 
@@ -62,7 +62,7 @@ class GeneController extends Controller
      */
     public function show($id)
     {
-        $result=$this->gene->getGeneDetail($id);
+        $result=$this->gene->getGene($id);
         return $this->responseJson($result);
     }
 

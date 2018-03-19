@@ -32,9 +32,9 @@ class FoodService
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getSearchFoodList(int $perPage = 0)
+    public function searchFoods(int $perPage = 0)
     {
-        return $this->foodRepository->getSearchFoodList($perPage);
+        return $this->foodRepository->searchFoods($perPage);
     }
 
 
@@ -44,7 +44,7 @@ class FoodService
      * @param $id
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
      */
-    public function getFoodDetail($id)
+    public function getFood($id)
     {
         return $this->foodRepository->find($id);
     }
