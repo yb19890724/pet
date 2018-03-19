@@ -26,6 +26,16 @@ class GeneService
         return $this->geneRepository->paginate();
     }
 
+    /**
+     * Get Gene all .
+     *
+     * @return mixed
+     */
+    public function getGeneAll()
+    {
+        return $this->geneRepository->getGeneAll();
+    }
+    
    /**
     * Get one Gene Detail by primary key.
     *

@@ -14,19 +14,11 @@ class Zoo extends Model
         'color',
         'father_id',
         'mother_id',
-        /*
-        'boxes_id',
         'dominant_gene',
-        'hide_gene',*/
         'sort',
         'birthday'
     ];
 
-   /* public function ()
-    {
-        
-    }*/
-    
     /**
      * @return \Illuminate\Config\Repository|mixed|string
      */
@@ -52,5 +44,14 @@ class Zoo extends Model
     {
         $color=config("dictionaries.state.{$this->state}");
         return $color ?? '';
+    }
+
+    /**
+     * set  gene_type value
+     * @return  string
+     */
+    public function setDominantGeneAttribute()
+    {
+        //$this->attributes['dominant_gene']=explode(',',$this->attributes['dominant_gene']);
     }
 }

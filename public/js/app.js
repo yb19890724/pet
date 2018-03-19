@@ -85461,10 +85461,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
         createView: function createView() {
-            this.$router.push({ name: zooView.create });
+            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["e" /* zooView */].create });
         },
         editView: function editView() {
-            this.$router.push(zooView.edit);
+            this.$router.push(__WEBPACK_IMPORTED_MODULE_0__config_backend_views__["e" /* zooView */].edit);
         },
         deleteRow: function deleteRow() {
             alert('删除');
@@ -95626,7 +95626,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95663,8 +95663,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 sort: 0,
                 state: 'good',
                 descriptions: '',
-                parent_id: '',
-                mother_id: ''
+                father_id: '',
+                mother_id: '',
+                dominant_gene: [],
+                hide_gene: []
 
             }
         };
@@ -95706,7 +95708,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.el-checkbox__label[data-v-677cd64a]{\n    padding-right: 2px;\n}\n", ""]);
 
 // exports
 
@@ -95720,6 +95722,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_backend_views__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_helps__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__ = __webpack_require__(246);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -95814,12 +95825,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             color: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["a" /* color */],
             state: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["d" /* state */],
             mother: {},
-            father: {}
+            father: {},
+            hideGene: {},
+            dominantGene: {}
         };
     },
     mounted: function mounted() {
         this.fatherSelect();
         this.motherSelect();
+        this.hideGeneAll();
+        this.dominantGeneAll();
     },
 
     methods: {
@@ -95866,6 +95881,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.get('/zoos', { params: { sex: 'male' } }).then(function (response) {
                 if (response.status == 200) {
                     _this3.father = response.data;
+                }
+            });
+        },
+        hideGeneAll: function hideGeneAll() {
+            var _this4 = this;
+
+            this.$http.get('/genes', { params: { gene_type: 'hide' } }).then(function (response) {
+                if (response.status == 200) {
+                    _this4.hideGene = response.data;
+                }
+            });
+        },
+        dominantGeneAll: function dominantGeneAll() {
+            var _this5 = this;
+
+            this.$http.get('/genes', { params: { gene_type: 'dominant' } }).then(function (response) {
+                if (response.status == 200) {
+                    _this5.dominantGene = response.data;
                 }
             });
         }
@@ -96015,6 +96048,38 @@ var render = function() {
                   })
                 ],
                 2
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: "显性基因" } },
+            [
+              _c(
+                "el-checkbox-group",
+                {
+                  model: {
+                    value: _vm.form.dominant_gene,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "dominant_gene", $$v)
+                    },
+                    expression: "form.dominant_gene"
+                  }
+                },
+                _vm._l(_vm.dominantGene, function(val, index) {
+                  return _c(
+                    "span",
+                    { staticClass: "el-checkbox__label" },
+                    [
+                      _c("el-checkbox", {
+                        attrs: { label: val, size: "medium" }
+                      })
+                    ],
+                    1
+                  )
+                })
               )
             ],
             1

@@ -8,7 +8,7 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import {  geneView } from '../../../config/backend/views';
+    import {  zooView } from '../../../config/backend/views';
 
     export default{
         methods: {

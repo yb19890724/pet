@@ -10,6 +10,7 @@ class GeneRoute
     public function map(Registrar $router)
     {
         $router->resource('/gene','GeneController');
+        $router->get('/genes','GeneController@getGentAll');
     }
 }
 

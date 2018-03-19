@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Responses\Gene\GeneIndexResponse;
+use App\Http\Responses\Gene\GeneAllResponse;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class GeneController extends Controller
 
     public function __construct(GeneService $geneService)
     {
-        $this->gene=$geneService;
+        $this->gene = $geneService;
     }
 
     /**
@@ -25,8 +26,18 @@ class GeneController extends Controller
      */
     public function index()
     {
-        $result=$this->gene->getGenes();
+        $result = $this->gene->getGenes();
         return new GeneIndexResponse($result);
+    }
+
+    /**
+     * get gene all
+     *
+     */
+    public function getGentAll()
+    {
+        $result = $this->gene->getGeneAll();
+        return new GeneAllResponse($result);
     }
 
     /**
@@ -42,14 +53,14 @@ class GeneController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $result=$this->gene->storeGene($request->all());
-        if(!empty($result)){
-            return $this->withCreated(['message'=>trans('message.create.success')]);
+        $result = $this->gene->storeGene($request->all());
+        if (!empty($result)) {
+            return $this->withCreated(['message' => trans('message.create.success')]);
         }
         return $this->withCreated($result);
     }
@@ -57,19 +68,19 @@ class GeneController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $result=$this->gene->getGene($id);
+        $result = $this->gene->getGene($id);
         return $this->responseJson($result);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +91,8 @@ class GeneController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -96,7 +107,7 @@ class GeneController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

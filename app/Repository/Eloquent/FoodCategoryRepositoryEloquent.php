@@ -37,7 +37,6 @@ class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodC
     /**
      * Get FoodCategory all .
      *
-     * @param int $perPage
      * @return mixed
      */
     public function getFoodCategoryAll()

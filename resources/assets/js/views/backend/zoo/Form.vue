@@ -28,6 +28,15 @@
                 </el-select>
             </el-form-item>
 
+            <el-form-item label="显性基因">
+                <el-checkbox-group v-model="form.dominant_gene" >
+                    <span v-for="(val,index) in dominantGene" class="el-checkbox__label">
+                        <el-checkbox :label="val" size="medium" ></el-checkbox>
+                    </span>
+                </el-checkbox-group>
+            </el-form-item>
+
+
             <el-form-item :label="$t('fields.birthday')">
                 <el-date-picker
                         v-model="form.birthday"
@@ -93,12 +102,16 @@
                 color:color,
                 state:state,
                 mother:{},
-                father:{}
+                father:{},
+                hideGene:{},
+                dominantGene:{}
             }
         },
         mounted(){
             this.fatherSelect();
             this.motherSelect();
+            this.hideGeneAll();
+            this.dominantGeneAll();
         },
         methods: {
             onSubmit() {
@@ -138,11 +151,27 @@
                         this.father=response.data;
                     }
                 });
+            },
+            hideGeneAll(){
+                this.$http.get('/genes', {params:{gene_type:'hide'}}).then((response) => {
+                    if (response.status ==200) {
+                        this.hideGene=response.data;
+                    }
+                });
+            },
+            dominantGeneAll(){
+                this.$http.get('/genes', {params:{gene_type:'dominant'}}).then((response) => {
+                    if (response.status ==200) {
+                        this.dominantGene=response.data;
+                    }
+                });
             }
         }
     }
 </script>
 
 <style type="text/css" scoped>
-
+    .el-checkbox__label{
+        padding-right: 2px;
+    }
 </style>

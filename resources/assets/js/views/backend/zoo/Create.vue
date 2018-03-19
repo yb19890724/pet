@@ -22,8 +22,10 @@
                     sort: 0,
                     state: 'good',
                     descriptions: '',
-                    parent_id:'',
-                    mother_id:''
+                    father_id:'',
+                    mother_id:'',
+                    dominant_gene:[],
+                    hide_gene:[]
 
                 }
             }
