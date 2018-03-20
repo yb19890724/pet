@@ -22,7 +22,7 @@ class CreateZoosTable extends Migration
             $table->enum('sex',['male','female'])->comment('性别:公母');
             $table->enum('state',['good','normal','sick'])->comment('状态:1优秀,2正常,3病态');
             $table->string('descriptions',100)->comment('描述');
-            $table->integer('color')->comment('色系');
+            $table->string('color',7)->comment('色系');
             $table->string('dominant_gene',50)->comment('显性基因');//checkbox
             $table->string('hide_gene',50)->comment('隐性基因');//checkbox
             $table->integer('sort')->comment('排序');

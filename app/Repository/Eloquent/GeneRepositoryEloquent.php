@@ -28,6 +28,6 @@ class GeneRepositoryEloquent extends AbstractRepository implements GeneRepositor
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)
-        )->select(['name'])->get();
+        )->select(['id as value','name as label'])->get();
     }
 }

@@ -30,7 +30,7 @@ class ZooIndexResponse implements Responsable
                 'id'           => $zoo->id,
                 'name'         => $zoo->name,
                 'sex_title'    => $zoo->sexTransform(),
-                'color_title'  => $zoo->colorTransform(),
+                'color'        => $zoo->color,
                 'state_title'  => $zoo->stateTransform(),
             ];
         });

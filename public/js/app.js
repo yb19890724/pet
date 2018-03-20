@@ -47832,10 +47832,10 @@ module.exports = Component.exports
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return sex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return state; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return geneType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return color; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return sex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return state; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return geneType; });
+/* unused harmony export color */
 
 var sex = {
     male: '公',
@@ -95925,7 +95925,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95951,25 +95951,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
-    data: function data() {
-        return {
-            form: {
-                name: '',
-                color: '',
-                sex: 'male',
-                birthday: '',
-                sort: 0,
-                state: 'good',
-                descriptions: '',
-                father_id: '',
-                mother_id: '',
-                dominant_gene: [],
-                hide_gene: []
-
-            }
-        };
-    }
+    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a }
 });
 
 /***/ }),
@@ -96100,36 +96082,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        form: {
-            type: Object,
-            default: function _default() {
-                return {};
-            }
-        }
-    },
     data: function data() {
         return {
+            dominant_gene: [],
+            hide_gene: [],
+            form: {
+                name: '',
+                color: '',
+                sex: 'male',
+                birthday: '',
+                sort: 0,
+                state: 'good',
+                descriptions: '',
+                father_id: '',
+                mother_id: '',
+                dominant_gene: [],
+                hide_gene: []
+            },
+            id: '',
             url: '',
             method: '',
             message: '',
             submit: false,
-            sex: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["c" /* sex */],
-            color: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["a" /* color */],
-            state: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["d" /* state */],
+            sex: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["b" /* sex */],
+            state: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["c" /* state */],
             mother: {},
             father: {},
             hideGene: {},
@@ -96137,8 +96118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.fatherSelect();
-        this.motherSelect();
+        this.getFindData();
         this.hideGeneAll();
         this.dominantGeneAll();
     },
@@ -96147,13 +96127,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit() {
             var _this = this;
 
+            this.form.dominant_gene = this.dominant_gene;
+            this.form.hide_gene = this.hide_gene;
             this.url = '/zoo' + (this.form.id ? '/' + this.form.id : '');
             this.method = this.form.id ? 'put' : 'post';
             this.message = this.$t('message.' + this.method);
             if (this.submit == false) {
-                /*
-                                    this.submit=true;
-                */
+                this.submit = true;
                 var self = this;
                 this.$http[this.method](this.url, this.form).then(function (response) {
                     if (response.status == 201 || response.status == 204) {
@@ -96169,9 +96149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         isSubmit: function isSubmit() {
-            /*
-                            this.submit=this.submit?true:false;
-            */
+            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -96179,7 +96157,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         motherSelect: function motherSelect() {
             var _this2 = this;
 
-            this.$http.get('/zoos', { params: { sex: 'female' } }).then(function (response) {
+            var params = {
+                sex: 'female',
+                not_id: this.id != '' ? this.id : ''
+            };
+            this.$http.get('/zoos', { params: params }).then(function (response) {
                 if (response.status == 200) {
                     _this2.mother = response.data;
                 }
@@ -96188,7 +96170,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fatherSelect: function fatherSelect() {
             var _this3 = this;
 
-            this.$http.get('/zoos', { params: { sex: 'male' } }).then(function (response) {
+            var params = {
+                sex: 'female',
+                not_id: this.id != '' ? this.id : ''
+            };
+            this.$http.get('/zoos', { params: params }).then(function (response) {
                 if (response.status == 200) {
                     _this3.father = response.data;
                 }
@@ -96211,6 +96197,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this5.dominantGene = response.data;
                 }
             });
+        },
+        getFindData: function getFindData() {
+            var _this6 = this;
+
+            this.id = this.$route.params.id;
+            if (this.id != '' || this.id != undefined) {
+                this.$http.get('/zoo/' + this.id).then(function (response) {
+                    if (response.data != '') {
+                        _this6.form = response.data;
+                        _this6.dominant_gene = _this6.form.dominant_gene;
+                        _this6.hide_gene = _this6.form.hide_gene;
+                        _this6.fatherSelect();
+                        _this6.motherSelect();
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         }
     }
 });
@@ -96304,28 +96308,15 @@ var render = function() {
             "el-form-item",
             { attrs: { label: _vm.$t("fields.color") } },
             [
-              _c(
-                "el-select",
-                {
-                  staticStyle: { width: "100%" },
-                  attrs: { placeholder: _vm.$t("placeholder.colorSelect") },
-                  model: {
-                    value: _vm.form.color,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "color", $$v)
-                    },
-                    expression: "form.color"
-                  }
-                },
-                [
-                  _vm._l(_vm.color, function(label, value) {
-                    return [
-                      _c("el-option", { attrs: { label: label, value: value } })
-                    ]
-                  })
-                ],
-                2
-              )
+              _c("el-color-picker", {
+                model: {
+                  value: _vm.form.color,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "color", $$v)
+                  },
+                  expression: "form.color"
+                }
+              })
             ],
             1
           ),
@@ -96333,65 +96324,99 @@ var render = function() {
           _c(
             "el-form-item",
             { attrs: { label: _vm.$t("fields.dominant_gene") } },
-            [
-              _c(
-                "el-checkbox-group",
-                {
-                  model: {
-                    value: _vm.form.dominant_gene,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "dominant_gene", $$v)
-                    },
-                    expression: "form.dominant_gene"
+            _vm._l(_vm.dominantGene, function(val, index) {
+              return _c("span", { staticClass: "el-checkbox__label" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dominant_gene,
+                      expression: "dominant_gene"
+                    }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    value: val.value,
+                    checked: Array.isArray(_vm.dominant_gene)
+                      ? _vm._i(_vm.dominant_gene, val.value) > -1
+                      : _vm.dominant_gene
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.dominant_gene,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = val.value,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.dominant_gene = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.dominant_gene = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.dominant_gene = $$c
+                      }
+                    }
                   }
-                },
-                _vm._l(_vm.dominantGene, function(val, index) {
-                  return _c(
-                    "span",
-                    { staticClass: "el-checkbox__label" },
-                    [
-                      _c("el-checkbox", {
-                        attrs: { label: val, size: "medium" }
-                      })
-                    ],
-                    1
-                  )
-                })
-              )
-            ],
-            1
+                }),
+                _vm._v(" "),
+                _c("label", [_vm._v(_vm._s(val.label))])
+              ])
+            })
           ),
           _vm._v(" "),
           _c(
             "el-form-item",
             { attrs: { label: _vm.$t("fields.hide_gene") } },
-            [
-              _c(
-                "el-checkbox-group",
-                {
-                  model: {
-                    value: _vm.form.hide_gene,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "hide_gene", $$v)
-                    },
-                    expression: "form.hide_gene"
+            _vm._l(_vm.hideGene, function(val, index) {
+              return _c("span", { staticClass: "el-checkbox__label" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.hide_gene,
+                      expression: "hide_gene"
+                    }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    value: val.value,
+                    checked: Array.isArray(_vm.hide_gene)
+                      ? _vm._i(_vm.hide_gene, val.value) > -1
+                      : _vm.hide_gene
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.hide_gene,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = val.value,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.hide_gene = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.hide_gene = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.hide_gene = $$c
+                      }
+                    }
                   }
-                },
-                _vm._l(_vm.hideGene, function(val, index) {
-                  return _c(
-                    "span",
-                    { staticClass: "el-checkbox__label" },
-                    [
-                      _c("el-checkbox", {
-                        attrs: { label: val, size: "medium" }
-                      })
-                    ],
-                    1
-                  )
-                })
-              )
-            ],
-            1
+                }),
+                _vm._v(" "),
+                _c("label", [_vm._v(_vm._s(val.label))])
+              ])
+            })
           ),
           _vm._v(" "),
           _c(
@@ -96564,7 +96589,7 @@ var render = function() {
         _c(
           "div",
           { attrs: { slot: "form" }, slot: "form" },
-          [_c("zoo-form", { attrs: { form: _vm.form } })],
+          [_c("zoo-form")],
           1
         )
       ])
@@ -96668,7 +96693,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96694,30 +96719,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a },
-    data: function data() {
-        return {
-            form: {}
-        };
-    },
-    mounted: function mounted() {
-        this.getFindData();
-    },
-
-    methods: {
-        getFindData: function getFindData() {
-            var _this = this;
-
-            this.$http.get('/zoo/' + this.$route.params.id).then(function (response) {
-                if (response.data != '') {
-                    _this.form = response.data;
-                }
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-    }
-});
+    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a /*,
+                                   data() {
+                                   return {
+                                   form:{
+                                   }
+                                   }
+                                   },
+                                   methods: {
+                                   getFindData(){
+                                   if(this.$route.params.id!=''){
+                                   this.$http.get('/zoo/'+ this.$route.params.id).then(response => {
+                                   if (response.data != '') {
+                                   this.form =response.data
+                                   }
+                                   }).catch(function (error) {
+                                   console.log(error);
+                                   });
+                                   }
+                                   }
+                                   }*/
+    } });
 
 /***/ }),
 /* 253 */
@@ -96735,7 +96757,7 @@ var render = function() {
         _c(
           "div",
           { attrs: { slot: "form" }, slot: "form" },
-          [_c("zoo-form", { attrs: { form: _vm.form } })],
+          [_c("zoo-form")],
           1
         )
       ])
@@ -100606,7 +100628,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             method: '',
             message: '',
             submit: false,
-            geneType: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["b" /* geneType */]
+            geneType: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["a" /* geneType */]
         };
     },
 

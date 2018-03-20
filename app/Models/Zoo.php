@@ -20,14 +20,6 @@ class Zoo extends Model
         'birthday'
     ];
 
-    /**
-     * @return \Illuminate\Config\Repository|mixed|string
-     */
-    public function colorTransform()
-    {
-        $color = config("dictionaries.color.{$this->color}");
-        return $color ?? '';
-    }
 
     /**
      * @return \Illuminate\Config\Repository|mixed|string

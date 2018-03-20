@@ -26,7 +26,10 @@ class GeneAllResponse implements Responsable
     protected function transform()
     {
         $this->result->transform(function ($gene) {
-            return $gene->name;
+            return [
+                 'value'    => $gene->value,
+                 'label'    => $gene->label
+            ];
         });
         return $this->responseJson($this->result);
     }

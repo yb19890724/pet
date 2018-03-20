@@ -25,7 +25,6 @@ class ZooShowResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->color=$this->result->colorTransform();
         return $this->responseJson($this->result);
     }
 }
