@@ -96082,6 +96082,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -96099,6 +96107,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 sort: 0,
                 state: 'good',
                 descriptions: '',
+                box_id: '',
                 father_id: '',
                 mother_id: '',
                 dominant_gene: [],
@@ -96114,13 +96123,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             mother: {},
             father: {},
             hideGene: {},
-            dominantGene: {}
+            dominantGene: {},
+            zooBoxes: {}
         };
     },
     mounted: function mounted() {
         this.getFindData();
         this.hideGeneAll();
         this.dominantGeneAll();
+        this.zooBoxesAll();
     },
 
     methods: {
@@ -96159,7 +96170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var params = {
                 sex: 'female',
-                not_id: this.id != '' ? this.id : ''
+                not_id: this.id != '' && this.id != undefined ? this.id : ''
             };
             this.$http.get('/zoos', { params: params }).then(function (response) {
                 if (response.status == 200) {
@@ -96171,8 +96182,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             var params = {
-                sex: 'female',
-                not_id: this.id != '' ? this.id : ''
+                sex: 'male',
+                not_id: this.id != '' && this.id != undefined ? this.id : ''
             };
             this.$http.get('/zoos', { params: params }).then(function (response) {
                 if (response.status == 200) {
@@ -96198,23 +96209,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        getFindData: function getFindData() {
+        zooBoxesAll: function zooBoxesAll() {
             var _this6 = this;
 
+            this.$http.get('/boxes').then(function (response) {
+                if (response.status == 200) {
+                    _this6.zooBoxes = response.data;
+                }
+            });
+        },
+        getFindData: function getFindData() {
+            var _this7 = this;
+
             this.id = this.$route.params.id;
-            if (this.id != '' || this.id != undefined) {
+            if (this.id != '' && this.id != undefined) {
                 this.$http.get('/zoo/' + this.id).then(function (response) {
                     if (response.data != '') {
-                        _this6.form = response.data;
-                        _this6.dominant_gene = _this6.form.dominant_gene;
-                        _this6.hide_gene = _this6.form.hide_gene;
-                        _this6.fatherSelect();
-                        _this6.motherSelect();
+                        _this7.form = response.data;
+                        _this7.dominant_gene = _this7.form.dominant_gene;
+                        _this7.hide_gene = _this7.form.hide_gene;
+                        _this7.fatherSelect();
+                        _this7.motherSelect();
                     }
                 }).catch(function (error) {
                     console.log(error);
                 });
+                return false;
             }
+            this.fatherSelect();
+            this.motherSelect();
         }
     }
 });
@@ -96235,6 +96258,38 @@ var render = function() {
         "el-form",
         { ref: "form", attrs: { model: _vm.form, "label-width": "80px" } },
         [
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.box_number") } },
+            [
+              _c(
+                "el-select",
+                {
+                  staticStyle: { width: "100%" },
+                  attrs: { placeholder: _vm.$t("placeholder.boxSelect") },
+                  model: {
+                    value: _vm.form.box_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "box_id", $$v)
+                    },
+                    expression: "form.box_id"
+                  }
+                },
+                [
+                  _vm._l(_vm.zooBoxes, function(box) {
+                    return [
+                      _c("el-option", {
+                        attrs: { label: box.label, value: box.value }
+                      })
+                    ]
+                  })
+                ],
+                2
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c(
             "el-form-item",
             { attrs: { label: _vm.$t("fields.name") } },
@@ -96467,7 +96522,7 @@ var render = function() {
                 "el-select",
                 {
                   staticStyle: { width: "100%" },
-                  attrs: { placeholder: _vm.$t("placeholder.parentSelect") },
+                  attrs: { placeholder: _vm.$t("placeholder.fatherSelect") },
                   model: {
                     value: _vm.form.father_id,
                     callback: function($$v) {
@@ -98035,7 +98090,7 @@ var render = function() {
           attrs: {
             type: "text",
             name: "name",
-            placeholder: _vm.$t("search.categoryName")
+            placeholder: _vm.$t("placeholder.categoryName")
           },
           domProps: { value: _vm.form.search_name },
           on: {
@@ -103215,8 +103270,9 @@ VueI18n.version = '7.6.0';
     sexSelect: '请选择性别',
     colorSelect: '请选择性颜色',
     stateSelect: '请选择性宠物状态',
-    parentSelect: '请选择父类',
-    motherSelect: '请选择母类'
+    fatherSelect: '请选择父类',
+    motherSelect: '请选择母类',
+    boxSelect: '请选择箱号'
 });
 
 /***/ }),

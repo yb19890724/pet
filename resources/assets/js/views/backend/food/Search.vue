@@ -2,7 +2,7 @@
     <div>
         <form class="form-horizontal">
             <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                <input type="text" name="name" v-model="form.search_name" class="form-control search-text" :placeholder="$t('search.categoryName')">
+                <input type="text" name="name" v-model="form.search_name" class="form-control search-text" :placeholder="$t('placeholder.categoryName')">
                 <div class="input-group-btn">
                     <button class="btn btn-success" type="button" @click="searchList">搜索</button>
                     <button class="btn btn-default" type="button" @click="reset">重置</button>

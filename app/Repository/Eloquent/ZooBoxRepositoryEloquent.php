@@ -16,4 +16,14 @@ class ZooBoxRepositoryEloquent extends AbstractRepository implements ZooBoxRepos
     {
         return ZooBox::class;
     }
+
+    /**
+     * Get zoo boxes all .
+     *
+     * @return mixed
+     */
+    public function getZooBoxesAll()
+    {
+        return $this->entity->select(['id as value','box_number as label'])->get();
+    }
 }

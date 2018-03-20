@@ -2,6 +2,14 @@
     <div class='contents'>
         <el-form ref="form" :model="form"  label-width="80px">
 
+            <el-form-item :label="$t('fields.box_number')">
+                <el-select v-model="form.box_id" :placeholder="$t('placeholder.boxSelect')" style="width: 100%;">
+                    <template v-for="box in zooBoxes">
+                        <el-option :label="box.label" :value="box.value"></el-option>
+                    </template>
+                </el-select>
+            </el-form-item>
+
             <el-form-item :label="$t('fields.name')">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
@@ -51,7 +59,7 @@
             </el-form-item>
 
             <el-form-item :label="$t('fields.father')">
-                <el-select v-model="form.father_id" :placeholder="$t('placeholder.parentSelect')" style="width: 100%;">
+                <el-select v-model="form.father_id" :placeholder="$t('placeholder.fatherSelect')" style="width: 100%;">
                     <template v-for="father in father">
                         <el-option :label="father.label" :value="father.value"></el-option>
                     </template>
@@ -94,6 +102,7 @@
                     sort: 0,
                     state: 'good',
                     descriptions: '',
+                    box_id: '',
                     father_id:'',
                     mother_id:'',
                     dominant_gene:[],
@@ -109,13 +118,15 @@
                 mother:{},
                 father:{},
                 hideGene:{},
-                dominantGene:{}
+                dominantGene:{},
+                zooBoxes:{}
             }
         },
         mounted(){
             this.getFindData();
             this.hideGeneAll();
             this.dominantGeneAll();
+            this.zooBoxesAll();
         },
         methods: {
             onSubmit() {
@@ -147,7 +158,7 @@
             motherSelect(){
                 let params={
                     sex:'female',
-                    not_id:this.id!=''?this.id:''
+                    not_id:this.id!='' && this.id!=undefined?this.id:''
                 };
                 this.$http.get('/zoos', {params:params}).then((response) => {
                     if (response.status ==200) {
@@ -157,8 +168,8 @@
             },
             fatherSelect(){
                 let params={
-                    sex:'female',
-                    not_id:this.id!=''?this.id:''
+                    sex:'male',
+                    not_id:this.id!='' && this.id!=undefined ?this.id:''
                 };
                 this.$http.get('/zoos', {params:params}).then((response) => {
                     if (response.status ==200) {
@@ -180,9 +191,16 @@
                     }
                 });
             },
+            zooBoxesAll(){
+                this.$http.get('/boxes').then((response) => {
+                    if (response.status ==200) {
+                        this.zooBoxes=response.data;
+                    }
+                });
+            },
             getFindData(){
                 this.id=this.$route.params.id;
-                if(this.id!='' || this.id!=undefined){
+                if(this.id!='' && this.id!=undefined){
                     this.$http.get('/zoo/'+ this.id).then(response => {
                         if (response.data != '') {
                             this.form =response.data;
@@ -194,7 +212,10 @@
                     }).catch(function (error) {
                         console.log(error);
                     });
+                    return false;
                 }
+                this.fatherSelect();
+                this.motherSelect();
             }
         }
     }

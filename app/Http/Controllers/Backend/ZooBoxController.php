@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\ZooBoxService;
 use App\Http\Responses\ZooBox\ZooBoxIndexResponse;
+use App\Http\Responses\ZooBox\ZooBoxAllResponse;
 
 class ZooBoxController extends Controller
 {
@@ -28,6 +29,17 @@ class ZooBoxController extends Controller
     {
         $result=$this->zooBox->getZooBoxes();
         return new ZooBoxIndexResponse($result);
+    }
+
+    /**
+     * get zoo boexs all .
+     *
+     * @return ZooBoxIndexResponse
+     */
+    public function getZooBoxesAll()
+    {
+        $result=$this->zooBox->getZooBoxesAll();
+        return new ZooBoxAllResponse($result);
     }
 
     /**

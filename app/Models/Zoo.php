@@ -8,6 +8,7 @@ class Zoo extends Model
 {
     protected $fillable = [
         'name',
+        'box_id',
         'sex',
         'state',
         'descriptions',
