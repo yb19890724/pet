@@ -17,8 +17,8 @@ class CreateZoosTable extends Migration
             $table->increments('id');
             $table->string('name',50);
             $table->integer('box_id')->comment('箱子id');
-            $table->integer('father_id')->comment('父id');
-            $table->integer('mother_id')->comment('母id');
+            $table->integer('father_id')->nullable()->comment('父id');
+            $table->integer('mother_id')->nullable()->comment('母id');
             $table->enum('sex',['male','female'])->comment('性别:公母');
             $table->enum('state',['good','normal','sick'])->comment('状态:1优秀,2正常,3病态');
             $table->string('descriptions',100)->comment('描述');

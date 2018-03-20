@@ -6,7 +6,7 @@
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" apiUrl="/zoo" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
+            <v-table slot="table" apiUrl="/zoo" :fields="fields" :button="button" :views="views"  ref="table" @handleDelete="handleDelete">
 
             </v-table>
 
@@ -24,6 +24,7 @@
         },
         data() {
             return {
+                button:'zoo',
                 views:zooView,
                 fields:[
                     {

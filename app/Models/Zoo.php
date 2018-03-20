@@ -71,6 +71,7 @@ class Zoo extends Model
         if (!empty($value)) {
             return explode(',', $value);
         }
+        return [];
     }
 
     /**
@@ -82,5 +83,6 @@ class Zoo extends Model
         if (!empty($value)) {
             return explode(',', $value);
         }
+        return [];
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div class='animated fadeIn'>
         <div class="contents">
-            <div class="block" >
+            <div class="block">
                 <div class="block-content block-content-full">
                     <slot name="search"></slot>
                 </div>
@@ -9,14 +9,14 @@
         </div>
         <div class='contents contents-top'>
             <div class="block">
-                <div class="block-header" >
+                <div class="block-header">
                     <ul class="block-options">
                         <slot name="titleButton"></slot>
                     </ul>
                     <h3 class="block-title">{{ moduleTitle }}</h3>
                 </div>
                 <div class="block-content block-content-full">
-                        <slot name="table"></slot>
+                    <slot name="table"></slot>
                 </div>
             </div>
         </div>
@@ -25,13 +25,12 @@
     </div>
 
 
-
 </template>
 
 <script type="text/ecmascript-6">
 
     export  default{
-        props:['moduleTitle']
+        props: ['moduleTitle']
 
     }
 </script>
@@ -44,8 +43,8 @@
         overflow-x: visible;
     }
 
-    .contents-top{
-        margin-top:20px;
+    .contents-top {
+        margin-top: 20px;
     }
 
     .block {
@@ -88,6 +87,7 @@
     .block-options.block-options-left + .block-title {
         float: right;
     }
+
     .block-options > li {
         display: inline-block;
         margin: 0 2px;
