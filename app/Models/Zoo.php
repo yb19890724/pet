@@ -15,6 +15,7 @@ class Zoo extends Model
         'father_id',
         'mother_id',
         'dominant_gene',
+        'hide_gene',
         'sort',
         'birthday'
     ];
@@ -24,7 +25,7 @@ class Zoo extends Model
      */
     public function colorTransform()
     {
-        $color=config("dictionaries.color.{$this->color}");
+        $color = config("dictionaries.color.{$this->color}");
         return $color ?? '';
     }
 
@@ -33,7 +34,7 @@ class Zoo extends Model
      */
     public function sexTransform()
     {
-        $color=config("dictionaries.sex.{$this->sex}");
+        $color = config("dictionaries.sex.{$this->sex}");
         return $color ?? '';
     }
 
@@ -42,16 +43,51 @@ class Zoo extends Model
      */
     public function stateTransform()
     {
-        $color=config("dictionaries.state.{$this->state}");
+        $color = config("dictionaries.state.{$this->state}");
         return $color ?? '';
     }
 
     /**
-     * set  gene_type value
+     * set dominant gene value
      * @return  string
      */
-    public function setDominantGeneAttribute()
+    public function setDominantGeneAttribute($value)
     {
-        //$this->attributes['dominant_gene']=explode(',',$this->attributes['dominant_gene']);
+        if (not_empty_array($value)) {
+            $this->attributes['dominant_gene'] = implode(',', $value);
+        }
+    }
+
+    /**
+     * set hide gene value
+     * @return  string
+     */
+    public function setHideGeneAttribute($value)
+    {
+        if (not_empty_array($value)) {
+            $this->attributes['hide_gene'] = implode(',', $value);
+        }
+    }
+
+    /**
+     * get dominant gene value
+     * @return  array
+     */
+    public function getDominantGeneAttribute($value)
+    {
+        if (!empty($value)) {
+            return explode(',', $value);
+        }
+    }
+
+    /**
+     * get dominant gene value
+     * @return  array
+     */
+    public function getHideGeneAttribute($value)
+    {
+        if (!empty($value)) {
+            return explode(',', $value);
+        }
     }
 }

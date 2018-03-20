@@ -7,8 +7,10 @@ export default {
     food_category:'食物分类',
     birthday:'出生日期',
     state:'状态',
-    parent:'父类',
+    father:'父类',
     mother:'母类',
     descriptions:'简介',
-    gene_type:'基因类型'
+    gene_type:'基因类型',
+    dominant_gene:'显性基因',
+    hide_gene:'隐性基因'
 }

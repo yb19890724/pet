@@ -28,7 +28,7 @@
                 </el-select>
             </el-form-item>
 
-            <el-form-item label="显性基因">
+            <el-form-item :label="$t('fields.dominant_gene')">
                 <el-checkbox-group v-model="form.dominant_gene" >
                     <span v-for="(val,index) in dominantGene" class="el-checkbox__label">
                         <el-checkbox :label="val" size="medium" ></el-checkbox>
@@ -36,6 +36,13 @@
                 </el-checkbox-group>
             </el-form-item>
 
+            <el-form-item :label="$t('fields.hide_gene')">
+                <el-checkbox-group v-model="form.hide_gene" >
+                    <span v-for="(val,index) in hideGene" class="el-checkbox__label">
+                        <el-checkbox :label="val" size="medium" ></el-checkbox>
+                    </span>
+                </el-checkbox-group>
+            </el-form-item>
 
             <el-form-item :label="$t('fields.birthday')">
                 <el-date-picker
@@ -51,7 +58,7 @@
                 <el-input v-model="form.sort"></el-input>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.parent')">
+            <el-form-item :label="$t('fields.father')">
                 <el-select v-model="form.father_id" :placeholder="$t('placeholder.parentSelect')" style="width: 100%;">
                     <template v-for="father in father">
                         <el-option :label="father.label" :value="father.value"></el-option>
@@ -119,7 +126,9 @@
                 this.method = this.form.id ? 'put' : 'post';
                 this.message=this.$t('message.'+this.method);
                 if(this.submit==false){
+/*
                     this.submit=true;
+*/
                     let self=this;
                     this.$http[this.method](this.url, this.form).then((response) => {
                         if (response.status == 201 || response.status == 204) {
@@ -133,7 +142,9 @@
                 }
             },
             isSubmit(){
+/*
                 this.submit=this.submit?true:false;
+*/
             },
             goBack(){
                 this.$router.go(-1);
@@ -173,5 +184,6 @@
 <style type="text/css" scoped>
     .el-checkbox__label{
         padding-right: 2px;
+        padding-top: 10px;
     }
 </style>

@@ -11,7 +11,7 @@ use Phpno1\Architecture\Criterias\FilterRequest;
 class GeneRepositoryEloquent extends AbstractRepository implements GeneRepository
 {
     protected $filters = [
-       'gene'=>GeneTypeFilter::class
+       'gene_type'=>GeneTypeFilter::class
     ];
 
     public function entity()

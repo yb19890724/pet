@@ -49,15 +49,33 @@ if (!function_exists('generate_tree')) {
     function generateTree(array $items)
     {
         $tree = [];
-        array_unshift($items,['id' => 0, 'parent_id' => 0, 'name' => '']);
-        foreach($items as $key=>$item){
-            if(!empty($item['parent_id'])){
+        array_unshift($items, ['id' => 0, 'parent_id' => 0, 'name' => '']);
+        foreach ($items as $key => $item) {
+            if (!empty($item['parent_id'])) {
                 $items[$item['parent_id']]['sub'][] = &$items[$key];
-            }else if(!empty($item['id'])){
+            } else if (!empty($item['id'])) {
                 $tree[$item['id']] = &$items[$key];
             }
         }
         return $tree;
     }
 
+}
+
+/**
+ * @desc:   判断数组中key=>value是一个数组
+ * @auth:   hyb
+ * @date:   2018/3/20
+ * @time:   9:33
+ * @param:  $data  array  数组
+ * @return: boolean
+ */
+if (!function_exists('not_empty_array')) {
+    function not_empty_array(array $data)
+    {
+        if(!empty($data) && is_array($data)){
+            return true;
+        }
+        return false;
+    }
 }

@@ -10,7 +10,6 @@ use App\Http\Responses\Zoo\ZooIndexResponse;
 use App\Http\Responses\Zoo\ZooAllResponse;
 use App\Traits\ResponseTrait;
 
-
 class ZooController extends Controller
 {
     use ResponseTrait;
