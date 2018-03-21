@@ -1,6 +1,6 @@
 <template>
     <div class='animated fadeIn'>
-        <v-form :moduleTitle="$t('module.foodCreate')" >
+        <v-form :moduleTitle="$t('module.growthCreate')" >
             <div slot="form" >
                 <zoo-feeding-form :form="form"></zoo-feeding-form>
             </div>

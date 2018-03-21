@@ -33,6 +33,21 @@ export default [
                         component: require('./views/backend/zoo/Edit.vue')
                     },
                     {
+                        path: ':id/growth',
+                        name:'growthHome',
+                        component: require('./views/backend/growth/Home.vue')
+                    },
+                    {
+                        path: ':id/growth/create',
+                        name:'growthCreate',
+                        component: require('./views/backend/growth/Create.vue')
+                    },
+                    {
+                        path: 'growth/:id/edit',
+                        name:'growthEdit',
+                        component: require('./views/backend/growth/Edit.vue')
+                    },
+                    {
                         path: 'box',
                         component: require('./views/backend/layouts/ModuleView.vue'),
                         children: [
@@ -50,27 +65,6 @@ export default [
                                 path: ':id/edit',
                                 name:'boxEdit',
                                 component: require('./views/backend/box/Edit.vue')
-                            }
-                        ]
-                    },
-                    {
-                        path: 'feeding',
-                        component: require('./views/backend/layouts/ModuleView.vue'),
-                        children: [
-                            {
-                                path: 'zoo/:id',
-                                name:'feedingHome',
-                                component: require('./views/backend/feeding/Home.vue')
-                            },
-                            {
-                                path: 'create',
-                                name:'feedingCreate',
-                                component: require('./views/backend/feeding/Create.vue')
-                            },
-                            {
-                                path: ':id/edit',
-                                name:'feedingEdit',
-                                component: require('./views/backend/feeding/Edit.vue')
                             }
                         ]
                     }

@@ -38,12 +38,12 @@
                         <el-button
                                 size="mini"
                                 type="primary"
-                                @click="redirectFeeding(this,scope.row.id)">成长记录
+                                @click="redirectGrowth(this,scope.row.id)">成长记录
                         </el-button>
                         <el-button
                                 size="mini"
                                 type="success"
-                                @click="redirectGrowth(this,scope.row.id)">喂养记录
+                                @click="redirectFeeding(this,scope.row.id)">喂养记录
                         </el-button>
                     </template>
                 </template>

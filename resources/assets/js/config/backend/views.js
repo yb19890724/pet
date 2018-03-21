@@ -36,7 +36,7 @@ export const feedingView ={
 };
 
 export const growthView ={
-    index:'feedingHome',
-    create: 'feedingCreate',
-    edit: 'feedingEdit'
+    index:'growthHome',
+    create: 'growthCreate',
+    edit: 'growthEdit'
 };

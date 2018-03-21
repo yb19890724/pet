@@ -13,5 +13,11 @@ export default {
     foodCategoryTitle:'食物分类管理',
     geneTitle:'基因管理',
     geneCreate:'添加基因',
-    geneEdit:'修改基因'
+    geneEdit:'修改基因',
+    feedingTitle:'宠物喂养管理',
+    feedingCreate:'添加宠物喂养记录',
+    feedingEdit:'修改宠物喂养记录',
+    growthTitle:'宠物成长管理',
+    growthCreate:'添加宠物成长记录',
+    growthEdit:'修改宠物成长记录'
 }
