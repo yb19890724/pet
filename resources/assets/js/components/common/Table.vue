@@ -14,14 +14,15 @@
             </el-table-column>-->
 
             <!--  显示数据序号 -->
-            <el-table-column v-if="index" type="index" label="序号" width="65">
+            <el-table-column v-if="index" type="index" label="序号" with="200">
             </el-table-column>
 
             <template v-for="(field,index) in fields">
-                <el-table-column :prop="field.text" :label="field.label"></el-table-column>
+                <el-table-column :prop="field.text" :label="field.label" with="105"></el-table-column>
             </template>
-
-            <el-table-column label="操作">
+            <el-table-column
+                    label="操作"
+                    :width="buttonWith">
                 <template slot-scope="scope">
                     <el-button
                             size="mini"
@@ -36,8 +37,13 @@
                     <template v-if="button=='zoo'">
                         <el-button
                                 size="mini"
-                                type="danger"
-                                @click="handleDelete(this,scope.row.id)">成长记录
+                                type="primary"
+                                @click="redirectFeeding(this,scope.row.id)">成长记录
+                        </el-button>
+                        <el-button
+                                size="mini"
+                                type="success"
+                                @click="redirectGrowth(this,scope.row.id)">喂养记录
                         </el-button>
                     </template>
                 </template>
@@ -57,7 +63,8 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { mapState,mapActions} from 'vuex';
+    import { growthView,feedingView } from '../../config/backend/views';
+
     export default{
         props: {
             fields: {//列表展示列
@@ -87,6 +94,11 @@
             apiUrl: {
                 type: String,
                 required: true
+            },
+            buttonWith:{
+                default(){
+                    return '';
+                }
             }
         },
         mounted(){
@@ -151,6 +163,12 @@
 
                 this.getTableData(url);
                 return false;
+            },
+            redirectFeeding(event, id){
+                this.$router.push({name: feedingView.index, params: {id: id}});
+            },
+            redirectGrowth(event, id){
+                this.$router.push({name: growthView.index, params: {id: id}});
             }
         }
     }

@@ -28,3 +28,15 @@ export const geneView ={
     create: 'geneCreate',
     edit: 'geneEdit'
 };
+
+export const feedingView ={
+    index:'feedingHome',
+    create: 'feedingCreate',
+    edit: 'feedingEdit'
+};
+
+export const growthView ={
+    index:'feedingHome',
+    create: 'feedingCreate',
+    edit: 'feedingEdit'
+};
