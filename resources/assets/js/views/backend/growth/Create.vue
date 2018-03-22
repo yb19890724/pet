@@ -15,8 +15,8 @@
         data() {
             return {
                 form: {
-                    name: '',
-                    sort: 0
+                    weight: '',
+                    body_length: ''
                 }
             }
         }

@@ -2,19 +2,11 @@
     <div class='contents'>
         <el-form ref="form" :model="form"  label-width="80px">
             <el-form-item :label="$t('fields.name')">
-                <el-input v-model="form.name"></el-input>
-            </el-form-item>
-
-            <el-form-item :label="$t('fields.food_category')">
-                <el-select v-model="form.food_category_id" :placeholder="$t('placeholder.categorySelect')" style="width: 100%;">
-                    <template v-for="foodCategory in foodCategorySelect">
-                        <el-option :label="foodCategory.name" :value="foodCategory.id"></el-option>
-                    </template>
-                </el-select>
+                <el-input v-model="form.weight"></el-input>
             </el-form-item>
 
             <el-form-item :label="$t('fields.sort')">
-                <el-input v-model="form.sort"></el-input>
+                <el-input v-model="form.body_length"></el-input>
             </el-form-item>
 
             <el-form-item>
@@ -32,7 +24,6 @@
                 type: Object,
                 default(){
                     return {
-                        food_category_id:""
                     };
                 }
             }

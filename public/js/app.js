@@ -96257,7 +96257,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96284,10 +96284,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
         createView: function createView() {
-            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["d" /* foodView */].create });
+            var params = { id: this.$route.params.id };
+            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["f" /* growthView */].create, params: params });
         },
         editView: function editView() {
-            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["d" /* foodView */].edit });
+            this.$router.push({ name: __WEBPACK_IMPORTED_MODULE_0__config_backend_views__["f" /* growthView */].edit });
         },
         deleteRow: function deleteRow() {
             alert('删除');
@@ -96504,8 +96505,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             form: {
-                name: '',
-                sort: 0
+                weight: '',
+                body_length: ''
             }
         };
     }
@@ -96546,7 +96547,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96576,14 +96577,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -96591,9 +96584,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         form: {
             type: Object,
             default: function _default() {
-                return {
-                    food_category_id: ""
-                };
+                return {};
             }
         }
     },
@@ -96670,48 +96661,13 @@ var render = function() {
             [
               _c("el-input", {
                 model: {
-                  value: _vm.form.name,
+                  value: _vm.form.weight,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "name", $$v)
+                    _vm.$set(_vm.form, "weight", $$v)
                   },
-                  expression: "form.name"
+                  expression: "form.weight"
                 }
               })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "el-form-item",
-            { attrs: { label: _vm.$t("fields.food_category") } },
-            [
-              _c(
-                "el-select",
-                {
-                  staticStyle: { width: "100%" },
-                  attrs: { placeholder: _vm.$t("placeholder.categorySelect") },
-                  model: {
-                    value: _vm.form.food_category_id,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "food_category_id", $$v)
-                    },
-                    expression: "form.food_category_id"
-                  }
-                },
-                [
-                  _vm._l(_vm.foodCategorySelect, function(foodCategory) {
-                    return [
-                      _c("el-option", {
-                        attrs: {
-                          label: foodCategory.name,
-                          value: foodCategory.id
-                        }
-                      })
-                    ]
-                  })
-                ],
-                2
-              )
             ],
             1
           ),
@@ -96722,11 +96678,11 @@ var render = function() {
             [
               _c("el-input", {
                 model: {
-                  value: _vm.form.sort,
+                  value: _vm.form.body_length,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "sort", $$v)
+                    _vm.$set(_vm.form, "body_length", $$v)
                   },
-                  expression: "form.sort"
+                  expression: "form.body_length"
                 }
               })
             ],
