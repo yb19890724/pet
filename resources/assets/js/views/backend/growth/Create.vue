@@ -2,16 +2,16 @@
     <div class='animated fadeIn'>
         <v-form :moduleTitle="$t('module.growthCreate')" >
             <div slot="form" >
-                <zoo-feeding-form :form="form"></zoo-feeding-form>
+                <zoo-growth-form :form="form"></zoo-growth-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import zooFeedingForm from './Form'
+    import zooGrowthForm from './Form'
     export default {
-        components: { zooFeedingForm },
+        components: { zooGrowthForm },
         data() {
             return {
                 form: {

@@ -8,7 +8,7 @@ class ZooGrowthRoute
 {
     public function map(Registrar $router)
     {
-        $router->resource('/zoo/growth','ZooController');
+        $router->resource('/zoo/growth','ZooGrowthController');
     }
 }
 

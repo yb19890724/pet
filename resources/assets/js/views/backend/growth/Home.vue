@@ -2,11 +2,10 @@
     <div class='animated fadeIn'>
         <v-searchTable :moduleTitle="$t('module.growthTitle')" >
             <!-- 搜索视图 -->
-            <SearchView slot="search" @searchListData="searchListData"></SearchView>
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" apiUrl="/food" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
+            <v-table slot="table" apiUrl="/zoo/growth" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
 
             </v-table>
 
@@ -14,33 +13,24 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import SearchView from './Search';
     import TitleView from './TitleButton';
     import { notificationReload } from '../../../helps/helps';
     import { growthView } from '../../../config/backend/views';
     export default{
         components:{
-            SearchView,TitleView
+            TitleView
         },
         data() {
             return {
                 views:growthView,
                 fields:[
                     {
-                        label:'食物名称',
-                        text:'name'
+                        label:'体重',
+                        text:'weight'
                     },
                     {
-                        label:'排序',
-                        text:'sort'
-                    },
-                    {
-                        label:'添加时间',
-                        text:'created_at'
-                    },
-                    {
-                        label:'修改时间',
-                        text:'updated_at'
+                        label:'体长',
+                        text:'body_length'
                     }
                 ],
                 multipleSelection: []
@@ -62,7 +52,7 @@
             handleDelete(index){
                 let self=this;
 
-                this.$http.delete('/food/'+index).then(response => {
+                this.$http.delete('/zoo/growth/'+index).then(response => {
                     if(response.status==204){
                         notificationReload(self.$t('message.delete'),function(){
                             self.$refs.table.reloadListData();
@@ -71,9 +61,6 @@
                 }).catch(function (error) {
                     console.log(error);
                 });
-            },
-            searchListData(params){
-                this.$refs.table.getTableData('',params);
             }
         }
 

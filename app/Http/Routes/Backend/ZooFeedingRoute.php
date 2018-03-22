@@ -9,7 +9,7 @@ class ZooFeedingRoute
 {
     public function map(Registrar $router)
     {
-        $router->resource('/zoo/feeding','ZooController');
+        $router->resource('/zoo/feeding','ZooFeedingController');
     }
 }
 
