@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateZooGrowthsTable extends Migration
+class CreatePetGrowthsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateZooGrowthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('zoo_growths', function (Blueprint $table) {
+        Schema::create('pet_growths', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('zoo_id');
+            $table->integer('pet_id');
             $table->string('weight',50)->comment('重量');
             $table->string('body_length',50)->comment('体长');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE `zoo_growths` comment '宠物成长记录'");
+        DB::statement("ALTER TABLE `pet_growths` comment '宠物成长记录'");
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateZooGrowthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zoo_growhs');
+        Schema::dropIfExists('pet_growths');
     }
 }

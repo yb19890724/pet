@@ -9,8 +9,8 @@ class BoxRoute
 {
     public function map(Registrar $router)
     {
-        $router->resource('/box','ZooBoxController');
-        $router->get('/boxes','ZooBoxController@getZooBoxesAll');
+        $router->resource('/box','PetBoxController');
+        $router->get('/boxes','PetBoxController@getPetBoxesAll');
     }
 }
 

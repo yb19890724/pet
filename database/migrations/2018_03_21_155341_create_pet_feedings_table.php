@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateZooFeedingsTable extends Migration
+class CreatePetFeedingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateZooFeedingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('zoo_feedings', function (Blueprint $table) {
+        Schema::create('pet_feedings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('zoo_id');
+            $table->integer('pet_id');
             $table->integer('food_id');
             $table->integer('food_category_id');
-            $table->integer('zoo_box_id');
+            $table->integer('pet_box_id');
             $table->tinyInteger('unit')->comment('单位:1只,2克');
             $table->string('descriptions',100)->comment('描述');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE `zoo_feedings` comment '宠物喂养记录表'");
+        DB::statement("ALTER TABLE `pet_feedings` comment '宠物喂养记录表'");
 
     }
 
@@ -34,6 +34,6 @@ class CreateZooFeedingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zoo_feedings');
+        Schema::dropIfExists('pet_feedings');
     }
 }

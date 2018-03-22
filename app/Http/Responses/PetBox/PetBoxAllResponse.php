@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\ZooBox;
+namespace App\Http\Responses\PetBox;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class ZooBoxAllResponse implements Responsable
+class PetBoxAllResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,10 +25,10 @@ class ZooBoxAllResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->transform(function ($zooBoxes) {
+        $this->result->transform(function ($petBox) {
             return [
-                'value'           => $zooBoxes->value,
-                'label'           => $zooBoxes->label
+                'value'           => $petBox->value,
+                'label'           => $petBox->label
             ];
         });
         return $this->responseJson($this->result);

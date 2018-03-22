@@ -2,13 +2,13 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\ZooGrowth;
-use App\Repository\Contracts\ZooGrowthRepository;
+use App\Models\ZooFeeding;
+use App\Repository\Contracts\PetFeedingRepository;
 use Phpno1\Architecture\Criterias\FilterRequest;
 use Phpno1\Architecture\Eloquent\AbstractRepository;
 use App\Repository\Filters\ZooFilter;
 
-class ZooGrowthRepositoryEloquent extends AbstractRepository implements ZooGrowthRepository
+class PetFeedingRepositoryEloquent extends AbstractRepository implements PetFeedingRepository
 {
     protected $filters = [
         'zoo_id'=>ZooFilter::class
@@ -16,15 +16,14 @@ class ZooGrowthRepositoryEloquent extends AbstractRepository implements ZooGrowt
 
     public function entity()
     {
-        return ZooGrowth::class;
+        return ZooFeeding::class;
     }
 
     /**
-     * Get Zoo growths and paginate.
+     * get zoo feedings paginate
      *
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getZooGrowths(int $perPage = 0)
+    public function getZooFeedings(int $perPage=0)
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)

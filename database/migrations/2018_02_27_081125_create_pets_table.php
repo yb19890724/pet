@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateZoosTable extends Migration
+class CreatePetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateZoosTable extends Migration
      */
     public function up()
     {
-        Schema::create('zoos', function (Blueprint $table) {
+        Schema::create('pets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',50);
             $table->integer('box_id')->comment('箱子id');
@@ -30,7 +30,7 @@ class CreateZoosTable extends Migration
             $table->timestamps();
         });
 
-        DB::statement("ALTER TABLE `zoos` comment '宠物表'");
+        DB::statement("ALTER TABLE `pets` comment '宠物表'");
     }
 
     /**
@@ -40,6 +40,6 @@ class CreateZoosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zoos');
+        Schema::dropIfExists('pets');
     }
 }

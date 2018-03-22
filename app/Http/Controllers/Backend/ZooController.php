@@ -2,34 +2,34 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\Zoo\ZooShowResponse;
+use App\Http\Responses\Pet\PetShowResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\ZooService;
-use App\Http\Responses\Zoo\ZooIndexResponse;
-use App\Http\Responses\Zoo\ZooAllResponse;
+use App\Services\PetService;
+use App\Http\Responses\Pet\PetIndexResponse;
+use App\Http\Responses\Pet\PetAllResponse;
 use App\Traits\ResponseTrait;
 
-class ZooController extends Controller
+class PetController extends Controller
 {
     use ResponseTrait;
 
-    private $zoo;
+    private $pet;
 
-    public function __construct(ZooService $zooService)
+    public function __construct(PetService $petService)
     {
-        $this->zoo = $zooService;
+        $this->pet = $petService;
     }
 
     /**
-     * get zoo all .
+     * get pet all .
      *
      * @return \Illuminate\Http\Response
      */
-    public function getZooAll()
+    public function getPetAll()
     {
-        $result = $this->zoo->getZooAll();
-        return new ZooAllResponse($result);
+        $result = $this->pet->getPetAll();
+        return new PetAllResponse($result);
     }
 
     /**
@@ -39,8 +39,8 @@ class ZooController extends Controller
      */
     public function index()
     {
-        $result = $this->zoo->searchZoos();
-        return new ZooIndexResponse($result);
+        $result = $this->pet->searchPets();
+        return new PetIndexResponse($result);
     }
 
     /**
@@ -61,7 +61,7 @@ class ZooController extends Controller
      */
     public function store(Request $request)
     {
-        $result = $this->zoo->storeZoo($request->all());
+        $result = $this->pet->storePet($request->all());
         if (!empty($result)) {
             return $this->withCreated(['message' => trans('message.create.success')]);
         }
@@ -76,8 +76,8 @@ class ZooController extends Controller
      */
     public function show($id)
     {
-        $result = $this->zoo->getZoo($id);
-        return new ZooShowResponse($result);
+        $result = $this->pet->getPet($id);
+        return new PetShowResponse($result);
     }
 
     /**
@@ -100,7 +100,7 @@ class ZooController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = $this->zoo->updateZoo($id, $request->all());
+        $result = $this->pet->updatePet($id, $request->all());
         if (!empty($result)) {
             return $this->withNotContent();
         }
@@ -115,7 +115,7 @@ class ZooController extends Controller
      */
     public function destroy($id)
     {
-        $result = $this->zoo->deleteZoo($id);
+        $result = $this->pet->deletePet($id);
         if (!empty($result)) {
             return $this->withGone(trans('message.delete.success'));
         }

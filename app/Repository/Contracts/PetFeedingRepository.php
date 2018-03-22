@@ -2,7 +2,7 @@
 
 namespace App\Repository\Contracts;
 
-interface ZooFeedingRepository
+interface PetFeedingRepository
 {
 
 }

@@ -2,15 +2,15 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\Zoo;
-use App\Repository\Contracts\ZooRepository;
+use App\Models\Pet;
+use App\Repository\Contracts\PetRepository;
 use Phpno1\Architecture\Eloquent\AbstractRepository;
 use Phpno1\Architecture\Criterias\FilterRequest;
 use App\Repository\Filters\SearchNameFilter;
 use App\Repository\Filters\SortFilter;
 use App\Repository\Filters\SexFilter;
 
-class ZooRepositoryEloquent extends AbstractRepository implements ZooRepository
+class PetRepositoryEloquent extends AbstractRepository implements PetRepository
 {
     protected $filters = [
         'search_name' => SearchNameFilter::class,

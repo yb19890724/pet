@@ -2,11 +2,11 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\ZooBox;
-use App\Repository\Contracts\ZooBoxRepository;
+use App\Models\PetBox;
+use App\Repository\Contracts\PetBoxRepository;
 use Phpno1\Architecture\Eloquent\AbstractRepository;
 
-class ZooBoxRepositoryEloquent extends AbstractRepository implements ZooBoxRepository
+class PetBoxRepositoryEloquent extends AbstractRepository implements PetBoxRepository
 {
     protected $filters = [
         // filter and sort settings
@@ -14,7 +14,7 @@ class ZooBoxRepositoryEloquent extends AbstractRepository implements ZooBoxRepos
 
     public function entity()
     {
-        return ZooBox::class;
+        return PetBox::class;
     }
 
     /**
@@ -22,7 +22,7 @@ class ZooBoxRepositoryEloquent extends AbstractRepository implements ZooBoxRepos
      *
      * @return mixed
      */
-    public function getZooBoxesAll()
+    public function getPetBoxesAll()
     {
         return $this->entity->select(['id as value','box_number as label'])->get();
     }

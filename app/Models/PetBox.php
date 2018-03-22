@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\DateTimeTrait;
 
-class ZooBox extends Model
+class PetBox extends Model
 {
     use DateTimeTrait;
 

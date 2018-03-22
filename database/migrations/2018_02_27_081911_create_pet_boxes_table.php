@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateZooBoxesTable extends Migration
+class CreatePetBoxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateZooBoxesTable extends Migration
      */
     public function up()
     {
-        Schema::create('zoo_boxes', function (Blueprint $table) {
+        Schema::create('pet_boxes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('box_number')->comment('箱子编号');
             $table->integer('sort')->comment('排序');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE `zoo_boxes` comment '宠物箱表'");
+        DB::statement("ALTER TABLE `pet_boxes` comment '宠物箱表'");
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateZooBoxesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zoo_boxes');
+        Schema::dropIfExists('pet_boxes');
     }
 }
