@@ -21,9 +21,8 @@ class PetFeedingService
     *
     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
     */
-    public function getPetFeedings(int $petId,int $perPage = 0)
+    public function getPetFeedings(int $perPage = 0)
     {
-        request()->merge(['pet_id'=>$petId]);
         return $this->petFeedingRepository->getPetFeedings($perPage);
     }
 

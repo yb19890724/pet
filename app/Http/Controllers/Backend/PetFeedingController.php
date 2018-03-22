@@ -27,7 +27,7 @@ class PetFeedingController extends Controller
      */
     public function getPetFeedings(int $petId)
     {
-        $result = $this->petFeeding->getPetFeedings($petId);
+        $result = $this->petFeeding->getPetFeedings();
         return new PetFeedingIndexResponse($result);
     }
 
