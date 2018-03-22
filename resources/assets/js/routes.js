@@ -48,6 +48,21 @@ export default [
                         component: require('./views/backend/growth/Edit.vue')
                     },
                     {
+                        path: ':id/feeding',
+                        name:'feedingHome',
+                        component: require('./views/backend/feeding/Home.vue')
+                    },
+                    {
+                        path: ':id/feeding/create',
+                        name:'feedingCreate',
+                        component: require('./views/backend/feeding/Create.vue')
+                    },
+                    {
+                        path: 'feeding/:id/edit',
+                        name:'feedingEdit',
+                        component: require('./views/backend/feeding/Edit.vue')
+                    },
+                    {
                         path: 'box',
                         component: require('./views/backend/layouts/ModuleView.vue'),
                         children: [

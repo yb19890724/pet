@@ -8,15 +8,16 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { foodView } from '../../../config/backend/views';
+    import { feedingView } from '../../../config/backend/views';
 
     export default{
         methods: {
             createView(){
-                this.$router.push({name: foodView.create});
+                let params={id:this.$route.params.id};
+                this.$router.push({name: feedingView.create,params:params});
             },
             editView(){
-                this.$router.push({name: foodView.edit});
+                this.$router.push({name: feedingView.edit});
             },
             deleteRow(){
                 alert('删除');

@@ -1,12 +1,10 @@
 <template>
     <div class='animated fadeIn'>
-        <v-searchTable :moduleTitle="$t('module.foodTitle')" >
-            <!-- 搜索视图 -->
-            <SearchView slot="search" @searchListData="searchListData"></SearchView>
+        <v-searchTable :moduleTitle="$t('module.feedingTitle')" >
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" apiUrl="/food" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
+            <v-table slot="table" :apiUrl="apiUrl" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
 
             </v-table>
 
@@ -14,33 +12,25 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import SearchView from './Search';
     import TitleView from './TitleButton';
     import { notificationReload } from '../../../helps/helps';
     import { foodView } from '../../../config/backend/views';
     export default{
         components:{
-            SearchView,TitleView
+            TitleView
         },
         data() {
             return {
+                apiUrl:'/zoo/'+this.$route.params.id+'/feeding',
                 views:foodView,
                 fields:[
                     {
-                        label:'食物名称',
-                        text:'name'
-                    },
-                    {
-                        label:'排序',
-                        text:'sort'
+                        label:'单位',
+                        text:'unit'
                     },
                     {
                         label:'添加时间',
                         text:'created_at'
-                    },
-                    {
-                        label:'修改时间',
-                        text:'updated_at'
                     }
                 ],
                 multipleSelection: []
@@ -62,7 +52,7 @@
             handleDelete(index){
                 let self=this;
 
-                this.$http.delete('/food/'+index).then(response => {
+                this.$http.delete('/zoo/feeding/'+index).then(response => {
                     if(response.status==204){
                         notificationReload(self.$t('message.delete'),function(){
                             self.$refs.table.reloadListData();

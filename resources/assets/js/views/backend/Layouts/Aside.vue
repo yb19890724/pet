@@ -26,7 +26,7 @@
                             <span>Dashboard</span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="active">
+                            <li>
                                 <router-link to="/dashboard/zoo/box">宠物饲养箱管理</router-link>
                             </li>
                             <li>

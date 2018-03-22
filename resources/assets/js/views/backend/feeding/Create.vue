@@ -1,6 +1,6 @@
 <template>
     <div class='animated fadeIn'>
-        <v-form :moduleTitle="$t('module.foodCreate')" >
+        <v-form :moduleTitle="$t('module.feedingCreate')" >
             <div slot="form" >
                 <zoo-feeding-form :form="form"></zoo-feeding-form>
             </div>
@@ -15,8 +15,13 @@
         data() {
             return {
                 form: {
-                    name: '',
-                    sort: 0
+                    id:'',
+                    zoo_id:'',
+                    food_id:'',
+                    food_category_id:'',
+                    zoo_box_id:'',
+                    unit:'',
+                    descriptions:''
                 }
             }
         }

@@ -25,9 +25,9 @@ class ZooFeedingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getZooFeedings(int $zooId)
     {
-        $result = $this->zooFeeding->getZooFeedings();
+        $result = $this->zooFeeding->getZooFeedings($zooId);
         return new ZooFeedingIndexResponse($result);
     }
 

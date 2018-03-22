@@ -18,8 +18,8 @@ class CreateZooFeedingsTable extends Migration
             $table->integer('zoo_id');
             $table->integer('food_id');
             $table->integer('food_category_id');
-            $table->integer('zoo_boxes_id');
-            $table->integer('unit')->comment('单位:1只,2克');
+            $table->integer('zoo_box_id');
+            $table->tinyInteger('unit')->comment('单位:1只,2克');
             $table->string('descriptions',100)->comment('描述');
             $table->timestamps();
         });

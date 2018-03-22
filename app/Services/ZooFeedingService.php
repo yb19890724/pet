@@ -21,9 +21,10 @@ class ZooFeedingService
     *
     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
     */
-    public function getZooFeedings()
+    public function getZooFeedings(int $zooId,int $perPage = 0)
     {
-        return $this->zooFeedingRepository->paginate();
+        request()->merge(['zoo_id'=>$zooId]);
+        return $this->zooFeedingRepository->getZooFeedings($perPage);
     }
 
    /**
