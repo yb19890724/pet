@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Zoo;
+namespace App\Http\Requests\PetGrowth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ZooStoreRequest extends FormRequest
+class PetGrowthStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
