@@ -7,7 +7,7 @@ use Phpno1\Architecture\Filters\{
     IOrder
 };
 
-class ZooFilter extends AbstractFilter 
+class PetFilter extends AbstractFilter
 {
     protected function mappings()
     {
@@ -18,7 +18,7 @@ class ZooFilter extends AbstractFilter
 
     public function filter($entity, $value)
     {
-        return $entity->where('zoo_id', $value);
+        return $entity->where('pet_id', $value);
     }
 
 

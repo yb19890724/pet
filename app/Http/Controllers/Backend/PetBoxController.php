@@ -5,19 +5,19 @@ namespace App\Http\Controllers\Backend;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\ZooBoxService;
-use App\Http\Responses\ZooBox\ZooBoxIndexResponse;
-use App\Http\Responses\ZooBox\ZooBoxAllResponse;
+use App\Services\PetBoxService;
+use App\Http\Responses\PetBox\PetBoxIndexResponse;
+use App\Http\Responses\PetBox\PetBoxAllResponse;
 
-class ZooBoxController extends Controller
+class PetBoxController extends Controller
 {
     use ResponseTrait;
 
-    private $zooBox;
+    private $petBox;
 
-    public function __construct(ZooBoxService $zooBoxService)
+    public function __construct(PetBoxService $petBoxService)
     {
-        $this->zooBox=$zooBoxService;
+        $this->petBox=$petBoxService;
     }
 
     /**
@@ -27,19 +27,19 @@ class ZooBoxController extends Controller
      */
     public function index()
     {
-        $result=$this->zooBox->getZooBoxes();
-        return new ZooBoxIndexResponse($result);
+        $result=$this->petBox->getPetBoxes();
+        return new PetBoxIndexResponse($result);
     }
 
     /**
-     * get zoo boexs all .
+     * get pet boexs all .
      *
-     * @return ZooBoxIndexResponse
+     * @return PetBoxIndexResponse
      */
-    public function getZooBoxesAll()
+    public function getPetBoxesAll()
     {
-        $result=$this->zooBox->getZooBoxesAll();
-        return new ZooBoxAllResponse($result);
+        $result=$this->petBox->getPetBoxesAll();
+        return new PetBoxAllResponse($result);
     }
 
     /**
@@ -60,7 +60,7 @@ class ZooBoxController extends Controller
      */
     public function store(Request $request)
     {
-        $result=$this->zooBox->storeZooBox($request->all());
+        $result=$this->petBox->storePetBox($request->all());
         if(!empty($result)){
             return $this->withCreated(['message'=>trans('message.create.success')]);
         }
@@ -75,7 +75,7 @@ class ZooBoxController extends Controller
      */
     public function show($id)
     {
-        $result=$this->zooBox->getZooBox($id);
+        $result=$this->petBox->getPetBox($id);
         return $this->responseJson($result);
     }
 
@@ -99,7 +99,7 @@ class ZooBoxController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = $this->zooBox->updateZooBox($id, $request->all());
+        $result = $this->petBox->updatePetBox($id, $request->all());
         if (!empty($result)) {
             return $this->withNotContent();
         }
@@ -114,7 +114,7 @@ class ZooBoxController extends Controller
      */
     public function destroy($id)
     {
-        $result = $this->zooBox->deleteZooBox($id);
+        $result = $this->petBox->deletePetBox($id);
         if (!empty($result)) {
             return $this->withGone(trans('message.delete.success'));
         }
