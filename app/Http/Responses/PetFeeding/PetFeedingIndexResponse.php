@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\ZooFeeding;
+namespace App\Http\Responses\PetFeeding;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class ZooFeedingIndexResponse implements Responsable
+class PetFeedingIndexResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,10 +25,10 @@ class ZooFeedingIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($zooFeeding) {
+        $this->result->getCollection()->transform(function ($petFeeding) {
             return [
-                'id'            => $zooFeeding->id,
-                'unit'          => $zooFeeding->unit,
+                'id'            => $petFeeding->id,
+                'unit'          => $petFeeding->unit,
             ];
         });
 

@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\DateTimeTrait;
 
-class ZooGrowth extends Model
+class PetFeeding extends Model
 {
     use DateTimeTrait;
 
     protected $fillable=[
-        'id',
-        'zoo_id',
-        'weight',
-        'body_length',
-        'created_at',
-        'updated_at'
+        'pet_id',
+        'food_id',
+        'food_category_id',
+        'pet_box_id',
+        'unit',
+        'descriptions'
     ];
+
 
 
 }

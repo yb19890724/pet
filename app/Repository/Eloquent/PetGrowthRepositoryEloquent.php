@@ -11,20 +11,20 @@ use App\Repository\Filters\PetFilter;
 class PetGrowthRepositoryEloquent extends AbstractRepository implements PetGrowthRepository
 {
     protected $filters = [
-        'zoo_id'=>ZooFilter::class
+        'pet_id'=>PetFilter::class
     ];
 
     public function entity()
     {
-        return ZooGrowth::class;
+        return PetGrowth::class;
     }
 
     /**
-     * Get Zoo growths and paginate.
+     * Get Pet growths and paginate.
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getZooGrowths(int $perPage = 0)
+    public function getPetGrowths(int $perPage = 0)
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)

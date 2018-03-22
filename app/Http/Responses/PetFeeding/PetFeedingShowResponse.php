@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Responses\ZooFeeding;
+namespace App\Http\Responses\PetFeeding;
 
 use Illuminate\Contracts\Support\Responsable;
 
-class ZooFeedingShowResponse implements Responsable
+class PetFeedingShowResponse implements Responsable
 {
     protected $result;
 

@@ -4,7 +4,7 @@ namespace App\Http\Routes\Backend;
 
 use Illuminate\Contracts\Routing\Registrar;
 
-class ZooGrowthRoute
+class PetGrowthRoute
 {
     public function map(Registrar $router)
     {

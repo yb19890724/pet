@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\ZooFeedingService;
-use App\Http\Responses\ZooFeeding\ZooFeedingIndexResponse;
-use App\Http\Responses\ZooFeeding\ZooFeedingShowResponse;
+use App\Services\PetFeedingService;
+use App\Http\Responses\PetFeeding\PetFeedingIndexResponse;
+use App\Http\Responses\PetFeeding\PetFeedingShowResponse;
 use App\Traits\ResponseTrait;
 
-class ZooFeedingController extends Controller
+class PetFeedingController extends Controller
 {
     use ResponseTrait;
 
-    protected $zooFeeding;
+    protected $petFeeding;
 
-    public function __construct(ZooFeedingService $zooFeedingService)
+    public function __construct(PetFeedingService $petFeedingService)
     {
-        $this->zooFeeding=$zooFeedingService;
+        $this->petFeeding=$petFeedingService;
     }
 
     /**
@@ -25,10 +25,10 @@ class ZooFeedingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getZooFeedings(int $zooId)
+    public function getPetFeedings(int $petId)
     {
-        $result = $this->zooFeeding->getZooFeedings($zooId);
-        return new ZooFeedingIndexResponse($result);
+        $result = $this->petFeeding->getPetFeedings($petId);
+        return new PetFeedingIndexResponse($result);
     }
 
     /**
@@ -49,7 +49,7 @@ class ZooFeedingController extends Controller
      */
     public function store(Request $request)
     {
-        $result = $this->zooFeeding->storeZooFeeding($request->all());
+        $result = $this->petFeeding->storePetFeeding($request->all());
         if (!empty($result)) {
             return $this->withCreated(['message' => trans('message.create.success')]);
         }
@@ -64,8 +64,8 @@ class ZooFeedingController extends Controller
      */
     public function show($id)
     {
-        $result = $this->zooFeeding->getZooFeeding($id);
-        return new zooFeedingShowResponse($result);
+        $result = $this->petFeeding->getPetFeeding($id);
+        return new petFeedingShowResponse($result);
     }
 
     /**
@@ -88,7 +88,7 @@ class ZooFeedingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = $this->zooFeeding->updateZooFeeding($id, $request->all());
+        $result = $this->petFeeding->updatePetFeeding($id, $request->all());
         if (!empty($result)) {
             return $this->withNotContent();
         }
@@ -103,7 +103,7 @@ class ZooFeedingController extends Controller
      */
     public function destroy($id)
     {
-        $result = $this->zooFeeding->deleteZooFeeding($id);
+        $result = $this->petFeeding->deletePetFeeding($id);
         if (!empty($result)) {
             return $this->withGone(trans('message.delete.success'));
         }
