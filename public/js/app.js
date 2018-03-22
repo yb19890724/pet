@@ -95920,7 +95920,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95946,27 +95946,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a /*,
-                                   data() {
-                                   return {
-                                   form:{
-                                   }
-                                   }
-                                   },
-                                   methods: {
-                                   getFindData(){
-                                   if(this.$route.params.id!=''){
-                                   this.$http.get('/zoo/'+ this.$route.params.id).then(response => {
-                                   if (response.data != '') {
-                                   this.form =response.data
-                                   }
-                                   }).catch(function (error) {
-                                   console.log(error);
-                                   });
-                                   }
-                                   }
-                                   }*/
-    } });
+    components: { zooForm: __WEBPACK_IMPORTED_MODULE_0__Form___default.a }
+});
 
 /***/ }),
 /* 253 */
@@ -96088,7 +96069,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96127,6 +96108,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            apiUrl: '/zoo/' + this.$route.params.id + '/growths',
             views: __WEBPACK_IMPORTED_MODULE_2__config_backend_views__["f" /* growthView */],
             fields: [{
                 label: '体重',
@@ -96134,6 +96116,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 label: '体长',
                 text: 'body_length'
+            }, {
+                label: '添加时间',
+                text: 'created_at'
             }],
             multipleSelection: []
         };
@@ -96156,7 +96141,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         handleDelete: function handleDelete(index) {
             var self = this;
-
             this.$http.delete('/zoo/growth/' + index).then(function (response) {
                 if (response.status == 204) {
                     Object(__WEBPACK_IMPORTED_MODULE_1__helps_helps__["b" /* notificationReload */])(self.$t('message.delete'), function () {
@@ -96365,7 +96349,7 @@ var render = function() {
             ref: "table",
             attrs: {
               slot: "table",
-              apiUrl: "/zoo/growth",
+              apiUrl: _vm.apiUrl,
               fields: _vm.fields,
               views: _vm.views
             },
@@ -96475,7 +96459,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96505,6 +96489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             form: {
+                zoo_id: this.$route.params.id,
                 weight: '',
                 body_length: ''
             }
@@ -96547,7 +96532,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96593,25 +96578,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: '',
             method: '',
             message: '',
-            submit: false,
-            foodCategorySelect: []
+            submit: false
         };
-    },
-    mounted: function mounted() {
-        var _this = this;
-
-        this.$http.get('/food/categories', this.form).then(function (response) {
-            if (response.status == 200) {
-                _this.foodCategorySelect = response.data;
-            }
-        });
     },
 
     methods: {
         onSubmit: function onSubmit() {
-            var _this2 = this;
+            var _this = this;
 
-            this.url = '/food' + (this.form.id ? '/' + this.form.id : '');
+            this.url = '/zoo/growth' + (this.form.id ? '/' + this.form.id : '');
             this.method = this.form.id ? 'put' : 'post';
             this.message = this.$t('message.' + this.method);
             if (this.submit == false) {
@@ -96626,7 +96601,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }).catch(function (_ref) {
                     var response = _ref.response;
 
-                    _this2.isSubmit();
+                    _this.isSubmit();
                 });
             }
         },
@@ -96657,7 +96632,7 @@ var render = function() {
         [
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.name") } },
+            { attrs: { label: _vm.$t("fields.weight") } },
             [
               _c("el-input", {
                 model: {
@@ -96674,7 +96649,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.sort") } },
+            { attrs: { label: _vm.$t("fields.body_length") } },
             [
               _c("el-input", {
                 model: {
@@ -96881,7 +96856,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getFindData: function getFindData() {
             var _this = this;
 
-            this.$http.get('/zoo/growth' + this.$route.params.id).then(function (response) {
+            this.$http.get('/zoo/growth/' + this.$route.params.id).then(function (response) {
                 if (response.data != '') {
                     _this.form = response.data;
                 }
@@ -103337,7 +103312,9 @@ VueI18n.version = '7.6.0';
     descriptions: '简介',
     gene_type: '基因类型',
     dominant_gene: '显性基因',
-    hide_gene: '隐性基因'
+    hide_gene: '隐性基因',
+    weight: '体重',
+    body_length: '体长'
 });
 
 /***/ }),

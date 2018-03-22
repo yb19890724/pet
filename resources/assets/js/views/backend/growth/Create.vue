@@ -15,6 +15,7 @@
         data() {
             return {
                 form: {
+                    zoo_id:this.$route.params.id,
                     weight: '',
                     body_length: ''
                 }

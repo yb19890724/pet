@@ -24,9 +24,9 @@ class ZooGrowthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getZooGrowths(int $zooId)
     {
-        $result = $this->zooGrowth->getZooGrowths();
+        $result = $this->zooGrowth->getZooGrowths($zooId);
         return new ZooGrowthIndexResponse($result);
     }
 
@@ -63,8 +63,7 @@ class ZooGrowthController extends Controller
      */
     public function show($id)
     {
-        $result = $this->zooGrowth->getZooGrowth($id);
-        return new ZooGrowthShowResponse($result);
+        return  $this->zooGrowth->getZooGrowth($id);
     }
 
     /**

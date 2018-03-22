@@ -12,5 +12,7 @@ export default {
     descriptions:'简介',
     gene_type:'基因类型',
     dominant_gene:'显性基因',
-    hide_gene:'隐性基因'
+    hide_gene:'隐性基因',
+    weight:'体重',
+    body_length:'体长'
 }

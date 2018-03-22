@@ -1,11 +1,11 @@
 <template>
     <div class='contents'>
         <el-form ref="form" :model="form"  label-width="80px">
-            <el-form-item :label="$t('fields.name')">
+            <el-form-item :label="$t('fields.weight')">
                 <el-input v-model="form.weight"></el-input>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.sort')">
+            <el-form-item :label="$t('fields.body_length')">
                 <el-input v-model="form.body_length"></el-input>
             </el-form-item>
 
@@ -33,20 +33,12 @@
                 url:'',
                 method:'',
                 message:'',
-                submit:false,
-                foodCategorySelect:[]
+                submit:false
             }
-        },
-        mounted(){
-            this.$http.get('/food/categories', this.form).then((response) => {
-                if (response.status ==200) {
-                    this.foodCategorySelect=response.data;
-                }
-            });
         },
         methods: {
             onSubmit() {
-                this.url = '/food'+(this.form.id ? '/' + this.form.id : '');
+                this.url = '/zoo/growth'+(this.form.id ? '/' + this.form.id : '');
                 this.method = this.form.id ? 'put' : 'post';
                 this.message=this.$t('message.'+this.method);
                 if(this.submit==false){

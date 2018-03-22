@@ -5,7 +5,7 @@
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" apiUrl="/zoo/growth" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
+            <v-table slot="table" :apiUrl="apiUrl" :fields="fields" :views="views"  ref="table" @handleDelete="handleDelete">
 
             </v-table>
 
@@ -22,6 +22,7 @@
         },
         data() {
             return {
+                apiUrl:'/zoo/'+this.$route.params.id+'/growths',
                 views:growthView,
                 fields:[
                     {
@@ -31,6 +32,10 @@
                     {
                         label:'体长',
                         text:'body_length'
+                    },
+                    {
+                        label:'添加时间',
+                        text:'created_at'
                     }
                 ],
                 multipleSelection: []
@@ -51,7 +56,6 @@
             },
             handleDelete(index){
                 let self=this;
-
                 this.$http.delete('/zoo/growth/'+index).then(response => {
                     if(response.status==204){
                         notificationReload(self.$t('message.delete'),function(){

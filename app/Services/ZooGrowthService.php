@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repository\Contracts\ZooGrowthRepository;
+use Illuminate\Http\Request;
 
 class ZooGrowthService
 {
@@ -21,9 +22,10 @@ class ZooGrowthService
     *
     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
     */
-    public function getZooGrowths()
+    public function getZooGrowths(int $zooId,int $perPage = 0)
     {
-        return $this->zooGrowthRepository->paginate();
+        request()->merge(['zoo_id'=>$zooId]);
+        return $this->zooGrowthRepository->getZooGrowths($perPage);
     }
 
    /**
