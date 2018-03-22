@@ -104723,7 +104723,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.th[data-v-eccd7258]{\n    min-width:70px;\n}\n", ""]);
 
 // exports
 
@@ -104950,14 +104950,14 @@ var render = function() {
         [
           _vm.index
             ? _c("el-table-column", {
-                attrs: { type: "index", label: "序号", with: "200" }
+                attrs: { type: "index", label: "序号", width: "65" }
               })
             : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.fields, function(field, index) {
             return [
               _c("el-table-column", {
-                attrs: { prop: field.text, label: field.label, with: "105" }
+                attrs: { prop: field.text, label: field.label }
               })
             ]
           }),

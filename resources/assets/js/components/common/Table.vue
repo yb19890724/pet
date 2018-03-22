@@ -14,11 +14,11 @@
             </el-table-column>-->
 
             <!--  显示数据序号 -->
-            <el-table-column v-if="index" type="index" label="序号" with="200">
+            <el-table-column v-if="index" type="index" label="序号" width="65">
             </el-table-column>
 
             <template v-for="(field,index) in fields">
-                <el-table-column :prop="field.text" :label="field.label" with="105"></el-table-column>
+                <el-table-column :prop="field.text" :label="field.label"  ></el-table-column>
             </template>
             <el-table-column
                     label="操作"
@@ -175,5 +175,7 @@
 </script>
 
 <style type="text/css" scoped>
-
+    .th{
+        min-width:70px;
+    }
 </style>
