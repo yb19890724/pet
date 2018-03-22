@@ -1,17 +1,17 @@
 <template>
     <div class='animated fadeIn'>
-        <v-form :moduleTitle="$t('module.zooCreate')" >
+        <v-form :moduleTitle="$t('module.petCreate')" >
             <div slot="form" >
-                <zoo-form></zoo-form>
+                <pet-form></pet-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import zooForm from './Form'
+    import petForm from './Form'
     export default {
-        components: { zooForm }
+        components: { petForm }
     }
 </script>
 

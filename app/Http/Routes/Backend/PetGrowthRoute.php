@@ -8,11 +8,11 @@ class PetGrowthRoute
 {
     public function map(Registrar $router)
     {
-        $router->get('/zoo/{zoo_id}/growths','ZooGrowthController@getZooGrowths');
-        $router->get('/zoo/growth/{id}','ZooGrowthController@show');
-        $router->post('/zoo/growth','ZooGrowthController@store');
-        $router->delete('/zoo/growth/{id}','ZooGrowthController@destroy');
-        $router->put('/zoo/growth/{id}','ZooGrowthController@update');
+        $router->get('/pet/{pet_id}/growths','PetGrowthController@getPetGrowths');
+        $router->get('/pet/growth/{id}','PetGrowthController@show');
+        $router->post('/pet/growth','PetGrowthController@store');
+        $router->delete('/pet/growth/{id}','PetGrowthController@destroy');
+        $router->put('/pet/growth/{id}','PetGrowthController@update');
     }
 }
 

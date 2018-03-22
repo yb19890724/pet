@@ -38,7 +38,7 @@
         },
         methods: {
             onSubmit() {
-                this.url = '/zoo/growth'+(this.form.id ? '/' + this.form.id : '');
+                this.url = '/pet/growth'+(this.form.id ? '/' + this.form.id : '');
                 this.method = this.form.id ? 'put' : 'post';
                 this.message=this.$t('message.'+this.method);
                 if(this.submit==false){

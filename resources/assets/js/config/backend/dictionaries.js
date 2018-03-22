@@ -14,10 +14,3 @@ export const geneType={
     dominant:'显性',
     hide:'隐性'
 };
-
-export const color={
-    1:'黑色',
-    2:'红色',
-    3:'蓝色',
-    4:'黄色'
-};

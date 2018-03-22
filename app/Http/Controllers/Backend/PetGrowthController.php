@@ -4,30 +4,30 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Responses\ZooGrowth\ZooGrowthIndexResponse;
-use App\Http\Responses\ZooGrowth\ZooGrowthShowResponse;
-use App\Services\ZooGrowthService;
+use App\Http\Responses\PetGrowth\PetGrowthIndexResponse;
+use App\Http\Responses\PetGrowth\PetGrowthShowResponse;
+use App\Services\PetGrowthService;
 use App\Traits\ResponseTrait;
 
-class ZooGrowthController extends Controller
+class PetGrowthController extends Controller
 {
     use ResponseTrait;
 
-    protected $zooGrowth;
+    protected $petGrowth;
 
-    public function __construct(ZooGrowthService $zooGrowthService)
+    public function __construct(PetGrowthService $petGrowthService)
     {
-        $this->zooGrowth=$zooGrowthService;
+        $this->petGrowth=$petGrowthService;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getZooGrowths(int $zooId)
+    public function getPetGrowths(int $petId)
     {
-        $result = $this->zooGrowth->getZooGrowths($zooId);
-        return new ZooGrowthIndexResponse($result);
+        $result = $this->petGrowth->getPetGrowths($petId);
+        return new PetGrowthIndexResponse($result);
     }
 
     /**
@@ -48,7 +48,7 @@ class ZooGrowthController extends Controller
      */
     public function store(Request $request)
     {
-        $result = $this->zooGrowth->storeZooGrowth($request->all());
+        $result = $this->petGrowth->storePetGrowth($request->all());
         if (!empty($result)) {
             return $this->withCreated(['message' => trans('message.create.success')]);
         }
@@ -63,7 +63,7 @@ class ZooGrowthController extends Controller
      */
     public function show($id)
     {
-        return  $this->zooGrowth->getZooGrowth($id);
+        return  $this->petGrowth->getPetGrowth($id);
     }
 
     /**
@@ -86,7 +86,7 @@ class ZooGrowthController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = $this->zooGrowth->updateZooGrowth($id, $request->all());
+        $result = $this->petGrowth->updatePetGrowth($id, $request->all());
         if (!empty($result)) {
             return $this->withNotContent();
         }
@@ -101,7 +101,7 @@ class ZooGrowthController extends Controller
      */
     public function destroy($id)
     {
-        $result = $this->zooGrowth->deleteZooGrowth($id);
+        $result = $this->petGrowth->deletePetGrowth($id);
         if (!empty($result)) {
             return $this->withGone(trans('message.delete.success'));
         }

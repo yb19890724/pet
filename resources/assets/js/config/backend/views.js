@@ -1,9 +1,9 @@
 //模块路径
 
-export const zooView ={
-    index:'zooHome',
-    create: 'zooCreate',
-    edit: 'zooEdit'
+export const petView ={
+    index:'petHome',
+    create: 'petCreate',
+    edit: 'petEdit'
 };
 
 export const boxView ={

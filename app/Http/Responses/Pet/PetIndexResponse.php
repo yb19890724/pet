@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Responses\PetGrowth;
+namespace App\Http\Responses\Pet;
 
-use App\Traits\ResponseTrait;
 use Illuminate\Contracts\Support\Responsable;
+use App\Traits\ResponseTrait;
 
-class PetGrowthIndexResponse implements Responsable
+class PetIndexResponse implements Responsable
 {
-
     use ResponseTrait;
 
     protected $result;
@@ -26,12 +25,13 @@ class PetGrowthIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($petGrowth) {
+        $this->result->getCollection()->transform(function ($pet) {
             return [
-                'id'            => $petGrowth->id,
-                'weight'        => $petGrowth->weight,
-                'body_length'   => $petGrowth->body_length,
-                'created_at'    => $petGrowth->createTime(),
+                'id'           => $pet->id,
+                'name'         => $pet->name,
+                'sex_title'    => $pet->sexTransform(),
+                'color'        => $pet->color,
+                'state_title'  => $pet->stateTransform(),
             ];
         });
 

@@ -1,7 +1,7 @@
 export default {
-    zooTitle:'宠物管理',
-    zooCreate:'添加宠物',
-    zooEdit:'修改宠物',
+    petTitle:'宠物管理',
+    petCreate:'添加宠物',
+    petEdit:'修改宠物',
     boxTitle:'饲养箱管理',
     boxCreate:'添加饲养箱',
     boxEdit:'修改饲养箱',

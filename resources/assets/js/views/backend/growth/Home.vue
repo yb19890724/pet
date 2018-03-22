@@ -22,7 +22,7 @@
         },
         data() {
             return {
-                apiUrl:'/zoo/'+this.$route.params.id+'/growths',
+                apiUrl:'/pet/'+this.$route.params.id+'/growths',
                 views:growthView,
                 fields:[
                     {
@@ -56,7 +56,7 @@
             },
             handleDelete(index){
                 let self=this;
-                this.$http.delete('/zoo/growth/'+index).then(response => {
+                this.$http.delete('/pet/growth/'+index).then(response => {
                     if(response.status==204){
                         notificationReload(self.$t('message.delete'),function(){
                             self.$refs.table.reloadListData();

@@ -20,16 +20,16 @@ class PetRepositoryEloquent extends AbstractRepository implements PetRepository
 
     public function entity()
     {
-        return Zoo::class;
+        return Pet::class;
     }
 
     /**
-     * Get Search zoo list and paginate.
+     * Get Search pet list and paginate.
      *
      * @param int $perPage
      * @return mixed
      */
-    public function searchZoos(int $perPage = 0)
+    public function searchPets(int $perPage = 0)
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)
@@ -37,11 +37,11 @@ class PetRepositoryEloquent extends AbstractRepository implements PetRepository
     }
 
     /**
-     * Get zoo all .
+     * Get pet all .
      *
      * @return mixed
      */
-    public function getZooAll()
+    public function getPetAll()
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)

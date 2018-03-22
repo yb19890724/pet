@@ -18,7 +18,7 @@ class PetBoxRepositoryEloquent extends AbstractRepository implements PetBoxRepos
     }
 
     /**
-     * Get zoo boxes all .
+     * Get pet boxes all .
      *
      * @return mixed
      */

@@ -34,7 +34,7 @@
                             @click="handleDelete(this,scope.row.id)">删除
                     </el-button>
 
-                    <template v-if="button=='zoo'">
+                    <template v-if="button=='pet'">
                         <el-button
                                 size="mini"
                                 type="primary"

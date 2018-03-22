@@ -8,15 +8,15 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import {  zooView } from '../../../config/backend/views';
+    import {  petView } from '../../../config/backend/views';
 
     export default{
         methods: {
             createView(){
-                this.$router.push({name: zooView.create});
+                this.$router.push({name: petView.create});
             },
             editView(){
-                this.$router.push(zooView.edit);
+                this.$router.push(petView.edit);
             },
             deleteRow(){
                 alert('删除');

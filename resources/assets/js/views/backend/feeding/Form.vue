@@ -36,7 +36,7 @@
             }
         },
         mounted(){
-            this.$http.get('/zoo/feeding/', this.form).then((response) => {
+            this.$http.get('/pet/feeding/', this.form).then((response) => {
                 if (response.status ==200) {
                     this.foodCategorySelect=response.data;
                 }

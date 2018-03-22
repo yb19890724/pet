@@ -21,7 +21,7 @@
         },
         data() {
             return {
-                apiUrl:'/zoo/'+this.$route.params.id+'/feeding',
+                apiUrl:'/pet/'+this.$route.params.id+'/feeding',
                 views:foodView,
                 fields:[
                     {
@@ -52,7 +52,7 @@
             handleDelete(index){
                 let self=this;
 
-                this.$http.delete('/zoo/feeding/'+index).then(response => {
+                this.$http.delete('/pet/feeding/'+index).then(response => {
                     if(response.status==204){
                         notificationReload(self.$t('message.delete'),function(){
                             self.$refs.table.reloadListData();

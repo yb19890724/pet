@@ -14,23 +14,23 @@ export default [
                 component: require('./views/backend/layouts/Main.vue')
             },
             {
-                path: 'zoo',
+                path: 'pet',
                 component: require('./views/backend/layouts/ModuleView.vue'),
                 children: [
                     {
                         path: '/',
-                        name:'zooHome',
-                        component: require('./views/backend/zoo/Home.vue')
+                        name:'petHome',
+                        component: require('./views/backend/pet/Home.vue')
                     },
                     {
                         path: 'create',
-                        name:'zooCreate',
-                        component: require('./views/backend/zoo/Create.vue')
+                        name:'petCreate',
+                        component: require('./views/backend/pet/Create.vue')
                     },
                     {
                         path: ':id/edit',
-                        name:'zooEdit',
-                        component: require('./views/backend/zoo/Edit.vue')
+                        name:'petEdit',
+                        component: require('./views/backend/pet/Edit.vue')
                     },
                     {
                         path: ':id/growth',

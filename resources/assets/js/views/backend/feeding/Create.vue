@@ -2,24 +2,24 @@
     <div class='animated fadeIn'>
         <v-form :moduleTitle="$t('module.feedingCreate')" >
             <div slot="form" >
-                <zoo-feeding-form :form="form"></zoo-feeding-form>
+                <pet-feeding-form :form="form"></pet-feeding-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import zooFeedingForm from './Form'
+    import petFeedingForm from './Form'
     export default {
-        components: { zooFeedingForm },
+        components: { petFeedingForm },
         data() {
             return {
                 form: {
                     id:'',
-                    zoo_id:'',
+                    pet_id:'',
                     food_id:'',
                     food_category_id:'',
-                    zoo_box_id:'',
+                    pet_box_id:'',
                     unit:'',
                     descriptions:''
                 }

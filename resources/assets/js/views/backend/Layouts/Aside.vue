@@ -27,10 +27,10 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <router-link to="/dashboard/zoo/box">宠物饲养箱管理</router-link>
+                                <router-link to="/dashboard/pet/box">宠物饲养箱管理</router-link>
                             </li>
                             <li>
-                                <router-link to="/dashboard/zoo">宠物管理</router-link>
+                                <router-link to="/dashboard/pet">宠物管理</router-link>
                             </li>
                             <li>
                                 <router-link to="/dashboard/food">食物管理</router-link>

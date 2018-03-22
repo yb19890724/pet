@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\Zoo;
+namespace App\Http\Responses\Pet;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class ZooAllResponse implements Responsable
+class PetShowResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,12 +25,6 @@ class ZooAllResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->transform(function ($zoo) {
-            return [
-                'value'           => $zoo->value,
-                'label'         => $zoo->label
-            ];
-        });
         return $this->responseJson($this->result);
     }
 }

@@ -4,8 +4,8 @@
 
             <el-form-item :label="$t('fields.box_number')">
                 <el-select v-model="form.box_id" :placeholder="$t('placeholder.boxSelect')" style="width: 100%;">
-                    <template v-if="zooBoxes!=''">
-                        <template v-for="box in zooBoxes">
+                    <template v-if="petBoxes!=''">
+                        <template v-for="box in petBoxes">
                             <el-option :label="box.label" :value="box.value"></el-option>
                         </template>
                     </template>
@@ -129,20 +129,20 @@
                 father: {},
                 hideGene: {},
                 dominantGene: {},
-                zooBoxes: {}
+                petBoxes: {}
             }
         },
         mounted(){
             this.getFindData();
             this.hideGeneAll();
             this.dominantGeneAll();
-            this.zooBoxesAll();
+            this.petBoxesAll();
         },
         methods: {
             onSubmit() {
                 this.form.dominant_gene = this.dominant_gene;
                 this.form.hide_gene = this.hide_gene;
-                this.url = '/zoo' + (this.form.id ? '/' + this.form.id : '');
+                this.url = '/pet' + (this.form.id ? '/' + this.form.id : '');
                 this.method = this.form.id ? 'put' : 'post';
                 this.message = this.$t('message.' + this.method);
                 if (this.submit == false) {
@@ -170,7 +170,7 @@
                     sex: 'female',
                     not_id: this.id != '' && this.id != undefined ? this.id : ''
                 };
-                this.$http.get('/zoos', {params: params}).then((response) => {
+                this.$http.get('/pets', {params: params}).then((response) => {
                     if (response.status == 200) {
                         this.mother = response.data;
                     }
@@ -181,7 +181,7 @@
                     sex: 'male',
                     not_id: this.id != '' && this.id != undefined ? this.id : ''
                 };
-                this.$http.get('/zoos', {params: params}).then((response) => {
+                this.$http.get('/pets', {params: params}).then((response) => {
                     if (response.status == 200) {
                         this.father = response.data;
                     }
@@ -201,17 +201,17 @@
                     }
                 });
             },
-            zooBoxesAll(){
+            petBoxesAll(){
                 this.$http.get('/boxes').then((response) => {
                     if (response.status == 200) {
-                        this.zooBoxes = response.data;
+                        this.petBoxes = response.data;
                     }
                 });
             },
             getFindData(){
                 this.id = this.$route.params.id;
                 if (this.id != '' && this.id != undefined) {
-                    this.$http.get('/zoo/' + this.id).then(response => {
+                    this.$http.get('/pet/' + this.id).then(response => {
                         if (response.data != '') {
                             this.form = response.data;
                             this.dominant_gene = this.form.dominant_gene;

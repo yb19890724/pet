@@ -2,16 +2,16 @@
     <div class='animated fadeIn'>
         <v-form :moduleTitle="$t('module.feedingEdit')">
             <div slot="form" >
-                <zoo-feeding-form :form="form"></zoo-feeding-form>
+                <pet-feeding-form :form="form"></pet-feeding-form>
             </div>
         </v-form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import zooFeedingForm from './Form';
+    import petFeedingForm from './Form';
     export default {
-        components: { zooFeedingForm },
+        components: { petFeedingForm },
         data() {
             return {
                 form:{
@@ -23,7 +23,7 @@
         },
         methods: {
             getFindData(){
-                this.$http.get('/zoo/feeding/'+ this.$route.params.id).then(response => {
+                this.$http.get('/pet/feeding/'+ this.$route.params.id).then(response => {
                     if (response.data != '') {
                         this.form =response.data
                     }
