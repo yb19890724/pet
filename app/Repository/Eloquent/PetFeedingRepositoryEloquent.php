@@ -7,11 +7,16 @@ use App\Repository\Contracts\PetFeedingRepository;
 use Phpno1\Architecture\Criterias\FilterRequest;
 use Phpno1\Architecture\Eloquent\AbstractRepository;
 use App\Repository\Filters\PetFilter;
+use Phpno1\Architecture\Criterias\EagerLoad;
 
 class PetFeedingRepositoryEloquent extends AbstractRepository implements PetFeedingRepository
 {
     protected $filters = [
         'pet_id'=>PetFilter::class
+    ];
+
+    protected $relations=[
+        'feedingPet','feedingFood','feedingFoodCategory'
     ];
 
     public function entity()
@@ -21,12 +26,24 @@ class PetFeedingRepositoryEloquent extends AbstractRepository implements PetFeed
 
     /**
      * get pet feedings paginate
-     *
+     * @param int $perPage
+     * @return mixed
      */
     public function getPetFeedings(int $perPage=0)
     {
         return $this->withCriteria(
-            new FilterRequest($this->filters)
-        )->paginate($perPage);
+            new FilterRequest($this->filters),
+            new EagerLoad($this->relations)
+        )->select([
+            'id',
+            'pet_id',
+            'food_id',
+            'food_category_id',
+            'pet_box_id',
+            'unit'
+        ])->paginate($perPage);
     }
+
+
+
 }

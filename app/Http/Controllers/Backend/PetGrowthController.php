@@ -26,7 +26,7 @@ class PetGrowthController extends Controller
      */
     public function getPetGrowths(int $petId)
     {
-        $result = $this->petGrowth->getPetGrowths($petId);
+        $result = $this->petGrowth->getPetGrowths();
         return new PetGrowthIndexResponse($result);
     }
 

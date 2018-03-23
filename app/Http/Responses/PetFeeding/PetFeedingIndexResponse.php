@@ -27,11 +27,20 @@ class PetFeedingIndexResponse implements Responsable
     {
         $this->result->getCollection()->transform(function ($petFeeding) {
             return [
-                'id'            => $petFeeding->id,
-                'unit'          => $petFeeding->unit,
+                'id' => $petFeeding->id,
+                'unit' => $petFeeding->unit,
+                'pet_name' => $this->typeName($petFeeding->feedingPet),
+                'food_name' => $this->typeName($petFeeding->feedingFood),
+                'food_category_name' => $this->typeName($petFeeding->feedingFoodCategory),
             ];
         });
 
         return $this->responseJson($this->result);
+    }
+
+    //宠物名称
+    protected function typeName($relation)
+    {
+        return !empty($relation)?$relation->name:"";
     }
 }

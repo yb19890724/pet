@@ -22,9 +22,8 @@ class PetGrowthService
     *
     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
     */
-    public function getPetGrowths(int $petId,int $perPage = 0)
+    public function getPetGrowths(int $perPage = 0)
     {
-        request()->merge(['pet_id'=>$petId]);
         return $this->petGrowthRepository->getPetGrowths($perPage);
     }
 
