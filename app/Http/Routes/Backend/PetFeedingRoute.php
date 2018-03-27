@@ -12,7 +12,7 @@ class PetFeedingRoute
         $router->get('/pet/{pet_id}/feedings','PetFeedingController@getPetFeedings');
         $router->post('/pet/feeding','PetFeedingController@store');
         $router->put('/pet/feeding/{id}','PetFeedingController@update');
-        $router->delete('/pet/feeding/{id}','PetFeedingController@delete');
+        $router->delete('/pet/feeding/{id}','PetFeedingController@destroy');
         $router->get('/pet/feeding/{id}','PetFeedingController@show');
     }
 }

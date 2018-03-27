@@ -25,12 +25,20 @@
                 views:foodView,
                 fields:[
                     {
-                        label:'单位',
-                        text:'unit'
+                        label:'宠物名称',
+                        text:'pet_name'
                     },
                     {
-                        label:'添加时间',
-                        text:'created_at'
+                        label:'食物名称',
+                        text:'food_name'
+                    },
+                    {
+                         label:'食物分类名称',
+                         text:'food_category_name'
+                    },
+                    {
+                        label:'单位',
+                        text:'unit'
                     }
                 ],
                 multipleSelection: []

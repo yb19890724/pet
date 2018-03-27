@@ -37,6 +37,16 @@ class FoodService
         return $this->foodRepository->searchFoods($perPage);
     }
 
+    /**
+     * Get Search Food list and paginate.
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getFoodsAll()
+    {
+        return $this->foodRepository->getFoodsAll();
+    }
+
 
     /**
      * Get one Food Detail by primary key.

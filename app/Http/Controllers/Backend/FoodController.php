@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Responses\Food\FoodIndexResponse;
+use App\Http\Responses\Food\FoodAllResponse;
 use App\Services\FoodService;
 use App\Traits\ResponseTrait;
 
@@ -29,6 +30,16 @@ class FoodController extends Controller
         //
         $result=$this->food->searchFoods();
         return new FoodIndexResponse($result);
+    }
+
+    /**
+     * get foods all data
+     * @return FoodIndexResponse
+     */
+    public function getFoodsAll()
+    {
+        $result=$this->food->getFoodsAll();
+        return new FoodAllResponse($result);
     }
 
     /**

@@ -47595,6 +47595,7 @@ module.exports = Component.exports
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return sex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return state; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return geneType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return unit; });
 
 var sex = {
     male: '公',
@@ -47610,6 +47611,11 @@ var state = {
 var geneType = {
     dominant: '显性',
     hide: '隐性'
+};
+
+var unit = {
+    1: '只',
+    2: '克'
 };
 
 /***/ }),
@@ -96775,7 +96781,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96816,11 +96822,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             apiUrl: '/pet/' + this.$route.params.id + '/feedings',
             views: __WEBPACK_IMPORTED_MODULE_2__config_backend_views__["d" /* foodView */],
             fields: [{
+                label: '宠物名称',
+                text: 'pet_name'
+            }, {
+                label: '食物名称',
+                text: 'food_name'
+            }, {
+                label: '食物分类名称',
+                text: 'food_category_name'
+            }, {
                 label: '单位',
                 text: 'unit'
-            }, {
-                label: '添加时间',
-                text: 'created_at'
             }],
             multipleSelection: []
         };
@@ -97165,7 +97177,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97199,8 +97211,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 pet_id: '',
                 food_id: '',
                 food_category_id: '',
-                pet_box_id: '',
-                unit: '',
+                unit: '1',
                 descriptions: ''
             }
         };
@@ -97242,7 +97253,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97254,6 +97265,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helps_helps__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__ = __webpack_require__(83);
 //
 //
 //
@@ -97270,6 +97282,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -97286,15 +97328,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: '',
             method: '',
             message: '',
-            submit: false
+            submit: false,
+            petsSelect: {},
+            foodsSelect: {},
+            foodCategoriesSelect: {},
+            unit: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["d" /* unit */]
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        this.$http.get('/pet/feeding/', this.form).then(function (response) {
+        this.$http.get('/food/categories').then(function (response) {
             if (response.status == 200) {
-                _this.foodCategorySelect = response.data;
+                _this.foodCategoriesSelect = response.data;
+            }
+        });
+        this.$http.get('/pets').then(function (response) {
+            if (response.status == 200) {
+                _this.petsSelect = response.data;
             }
         });
     },
@@ -97303,7 +97354,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit() {
             var _this2 = this;
 
-            this.url = '/food' + (this.form.id ? '/' + this.form.id : '');
+            this.url = '/pet/feeding' + (this.form.id ? '/' + this.form.id : '');
             this.method = this.form.id ? 'put' : 'post';
             this.message = this.$t('message.' + this.method);
             if (this.submit == false) {
@@ -97327,6 +97378,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         goBack: function goBack() {
             this.$router.go(-1);
+        },
+        getFoodSelect: function getFoodSelect() {
+            var _this3 = this;
+
+            if (this.form.food_category_id != '') {
+                var params = { params: { food_category_id: this.form.food_category_id } };
+                this.$http.get('/foods', params).then(function (response) {
+                    if (response.status == 200) {
+                        _this3.foodsSelect = response.data;
+                    }
+                });
+                return false;
+            }
+            this.foodsSelect = {};
         }
     }
 });
@@ -97349,15 +97414,154 @@ var render = function() {
         [
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.sort") } },
+            { attrs: { label: _vm.$t("fields.food_category") } },
+            [
+              _c(
+                "el-select",
+                {
+                  staticStyle: { width: "100%" },
+                  attrs: { placeholder: _vm.$t("placeholder.categorySelect") },
+                  on: { change: _vm.getFoodSelect },
+                  model: {
+                    value: _vm.form.food_category_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "food_category_id", $$v)
+                    },
+                    expression: "form.food_category_id"
+                  }
+                },
+                [
+                  _vm._l(_vm.foodCategoriesSelect, function(foodCategory) {
+                    return [
+                      _c("el-option", {
+                        attrs: {
+                          label: foodCategory.name,
+                          value: foodCategory.id
+                        }
+                      })
+                    ]
+                  })
+                ],
+                2
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.foodsSelect.length > 0
+            ? [
+                _c(
+                  "el-form-item",
+                  { attrs: { label: _vm.$t("fields.food") } },
+                  [
+                    _c(
+                      "el-select",
+                      {
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          placeholder: _vm.$t("placeholder.foodSelect")
+                        },
+                        model: {
+                          value: _vm.form.food_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "food_id", $$v)
+                          },
+                          expression: "form.food_id"
+                        }
+                      },
+                      [
+                        _vm._l(_vm.foodsSelect, function(foodSelect) {
+                          return [
+                            _c("el-option", {
+                              attrs: {
+                                label: foodSelect.name,
+                                value: foodSelect.id
+                              }
+                            })
+                          ]
+                        })
+                      ],
+                      2
+                    )
+                  ],
+                  1
+                )
+              ]
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.pet") } },
+            [
+              _c(
+                "el-select",
+                {
+                  staticStyle: { width: "100%" },
+                  attrs: { placeholder: _vm.$t("placeholder.petSelect") },
+                  model: {
+                    value: _vm.form.pet_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "pet_id", $$v)
+                    },
+                    expression: "form.pet_id"
+                  }
+                },
+                [
+                  _vm._l(_vm.petsSelect, function(petSelect) {
+                    return [
+                      _c("el-option", {
+                        attrs: {
+                          label: petSelect.label,
+                          value: petSelect.value
+                        }
+                      })
+                    ]
+                  })
+                ],
+                2
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.unit") } },
+            [
+              _vm._l(_vm.unit, function(val, index) {
+                return [
+                  _c(
+                    "el-radio",
+                    {
+                      attrs: { label: index },
+                      model: {
+                        value: _vm.form.unit,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "unit", $$v)
+                        },
+                        expression: "form.unit"
+                      }
+                    },
+                    [_vm._v(_vm._s(val))]
+                  )
+                ]
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.descriptions") } },
             [
               _c("el-input", {
+                attrs: { type: "textarea" },
                 model: {
-                  value: _vm.form.sort,
+                  value: _vm.form.descriptions,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "sort", $$v)
+                    _vm.$set(_vm.form, "descriptions", $$v)
                   },
-                  expression: "form.sort"
+                  expression: "form.descriptions"
                 }
               })
             ],
@@ -97380,7 +97584,7 @@ var render = function() {
             1
           )
         ],
-        1
+        2
       )
     ],
     1
@@ -103967,7 +104171,10 @@ VueI18n.version = '7.4.2';
     dominant_gene: '显性基因',
     hide_gene: '隐性基因',
     weight: '体重',
-    body_length: '体长'
+    body_length: '体长',
+    food: '食物',
+    pet: '宠物',
+    unit: '单位'
 });
 
 /***/ }),
@@ -103999,6 +104206,8 @@ VueI18n.version = '7.4.2';
 /* harmony default export */ __webpack_exports__["a"] = ({
     categoryName: '请输入分类名称',
     categorySelect: '请选择食物分类',
+    foodSelect: "请选择食物",
+    petSelect: "请选择宠物",
     sexSelect: '请选择性别',
     colorSelect: '请选择性颜色',
     stateSelect: '请选择性宠物状态',

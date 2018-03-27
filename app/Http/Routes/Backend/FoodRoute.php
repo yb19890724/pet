@@ -10,6 +10,7 @@ class FoodRoute
     public function map(Registrar $router)
     {
         $router->resource('/food','FoodController');
+        $router->get('/foods','FoodController@getFoodsAll');
     }
 }
 

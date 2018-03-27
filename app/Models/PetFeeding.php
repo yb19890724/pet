@@ -13,7 +13,6 @@ class PetFeeding extends Model
         'pet_id',
         'food_id',
         'food_category_id',
-        'pet_box_id',
         'unit',
         'descriptions'
     ];

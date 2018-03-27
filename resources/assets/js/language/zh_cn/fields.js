@@ -14,5 +14,8 @@ export default {
     dominant_gene:'显性基因',
     hide_gene:'隐性基因',
     weight:'体重',
-    body_length:'体长'
+    body_length:'体长',
+    food:'食物',
+    pet:'宠物',
+    unit:'单位',
 }

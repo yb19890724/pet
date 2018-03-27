@@ -14,3 +14,9 @@ export const geneType={
     dominant:'显性',
     hide:'隐性'
 };
+
+
+export const unit={
+    1:'只',
+    2:'克'
+};

@@ -12,8 +12,8 @@ use App\Repository\Filters\SortFilter;
 class FoodRepositoryEloquent extends AbstractRepository implements FoodRepository
 {
     protected $filters = [
-        'search_name'=>SearchNameFilter::class,
-        'o'=>SortFilter::class,
+        'search_name' => SearchNameFilter::class,
+        'o' => SortFilter::class,
     ];
 
     public function entity()
@@ -32,5 +32,17 @@ class FoodRepositoryEloquent extends AbstractRepository implements FoodRepositor
         return $this->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
+    }
+
+    /**
+     * Get Food All.
+     *
+     * @return mixed
+     */
+    public function getFoodsAll()
+    {
+        return $this->withCriteria(
+            new FilterRequest($this->filters)
+        )->select(['id','name'])->get();
     }
 }
