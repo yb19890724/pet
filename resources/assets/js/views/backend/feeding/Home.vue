@@ -21,7 +21,7 @@
         },
         data() {
             return {
-                apiUrl:'/pet/'+this.$route.params.id+'/feeding',
+                apiUrl:'/pet/'+this.$route.params.id+'/feedings',
                 views:foodView,
                 fields:[
                     {
