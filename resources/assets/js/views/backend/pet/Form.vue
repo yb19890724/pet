@@ -61,7 +61,7 @@
             </el-form-item>
 
             <el-form-item :label="$t('fields.sort')" prop="sort">
-                <el-input v-model="form.sort"></el-input>
+                <el-input v-model.number="form.sort"></el-input>
             </el-form-item>
 
             <el-form-item :label="$t('fields.father')">

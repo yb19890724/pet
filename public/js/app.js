@@ -94725,7 +94725,7 @@ var render = function() {
                 model: {
                   value: _vm.form.sort,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "sort", $$v)
+                    _vm.$set(_vm.form, "sort", _vm._n($$v))
                   },
                   expression: "form.sort"
                 }
