@@ -16,8 +16,8 @@ class CreatePetGrowthsTable extends Migration
         Schema::create('pet_growths', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pet_id');
-            $table->string('weight',50)->comment('重量');
-            $table->string('body_length',50)->comment('体长');
+            $table->integer('weight')->comment('重量');
+            $table->integer('body_length')->comment('体长');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE `pet_growths` comment '宠物成长记录'");

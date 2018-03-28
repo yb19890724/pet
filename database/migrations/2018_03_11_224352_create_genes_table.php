@@ -15,7 +15,7 @@ class CreateGenesTable extends Migration
     {
         Schema::create('genes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->comment('基因名称');
+            $table->string('name',10)->comment('基因名称');
             $table->enum('gene_type',['dominant','hide'])->comment('dominant:显性,hide:隐形');
             $table->timestamps();
         });

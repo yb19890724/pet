@@ -16,7 +16,7 @@ class CreateFoodsTable extends Migration
         Schema::create('foods', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('food_category_id')->comment('食物类型');
-            $table->string('name',50)->comment('食物名称');
+            $table->string('name',10)->comment('食物名称');
             $table->integer('sort')->comment('排序');
             $table->timestamps();
         });
