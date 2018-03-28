@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="has-sub">
+                    <!-- <li class="has-sub">
                         <a href="javascript:;">
                             <span class="badge pull-right">10</span>
                             <i class="fa fa-inbox"></i>
@@ -290,7 +290,7 @@
                             <li><a href="javascript:;">Menu 1.2</a></li>
                             <li><a href="javascript:;">Menu 1.3</a></li>
                         </ul>
-                    </li>
+                    </li> --!>
                     <!-- begin sidebar minify button -->
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
                     <!-- end sidebar minify button -->
