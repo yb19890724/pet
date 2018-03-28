@@ -95178,7 +95178,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             father: {},
             hideGene: {},
             dominantGene: {},
-            petBoxes: {}
+            petBoxes: {},
+            rules: {
+                box_id: [{ required: true, message: '请选择饲养箱' }],
+                color: [{ required: true, message: '请选择颜色' }],
+                birthday: [{ required: true, message: '请选择出生日期' }],
+                dominant_gene: [{ required: true, message: '请选择显性基因' }],
+                hide_gene: [{ required: true, message: '请选择显性基因' }],
+                name: [{ required: true, message: '请输入名称' }, { min: 1, max: 10, message: '长度在 1 到 10 个字符' }],
+                sort: [{ type: 'number', message: '序号必须为数字值' }],
+                descriptions: [{ min: 1, max: 100, message: '长度在 1 到 100 个字符' }]
+            }
         };
     },
     mounted: function mounted() {
@@ -95189,29 +95199,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        onSubmit: function onSubmit() {
+        onSubmit: function onSubmit(formName) {
             var _this = this;
 
-            this.form.dominant_gene = this.dominant_gene;
-            this.form.hide_gene = this.hide_gene;
-            this.url = '/pet' + (this.form.id ? '/' + this.form.id : '');
-            this.method = this.form.id ? 'put' : 'post';
-            this.message = this.$t('message.' + this.method);
-            if (this.submit == false) {
-                this.submit = true;
-                var self = this;
-                this.$http[this.method](this.url, this.form).then(function (response) {
-                    if (response.status == 201 || response.status == 204) {
-                        Object(__WEBPACK_IMPORTED_MODULE_1__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
-                            self.goBack();
+            if (valid) {
+                this.$refs[formName].validate(function (valid) {
+                    _this.form.dominant_gene = _this.dominant_gene;
+                    _this.form.hide_gene = _this.hide_gene;
+                    _this.url = '/pet' + (_this.form.id ? '/' + _this.form.id : '');
+                    _this.method = _this.form.id ? 'put' : 'post';
+                    _this.message = _this.$t('message.' + _this.method);
+                    if (_this.submit == false) {
+                        _this.submit = true;
+                        var self = _this;
+                        _this.$http[_this.method](_this.url, _this.form).then(function (response) {
+                            if (response.status == 201 || response.status == 204) {
+                                Object(__WEBPACK_IMPORTED_MODULE_1__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
+                                    self.goBack();
+                                });
+                            }
+                        }).catch(function (_ref) {
+                            var response = _ref.response;
+
+                            _this.isSubmit();
                         });
                     }
-                }).catch(function (_ref) {
-                    var response = _ref.response;
-
-                    _this.isSubmit();
                 });
+                return false;
             }
+            return false;
         },
         isSubmit: function isSubmit() {
             this.submit = this.submit ? true : false;
@@ -95310,11 +95326,14 @@ var render = function() {
     [
       _c(
         "el-form",
-        { ref: "form", attrs: { model: _vm.form, "label-width": "80px" } },
+        {
+          ref: "form",
+          attrs: { model: _vm.form, rules: _vm.rules, "label-width": "80px" }
+        },
         [
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.box_number") } },
+            { attrs: { label: _vm.$t("fields.box_number"), prop: "box_id" } },
             [
               _c(
                 "el-select",
@@ -95350,7 +95369,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.name") } },
+            { attrs: { label: _vm.$t("fields.name"), prop: "name" } },
             [
               _c("el-input", {
                 model: {
@@ -95419,7 +95438,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.color") } },
+            { attrs: { label: _vm.$t("fields.color"), prop: "color" } },
             [
               _c("el-color-picker", {
                 model: {
@@ -95436,7 +95455,12 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.dominant_gene") } },
+            {
+              attrs: {
+                label: _vm.$t("fields.dominant_gene"),
+                prop: "dominant_gene"
+              }
+            },
             [
               _vm.dominantGene.length != ""
                 ? _vm._l(_vm.dominantGene, function(val, index) {
@@ -95491,7 +95515,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.hide_gene") } },
+            { attrs: { label: _vm.$t("fields.hide_gene"), prop: "hide_gene" } },
             [
               _vm.hideGene != ""
                 ? _vm._l(_vm.hideGene, function(val, index) {
@@ -95545,7 +95569,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.birthday") } },
+            { attrs: { label: _vm.$t("fields.birthday"), prop: "birthday" } },
             [
               _c("el-date-picker", {
                 staticStyle: { width: "100%" },
@@ -95568,7 +95592,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.sort") } },
+            { attrs: { label: _vm.$t("fields.sort"), prop: "sort" } },
             [
               _c("el-input", {
                 model: {
@@ -95663,7 +95687,12 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.descriptions") } },
+            {
+              attrs: {
+                label: _vm.$t("fields.descriptions"),
+                prop: "descriptions"
+              }
+            },
             [
               _c("el-input", {
                 attrs: { type: "textarea" },
@@ -95684,7 +95713,14 @@ var render = function() {
             [
               _c(
                 "el-button",
-                { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      _vm.onSubmit("form")
+                    }
+                  }
+                },
                 [_vm._v(_vm._s(_vm.$t("form.submit")))]
               ),
               _vm._v(" "),
@@ -96443,7 +96479,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96489,32 +96525,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: '',
             method: '',
             message: '',
-            submit: false
+            submit: false,
+            rules: {
+                weight: [{ type: 'number', message: '体重必须为数字值' }],
+                body_length: [{ type: 'number', message: '体长必须为数字值' }]
+            }
         };
     },
 
     methods: {
-        onSubmit: function onSubmit() {
+        onSubmit: function onSubmit(formName) {
             var _this = this;
 
-            this.url = '/pet/growth' + (this.form.id ? '/' + this.form.id : '');
-            this.method = this.form.id ? 'put' : 'post';
-            this.message = this.$t('message.' + this.method);
-            if (this.submit == false) {
-                this.submit = true;
-                var self = this;
-                this.$http[this.method](this.url, this.form).then(function (response) {
-                    if (response.status == 201 || response.status == 204) {
-                        Object(__WEBPACK_IMPORTED_MODULE_0__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
-                            self.goBack();
+            this.$refs[formName].validate(function (valid) {
+                if (valid) {
+                    _this.url = '/pet/growth' + (_this.form.id ? '/' + _this.form.id : '');
+                    _this.method = _this.form.id ? 'put' : 'post';
+                    _this.message = _this.$t('message.' + _this.method);
+                    if (_this.submit == false) {
+                        _this.submit = true;
+                        var self = _this;
+                        _this.$http[_this.method](_this.url, _this.form).then(function (response) {
+                            if (response.status == 201 || response.status == 204) {
+                                Object(__WEBPACK_IMPORTED_MODULE_0__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
+                                    self.goBack();
+                                });
+                            }
+                        }).catch(function (_ref) {
+                            var response = _ref.response;
+
+                            _this.isSubmit();
                         });
                     }
-                }).catch(function (_ref) {
-                    var response = _ref.response;
-
-                    _this.isSubmit();
-                });
-            }
+                    return false;
+                }
+                return false;
+            });
         },
         isSubmit: function isSubmit() {
             this.submit = this.submit ? true : false;
@@ -96539,17 +96585,20 @@ var render = function() {
     [
       _c(
         "el-form",
-        { ref: "form", attrs: { model: _vm.form, "label-width": "80px" } },
+        {
+          ref: "form",
+          attrs: { model: _vm.form, rules: _vm.rules, "label-width": "80px" }
+        },
         [
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.weight") } },
+            { attrs: { label: _vm.$t("fields.weight"), prop: "weight" } },
             [
               _c("el-input", {
                 model: {
                   value: _vm.form.weight,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "weight", $$v)
+                    _vm.$set(_vm.form, "weight", _vm._n($$v))
                   },
                   expression: "form.weight"
                 }
@@ -96560,13 +96609,18 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.body_length") } },
+            {
+              attrs: {
+                label: _vm.$t("fields.body_length"),
+                prop: "body_length"
+              }
+            },
             [
               _c("el-input", {
                 model: {
                   value: _vm.form.body_length,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "body_length", $$v)
+                    _vm.$set(_vm.form, "body_length", _vm._n($$v))
                   },
                   expression: "form.body_length"
                 }
@@ -96580,7 +96634,14 @@ var render = function() {
             [
               _c(
                 "el-button",
-                { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      _vm.onSubmit("form")
+                    }
+                  }
+                },
                 [_vm._v(_vm._s(_vm.$t("form.submit")))]
               ),
               _vm._v(" "),
@@ -97294,7 +97355,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97329,6 +97390,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 food_id: '',
                 food_category_id: '',
                 unit: '1',
+                number: 0,
                 descriptions: ''
             }
         };
@@ -97370,7 +97432,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97383,6 +97445,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helps_helps__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__ = __webpack_require__(54);
+//
+//
+//
+//
 //
 //
 //
@@ -97449,7 +97515,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             petsSelect: {},
             foodsSelect: {},
             foodCategoriesSelect: {},
-            unit: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["d" /* unit */]
+            unit: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["d" /* unit */],
+            rules: {
+                food_category_id: [{ required: true, message: '请选择食物分类' }],
+                food_id: [{ required: true, message: '请选择食物' }],
+                pet_id: [{ required: true, message: '请选择宠物' }],
+                number: [{ type: 'number', message: '数量必须是数值型' }],
+                descriptions: [{ min: 1, max: 100, message: '长度在 1 到 100 个字符' }]
+            }
         };
     },
     mounted: function mounted() {
@@ -97468,27 +97541,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        onSubmit: function onSubmit() {
+        onSubmit: function onSubmit(formName) {
             var _this2 = this;
 
-            this.url = '/pet/feeding' + (this.form.id ? '/' + this.form.id : '');
-            this.method = this.form.id ? 'put' : 'post';
-            this.message = this.$t('message.' + this.method);
-            if (this.submit == false) {
-                this.submit = true;
-                var self = this;
-                this.$http[this.method](this.url, this.form).then(function (response) {
-                    if (response.status == 201 || response.status == 204) {
-                        Object(__WEBPACK_IMPORTED_MODULE_0__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
-                            self.goBack();
+            this.$refs[formName].validate(function (valid) {
+                if (valid) {
+                    _this2.url = '/pet/feeding' + (_this2.form.id ? '/' + _this2.form.id : '');
+                    _this2.method = _this2.form.id ? 'put' : 'post';
+                    _this2.message = _this2.$t('message.' + _this2.method);
+                    if (_this2.submit == false) {
+                        _this2.submit = true;
+                        var self = _this2;
+                        _this2.$http[_this2.method](_this2.url, _this2.form).then(function (response) {
+                            if (response.status == 201 || response.status == 204) {
+                                Object(__WEBPACK_IMPORTED_MODULE_0__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
+                                    self.goBack();
+                                });
+                            }
+                        }).catch(function (_ref) {
+                            var response = _ref.response;
+
+                            _this2.isSubmit();
                         });
                     }
-                }).catch(function (_ref) {
-                    var response = _ref.response;
-
-                    _this2.isSubmit();
-                });
-            }
+                    return false;
+                }
+                return false;
+            });
         },
         isSubmit: function isSubmit() {
             this.submit = this.submit ? true : false;
@@ -97527,11 +97606,19 @@ var render = function() {
     [
       _c(
         "el-form",
-        { ref: "form", attrs: { model: _vm.form, "label-width": "80px" } },
+        {
+          ref: "form",
+          attrs: { model: _vm.form, rules: _vm.rules, "label-width": "80px" }
+        },
         [
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.food_category") } },
+            {
+              attrs: {
+                label: _vm.$t("fields.food_category"),
+                prop: "food_category_id"
+              }
+            },
             [
               _c(
                 "el-select",
@@ -97569,7 +97656,7 @@ var render = function() {
             ? [
                 _c(
                   "el-form-item",
-                  { attrs: { label: _vm.$t("fields.food") } },
+                  { attrs: { label: _vm.$t("fields.food"), prop: "food_id" } },
                   [
                     _c(
                       "el-select",
@@ -97608,7 +97695,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.pet") } },
+            { attrs: { label: _vm.$t("fields.pet"), prop: "pet_id" } },
             [
               _c(
                 "el-select",
@@ -97669,6 +97756,23 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
+            { attrs: { label: _vm.$t("fields.number"), prop: "number" } },
+            [
+              _c("el-input", {
+                model: {
+                  value: _vm.form.number,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "number", _vm._n($$v))
+                  },
+                  expression: "form.number"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
             { attrs: { label: _vm.$t("fields.descriptions") } },
             [
               _c("el-input", {
@@ -97690,7 +97794,14 @@ var render = function() {
             [
               _c(
                 "el-button",
-                { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      _vm.onSubmit("form")
+                    }
+                  }
+                },
                 [_vm._v(_vm._s(_vm.$t("form.submit")))]
               ),
               _vm._v(" "),
@@ -98475,7 +98586,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -98521,32 +98632,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: '',
             method: '',
             message: '',
-            submit: false
+            submit: false,
+            rules: {
+                sort: [{ type: 'number', message: '序号必须为数字值' }],
+                box_number: [{ type: 'number', message: '序号必须为数字值' }]
+            }
         };
     },
 
     methods: {
-        onSubmit: function onSubmit() {
+        onSubmit: function onSubmit(formName) {
             var _this = this;
 
-            this.url = '/box' + (this.form.id ? '/' + this.form.id : '');
-            this.method = this.form.id ? 'put' : 'post';
-            this.message = this.$t('message.' + this.method);
-            if (this.submit == false) {
-                this.submit = true;
-                var self = this;
-                this.$http[this.method](this.url, this.form).then(function (response) {
-                    if (response.status == 201 || response.status == 204) {
-                        Object(__WEBPACK_IMPORTED_MODULE_1__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
-                            self.goBack();
+            this.$refs[formName].validate(function (valid) {
+                if (valid) {
+                    _this.url = '/box' + (_this.form.id ? '/' + _this.form.id : '');
+                    _this.method = _this.form.id ? 'put' : 'post';
+                    _this.message = _this.$t('message.' + _this.method);
+                    if (_this.submit == false) {
+                        _this.submit = true;
+                        var self = _this;
+                        _this.$http[_this.method](_this.url, _this.form).then(function (response) {
+                            if (response.status == 201 || response.status == 204) {
+                                Object(__WEBPACK_IMPORTED_MODULE_1__helps_helps__["a" /* notificationRedirect */])(self.message, function () {
+                                    self.goBack();
+                                });
+                            }
+                        }).catch(function (_ref) {
+                            var response = _ref.response;
+
+                            _this.isSubmit();
                         });
                     }
-                }).catch(function (_ref) {
-                    var response = _ref.response;
-
-                    _this.isSubmit();
-                });
-            }
+                    return false;
+                }
+                return false;
+            });
         },
         isSubmit: function isSubmit() {
             this.submit = this.submit ? true : false;
@@ -98571,17 +98692,22 @@ var render = function() {
     [
       _c(
         "el-form",
-        { ref: "form", attrs: { model: _vm.form, "label-width": "80px" } },
+        {
+          ref: "form",
+          attrs: { model: _vm.form, rules: _vm.rules, "label-width": "80px" }
+        },
         [
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.box_number") } },
+            {
+              attrs: { label: _vm.$t("fields.box_number"), prop: "box_number" }
+            },
             [
               _c("el-input", {
                 model: {
                   value: _vm.form.box_number,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "box_number", $$v)
+                    _vm.$set(_vm.form, "box_number", _vm._n($$v))
                   },
                   expression: "form.box_number"
                 }
@@ -98592,13 +98718,13 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.sort") } },
+            { attrs: { label: _vm.$t("fields.sort"), prop: "sort" } },
             [
               _c("el-input", {
                 model: {
                   value: _vm.form.sort,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "sort", $$v)
+                    _vm.$set(_vm.form, "sort", _vm._n($$v))
                   },
                   expression: "form.sort"
                 }
@@ -98612,7 +98738,14 @@ var render = function() {
             [
               _c(
                 "el-button",
-                { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      _vm.onSubmit("form")
+                    }
+                  }
+                },
                 [_vm._v(_vm._s(_vm.$t("form.submit")))]
               ),
               _vm._v(" "),
@@ -104357,7 +104490,8 @@ VueI18n.version = '7.4.2';
     body_length: '体长',
     food: '食物',
     pet: '宠物',
-    unit: '单位'
+    unit: '单位',
+    number: '数量'
 });
 
 /***/ }),

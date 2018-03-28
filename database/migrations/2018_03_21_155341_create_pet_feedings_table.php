@@ -19,7 +19,8 @@ class CreatePetFeedingsTable extends Migration
             $table->integer('food_id');
             $table->integer('food_category_id');
             $table->tinyInteger('unit')->comment('单位:1只,2克');
-            $table->string('descriptions',100)->comment('描述');
+            $table->integer('number')->comment('数量');
+            $table->string('descriptions',100)->nullable()->comment('描述');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE `pet_feedings` comment '宠物喂养记录表'");

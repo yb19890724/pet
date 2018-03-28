@@ -1,8 +1,8 @@
 <template>
     <div class='contents'>
-        <el-form ref="form" :model="form" label-width="80px">
+        <el-form ref="form" :model="form" :rules="rules" label-width="80px">
 
-            <el-form-item :label="$t('fields.box_number')">
+            <el-form-item :label="$t('fields.box_number')" prop="box_id">
                 <el-select v-model="form.box_id" :placeholder="$t('placeholder.boxSelect')" style="width: 100%;">
                     <template v-if="petBoxes!=''">
                         <template v-for="box in petBoxes">
@@ -12,11 +12,11 @@
                 </el-select>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.name')">
+            <el-form-item :label="$t('fields.name')" prop="name">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.sex')">
+            <el-form-item :label="$t('fields.sex')" >
                 <template v-for="(val,index) in sex">
                     <el-radio v-model="form.sex" :label="index">{{ val }}</el-radio>
                 </template>
@@ -28,11 +28,11 @@
                 </template>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.color')">
+            <el-form-item :label="$t('fields.color')" prop="color">
                 <el-color-picker v-model="form.color"></el-color-picker>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.dominant_gene')">
+            <el-form-item :label="$t('fields.dominant_gene')" prop="dominant_gene">
                 <template v-if="dominantGene.length!=''">
                     <span v-for="(val,index) in dominantGene" class="el-checkbox__label">
                         <input type="checkbox" :value="val.value" v-model="dominant_gene">
@@ -41,7 +41,7 @@
                 </template>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.hide_gene')">
+            <el-form-item :label="$t('fields.hide_gene')" prop="hide_gene">
                 <template v-if="hideGene!=''">
                     <span v-for="(val,index) in hideGene" class="el-checkbox__label">
                         <input type="checkbox" :value="val.value" v-model="hide_gene">
@@ -50,7 +50,7 @@
                 </template>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.birthday')">
+            <el-form-item :label="$t('fields.birthday')" prop="birthday">
                 <el-date-picker
                         v-model="form.birthday"
                         type="datetime"
@@ -60,7 +60,7 @@
                 </el-date-picker>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.sort')">
+            <el-form-item :label="$t('fields.sort')" prop="sort">
                 <el-input v-model="form.sort"></el-input>
             </el-form-item>
 
@@ -84,12 +84,12 @@
                 </el-select>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.descriptions')">
+            <el-form-item :label="$t('fields.descriptions')" prop="descriptions">
                 <el-input type="textarea" v-model="form.descriptions"></el-input>
             </el-form-item>
 
             <el-form-item>
-                <el-button type="primary" @click="onSubmit">{{ $t('form.submit') }}</el-button>
+                <el-button type="primary" @click="onSubmit('form')">{{ $t('form.submit') }}</el-button>
                 <el-button @click="goBack">{{ $t('form.cancel')}}</el-button>
             </el-form-item>
         </el-form>
@@ -129,7 +129,34 @@
                 father: {},
                 hideGene: {},
                 dominantGene: {},
-                petBoxes: {}
+                petBoxes: {},
+                rules: {
+                    box_id:[
+                        { required: true, message: '请选择饲养箱' }
+                    ],
+                    color:[
+                        { required: true, message: '请选择颜色'}
+                    ],
+                    birthday:[
+                        { required: true, message: '请选择出生日期' }
+                    ],
+                    dominant_gene:[
+                        { required: true, message: '请选择显性基因' }
+                    ],
+                    hide_gene:[
+                        { required: true, message: '请选择显性基因' }
+                    ],
+                    name:[
+                        { required: true, message: '请输入名称' },
+                        { min: 1, max: 10, message: '长度在 1 到 10 个字符' }
+                    ],
+                    sort:[
+                        { type: 'number', message: '序号必须为数字值'}
+                    ],
+                    descriptions:[
+                        { min: 1, max: 100, message: '长度在 1 到 100 个字符' }
+                    ]
+                }
             }
         },
         mounted(){
@@ -139,25 +166,31 @@
             this.petBoxesAll();
         },
         methods: {
-            onSubmit() {
-                this.form.dominant_gene = this.dominant_gene;
-                this.form.hide_gene = this.hide_gene;
-                this.url = '/pet' + (this.form.id ? '/' + this.form.id : '');
-                this.method = this.form.id ? 'put' : 'post';
-                this.message = this.$t('message.' + this.method);
-                if (this.submit == false) {
-                    this.submit = true;
-                    let self = this;
-                    this.$http[this.method](this.url, this.form).then((response) => {
-                        if (response.status == 201 || response.status == 204) {
-                            notificationRedirect(self.message, function () {
-                                self.goBack();
+            onSubmit(formName) {
+                if (valid) {
+                   this.$refs[formName].validate((valid) => {
+                        this.form.dominant_gene = this.dominant_gene;
+                        this.form.hide_gene = this.hide_gene;
+                        this.url = '/pet' + (this.form.id ? '/' + this.form.id : '');
+                        this.method = this.form.id ? 'put' : 'post';
+                        this.message = this.$t('message.' + this.method);
+                        if (this.submit == false) {
+                            this.submit = true;
+                            let self = this;
+                            this.$http[this.method](this.url, this.form).then((response) => {
+                                if (response.status == 201 || response.status == 204) {
+                                    notificationRedirect(self.message, function () {
+                                        self.goBack();
+                                    });
+                                }
+                            }).catch(({response}) => {
+                                this.isSubmit();
                             });
                         }
-                    }).catch(({response}) => {
-                        this.isSubmit();
-                    });
+                   });
+                   return false;
                 }
+                return false;
             },
             isSubmit(){
                 this.submit = this.submit ? true : false;

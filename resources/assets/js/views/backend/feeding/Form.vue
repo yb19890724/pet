@@ -1,7 +1,7 @@
 <template>
     <div class='contents'>
-        <el-form ref="form" :model="form"  label-width="80px">
-            <el-form-item :label="$t('fields.food_category')">
+        <el-form ref="form" :model="form" :rules="rules"  label-width="80px">
+            <el-form-item :label="$t('fields.food_category')" prop="food_category_id">
                 <el-select v-model="form.food_category_id" :placeholder="$t('placeholder.categorySelect')" style="width: 100%;" @change="getFoodSelect">
                     <template v-for="foodCategory in foodCategoriesSelect">
                         <el-option :label="foodCategory.name" :value="foodCategory.id"></el-option>
@@ -10,7 +10,7 @@
             </el-form-item>
 
             <template v-if="foodsSelect.length>0">
-                <el-form-item :label="$t('fields.food')">
+                <el-form-item :label="$t('fields.food')" prop="food_id">
                     <el-select v-model="form.food_id" :placeholder="$t('placeholder.foodSelect')" style="width: 100%;">
                         <template v-for="foodSelect in foodsSelect">
                             <el-option :label="foodSelect.name" :value="foodSelect.id"></el-option>
@@ -19,7 +19,7 @@
                 </el-form-item>
             </template>
 
-            <el-form-item :label="$t('fields.pet')">
+            <el-form-item :label="$t('fields.pet')" prop="pet_id">
                 <el-select v-model="form.pet_id" :placeholder="$t('placeholder.petSelect')" style="width: 100%;" >
                     <template v-for="petSelect in petsSelect">
                         <el-option :label="petSelect.label" :value="petSelect.value"></el-option>
@@ -33,11 +33,15 @@
                 </template>
             </el-form-item>
 
+            <el-form-item :label="$t('fields.number')" prop="number" >
+                 <el-input v-model.number="form.number"></el-input>
+            </el-form-item>
+
             <el-form-item :label="$t('fields.descriptions')">
-                            <el-input type="textarea" v-model="form.descriptions"></el-input>
+                  <el-input type="textarea" v-model="form.descriptions"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit">{{ $t('form.submit') }}</el-button>
+                <el-button type="primary" @click="onSubmit('form')">{{ $t('form.submit') }}</el-button>
                 <el-button @click="goBack">{{ $t('form.cancel')}}</el-button>
             </el-form-item>
         </el-form>
@@ -66,7 +70,24 @@
                 petsSelect:{},
                 foodsSelect:{},
                 foodCategoriesSelect:{},
-                unit:unit
+                unit:unit,
+                rules:{
+                    food_category_id: [
+                        { required: true, message: '请选择食物分类'}
+                    ],
+                    food_id:[
+                        { required: true, message: '请选择食物'}
+                    ],
+                    pet_id:[
+                        { required: true, message: '请选择宠物'}
+                    ],
+                    number:[
+                        { type: 'number', message: '数量必须是数值型'}
+                    ],
+                    descriptions:[
+                        { min: 1, max: 100, message: '长度在 1 到 100 个字符' }
+                    ]
+                }
             }
         },
         mounted(){
@@ -82,23 +103,29 @@
             });
         },
         methods: {
-            onSubmit() {
-                this.url = '/pet/feeding'+(this.form.id ? '/' + this.form.id : '');
-                this.method = this.form.id ? 'put' : 'post';
-                this.message=this.$t('message.'+this.method);
-                if(this.submit==false){
-                    this.submit=true;
-                    let self=this;
-                    this.$http[this.method](this.url, this.form).then((response) => {
-                        if (response.status == 201 || response.status == 204) {
-                            notificationRedirect(self.message, function () {
-                                self.goBack();
-                            });
-                        }
-                    }).catch(({response}) => {
-                        this.isSubmit();
-                    });
-                }
+            onSubmit(formName) {
+                this.$refs[formName].validate((valid) => {
+                     if (valid) {
+                          this.url = '/pet/feeding'+(this.form.id ? '/' + this.form.id : '');
+                          this.method = this.form.id ? 'put' : 'post';
+                          this.message=this.$t('message.'+this.method);
+                          if(this.submit==false){
+                              this.submit=true;
+                              let self=this;
+                              this.$http[this.method](this.url, this.form).then((response) => {
+                                  if (response.status == 201 || response.status == 204) {
+                                      notificationRedirect(self.message, function () {
+                                          self.goBack();
+                                      });
+                                  }
+                              }).catch(({response}) => {
+                                  this.isSubmit();
+                              });
+                          }
+                         return false;
+                     }
+                     return false;
+                });
             },
             isSubmit(){
                 this.submit=this.submit?true:false;

@@ -20,6 +20,7 @@
                     food_id:'',
                     food_category_id:'',
                     unit:'1',
+                    number:0,
                     descriptions:''
                 }
             }
