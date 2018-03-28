@@ -14,7 +14,7 @@
 <script type="text/ecmascript-6">
     import TitleView from './TitleButton';
     import { notificationReload } from '../../../helps/helps';
-    import { foodView } from '../../../config/backend/views';
+    import { feedingView } from '../../../config/backend/views';
     export default{
         components:{
             TitleView
@@ -22,7 +22,7 @@
         data() {
             return {
                 apiUrl:'/pet/'+this.$route.params.id+'/feedings',
-                views:foodView,
+                views:feedingView,
                 fields:[
                     {
                         label:'宠物名称',

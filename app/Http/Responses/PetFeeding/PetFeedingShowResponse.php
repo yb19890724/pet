@@ -2,10 +2,13 @@
 
 namespace App\Http\Responses\PetFeeding;
 
+use App\Traits\ResponseTrait;
 use Illuminate\Contracts\Support\Responsable;
 
 class PetFeedingShowResponse implements Responsable
 {
+    use ResponseTrait;
+
     protected $result;
 
     public function __construct($result)
@@ -22,8 +25,6 @@ class PetFeedingShowResponse implements Responsable
 
     protected function transform()
     {
-        return [
-
-        ];
+        return $this->responseJson($this->result);
     }
 }

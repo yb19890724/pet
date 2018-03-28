@@ -17,6 +17,10 @@ class PetFeeding extends Model
         'descriptions'
     ];
 
+    protected $casts = [
+        'unit' => 'string',
+    ];
+
     /**
      * feeding record pet has one relation
      *
