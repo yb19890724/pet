@@ -30,4 +30,13 @@ export function notificationReload(title,callback)
     return false;
 }
 
-
+//错误提示
+export function notificationError(title,callback)
+{
+    let options={
+        title: title,
+        type: 'success'
+    };
+    Notification(options);
+    return false;
+}

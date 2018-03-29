@@ -33,6 +33,15 @@ http.interceptors.response.use(function (response) {
         window.location = '/login';
     }
 
+    if([422].indexOf(response.status) >= 0){
+        /*var message = response.message;
+        if (error.response.status == 422) {
+            for(var i in response.response.data){
+                message = response.response.data[i][0];
+            }
+        }*/
+    }
+
     return Promise.reject(error);
 });
 
