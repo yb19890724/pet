@@ -1,12 +1,14 @@
 <template>
     <div class='animated fadeIn'>
-        <div class="contents">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <slot name="search"></slot>
+        <template v-if="this.$slots.search!=undefined">
+            <div class="contents">
+                <div class="block">
+                    <div class="block-content block-content-full">
+                        <slot name="search"></slot>
+                    </div>
                 </div>
             </div>
-        </div>
+        </template>
         <div class='contents contents-top'>
             <div class="block">
                 <div class="block-header">
@@ -20,18 +22,13 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
 </template>
 
 <script type="text/ecmascript-6">
 
     export  default{
         props: ['moduleTitle']
-
     }
 </script>
 
