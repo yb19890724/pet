@@ -17,14 +17,14 @@
                 <!-- begin header navigation right -->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <form class="navbar-form full-width">
+                        <!--<form class="navbar-form full-width">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Enter keyword" />
                                 <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
                             </div>
-                        </form>
+                        </form>-->
                     </li>
-                    <li class="dropdown">
+                    <!--<li class="dropdown">
                         <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                             <i class="fa fa-bell-o"></i>
                             <span class="label">5</span>
@@ -59,7 +59,7 @@
                                         <div class="text-muted f-s-11">35 minutes ago</div>
                                     </div>
                                 </a>
-                            </li>-->
+                            </li>
                             <li class="media">
                                 <a href="javascript:;">
                                     <div class="media-left"><i class="fa fa-plus media-object bg-green"></i></div>
@@ -82,19 +82,21 @@
                                 <a href="javascript:;">View more</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="dropdown navbar-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+<!--
                             <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1506436465&di=24cf62bf3b26074733e76eaca4ce717f&src=http://p.qiuxingwang.cn/cms/1611/201611240935174511.jpg" alt="" />
-                            <span class="hidden-xs">Adam Schwartz</span> <b class="caret"></b>
+-->
+                            <span class="hidden-xs">{{ admin.name }}</span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu animated fadeInLeft">
-                            <li class="arrow"></li>
+                            <!--<li class="arrow"></li>
                             <li><a href="javascript:;">Edit Profile</a></li>
                             <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
                             <li><a href="javascript:;">Calendar</a></li>
                             <li><a href="javascript:;">Setting</a></li>
-                            <li class="divider"></li>
+                            <li class="divider"></li>-->
                             <li><a href="javascript:;">Log Out</a></li>
                         </ul>
                     </li>
@@ -107,7 +109,23 @@
 </template>
 <script type="text/ecmascript-6">
 
-    export default{}
+    export default{
+        data(){
+            return {
+                admin:{}
+
+            }
+        },
+        mounted(){
+            this.$http.get('/admin').then(response => {
+                if (response.data != '') {
+                    this.admin =response.data
+                }
+            }).catch(function (error) {
+                this.$router.push("/login");
+             });
+        }
+    }
 </script>
 
 <style type="text/css" scoped>

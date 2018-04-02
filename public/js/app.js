@@ -92134,7 +92134,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -92252,9 +92252,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            admin: {}
+
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        this.$http.get('/admin').then(function (response) {
+            if (response.data != '') {
+                _this.admin = response.data;
+            }
+        }).catch(function (error) {
+            this.$router.push("/login");
+        });
+    }
+});
 
 /***/ }),
 /* 210 */
@@ -92264,223 +92284,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "header navbar navbar-default navbar-fixed-top",
+        attrs: { id: "header" }
+      },
+      [
+        _c("div", { staticClass: "container-fluid" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
+            _c("li"),
+            _vm._v(" "),
+            _c("li", { staticClass: "dropdown navbar-user" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "dropdown-toggle",
+                  attrs: { href: "javascript:;", "data-toggle": "dropdown" }
+                },
+                [
+                  _c("span", { staticClass: "hidden-xs" }, [
+                    _vm._v(_vm._s(_vm.admin.name))
+                  ]),
+                  _vm._v(" "),
+                  _c("b", { staticClass: "caret" })
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "navbar-header" }, [
       _c(
-        "div",
+        "button",
         {
-          staticClass: "header navbar navbar-default navbar-fixed-top",
-          attrs: { id: "header" }
+          staticClass: "navbar-toggle",
+          attrs: { type: "button", "data-click": "sidebar-toggled" }
         },
         [
-          _c("div", { staticClass: "container-fluid" }, [
-            _c("div", { staticClass: "navbar-header" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "navbar-toggle",
-                  attrs: { type: "button", "data-click": "sidebar-toggled" }
-                },
-                [
-                  _c("span", { staticClass: "icon-bar" }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "icon-bar" }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "icon-bar" })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
-              _c("li", [
-                _c("form", { staticClass: "navbar-form full-width" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Enter keyword" }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-search",
-                        attrs: { type: "submit" }
-                      },
-                      [_c("i", { staticClass: "fa fa-search" })]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "dropdown" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle f-s-14",
-                    attrs: { href: "javascript:;", "data-toggle": "dropdown" }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-bell-o" }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "label" }, [_vm._v("5")])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  {
-                    staticClass:
-                      "dropdown-menu media-list pull-right animated fadeInDown"
-                  },
-                  [
-                    _c("li", { staticClass: "dropdown-header" }, [
-                      _vm._v("Notifications (5)")
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "media" }, [
-                      _c("a", { attrs: { href: "javascript:;" } }, [
-                        _c("div", { staticClass: "media-left" }, [
-                          _c("i", {
-                            staticClass: "fa fa-bug media-object bg-red"
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("h6", { staticClass: "media-heading" }, [
-                            _vm._v("Server Error Reports")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "text-muted f-s-11" }, [
-                            _vm._v("3 minutes ago")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "media" }, [
-                      _c("a", { attrs: { href: "javascript:;" } }, [
-                        _c("div", { staticClass: "media-left" }, [
-                          _c("i", {
-                            staticClass: "fa fa-plus media-object bg-green"
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("h6", { staticClass: "media-heading" }, [
-                            _vm._v(" New User Registered")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "text-muted f-s-11" }, [
-                            _vm._v("1 hour ago")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "media" }, [
-                      _c("a", { attrs: { href: "javascript:;" } }, [
-                        _c("div", { staticClass: "media-left" }, [
-                          _c("i", {
-                            staticClass: "fa fa-envelope media-object bg-blue"
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("h6", { staticClass: "media-heading" }, [
-                            _vm._v(" New Email From John")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "text-muted f-s-11" }, [
-                            _vm._v("2 hour ago")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "dropdown-footer text-center" }, [
-                      _c("a", { attrs: { href: "javascript:;" } }, [
-                        _vm._v("View more")
-                      ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "dropdown navbar-user" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { href: "javascript:;", "data-toggle": "dropdown" }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1506436465&di=24cf62bf3b26074733e76eaca4ce717f&src=http://p.qiuxingwang.cn/cms/1611/201611240935174511.jpg",
-                        alt: ""
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "hidden-xs" }, [
-                      _vm._v("Adam Schwartz")
-                    ]),
-                    _vm._v(" "),
-                    _c("b", { staticClass: "caret" })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu animated fadeInLeft" }, [
-                  _c("li", { staticClass: "arrow" }),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "javascript:;" } }, [
-                      _vm._v("Edit Profile")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "javascript:;" } }, [
-                      _c(
-                        "span",
-                        { staticClass: "badge badge-danger pull-right" },
-                        [_vm._v("2")]
-                      ),
-                      _vm._v(" Inbox")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "javascript:;" } }, [
-                      _vm._v("Calendar")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "javascript:;" } }, [
-                      _vm._v("Setting")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "divider" }),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "javascript:;" } }, [
-                      _vm._v("Log Out")
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
+          _c("span", { staticClass: "icon-bar" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "icon-bar" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "icon-bar" })
         ]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "dropdown-menu animated fadeInLeft" }, [
+      _c("li", [
+        _c("a", { attrs: { href: "javascript:;" } }, [_vm._v("Log Out")])
+      ])
     ])
   }
 ]
@@ -92579,7 +92450,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -92590,8 +92461,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -92911,35 +92780,22 @@ var render = function() {
         "div",
         { attrs: { "data-scrollbar": "true", "data-height": "100%" } },
         [
-          _vm._m(0),
+          _c("ul", { staticClass: "nav" }, [
+            _c("li", { staticClass: "nav-profile" }, [
+              _c(
+                "div",
+                { staticClass: "info" },
+                [_c("big", [_vm._v("菜单")])],
+                1
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("ul", { staticClass: "nav" }, [
-            _c("li", { staticClass: "nav-header" }, [_vm._v("Navigation")]),
-            _vm._v(" "),
             _c("li", { staticClass: "has-sub active" }, [
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c("ul", { staticClass: "sub-menu" }, [
-                _c(
-                  "li",
-                  [
-                    _c("router-link", { attrs: { to: "/dashboard/pet/box" } }, [
-                      _vm._v("宠物饲养箱管理")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c("router-link", { attrs: { to: "/dashboard/pet" } }, [
-                      _vm._v("宠物管理")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
                 _c(
                   "li",
                   [
@@ -92960,6 +92816,22 @@ var render = function() {
                     )
                   ],
                   1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "has-sub" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("ul", { staticClass: "sub-menu" }, [
+                _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: "/dashboard/pet/box" } }, [
+                      _vm._v("宠物饲养箱管理")
+                    ])
+                  ],
+                  1
                 ),
                 _vm._v(" "),
                 _c(
@@ -92967,6 +92839,16 @@ var render = function() {
                   [
                     _c("router-link", { attrs: { to: "/dashboard/gene" } }, [
                       _vm._v("基因管理")
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: "/dashboard/pet" } }, [
+                      _vm._v("宠物管理")
                     ])
                   ],
                   1
@@ -92986,27 +92868,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "nav" }, [
-      _c("li", { staticClass: "nav-profile" }, [
-        _c("div", { staticClass: "image" }, [
-          _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1506436465&di=24cf62bf3b26074733e76eaca4ce717f&src=http://p.qiuxingwang.cn/cms/1611/201611240935174511.jpg",
-                alt: ""
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "info" }, [
-          _vm._v(
-            "\n                        Sean Ngu\n                        "
-          ),
-          _c("small", [_vm._v("Front end developer")])
-        ])
-      ])
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("b", { staticClass: "caret pull-right" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-laptop" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("食品管理")])
     ])
   },
   function() {
@@ -93014,11 +92881,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "javascript:;" } }, [
-      _c("b", { staticClass: "caret pull-right" }),
+      _c("span", { staticClass: "badge pull-right" }, [_vm._v("10")]),
       _vm._v(" "),
-      _c("i", { staticClass: "fa fa-laptop" }),
+      _c("i", { staticClass: "fa fa-inbox" }),
       _vm._v(" "),
-      _c("span", [_vm._v("Dashboard")])
+      _c("span", [_vm._v("宠物管理")])
     ])
   },
   function() {
