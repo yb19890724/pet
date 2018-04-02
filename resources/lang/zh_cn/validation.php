@@ -79,6 +79,12 @@ return [
         'string'  => ':attribute 必须是 :size 个字符。',
         'array'   => ':attribute 必须为 :size 个单元。',
     ],
+    'name'                 => [
+        'numeric' => ':attribute 大小必须为 :size。',
+        'file'    => ':attribute 大小必须为 :size kb。',
+        'string'  => ':attribute 必须是 :size 个字符。',
+        'array'   => ':attribute 必须为 :size 个单元。',
+    ],
     'string'               => ':attribute 必须是一个字符串。',
     'timezone'             => ':attribute 必须是一个合法的时区值。',
     'unique'               => ':attribute 已经存在。',
@@ -147,10 +153,7 @@ return [
         'size'                  => '大小',
 
         /* 自定义扩展*/
-        'goodsStatus'           => '上下架',
-        'pay'                   => '支付方式',
-        'ownerName'             => '车主姓名',
-        'id'                    => '数据',
+        'sort'                  => '排序',
     ],
 
 ];

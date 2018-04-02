@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { backendApi } from '../config/backend/config';
+import { notificationError } from './helps';
 
 /**
  * Create Axios
@@ -34,12 +35,11 @@ http.interceptors.response.use(function (response) {
     }
 
     if([422].indexOf(response.status) >= 0){
-        /*var message = response.message;
-        if (error.response.status == 422) {
-            for(var i in response.response.data){
-                message = response.response.data[i][0];
-            }
-        }*/
+        let message = response.message;
+        for(var i in response.data.errors){
+            message = response.data.errors[i][0];
+        }
+        notificationError(message);
     }
 
     return Promise.reject(error);

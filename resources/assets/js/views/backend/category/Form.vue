@@ -51,8 +51,8 @@
                         this.method = this.form.id ? 'put' : 'post';
                         this.message=this.$t('message.'+this.method);
                         if(this.submit==false){
-                            this.submit=true;
                             let self=this;
+                            this.submit=true;
                             this.$http[this.method](this.url, this.form).then((response) => {
                                 if (response.status == 201 || response.status == 204) {
                                     notificationRedirect(self.message, function () {
@@ -60,7 +60,7 @@
                                     });
                                 }
                             }).catch(({response}) => {
-                                this.isSubmit();
+                                this.submit=false;
                             });
                         }
                         return false;

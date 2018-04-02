@@ -31,12 +31,11 @@ export function notificationReload(title,callback)
 }
 
 //错误提示
-export function notificationError(title,callback)
+export function notificationError(title)
 {
     let options={
         title: title,
-        type: 'success'
+        type: 'error'
     };
     Notification(options);
-    return false;
 }
