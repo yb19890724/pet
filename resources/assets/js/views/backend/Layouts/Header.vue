@@ -97,7 +97,11 @@
                             <li><a href="javascript:;">Calendar</a></li>
                             <li><a href="javascript:;">Setting</a></li>
                             <li class="divider"></li>-->
-                            <li><a href="javascript:;">Log Out</a></li>
+                            <li><a href="javascript:;" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">登出</a></li>
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                <input type="hidden" name="_token" :value="token"/>
+                            </form>
                         </ul>
                     </li>
                 </ul>
@@ -112,8 +116,8 @@
     export default{
         data(){
             return {
-                admin:{}
-
+                admin:{},
+                token:window.Laravel.csrfToken
             }
         },
         mounted(){
