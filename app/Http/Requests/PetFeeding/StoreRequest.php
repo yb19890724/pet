@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\PetBox;
+namespace App\Http\Requests\PetFeeding;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PetBoxUpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

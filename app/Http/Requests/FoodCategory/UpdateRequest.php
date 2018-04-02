@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Gene;
+namespace App\Http\Requests\FoodCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GeneUpdateRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

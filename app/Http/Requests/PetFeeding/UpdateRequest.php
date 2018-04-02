@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\FoodCategory;
+namespace App\Http\Requests\PetFeeding;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FoodCategoryStoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class FoodCategoryStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
