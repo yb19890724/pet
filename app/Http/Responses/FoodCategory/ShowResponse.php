@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Responses\Gene;
+namespace App\Http\Responses\FoodCategory;
 
 use Illuminate\Contracts\Support\Responsable;
 
-class GeneShowResponse implements Responsable
+class ShowResponse implements Responsable
 {
     protected $result;
 

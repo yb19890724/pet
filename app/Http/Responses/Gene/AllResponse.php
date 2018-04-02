@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\PetFeeding;
+namespace App\Http\Responses\Gene;
 
-use App\Traits\ResponseTrait;
 use Illuminate\Contracts\Support\Responsable;
+use App\Traits\ResponseTrait;
 
-class PetFeedingShowResponse implements Responsable
+class AllResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,6 +25,12 @@ class PetFeedingShowResponse implements Responsable
 
     protected function transform()
     {
+        $this->result->transform(function ($gene) {
+            return [
+                 'value'    => $gene->value,
+                 'label'    => $gene->label
+            ];
+        });
         return $this->responseJson($this->result);
     }
 }

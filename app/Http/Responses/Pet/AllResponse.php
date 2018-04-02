@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\FoodCategory;
+namespace App\Http\Responses\Pet;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class FoodCategoryIndexResponse implements Responsable
+class AllResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,16 +25,12 @@ class FoodCategoryIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($foodCategory) {
+        $this->result->transform(function ($pet) {
             return [
-                'id'           => $foodCategory->id,
-                'name'         => $foodCategory->name,
-                'sort'         => $foodCategory->sort,
-                'created_at'   => $foodCategory->createTime(),
-                'updated_at'   => $foodCategory->updateTime(),
+                'value'         => $pet->value,
+                'label'         => $pet->label
             ];
         });
-
         return $this->responseJson($this->result);
     }
 }

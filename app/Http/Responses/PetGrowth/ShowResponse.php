@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Responses\PetBox;
+namespace App\Http\Responses\PetGrowth;
 
 use Illuminate\Contracts\Support\Responsable;
 
-class PetBoxShowResponse implements Responsable
+class ShowResponse implements Responsable
 {
     protected $result;
 

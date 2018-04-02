@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\FoodCategory\FoodCategoryIndexResponse;
-use App\Http\Responses\FoodCategory\FoodCategoryAllResponse;
+use App\Http\Responses\FoodCategory\IndexResponse;
+use App\Http\Responses\FoodCategory\AllResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\FoodCategoryService;
@@ -27,7 +27,7 @@ class FoodCategoryController extends Controller
     public function index()
     {
         $result=$this->foodCategory->searchFoodCategories();
-        return new FoodCategoryIndexResponse($result);
+        return new IndexResponse($result);
     }
 
     /**
@@ -38,7 +38,7 @@ class FoodCategoryController extends Controller
     public function getFoodCategoryAll()
     {
         $result=$this->foodCategory->getFoodCategoryAll();
-        return new FoodCategoryAllResponse($result);
+        return new AllResponse($result);
     }
 
     /**

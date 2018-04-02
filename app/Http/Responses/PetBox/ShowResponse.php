@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Responses\FoodCategory;
+namespace App\Http\Responses\PetBox;
 
 use Illuminate\Contracts\Support\Responsable;
 
-class FoodCategoryShowResponse implements Responsable
+class ShowResponse implements Responsable
 {
     protected $result;
 

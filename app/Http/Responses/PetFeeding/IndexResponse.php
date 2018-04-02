@@ -5,7 +5,7 @@ namespace App\Http\Responses\PetFeeding;
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class PetFeedingIndexResponse implements Responsable
+class IndexResponse implements Responsable
 {
     use ResponseTrait;
 

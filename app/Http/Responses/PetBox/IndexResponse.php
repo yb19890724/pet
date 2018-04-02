@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\Gene;
+namespace App\Http\Responses\PetBox;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class GeneIndexResponse implements Responsable
+class IndexResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,14 +25,15 @@ class GeneIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($gene) {
+        $this->result->getCollection()->transform(function ($petBox) {
             return [
-                'id'           => $gene->id,
-                'name'         => $gene->name,
-                'gene_type'    => $gene->geneTypeTransform(),
+                'id'           => $petBox->id,
+                'box_number'   => $petBox->box_number,
+                'sort'         => $petBox->sort,
+                'created_at'   => $petBox->createTime(),
+                'updated_at'   => $petBox->updateTime(),
             ];
         });
-
         return $this->responseJson($this->result);
     }
 }

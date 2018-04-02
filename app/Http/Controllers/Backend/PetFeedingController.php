@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PetFeedingService;
-use App\Http\Responses\PetFeeding\PetFeedingIndexResponse;
-use App\Http\Responses\PetFeeding\PetFeedingShowResponse;
+use App\Http\Responses\PetFeeding\IndexResponse;
+use App\Http\Responses\PetFeeding\ShowResponse;
 use App\Traits\ResponseTrait;
 
 class PetFeedingController extends Controller
@@ -28,7 +28,7 @@ class PetFeedingController extends Controller
     public function getPetFeedings(int $petId)
     {
         $result = $this->petFeeding->getPetFeedings();
-        return new PetFeedingIndexResponse($result);
+        return new IndexResponse($result);
     }
 
     /**
@@ -65,7 +65,7 @@ class PetFeedingController extends Controller
     public function show($id)
     {
         $result = $this->petFeeding->getPetFeeding($id);
-        return new petFeedingShowResponse($result);
+        return new ShowResponse($result);
     }
 
     /**

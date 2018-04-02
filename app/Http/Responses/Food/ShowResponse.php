@@ -4,7 +4,7 @@ namespace App\Http\Responses\Food;
 
 use Illuminate\Contracts\Support\Responsable;
 
-class FoodShowResponse implements Responsable
+class ShowResponse implements Responsable
 {
     protected $result;
 

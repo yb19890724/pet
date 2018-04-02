@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Responses\PetGrowth\PetGrowthIndexResponse;
-use App\Http\Responses\PetGrowth\PetGrowthShowResponse;
+use App\Http\Responses\PetGrowth\IndexResponse;
+use App\Http\Responses\PetGrowth\ShowResponse;
 use App\Services\PetGrowthService;
 use App\Traits\ResponseTrait;
 
@@ -27,7 +27,7 @@ class PetGrowthController extends Controller
     public function getPetGrowths(int $petId)
     {
         $result = $this->petGrowth->getPetGrowths();
-        return new PetGrowthIndexResponse($result);
+        return new IndexResponse($result);
     }
 
     /**

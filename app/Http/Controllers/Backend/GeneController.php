@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\Gene\GeneIndexResponse;
-use App\Http\Responses\Gene\GeneAllResponse;
+use App\Http\Responses\Gene\IndexResponse;
+use App\Http\Responses\Gene\AllResponse;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,7 +27,7 @@ class GeneController extends Controller
     public function index()
     {
         $result = $this->gene->getGenes();
-        return new GeneIndexResponse($result);
+        return new IndexResponse($result);
     }
 
     /**
@@ -37,7 +37,7 @@ class GeneController extends Controller
     public function getGentAll()
     {
         $result = $this->gene->getGeneAll();
-        return new GeneAllResponse($result);
+        return new AllResponse($result);
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\Pet;
+namespace App\Http\Responses\Gene;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class PetIndexResponse implements Responsable
+class IndexResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,13 +25,11 @@ class PetIndexResponse implements Responsable
 
     protected function transform()
     {
-        $this->result->getCollection()->transform(function ($pet) {
+        $this->result->getCollection()->transform(function ($gene) {
             return [
-                'id'           => $pet->id,
-                'name'         => $pet->name,
-                'sex_title'    => $pet->sexTransform(),
-                'color'        => $pet->color,
-                'state_title'  => $pet->stateTransform(),
+                'id'           => $gene->id,
+                'name'         => $gene->name,
+                'gene_type'    => $gene->geneTypeTransform(),
             ];
         });
 

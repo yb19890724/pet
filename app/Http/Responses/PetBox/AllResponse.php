@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses\Pet;
+namespace App\Http\Responses\PetBox;
 
 use Illuminate\Contracts\Support\Responsable;
 use App\Traits\ResponseTrait;
 
-class PetShowResponse implements Responsable
+class AllResponse implements Responsable
 {
     use ResponseTrait;
 
@@ -25,6 +25,12 @@ class PetShowResponse implements Responsable
 
     protected function transform()
     {
+        $this->result->transform(function ($petBox) {
+            return [
+                'value'           => $petBox->value,
+                'label'           => $petBox->label
+            ];
+        });
         return $this->responseJson($this->result);
     }
 }

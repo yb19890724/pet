@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\Pet\PetShowResponse;
+use App\Http\Responses\Pet\ShowResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PetService;
-use App\Http\Responses\Pet\PetIndexResponse;
-use App\Http\Responses\Pet\PetAllResponse;
+use App\Http\Responses\Pet\IndexResponse;
+use App\Http\Responses\Pet\AllResponse;
 use App\Traits\ResponseTrait;
 
 class PetController extends Controller
@@ -29,7 +29,7 @@ class PetController extends Controller
     public function getPetAll()
     {
         $result = $this->pet->getPetAll();
-        return new PetAllResponse($result);
+        return new AllResponse($result);
     }
 
     /**
@@ -40,7 +40,7 @@ class PetController extends Controller
     public function index()
     {
         $result = $this->pet->searchPets();
-        return new PetIndexResponse($result);
+        return new IndexResponse($result);
     }
 
     /**
@@ -77,7 +77,7 @@ class PetController extends Controller
     public function show($id)
     {
         $result = $this->pet->getPet($id);
-        return new PetShowResponse($result);
+        return new ShowResponse($result);
     }
 
     /**

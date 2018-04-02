@@ -6,8 +6,8 @@ use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PetBoxService;
-use App\Http\Responses\PetBox\PetBoxIndexResponse;
-use App\Http\Responses\PetBox\PetBoxAllResponse;
+use App\Http\Responses\PetBox\IndexResponse;
+use App\Http\Responses\PetBox\AllResponse;
 
 class PetBoxController extends Controller
 {
@@ -28,18 +28,18 @@ class PetBoxController extends Controller
     public function index()
     {
         $result=$this->petBox->getPetBoxes();
-        return new PetBoxIndexResponse($result);
+        return new IndexResponse($result);
     }
 
     /**
-     * get pet boexs all .
+     * get pet boxes all .
      *
-     * @return PetBoxIndexResponse
+     * @return IndexResponse
      */
     public function getPetBoxesAll()
     {
         $result=$this->petBox->getPetBoxesAll();
-        return new PetBoxAllResponse($result);
+        return new AllResponse($result);
     }
 
     /**
