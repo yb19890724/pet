@@ -131,7 +131,15 @@
                 this.$router.push({name: this.views.edit, params: {id: index}});
             },
             handleDelete(event, index){
-                this.$emit('handleDelete', index);
+                this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$emit('handleDelete', index);
+                }).catch(() => {
+                    return false;
+                });
             },
             reloadListData(){//重新加载数据
                 this.getTableData();
