@@ -13,7 +13,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'pet_id'=>'required',
+            'food_id'=>'required',
+            'food_category_id'=>'required',
+            'pet_box_id'=>'required',
+            'unit'=>'required'
         ];
     }
 }

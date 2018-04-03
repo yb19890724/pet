@@ -24,8 +24,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1|max:10',
-            'sort'=>'required|digits_between:1,6'
+            'name'  =>  'required|min:1|max:10',
+            'sort'  =>  'required|digits_between:1,6'
         ];
     }
 }

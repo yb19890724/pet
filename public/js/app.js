@@ -14241,7 +14241,7 @@ module.exports = function (name) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return sex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return state; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return status; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return geneType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return unit; });
 
@@ -14250,7 +14250,7 @@ var sex = {
     female: '母'
 };
 
-var state = {
+var status = {
     good: '优秀',
     normal: '正常',
     sick: '病态'
@@ -93971,9 +93971,8 @@ exports.push([module.i, "\n.el-checkbox__label[data-v-73d15936] {\n    padding-r
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_backend_views__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helps_helps__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helps_helps__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__ = __webpack_require__(54);
 //
 //
 //
@@ -94071,7 +94070,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 
 
@@ -94079,39 +94077,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             dominant_gene: [],
-            hide_gene: [],
+            recessive_gene: [],
             form: {
                 name: '',
                 color: '',
                 sex: 'male',
                 birthday: '',
                 sort: 0,
-                state: 'good',
+                status: 'good',
                 descriptions: '',
-                box_id: '',
+                pet_box_id: '',
                 father_id: '',
                 mother_id: '',
                 dominant_gene: [],
-                hide_gene: []
+                recessive_gene: []
             },
             id: '',
             url: '',
             method: '',
             message: '',
             submit: false,
-            sex: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["b" /* sex */],
-            state: __WEBPACK_IMPORTED_MODULE_2__config_backend_dictionaries__["c" /* state */],
+            sex: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["b" /* sex */],
+            status: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["c" /* status */],
             mother: {},
             father: {},
-            hideGene: {},
+            recessiveGene: {},
             dominantGene: {},
             petBoxes: {},
             rules: {
-                box_id: [{ required: true, message: '请选择饲养箱' }],
+                pet_box_id: [{ required: true, message: '请选择饲养箱' }],
                 color: [{ required: true, message: '请选择颜色' }],
                 birthday: [{ required: true, message: '请选择出生日期' }],
                 dominant_gene: [{ required: true, message: '请选择显性基因' }],
-                hide_gene: [{ required: true, message: '请选择显性基因' }],
+                recessive_gene: [{ required: true, message: '请选择显性基因' }],
                 name: [{ required: true, message: '请输入名称' }, { min: 1, max: 10, message: '长度在 1 到 10 个字符' }],
                 sort: [{ type: 'number', message: '序号必须为数字值' }],
                 descriptions: [{ min: 1, max: 100, message: '长度在 1 到 100 个字符' }]
@@ -94120,7 +94118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.getFindData();
-        this.hideGeneAll();
+        this.recessiveGeneAll();
         this.dominantGeneAll();
         this.petBoxesAll();
     },
@@ -94132,7 +94130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (valid) {
                 this.$refs[formName].validate(function (valid) {
                     _this.form.dominant_gene = _this.dominant_gene;
-                    _this.form.hide_gene = _this.hide_gene;
+                    _this.form.recessive_gene = _this.recessive_gene;
                     _this.url = '/pet' + (_this.form.id ? '/' + _this.form.id : '');
                     _this.method = _this.form.id ? 'put' : 'post';
                     _this.message = _this.$t('message.' + _this.method);
@@ -94141,7 +94139,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         var self = _this;
                         _this.$http[_this.method](_this.url, _this.form).then(function (response) {
                             if (response.status == 201 || response.status == 204) {
-                                Object(__WEBPACK_IMPORTED_MODULE_1__helps_helps__["b" /* notificationRedirect */])(self.message, function () {
+                                Object(__WEBPACK_IMPORTED_MODULE_0__helps_helps__["b" /* notificationRedirect */])(self.message, function () {
                                     self.goBack();
                                 });
                             }
@@ -94188,12 +94186,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        hideGeneAll: function hideGeneAll() {
+        recessiveGeneAll: function recessiveGeneAll() {
             var _this4 = this;
 
             this.$http.get('/genes', { params: { gene_type: 'hide' } }).then(function (response) {
                 if (response.status == 200) {
-                    _this4.hideGene = response.data;
+                    _this4.recessiveGene = response.data;
                 }
             });
         },
@@ -94224,7 +94222,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     if (response.data != '') {
                         _this7.form = response.data;
                         _this7.dominant_gene = _this7.form.dominant_gene;
-                        _this7.hide_gene = _this7.form.hide_gene;
+                        _this7.recessive_gene = _this7.form.recessive_gene;
                         _this7.fatherSelect();
                         _this7.motherSelect();
                     }
@@ -94260,7 +94258,9 @@ var render = function() {
         [
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.box_number"), prop: "box_id" } },
+            {
+              attrs: { label: _vm.$t("fields.box_number"), prop: "pet_box_id" }
+            },
             [
               _c(
                 "el-select",
@@ -94268,11 +94268,11 @@ var render = function() {
                   staticStyle: { width: "100%" },
                   attrs: { placeholder: _vm.$t("placeholder.boxSelect") },
                   model: {
-                    value: _vm.form.box_id,
+                    value: _vm.form.pet_box_id,
                     callback: function($$v) {
-                      _vm.$set(_vm.form, "box_id", $$v)
+                      _vm.$set(_vm.form, "pet_box_id", $$v)
                     },
-                    expression: "form.box_id"
+                    expression: "form.pet_box_id"
                   }
                 },
                 [
@@ -94339,20 +94339,20 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.state") } },
+            { attrs: { label: _vm.$t("fields.status") } },
             [
-              _vm._l(_vm.state, function(val, index) {
+              _vm._l(_vm.status, function(val, index) {
                 return [
                   _c(
                     "el-radio",
                     {
                       attrs: { label: index },
                       model: {
-                        value: _vm.form.state,
+                        value: _vm.form.status,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "state", $$v)
+                          _vm.$set(_vm.form, "status", $$v)
                         },
-                        expression: "form.state"
+                        expression: "form.status"
                       }
                     },
                     [_vm._v(_vm._s(val))]
@@ -94442,45 +94442,51 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-form-item",
-            { attrs: { label: _vm.$t("fields.hide_gene"), prop: "hide_gene" } },
+            {
+              attrs: {
+                label: _vm.$t("fields.recessive_gene"),
+                prop: "recessive_gene"
+              }
+            },
             [
-              _vm.hideGene != ""
-                ? _vm._l(_vm.hideGene, function(val, index) {
+              _vm.recessiveGene != ""
+                ? _vm._l(_vm.recessiveGene, function(val, index) {
                     return _c("span", { staticClass: "el-checkbox__label" }, [
                       _c("input", {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.hide_gene,
-                            expression: "hide_gene"
+                            value: _vm.recessive_gene,
+                            expression: "recessive_gene"
                           }
                         ],
                         attrs: { type: "checkbox" },
                         domProps: {
                           value: val.value,
-                          checked: Array.isArray(_vm.hide_gene)
-                            ? _vm._i(_vm.hide_gene, val.value) > -1
-                            : _vm.hide_gene
+                          checked: Array.isArray(_vm.recessive_gene)
+                            ? _vm._i(_vm.recessive_gene, val.value) > -1
+                            : _vm.recessive_gene
                         },
                         on: {
                           change: function($event) {
-                            var $$a = _vm.hide_gene,
+                            var $$a = _vm.recessive_gene,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
                               var $$v = val.value,
                                 $$i = _vm._i($$a, $$v)
                               if ($$el.checked) {
-                                $$i < 0 && (_vm.hide_gene = $$a.concat([$$v]))
+                                $$i < 0 &&
+                                  (_vm.recessive_gene = $$a.concat([$$v]))
                               } else {
                                 $$i > -1 &&
-                                  (_vm.hide_gene = $$a
+                                  (_vm.recessive_gene = $$a
                                     .slice(0, $$i)
                                     .concat($$a.slice($$i + 1)))
                               }
                             } else {
-                              _vm.hide_gene = $$c
+                              _vm.recessive_gene = $$c
                             }
                           }
                         }
@@ -103406,13 +103412,13 @@ VueI18n.version = '7.4.2';
     color: '颜色',
     food_category: '食物分类',
     birthday: '出生日期',
-    state: '状态',
+    status: '状态',
     father: '父类',
     mother: '母类',
     descriptions: '简介',
     gene_type: '基因类型',
     dominant_gene: '显性基因',
-    hide_gene: '隐性基因',
+    recessive_gene: '隐性基因',
     weight: '体重',
     body_length: '体长',
     food: '食物',

@@ -2,19 +2,11 @@
 
 namespace App\Http\Requests\Pet;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\PetFeeding\StoreRequest;
 
-class UpdateRequest extends FormRequest
+class UpdateRequest extends StoreRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -23,8 +15,6 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return parent::rules();
     }
 }

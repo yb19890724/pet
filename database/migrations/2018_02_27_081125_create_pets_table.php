@@ -16,11 +16,11 @@ class CreatePetsTable extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',10);
-            $table->integer('box_id')->comment('箱子id');
+            $table->integer('pet_box_id')->comment('箱子id');
             $table->integer('father_id')->nullable()->comment('父id');
             $table->integer('mother_id')->nullable()->comment('母id');
             $table->enum('sex',['male','female'])->comment('性别:公母');
-            $table->enum('state',['good','normal','sick'])->comment('状态:1优秀,2正常,3病态');
+            $table->enum('status',['good','normal','sick'])->comment('状态:1优秀,2正常,3病态');
             $table->string('descriptions',100)->nullable()->comment('描述');
             $table->string('color',7)->comment('色系');
             $table->string('dominant_gene',30)->comment('显性基因');//checkbox

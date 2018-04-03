@@ -4,7 +4,7 @@ export const sex={
     female:'母'
 };
 
-export const state={
+export const status={
     good:'优秀',
     normal:'正常',
     sick:'病态'

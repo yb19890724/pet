@@ -2,8 +2,8 @@
     <div class='contents'>
         <el-form ref="form" :model="form" :rules="rules" label-width="80px">
 
-            <el-form-item :label="$t('fields.box_number')" prop="box_id">
-                <el-select v-model="form.box_id" :placeholder="$t('placeholder.boxSelect')" style="width: 100%;">
+            <el-form-item :label="$t('fields.box_number')" prop="pet_box_id">
+                <el-select v-model="form.pet_box_id" :placeholder="$t('placeholder.boxSelect')" style="width: 100%;">
                     <template v-if="petBoxes!=''">
                         <template v-for="box in petBoxes">
                             <el-option :label="box.label" :value="box.value"></el-option>
@@ -22,9 +22,9 @@
                 </template>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.state')">
-                <template v-for="(val,index) in state">
-                    <el-radio v-model="form.state" :label="index">{{ val }}</el-radio>
+            <el-form-item :label="$t('fields.status')">
+                <template v-for="(val,index) in status">
+                    <el-radio v-model="form.status" :label="index">{{ val }}</el-radio>
                 </template>
             </el-form-item>
 
@@ -41,10 +41,10 @@
                 </template>
             </el-form-item>
 
-            <el-form-item :label="$t('fields.hide_gene')" prop="hide_gene">
-                <template v-if="hideGene!=''">
-                    <span v-for="(val,index) in hideGene" class="el-checkbox__label">
-                        <input type="checkbox" :value="val.value" v-model="hide_gene">
+            <el-form-item :label="$t('fields.recessive_gene')" prop="recessive_gene">
+                <template v-if="recessiveGene!=''">
+                    <span v-for="(val,index) in recessiveGene" class="el-checkbox__label">
+                        <input type="checkbox" :value="val.value" v-model="recessive_gene">
                         <label>{{ val.label }}</label>
                     </span>
                 </template>
@@ -96,27 +96,26 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import { foodCategoryView } from '../../../config/backend/views';
     import { notificationRedirect,redirect } from '../../../helps/helps';
-    import { state,sex } from '../../../config/backend/dictionaries';
+    import { status,sex } from '../../../config/backend/dictionaries';
     export default{
         data(){
             return {
                 dominant_gene: [],
-                hide_gene: [],
+                recessive_gene: [],
                 form: {
                     name: '',
                     color: '',
                     sex: 'male',
                     birthday: '',
                     sort: 0,
-                    state: 'good',
+                    status: 'good',
                     descriptions: '',
-                    box_id: '',
+                    pet_box_id: '',
                     father_id: '',
                     mother_id: '',
                     dominant_gene: [],
-                    hide_gene: []
+                    recessive_gene: []
                 },
                 id: '',
                 url: '',
@@ -124,14 +123,14 @@
                 message: '',
                 submit: false,
                 sex: sex,
-                state: state,
+                status: status,
                 mother: {},
                 father: {},
-                hideGene: {},
+                recessiveGene: {},
                 dominantGene: {},
                 petBoxes: {},
                 rules: {
-                    box_id:[
+                    pet_box_id:[
                         { required: true, message: '请选择饲养箱' }
                     ],
                     color:[
@@ -143,7 +142,7 @@
                     dominant_gene:[
                         { required: true, message: '请选择显性基因' }
                     ],
-                    hide_gene:[
+                    recessive_gene:[
                         { required: true, message: '请选择显性基因' }
                     ],
                     name:[
@@ -161,7 +160,7 @@
         },
         mounted(){
             this.getFindData();
-            this.hideGeneAll();
+            this.recessiveGeneAll();
             this.dominantGeneAll();
             this.petBoxesAll();
         },
@@ -170,7 +169,7 @@
                 if (valid) {
                    this.$refs[formName].validate((valid) => {
                         this.form.dominant_gene = this.dominant_gene;
-                        this.form.hide_gene = this.hide_gene;
+                        this.form.recessive_gene = this.recessive_gene;
                         this.url = '/pet' + (this.form.id ? '/' + this.form.id : '');
                         this.method = this.form.id ? 'put' : 'post';
                         this.message = this.$t('message.' + this.method);
@@ -220,10 +219,10 @@
                     }
                 });
             },
-            hideGeneAll(){
+            recessiveGeneAll(){
                 this.$http.get('/genes', {params: {gene_type: 'hide'}}).then((response) => {
                     if (response.status == 200) {
-                        this.hideGene = response.data;
+                        this.recessiveGene = response.data;
                     }
                 });
             },
@@ -248,7 +247,7 @@
                         if (response.data != '') {
                             this.form = response.data;
                             this.dominant_gene = this.form.dominant_gene;
-                            this.hide_gene = this.form.hide_gene;
+                            this.recessive_gene = this.form.recessive_gene;
                             this.fatherSelect();
                             this.motherSelect();
                         }

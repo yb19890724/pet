@@ -154,6 +154,18 @@ return [
 
         /* 自定义扩展*/
         'sort'                  => '排序',
+        'food_category_id'      => '分类',
+        'gene_type'             => '基因类型',
+        'box_number'            => '饲养箱号',
+        'pet_id'                => '宠物',
+        'food_id'               => '食物',
+        'pet_box_id'            => '饲养箱',
+        'weight'                => '重量',
+        'body_length'           => '体长',
+        'status'                => '状态',
+        'color'                 => '颜色',
+        'dominant_gene'         => '显性基因',
+        'recessive_gene'        => '隐性基因',
     ],
 
 ];

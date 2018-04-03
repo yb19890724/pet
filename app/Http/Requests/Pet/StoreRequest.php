@@ -24,7 +24,15 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'           =>'required',
+            'pet_box_id'     =>'required',
+            'sex'            =>'required',
+            'status'         =>'required',
+            'color'          =>'required',
+            'dominant_gene'  =>'required',
+            'recessive_gene' =>'required',
+            'sort'           =>'required',
+            'birthday'       =>'required',
         ];
     }
 }

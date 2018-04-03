@@ -8,7 +8,7 @@ class Pet extends Model
 {
     protected $fillable = [
         'name',
-        'box_id',
+        'pet_box_id',
         'sex',
         'state',
         'descriptions',
