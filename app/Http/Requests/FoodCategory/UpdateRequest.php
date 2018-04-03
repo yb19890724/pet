@@ -3,8 +3,9 @@
 namespace App\Http\Requests\FoodCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\FoodCategory\StoreRequest;
 
-class UpdateRequest extends FormRequest
+class UpdateRequest extends StoreRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,6 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return parent::rules();
     }
 }
