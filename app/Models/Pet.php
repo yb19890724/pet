@@ -16,7 +16,7 @@ class Pet extends Model
         'father_id',
         'mother_id',
         'dominant_gene',
-        'hide_gene',
+        'recessive_gene',
         'sort',
         'birthday'
     ];
@@ -34,9 +34,9 @@ class Pet extends Model
     /**
      * @return \Illuminate\Config\Repository|mixed|string
      */
-    public function stateTransform()
+    public function statusTransform()
     {
-        $color = config("dictionaries.state.{$this->state}");
+        $color = config("dictionaries.state.{$this->status}");
         return $color ?? '';
     }
 
@@ -55,10 +55,10 @@ class Pet extends Model
      * set hide gene value
      * @return  string
      */
-    public function setHideGeneAttribute($value)
+    public function setRecessiveGeneAttribute($value)
     {
         if (not_empty_array($value)) {
-            $this->attributes['hide_gene'] = implode(',', $value);
+            $this->attributes['recessive_gene'] = implode(',', $value);
         }
     }
 
@@ -78,7 +78,7 @@ class Pet extends Model
      * get dominant gene value
      * @return  array
      */
-    public function getHideGeneAttribute($value)
+    public function getRecessiveGeneAttribute($value)
     {
         if (!empty($value)) {
             return explode(',', $value);

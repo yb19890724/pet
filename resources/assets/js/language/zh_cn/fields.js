@@ -18,5 +18,6 @@ export default {
     food:'食物',
     pet:'宠物',
     unit:'单位',
-    number:'数量'
+    number:'数量',
+    code:'代码'
 }

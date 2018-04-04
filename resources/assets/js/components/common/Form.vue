@@ -13,10 +13,7 @@
 <script type="text/ecmascript-6">
     import { redirect } from '../../helps/http'
     export default{
-        props:['moduleTitle'],
-        methods:{
-
-        }
+        props:['moduleTitle']
     }
 </script>
 

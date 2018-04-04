@@ -35,7 +35,7 @@
             <el-form-item :label="$t('fields.dominant_gene')" prop="dominant_gene">
                 <template v-if="dominantGene.length!=''">
                     <span v-for="(val,index) in dominantGene" class="el-checkbox__label">
-                        <input type="checkbox" :value="val.value" v-model="dominant_gene">
+                        <input type="checkbox" :value="val.value" v-model="form.dominant_gene">
                         <label>{{ val.label }}</label>
                     </span>
                 </template>
@@ -44,7 +44,7 @@
             <el-form-item :label="$t('fields.recessive_gene')" prop="recessive_gene">
                 <template v-if="recessiveGene!=''">
                     <span v-for="(val,index) in recessiveGene" class="el-checkbox__label">
-                        <input type="checkbox" :value="val.value" v-model="recessive_gene">
+                        <input type="checkbox" :value="val.value" v-model="form.recessive_gene">
                         <label>{{ val.label }}</label>
                     </span>
                 </template>
@@ -166,33 +166,32 @@
         },
         methods: {
             onSubmit(formName) {
-                if (valid) {
-                   this.$refs[formName].validate((valid) => {
-                        this.form.dominant_gene = this.dominant_gene;
-                        this.form.recessive_gene = this.recessive_gene;
-                        this.url = '/pet' + (this.form.id ? '/' + this.form.id : '');
-                        this.method = this.form.id ? 'put' : 'post';
-                        this.message = this.$t('message.' + this.method);
-                        if (this.submit == false) {
-                            this.submit = true;
-                            let self = this;
-                            this.$http[this.method](this.url, this.form).then((response) => {
-                                if (response.status == 201 || response.status == 204) {
-                                    notificationRedirect(self.message, function () {
-                                        self.goBack();
-                                    });
-                                }
-                            }).catch(({response}) => {
-                                this.isSubmit();
-                            });
-                        }
-                   });
-                   return false;
-                }
-                return false;
-            },
-            isSubmit(){
-                this.submit = this.submit ? true : false;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        this.$refs[formName].validate((valid) => {
+                           /* this.form.dominant_gene = this.dominant_gene;
+                            this.form.recessive_gene = this.recessive_gene;*/
+                            this.url = '/pet' + (this.form.id ? '/' + this.form.id : '');
+                            this.method = this.form.id ? 'put' : 'post';
+                            this.message = this.$t('message.' + this.method);
+                            if (this.submit == false) {
+                                this.submit = true;
+                                let self = this;
+                                this.$http[this.method](this.url, this.form).then((response) => {
+                                    if (response.status == 201 || response.status == 204) {
+                                        notificationRedirect(self.message, function () {
+                                            self.goBack();
+                                        });
+                                    }
+                                }).catch(({response}) => {
+                                    this.submit = false;
+                                });
+                            }
+                        });
+                        return false;
+                    }
+                    return false;
+                });
             },
             goBack(){
                 this.$router.go(-1);

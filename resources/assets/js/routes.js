@@ -158,7 +158,6 @@ export default [
 
 //是否登陆
 function requireAuth (to, from, next) {
-
     if (window.User) {
         return next();
     }else{

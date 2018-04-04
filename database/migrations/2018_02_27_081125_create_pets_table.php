@@ -24,7 +24,7 @@ class CreatePetsTable extends Migration
             $table->string('descriptions',100)->nullable()->comment('描述');
             $table->string('color',7)->comment('色系');
             $table->string('dominant_gene',30)->comment('显性基因');//checkbox
-            $table->string('hide_gene',30)->comment('隐性基因');//checkbox
+            $table->string('recessive_gene',30)->comment('隐性基因');//checkbox
             $table->integer('sort')->comment('排序');
             $table->dateTime('birthday')->comment('出生日期');
             $table->timestamps();

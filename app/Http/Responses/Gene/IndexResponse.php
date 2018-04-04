@@ -29,6 +29,7 @@ class IndexResponse implements Responsable
             return [
                 'id'           => $gene->id,
                 'name'         => $gene->name,
+                'code'         => $gene->code,
                 'gene_type'    => $gene->geneTypeTransform(),
             ];
         });

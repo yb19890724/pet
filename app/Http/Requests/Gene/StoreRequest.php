@@ -25,8 +25,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'name'      =>  'required|min:1|max:10',
+            'code'      =>  'required|min:1|max:10',
             'gene_type' =>  'required',
-            'sort'      =>  'required|digits_between:1,11'
         ];
     }
 }

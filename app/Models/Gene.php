@@ -9,7 +9,7 @@ class Gene extends Model
 {
     use DateTimeTrait;
 
-    protected $fillable=['name','gene_type'];
+    protected $fillable=['name','code','gene_type'];
 
     protected $dates=['created_at', 'updated_at'];
 

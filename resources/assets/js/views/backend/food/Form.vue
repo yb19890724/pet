@@ -82,16 +82,13 @@
                                    });
                                }
                            }).catch(({response}) => {
-                               this.isSubmit();
+                               this.submit=false;
                            });
                        }
                        return false;
                     }
                     return false;
                 });
-            },
-            isSubmit(){
-                this.submit=this.submit?true:false;
             },
             goBack(){
                 this.$router.go(-1);

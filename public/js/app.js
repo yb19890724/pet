@@ -91978,7 +91978,6 @@ if (inBrowser && window.Vue) {
 
 //是否登陆
 function requireAuth(to, from, next) {
-
     if (window.User) {
         return next();
     } else {
@@ -93403,7 +93402,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -93457,7 +93456,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: 'sex_title'
             }, {
                 label: '状态',
-                text: 'state_title'
+                text: 'status_title'
             }],
             multipleSelection: []
         };
@@ -93487,8 +93486,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self.$refs.table.reloadListData();
                     });
                 }
-            }).catch(function (error) {
-                console.log(error);
             });
         },
         searchListData: function searchListData(params) {
@@ -93654,7 +93651,7 @@ var render = function() {
           attrs: {
             type: "text",
             name: "name",
-            placeholder: _vm.$t("placeholder.categoryName")
+            placeholder: _vm.$t("placeholder.petName")
           },
           domProps: { value: _vm.form.search_name },
           on: {
@@ -94244,35 +94241,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit(formName) {
             var _this = this;
 
-            if (valid) {
-                this.$refs[formName].validate(function (valid) {
-                    _this.form.dominant_gene = _this.dominant_gene;
-                    _this.form.recessive_gene = _this.recessive_gene;
-                    _this.url = '/pet' + (_this.form.id ? '/' + _this.form.id : '');
-                    _this.method = _this.form.id ? 'put' : 'post';
-                    _this.message = _this.$t('message.' + _this.method);
-                    if (_this.submit == false) {
-                        _this.submit = true;
-                        var self = _this;
-                        _this.$http[_this.method](_this.url, _this.form).then(function (response) {
-                            if (response.status == 201 || response.status == 204) {
-                                Object(__WEBPACK_IMPORTED_MODULE_0__helps_helps__["b" /* notificationRedirect */])(self.message, function () {
-                                    self.goBack();
-                                });
-                            }
-                        }).catch(function (_ref) {
-                            var response = _ref.response;
+            this.$refs[formName].validate(function (valid) {
+                if (valid) {
+                    _this.$refs[formName].validate(function (valid) {
+                        /* this.form.dominant_gene = this.dominant_gene;
+                         this.form.recessive_gene = this.recessive_gene;*/
+                        _this.url = '/pet' + (_this.form.id ? '/' + _this.form.id : '');
+                        _this.method = _this.form.id ? 'put' : 'post';
+                        _this.message = _this.$t('message.' + _this.method);
+                        if (_this.submit == false) {
+                            _this.submit = true;
+                            var self = _this;
+                            _this.$http[_this.method](_this.url, _this.form).then(function (response) {
+                                if (response.status == 201 || response.status == 204) {
+                                    Object(__WEBPACK_IMPORTED_MODULE_0__helps_helps__["b" /* notificationRedirect */])(self.message, function () {
+                                        self.goBack();
+                                    });
+                                }
+                            }).catch(function (_ref) {
+                                var response = _ref.response;
 
-                            _this.isSubmit();
-                        });
-                    }
-                });
+                                _this.submit = false;
+                            });
+                        }
+                    });
+                    return false;
+                }
                 return false;
-            }
-            return false;
-        },
-        isSubmit: function isSubmit() {
-            this.submit = this.submit ? true : false;
+            });
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -94514,20 +94510,20 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.dominant_gene,
-                            expression: "dominant_gene"
+                            value: _vm.form.dominant_gene,
+                            expression: "form.dominant_gene"
                           }
                         ],
                         attrs: { type: "checkbox" },
                         domProps: {
                           value: val.value,
-                          checked: Array.isArray(_vm.dominant_gene)
-                            ? _vm._i(_vm.dominant_gene, val.value) > -1
-                            : _vm.dominant_gene
+                          checked: Array.isArray(_vm.form.dominant_gene)
+                            ? _vm._i(_vm.form.dominant_gene, val.value) > -1
+                            : _vm.form.dominant_gene
                         },
                         on: {
                           change: function($event) {
-                            var $$a = _vm.dominant_gene,
+                            var $$a = _vm.form.dominant_gene,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
@@ -94535,15 +94531,15 @@ var render = function() {
                                 $$i = _vm._i($$a, $$v)
                               if ($$el.checked) {
                                 $$i < 0 &&
-                                  (_vm.dominant_gene = $$a.concat([$$v]))
+                                  (_vm.form.dominant_gene = $$a.concat([$$v]))
                               } else {
                                 $$i > -1 &&
-                                  (_vm.dominant_gene = $$a
+                                  (_vm.form.dominant_gene = $$a
                                     .slice(0, $$i)
                                     .concat($$a.slice($$i + 1)))
                               }
                             } else {
-                              _vm.dominant_gene = $$c
+                              _vm.$set(_vm.form, "dominant_gene", $$c)
                             }
                           }
                         }
@@ -94574,20 +94570,20 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.recessive_gene,
-                            expression: "recessive_gene"
+                            value: _vm.form.recessive_gene,
+                            expression: "form.recessive_gene"
                           }
                         ],
                         attrs: { type: "checkbox" },
                         domProps: {
                           value: val.value,
-                          checked: Array.isArray(_vm.recessive_gene)
-                            ? _vm._i(_vm.recessive_gene, val.value) > -1
-                            : _vm.recessive_gene
+                          checked: Array.isArray(_vm.form.recessive_gene)
+                            ? _vm._i(_vm.form.recessive_gene, val.value) > -1
+                            : _vm.form.recessive_gene
                         },
                         on: {
                           change: function($event) {
-                            var $$a = _vm.recessive_gene,
+                            var $$a = _vm.form.recessive_gene,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
@@ -94595,15 +94591,15 @@ var render = function() {
                                 $$i = _vm._i($$a, $$v)
                               if ($$el.checked) {
                                 $$i < 0 &&
-                                  (_vm.recessive_gene = $$a.concat([$$v]))
+                                  (_vm.form.recessive_gene = $$a.concat([$$v]))
                               } else {
                                 $$i > -1 &&
-                                  (_vm.recessive_gene = $$a
+                                  (_vm.form.recessive_gene = $$a
                                     .slice(0, $$i)
                                     .concat($$a.slice($$i + 1)))
                               }
                             } else {
-                              _vm.recessive_gene = $$c
+                              _vm.$set(_vm.form, "recessive_gene", $$c)
                             }
                           }
                         }
@@ -95066,7 +95062,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95144,8 +95140,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self.$refs.table.reloadListData();
                     });
                 }
-            }).catch(function (error) {
-                console.log(error);
             });
         }
     }
@@ -95529,7 +95523,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95604,16 +95598,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }).catch(function (_ref) {
                             var response = _ref.response;
 
-                            _this.isSubmit();
+                            _this.submit = false;
                         });
                     }
                     return false;
                 }
                 return false;
             });
-        },
-        isSubmit: function isSubmit() {
-            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -96009,7 +96000,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96090,8 +96081,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self.$refs.table.reloadListData();
                     });
                 }
-            }).catch(function (error) {
-                console.log(error);
             });
         },
         searchListData: function searchListData(params) {
@@ -96482,7 +96471,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96611,16 +96600,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }).catch(function (_ref) {
                             var response = _ref.response;
 
-                            _this2.isSubmit();
+                            _this2.submit = false;
                         });
                     }
                     return false;
                 }
                 return false;
             });
-        },
-        isSubmit: function isSubmit() {
-            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -97169,7 +97155,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97250,8 +97236,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self.$refs.table.reloadListData();
                     });
                 }
-            }).catch(function (error) {
-                console.log(error);
             });
         },
         searchListData: function searchListData(params) {
@@ -97636,7 +97620,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97711,16 +97695,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }).catch(function (_ref) {
                             var response = _ref.response;
 
-                            _this.isSubmit();
+                            _this.submit = false;
                         });
                     }
                     return false;
                 }
                 return false;
             });
-        },
-        isSubmit: function isSubmit() {
-            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -98113,7 +98094,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -98198,8 +98179,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self.$refs.table.reloadListData();
                     });
                 }
-            }).catch(function (error) {
-                console.log(error);
             });
         },
         searchListData: function searchListData(params) {
@@ -98365,7 +98344,7 @@ var render = function() {
           attrs: {
             type: "text",
             name: "name",
-            placeholder: _vm.$t("placeholder.categoryName")
+            placeholder: _vm.$t("placeholder.foodName")
           },
           domProps: { value: _vm.form.search_name },
           on: {
@@ -98794,7 +98773,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -98890,16 +98869,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }).catch(function (_ref) {
                             var response = _ref.response;
 
-                            _this2.isSubmit();
+                            _this2.submit = false;
                         });
                     }
                     return false;
                 }
                 return false;
             });
-        },
-        isSubmit: function isSubmit() {
-            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -99330,7 +99306,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -99415,8 +99391,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self.$refs.table.reloadListData();
                     });
                 }
-            }).catch(function (error) {
-                console.log(error);
             });
         },
         searchListData: function searchListData(params) {
@@ -100011,7 +99985,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100093,9 +100067,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 return false;
             });
-        },
-        isSubmit: function isSubmit() {
-            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -100495,7 +100466,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100539,6 +100510,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: '基因名称',
                 text: 'name'
             }, {
+                label: '基因代码',
+                text: 'code'
+            }, {
                 label: '基因类型',
                 text: 'gene_type'
             }],
@@ -100570,8 +100544,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self.$refs.table.reloadListData();
                     });
                 }
-            }).catch(function (error) {
-                console.log(error);
             });
         },
         searchListData: function searchListData(params) {
@@ -100884,7 +100856,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100915,7 +100887,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             form: {
                 name: '',
-                gene_type: 'dominant'
+                gene_type: 'dominant',
+                code: ''
             }
         };
     }
@@ -100956,7 +100929,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100969,6 +100942,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helps_helps__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__ = __webpack_require__(54);
+//
+//
+//
 //
 //
 //
@@ -101007,7 +100983,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             submit: false,
             geneType: __WEBPACK_IMPORTED_MODULE_1__config_backend_dictionaries__["a" /* geneType */],
             rules: {
-                name: [{ required: true, message: '请输入名称', trigger: 'blur' }, { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }]
+                name: [{ required: true, message: '请输入名称', trigger: 'blur' }, { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }],
+                code: [{ required: true, message: '请输入代码', trigger: 'blur' }, { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }]
             }
         };
     },
@@ -101033,16 +101010,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }).catch(function (_ref) {
                             var response = _ref.response;
 
-                            _this.isSubmit();
+                            _this.submit = false;
                         });
                     }
                     return false;
                 }
                 return false;
             });
-        },
-        isSubmit: function isSubmit() {
-            this.submit = this.submit ? true : false;
         },
         goBack: function goBack() {
             this.$router.go(-1);
@@ -101080,6 +101054,23 @@ var render = function() {
                     _vm.$set(_vm.form, "name", $$v)
                   },
                   expression: "form.name"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: _vm.$t("fields.code"), prop: "code" } },
+            [
+              _c("el-input", {
+                model: {
+                  value: _vm.form.code,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "code", $$v)
+                  },
+                  expression: "form.code"
                 }
               })
             ],
@@ -103541,7 +103532,8 @@ VueI18n.version = '7.4.2';
     food: '食物',
     pet: '宠物',
     unit: '单位',
-    number: '数量'
+    number: '数量',
+    code: '代码'
 });
 
 /***/ }),
@@ -103572,6 +103564,8 @@ VueI18n.version = '7.4.2';
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     categoryName: '请输入分类名称',
+    foodName: '请输入食物名称',
+    petName: '请输入宠物名称',
     categorySelect: '请选择食物分类',
     foodSelect: "请选择食物",
     petSelect: "请选择宠物",
@@ -105399,8 +105393,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['moduleTitle'],
-    methods: {}
+    props: ['moduleTitle']
 });
 
 /***/ }),

@@ -29,6 +29,10 @@
                         text:'name'
                     },
                     {
+                        label:'基因代码',
+                        text:'code'
+                    },
+                    {
                         label:'基因类型',
                         text:'gene_type'
                     }
@@ -58,8 +62,6 @@
                             self.$refs.table.reloadListData();
                         });
                     }
-                }).catch(function (error) {
-                    console.log(error);
                 });
             },
             searchListData(params){

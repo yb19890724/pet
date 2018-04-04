@@ -62,8 +62,6 @@
                             self.$refs.table.reloadListData();
                         });
                     }
-                }).catch(function (error) {
-                    console.log(error);
                 });
             }
         }

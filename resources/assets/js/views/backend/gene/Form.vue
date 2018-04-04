@@ -4,6 +4,9 @@
             <el-form-item :label="$t('fields.name')" prop="name">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
+            <el-form-item :label="$t('fields.code')" prop="code">
+                <el-input v-model="form.code"></el-input>
+            </el-form-item>
             <el-form-item :label="$t('fields.gene_type')">
                 <template v-for="(val,index) in geneType">
                     <el-radio v-model="form.gene_type" :label="index">{{ val }}</el-radio>
@@ -39,6 +42,10 @@
                     name: [
                         { required: true, message: '请输入名称', trigger: 'blur' },
                         { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
+                    ],
+                    code: [
+                        { required: true, message: '请输入代码', trigger: 'blur' },
+                        { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
                     ]
                 }
             }
@@ -60,16 +67,13 @@
                                     });
                                 }
                             }).catch(({response}) => {
-                                this.isSubmit();
+                                this.submit=false;
                             });
                         }
                         return false;
                     }
                     return false;
                 });
-            },
-            isSubmit(){
-                this.submit=this.submit?true:false;
             },
             goBack(){
                 this.$router.go(-1);

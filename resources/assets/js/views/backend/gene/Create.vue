@@ -16,7 +16,8 @@
             return {
                 form: {
                     name: '',
-                    gene_type: 'dominant'
+                    gene_type: 'dominant',
+                    code: ''
                 }
             }
         }

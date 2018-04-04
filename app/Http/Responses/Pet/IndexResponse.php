@@ -31,7 +31,7 @@ class IndexResponse implements Responsable
                 'name'         => $pet->name,
                 'sex_title'    => $pet->sexTransform(),
                 'color'        => $pet->color,
-                'state_title'  => $pet->stateTransform(),
+                'status_title'  => $pet->statusTransform(),
             ];
         });
 

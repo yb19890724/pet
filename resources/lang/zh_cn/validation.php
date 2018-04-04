@@ -154,6 +154,7 @@ return [
 
         /* 自定义扩展*/
         'sort'                  => '排序',
+        'code'                  => '代码',
         'food_category_id'      => '分类',
         'gene_type'             => '基因类型',
         'box_number'            => '饲养箱号',

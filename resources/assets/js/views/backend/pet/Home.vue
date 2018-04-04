@@ -38,7 +38,7 @@
                     },
                     {
                         label:'状态',
-                        text:'state_title'
+                        text:'status_title'
                     }
                 ],
                 multipleSelection: []
@@ -66,8 +66,6 @@
                             self.$refs.table.reloadListData();
                         });
                     }
-                }).catch(function (error) {
-                    console.log(error);
                 });
             },
             searchListData(params){
