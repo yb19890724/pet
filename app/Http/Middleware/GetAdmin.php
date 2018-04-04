@@ -4,11 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Traits\ResponseTrait;
 
-class BackendAuth
+class GetAdmin
 {
-    use ResponseTrait;
     /**
      * Handle an incoming request.
      *
@@ -18,15 +16,18 @@ class BackendAuth
      */
     public function handle($request, Closure $next)
     {
-        $this->checkAuth();
+        $request->merge($this->getAdmin());
 
         return $next($request);
     }
 
-    private function checkAuth()
+    private function getAdmin()
     {
-        if(empty(Auth::user())){
-            echo $this->withUnauthorized();exit;
-        }
+        $auth=Auth::user();
+        return !empty($auth)?[
+            'admin_id'=>$auth->id,
+            'name'=>$auth->name
+        ]:[];
     }
+
 }

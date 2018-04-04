@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\Gene\IndexResponse;
-use App\Http\Responses\Gene\AllResponse;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\GeneService;
+use App\Http\Responses\Gene\{
+    IndexResponse,AllResponse
+};
+use App\Http\Requests\Gene\{
+    StoreRequest,UpdateRequest
+};
 
 class GeneController extends Controller
 {
@@ -56,7 +60,7 @@ class GeneController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->gene->storeGene($request->all());
         if (!empty($result)) {
@@ -95,7 +99,7 @@ class GeneController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->gene->updateGene($id, $request->all());
         if (!empty($result)) {

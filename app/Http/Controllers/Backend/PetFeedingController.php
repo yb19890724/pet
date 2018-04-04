@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PetFeedingService;
-use App\Http\Responses\PetFeeding\IndexResponse;
-use App\Http\Responses\PetFeeding\ShowResponse;
+use App\Http\Responses\PetFeeding\{
+    IndexResponse,ShowResponse
+};
+use App\Http\Requests\PetFeeding\{
+    StoreRequest,UpdateRequest
+};
 use App\Traits\ResponseTrait;
 
 class PetFeedingController extends Controller

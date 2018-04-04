@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\Pet\ShowResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PetService;
-use App\Http\Responses\Pet\IndexResponse;
-use App\Http\Responses\Pet\AllResponse;
+use App\Http\Responses\Pet\{
+    IndexResponse,AllResponse,ShowResponse
+};
+use App\Http\Requests\Pet\{
+    StoreRequest,UpdateRequest
+};
 use App\Traits\ResponseTrait;
 
 class PetController extends Controller

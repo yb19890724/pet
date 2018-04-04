@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Responses\PetGrowth\IndexResponse;
-use App\Http\Responses\PetGrowth\ShowResponse;
 use App\Services\PetGrowthService;
 use App\Traits\ResponseTrait;
+use App\Http\Responses\PetGrowth\{
+    IndexResponse,ShowResponse
+};
+use App\Http\Requests\PetGrowth\{
+    StoreRequest,UpdateRequest
+};
+
 
 class PetGrowthController extends Controller
 {
@@ -46,7 +51,7 @@ class PetGrowthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->petGrowth->storePetGrowth($request->all());
         if (!empty($result)) {
@@ -84,7 +89,7 @@ class PetGrowthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->petGrowth->updatePetGrowth($id, $request->all());
         if (!empty($result)) {

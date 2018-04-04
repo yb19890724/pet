@@ -1,1 +1,1 @@
-export const backendApi = 'http://test.com/backend/';
+export const backendApi = '/backend/';

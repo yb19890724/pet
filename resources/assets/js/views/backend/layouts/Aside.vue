@@ -37,7 +37,9 @@
                     </li>
                     <li class="has-sub">
                         <a href="javascript:;">
+<!--
                             <span class="badge pull-right">10</span>
+-->
                             <i class="fa fa-inbox"></i>
                             <span>宠物管理</span>
                         </a>

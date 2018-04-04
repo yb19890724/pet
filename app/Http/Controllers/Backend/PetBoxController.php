@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PetBoxService;
-use App\Http\Responses\PetBox\IndexResponse;
-use App\Http\Responses\PetBox\AllResponse;
+use App\Traits\ResponseTrait;
+use App\Http\Responses\PetBox\{
+    IndexResponse,AllResponse
+};
+use App\Http\Requests\PetBox\{
+    StoreRequest,UpdateRequest
+};
 
 class PetBoxController extends Controller
 {
@@ -58,7 +62,7 @@ class PetBoxController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $result=$this->petBox->storePetBox($request->all());
         if(!empty($result)){
@@ -97,7 +101,7 @@ class PetBoxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->petBox->updatePetBox($id, $request->all());
         if (!empty($result)) {

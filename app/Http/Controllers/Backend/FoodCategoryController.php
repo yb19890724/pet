@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Responses\FoodCategory\IndexResponse;
-use App\Http\Responses\FoodCategory\AllResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\FoodCategoryService;
 use App\Traits\ResponseTrait;
+use App\Http\Responses\FoodCategory\{
+    IndexResponse,AllResponse
+};
+use App\Http\Requests\FoodCategory\{
+    StoreRequest,UpdateRequest
+};
 
 class FoodCategoryController extends Controller
 {
@@ -57,7 +61,7 @@ class FoodCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $result=$this->foodCategory->storeFoodCategory($request->all());
         if(!empty($result)){
@@ -96,7 +100,7 @@ class FoodCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->foodCategory->updateFoodCategory($id, $request->all());
         if (!empty($result)) {

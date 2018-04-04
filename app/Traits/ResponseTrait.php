@@ -91,6 +91,19 @@ trait ResponseTrait
         )->responseJson(['message'=>$message]);
     }
 
+    /**
+     * Make a 401 'Unauthorized' response.
+     *
+     * @param string $message
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function withUnauthorized($message = 'Unauthorized')
+    {
+        return $this->setStatusCode(
+            HttpResponse::HTTP_UNAUTHORIZED
+        )->responseMessage($message);
+    }
 
     /**
      * return 410 response with resource perpetual gone.

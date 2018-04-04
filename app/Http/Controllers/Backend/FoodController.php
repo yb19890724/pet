@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Responses\Food\IndexResponse;
-use App\Http\Responses\Food\AllResponse;
 use App\Services\FoodService;
 use App\Traits\ResponseTrait;
+use App\Http\Responses\Food\{
+    IndexResponse,AllResponse
+};
+use App\Http\Requests\Food\{
+    StoreRequest,UpdateRequest
+};
 
 class FoodController extends Controller
 {
@@ -58,7 +62,7 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $result=$this->food->storeFood($request->all());
         if(!empty($result)){
@@ -98,7 +102,7 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->food->updateFood($id, $request->all());
         if (!empty($result)) {
