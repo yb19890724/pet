@@ -43,6 +43,6 @@ class FoodRepositoryEloquent extends AbstractRepository implements FoodRepositor
     {
         return $this->withCriteria(
             new FilterRequest($this->filters)
-        )->select(['id','name'])->get();
+        )->get();
     }
 }
