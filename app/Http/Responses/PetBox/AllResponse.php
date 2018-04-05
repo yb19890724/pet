@@ -27,8 +27,8 @@ class AllResponse implements Responsable
     {
         $this->result->transform(function ($petBox) {
             return [
-                'value'           => $petBox->value,
-                'label'           => $petBox->label
+                'value'           => $petBox->id,
+                'label'           => $petBox->box_number
             ];
         });
         return $this->responseJson($this->result);

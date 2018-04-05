@@ -27,8 +27,8 @@ class AllResponse implements Responsable
     {
         $this->result->transform(function ($gene) {
             return [
-                 'value'    => $gene->value,
-                 'label'    => $gene->label
+                 'value'    => $gene->id,
+                 'label'    => $gene->name
             ];
         });
         return $this->responseJson($this->result);

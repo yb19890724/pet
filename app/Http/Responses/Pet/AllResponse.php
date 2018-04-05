@@ -27,8 +27,8 @@ class AllResponse implements Responsable
     {
         $this->result->transform(function ($pet) {
             return [
-                'value'         => $pet->value,
-                'label'         => $pet->label
+                'value'         => $pet->id,
+                'label'         => $pet->name
             ];
         });
         return $this->responseJson($this->result);

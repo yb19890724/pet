@@ -37,10 +37,6 @@
                     {
                         label:'添加时间',
                         text:'created_at'
-                    },
-                    {
-                        label:'修改时间',
-                        text:'updated_at'
                     }
                 ],
                 multipleSelection: []

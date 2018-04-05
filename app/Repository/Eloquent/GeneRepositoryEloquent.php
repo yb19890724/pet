@@ -11,7 +11,7 @@ use Phpno1\Architecture\Criterias\FilterRequest;
 class GeneRepositoryEloquent extends AbstractRepository implements GeneRepository
 {
     protected $filters = [
-       'gene_type'=>GeneTypeFilter::class
+        'gene_type' => GeneTypeFilter::class
     ];
 
     public function entity()
@@ -26,8 +26,8 @@ class GeneRepositoryEloquent extends AbstractRepository implements GeneRepositor
      */
     public function getGeneAll()
     {
-        return $this->withCriteria(
+        return $this->selectFields()->withCriteria(
             new FilterRequest($this->filters)
-        )->select(['id as value','name as label'])->get();
+        )->get();
     }
 }

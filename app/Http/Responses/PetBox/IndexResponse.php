@@ -31,7 +31,6 @@ class IndexResponse implements Responsable
                 'box_number'   => $petBox->box_number,
                 'sort'         => $petBox->sort,
                 'created_at'   => $petBox->createTime(),
-                'updated_at'   => $petBox->updateTime(),
             ];
         });
         return $this->responseJson($this->result);

@@ -26,7 +26,7 @@ class PetGrowthRepositoryEloquent extends AbstractRepository implements PetGrowt
      */
     public function getPetGrowths(int $perPage = 0)
     {
-        return $this->withCriteria(
+        return $this->petGrowthFields()->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
     }

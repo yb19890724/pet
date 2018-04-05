@@ -22,5 +22,13 @@ class Gene extends Model
         return $geneType ?? '';
     }
 
+    /**
+     * set gene select fields
+     * @return mixed
+     */
+    public function scopeSelectFields($query)
+    {
+        return $query->select(['id','name']);
+    }
 
 }

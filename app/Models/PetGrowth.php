@@ -18,5 +18,19 @@ class PetGrowth extends Model
         'updated_at'
     ];
 
+    protected $dates = ['created_at', 'updated_at'];
 
+    /**
+     * set pet growth fields
+     * @return mixed
+     */
+    public function scopePetGrowthFields($query)
+    {
+        return $query->select([
+            'id',
+            'weight',
+            'body_length',
+            'created_at'
+        ]);
+    }
 }

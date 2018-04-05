@@ -31,16 +31,10 @@ class PetFeedingRepositoryEloquent extends AbstractRepository implements PetFeed
      */
     public function getPetFeedings(int $perPage=0)
     {
-        return $this->withCriteria(
+        return $this->petFeedingsFields()->withCriteria(
             new FilterRequest($this->filters),
             new EagerLoad($this->relations)
-        )->select([
-            'id',
-            'pet_id',
-            'food_id',
-            'food_category_id',
-            'unit'
-        ])->paginate($perPage);
+        )->paginate($perPage);
     }
 
 

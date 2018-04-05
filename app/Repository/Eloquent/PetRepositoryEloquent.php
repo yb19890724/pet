@@ -31,7 +31,7 @@ class PetRepositoryEloquent extends AbstractRepository implements PetRepository
      */
     public function searchPets(int $perPage = 0)
     {
-        return $this->withCriteria(
+        return $this->petFields()->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
     }
@@ -43,8 +43,8 @@ class PetRepositoryEloquent extends AbstractRepository implements PetRepository
      */
     public function getPetAll()
     {
-        return $this->withCriteria(
+        return $this->selectFields()->withCriteria(
             new FilterRequest($this->filters)
-        )->select(['id as value','name as label'])->get();
+        )->get();
     }
 }

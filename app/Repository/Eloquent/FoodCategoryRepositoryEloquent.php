@@ -29,7 +29,7 @@ class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodC
      */
     public function searchFoodCategories(int $perPage = 0)
     {
-        return $this->withCriteria(
+        return $this->foodCategoriesFields()->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
     }
@@ -41,8 +41,8 @@ class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodC
      */
     public function getFoodCategoryAll()
     {
-        return $this->withCriteria(
+        return $this->selectFields()->withCriteria(
             new FilterRequest($this->filters)
-        )->select(['id','name'])->get();
+        )->get();
     }
 }

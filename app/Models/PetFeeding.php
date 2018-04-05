@@ -82,4 +82,19 @@ class PetFeeding extends Model
     {
         return $this->feedingHasFoodCategory()->select(['id', 'name']);
     }
+
+    /**
+     * set pet feedings select fields
+     * @return mixed
+     */
+    public function scopePetFeedingsFields($query)
+    {
+        return $query->select([
+            'id',
+            'pet_id',
+            'food_id',
+            'food_category_id',
+            'unit'
+        ]);
+    }
 }

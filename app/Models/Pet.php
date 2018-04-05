@@ -86,4 +86,21 @@ class Pet extends Model
         return [];
     }
 
+    /**
+     * set pet categories fields
+     * @return mixed
+     */
+    public function scopePetFields($query)
+    {
+        return $query->select(['id','name','sex','status','color']);
+    }
+
+    /**
+     * set pet select fields
+     * @return mixed
+     */
+    public function scopeSelectFields($query)
+    {
+        return $query->select(['id','name']);
+    }
 }

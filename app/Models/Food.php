@@ -13,5 +13,21 @@ class Food extends Model
 
     protected $dates=['created_at', 'updated_at'];
 
+    /**
+     * set foods fields
+     * @return mixed
+     */
+    public function scopeFoodsFields($query)
+    {
+        return $query->select(['id','name','sort','created_at']);
+    }
 
+    /**
+     * set food select fields
+     * @return mixed
+     */
+    public function scopeSelectFields($query)
+    {
+        return $query->select(['id','name']);
+    }
 }

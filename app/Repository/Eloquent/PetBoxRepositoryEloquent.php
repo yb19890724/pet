@@ -24,6 +24,6 @@ class PetBoxRepositoryEloquent extends AbstractRepository implements PetBoxRepos
      */
     public function getPetBoxesAll()
     {
-        return $this->entity->select(['id as value','box_number as label'])->get();
+        return $this->entity->petBoxAll();
     }
 }

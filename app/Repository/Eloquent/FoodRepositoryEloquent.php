@@ -13,7 +13,7 @@ class FoodRepositoryEloquent extends AbstractRepository implements FoodRepositor
 {
     protected $filters = [
         'search_name' => SearchNameFilter::class,
-        'o' => SortFilter::class,
+        'o'           => SortFilter::class,
     ];
 
     public function entity()
@@ -29,7 +29,7 @@ class FoodRepositoryEloquent extends AbstractRepository implements FoodRepositor
      */
     public function searchFoods(int $perPage = 0)
     {
-        return $this->withCriteria(
+        return $this->foodsFields()->withCriteria(
             new FilterRequest($this->filters)
         )->paginate($perPage);
     }
@@ -41,7 +41,7 @@ class FoodRepositoryEloquent extends AbstractRepository implements FoodRepositor
      */
     public function getFoodsAll()
     {
-        return $this->withCriteria(
+        return $this->selectFields()->withCriteria(
             new FilterRequest($this->filters)
         )->get();
     }

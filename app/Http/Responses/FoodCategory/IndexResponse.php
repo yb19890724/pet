@@ -30,8 +30,7 @@ class IndexResponse implements Responsable
                 'id'           => $foodCategory->id,
                 'name'         => $foodCategory->name,
                 'sort'         => $foodCategory->sort,
-                'created_at'   => $foodCategory->createTime(),
-                'updated_at'   => $foodCategory->updateTime(),
+                'created_at'   => $foodCategory->createTime()
             ];
         });
 
