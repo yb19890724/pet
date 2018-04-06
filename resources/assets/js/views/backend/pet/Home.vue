@@ -6,7 +6,7 @@
             <!-- 按钮视图-->
             <TitleView slot="titleButton"></TitleView>
             <!-- table 展示位置 -->
-            <v-table slot="table" apiUrl="/pet" :fields="fields" :button="button" :views="views" :buttonWith="buttonWith" ref="table" @handleDelete="handleDelete">
+            <v-table slot="table" apiUrl="/pet?o=asc" :fields="fields" :button="button" :views="views" :buttonWith="buttonWith" ref="table" @handleDelete="handleDelete">
 
             </v-table>
 

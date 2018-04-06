@@ -60,7 +60,7 @@ class PetFeeding extends Model
      */
     public function feedingPet()
     {
-        return $this->feedingHasPet()->select(['id', 'name']);
+        return $this->feedingHasPet()->selectFields();
     }
 
     /**
@@ -70,7 +70,7 @@ class PetFeeding extends Model
      */
     public function feedingFood()
     {
-        return $this->feedingHasFood()->select(['id', 'name']);
+        return $this->feedingHasFood()->selectFields();
     }
 
     /**
@@ -80,7 +80,7 @@ class PetFeeding extends Model
      */
     public function feedingFoodCategory()
     {
-        return $this->feedingHasFoodCategory()->select(['id', 'name']);
+        return $this->feedingHasFoodCategory()->selectFields();
     }
 
     /**

@@ -3,13 +3,14 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\PetBox;
+use App\Repository\Filters\SortFilter;
 use App\Repository\Contracts\PetBoxRepository;
 use Phpno1\Architecture\Eloquent\AbstractRepository;
 
 class PetBoxRepositoryEloquent extends AbstractRepository implements PetBoxRepository
 {
     protected $filters = [
-        // filter and sort settings
+        'o' => SortFilter::class,
     ];
 
     public function entity()

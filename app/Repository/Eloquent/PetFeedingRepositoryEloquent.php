@@ -12,7 +12,7 @@ use Phpno1\Architecture\Criterias\EagerLoad;
 class PetFeedingRepositoryEloquent extends AbstractRepository implements PetFeedingRepository
 {
     protected $filters = [
-        'pet_id'=>PetFilter::class
+        'pet_id'=>PetFilter::class,
     ];
 
     protected $relations=[

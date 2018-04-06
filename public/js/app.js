@@ -93781,7 +93781,7 @@ var render = function() {
             ref: "table",
             attrs: {
               slot: "table",
-              apiUrl: "/pet",
+              apiUrl: "/pet?o=asc",
               fields: _vm.fields,
               button: _vm.button,
               views: _vm.views,
@@ -98471,7 +98471,7 @@ var render = function() {
             ref: "table",
             attrs: {
               slot: "table",
-              apiUrl: "/food",
+              apiUrl: "/food?o=asc",
               fields: _vm.fields,
               views: _vm.views
             },
@@ -99680,7 +99680,7 @@ var render = function() {
             ref: "table",
             attrs: {
               slot: "table",
-              apiUrl: "/food/category",
+              apiUrl: "/food/category?o=asc",
               fields: _vm.fields,
               views: _vm.views
             },
