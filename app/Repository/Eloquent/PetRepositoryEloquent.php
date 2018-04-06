@@ -14,8 +14,8 @@ class PetRepositoryEloquent extends AbstractRepository implements PetRepository
 {
     protected $filters = [
         'search_name' => SearchNameFilter::class,
-        'sex' => SexFilter::class,
-        'o' => SortFilter::class,
+        'sex'         => SexFilter::class,
+        'o'           => SortFilter::class,
     ];
 
     public function entity()

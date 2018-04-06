@@ -11,7 +11,7 @@ use App\Repository\Filters\PetFilter;
 class PetGrowthRepositoryEloquent extends AbstractRepository implements PetGrowthRepository
 {
     protected $filters = [
-        'pet_id'=>PetFilter::class
+        'pet_id' => PetFilter::class
     ];
 
     public function entity()

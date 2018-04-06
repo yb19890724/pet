@@ -13,7 +13,7 @@ class FoodCategoryRepositoryEloquent extends AbstractRepository implements FoodC
 {
     protected $filters = [
         'search_name' => SearchNameFilter::class,
-        'o' => SortFilter::class,
+        'o'           => SortFilter::class,
     ];
 
     public function entity()
