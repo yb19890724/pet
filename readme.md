@@ -42,7 +42,7 @@
 
     //配置你的数据库
 
-    php artisan make:migrate
+    php artisan migrate
 
 ```
 
