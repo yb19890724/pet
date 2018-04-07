@@ -40,6 +40,10 @@
 
     copy .env.example .env
 
+    //配置你的数据库
+
+    php artisan make:migrate
+
 ```
 
 ### 安装js扩展
