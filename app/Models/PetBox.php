@@ -18,8 +18,8 @@ class PetBox extends Model
      * @param int $perPage
      * @return mixed
      */
-    public function petBoxAll($query)
+    public function petBoxAll()
     {
-        return $query->select(['id','box_number'])->get();
+        return $this->select(['id','box_number'])->get();
     }
 }
