@@ -24,7 +24,7 @@
    + Models     : 模型。
    + Libraries  : 扩展
    
-<p>由于分层比较多所以和朋友封装了一个扩展包:用命令一键生成<a href="https://github.com/yb19890724/phpno1-architecture">architecture</a></p>    
+<p>由于分层比较多所以和朋友封装了一个扩展包:用命令一键生成<a href="https://github.com/yb19890724/phpno1-architecture">项目架构扩展包</a></p>
 
 ### 安装
 
@@ -35,7 +35,11 @@
 
 ### 安装laravel扩展
 ```php
+
     composer update
+
+    copy .env.example .env
+
 ```
 
 ### 安装js扩展
