@@ -35,15 +35,33 @@
 
 ### 安装laravel扩展
 ```php
-
     composer update
+```
 
-    copy .env.example .env
+### 配置laravel
 
-    //配置你的数据库
+```php
+     copy .env.example .env
+```
 
+```php
+    php artisan key:generate 
+```
+
+```php
+    
+    //编辑.env配置你的数据库配置
+    DB_HOST=
+    DB_PORT=
+    DB_DATABASE=
+    DB_USERNAME=
+    DB_PASSWORD=
+    
+```
+
+```php
+    //发布迁移文件
     php artisan migrate
-
 ```
 
 ### 安装js扩展
