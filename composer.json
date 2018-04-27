@@ -31,7 +31,7 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "app/Libraries/Function.php"
+            "app/Libraries/function.php"
         ]
     },
     "extra": {
