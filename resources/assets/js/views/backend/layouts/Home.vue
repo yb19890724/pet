@@ -35,7 +35,7 @@
 <script type="text/ecmascript-6">
 
     import HeaderBar from './Header.vue';
-    import AsideBar from './aside.vue';
+    import AsideBar from './Aside.vue';
 
     export default{
         components: {
